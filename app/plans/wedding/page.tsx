@@ -1,6 +1,8 @@
 "use client";
 import Image from 'next/image';
+import Link from 'next/link';
 import { useState } from 'react';
+import Navbar from '@/components/Navbar';
 
 // Tab data for "What Happens" section
 const tabsData: Record<string, { image: string; benefits: string[] }> = {
@@ -151,59 +153,18 @@ export default function WeddingPlanPage() {
 
   return (
     <>
-      {/* Hero Section */}
-      <section style={{ background: '#000', padding: '0 1rem 1rem' }}>
-        <div style={{
-          maxWidth: '1820px',
-          margin: '0 auto',
-          borderRadius: '50px',
-          overflow: 'hidden',
-          position: 'relative',
-          minHeight: '500px',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          background: '#4E0101',
-          padding: '145px 10px 85px'
-        }}>
-          {/* Background Image */}
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundImage: 'url(https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Div.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            backgroundRepeat: 'no-repeat'
-          }}></div>
-          {/* Content */}
-          <div style={{ position: 'relative', zIndex: 1, textAlign: 'center', width: '100%', marginTop: '50px' }}>
-            <h1 style={{
-              fontSize: '48px',
-              fontWeight: 700,
-              color: '#FFFFFF',
-              lineHeight: 1.3,
-              marginBottom: '10px',
-              fontFamily: 'Epilogue, sans-serif'
-            }}>
-              India's Only<br />
-              "<span style={{ color: '#ff850b' }}>Ghar Ka Khana</span>" Diet Plan<br />
+      {/* Hero Section with Navbar */}
+      <section className="wedding-hero-wrapper">
+        <div className="wedding-hero-section">
+          <Navbar />
+          <div className="wedding-hero-content">
+            <h1 className="wedding-hero-title">
+              India&apos;s Only<br />
+              <span className="wedding-highlight">Ghar Ka Khana</span> Diet Plan<br />
               That Gets You Wedding-Ready.
             </h1>
-            <p style={{
-              color: '#FFFFFF',
-              fontSize: '24px',
-              fontWeight: 400,
-              lineHeight: 1.6,
-              marginTop: '20px',
-              padding: '10px 0 0',
-              maxWidth: '60%',
-              margin: '20px auto 0'
-            }}>
-              Because you shouldn't have to suffer to look beautiful.
+            <p className="wedding-hero-subtitle">
+              Because you shouldn&apos;t have to suffer to look beautiful.
             </p>
           </div>
         </div>

@@ -1,6 +1,7 @@
 "use client";
 import Image from 'next/image';
 import { useState } from 'react';
+import Navbar from '@/components/Navbar';
 
 const successStories = [
   { name: 'Soranya', loss: '15 kgs', days: '97 Days', image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/SORANYA-1-1.webp' },
@@ -21,61 +22,39 @@ const whatYouGet = [
 
 const pricingPlans = [
   {
-    duration: 'One Month Plan',
-    price: '₹4,500',
-    originalPrice: '₹6,000',
-    features: [
-      'Personal Diet Consultations',
-      'Weekly Check-ins',
-      '24/7 WhatsApp Support',
-      'Customized Meal Plans',
-      'Progress Tracking'
-    ],
+    duration: 'One',
+    durationSub: 'Month',
+    durationEnd: 'Plan',
+    price: '₹ 4,500',
+    originalPrice: '₹ 5,000',
+    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
     popular: false
   },
   {
-    duration: 'Three Months Plan',
-    price: '₹13,000',
-    originalPrice: '₹15,000',
-    features: [
-      'Personal Diet Consultations',
-      'Weekly Check-ins',
-      '24/7 WhatsApp Support',
-      'Customized Meal Plans',
-      'Progress Tracking',
-      'Recipe E-Book'
-    ],
+    duration: 'Three',
+    durationSub: 'Months',
+    durationEnd: 'Plan',
+    price: '₹ 13,000',
+    originalPrice: '₹ 15,000',
+    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin2.png',
     popular: false
   },
   {
-    duration: 'Six Months Plan',
-    price: '₹24,000',
-    originalPrice: '₹30,000',
-    features: [
-      'Personal Diet Consultations',
-      'Weekly Check-ins',
-      '24/7 WhatsApp Support',
-      'Customized Meal Plans',
-      'Progress Tracking',
-      'Recipe E-Book',
-      'Lifestyle Coaching'
-    ],
-    popular: true
+    duration: 'Six',
+    durationSub: 'Months',
+    durationEnd: 'Plan',
+    price: '₹ 24,000',
+    originalPrice: '₹ 30,000',
+    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin3.png',
+    popular: false
   },
   {
-    duration: 'One Year Plan',
-    price: '₹48,000',
-    originalPrice: '₹64,000',
-    features: [
-      'Personal Diet Consultations',
-      'Weekly Check-ins',
-      '24/7 WhatsApp Support',
-      'Customized Meal Plans',
-      'Progress Tracking',
-      'Recipe E-Book',
-      'Lifestyle Coaching',
-      'Priority Support'
-    ],
+    duration: 'One',
+    durationSub: 'Year',
+    durationEnd: 'Plan',
+    price: '₹ 48,000',
+    originalPrice: '₹ 64,000',
+    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin4.png',
     popular: false
   }
 ];
@@ -115,44 +94,74 @@ export default function TherapeuticPlanPage() {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section with integrated Navbar */}
       <section style={{
-        background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
-        padding: '80px 20px 60px',
-        position: 'relative',
-        overflow: 'hidden'
+        background: '#fff',
+        padding: '30px 50px 0',
       }}>
         <div style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
+          borderRadius: '30px',
+          position: 'relative',
+          overflow: 'hidden',
+          minHeight: '620px',
+          maxWidth: '1400px',
+          margin: '0 auto'
+        }}>
+          {/* Navbar inside the hero section */}
+          <div style={{ position: 'relative', zIndex: 10 }}>
+            <Navbar />
+          </div>
+
+          {/* Hero Content */}
+          <div style={{ padding: '40px 60px 100px' }}>
+            {/* Background decorative elements */}
+            <div style={{
+              position: 'absolute',
+              top: '50%',
+              right: '-5%',
+              width: '500px',
+              height: '500px',
+              background: 'radial-gradient(circle, rgba(255,133,11,0.1) 0%, transparent 70%)',
+              borderRadius: '50%',
+              transform: 'translateY(-50%)',
+              pointerEvents: 'none'
+            }} />
+        
+            <div style={{
+              maxWidth: '1200px',
+              margin: '0 auto',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-between',
           flexWrap: 'wrap',
           gap: '40px'
         }}>
           {/* Left Content */}
-          <div style={{ flex: '1 1 500px', maxWidth: '600px' }}>
+          <div style={{ flex: '1 1 480px', maxWidth: '580px' }}>
             <div style={{
               display: 'inline-flex',
               alignItems: 'center',
               gap: '8px',
-              background: 'rgba(255,255,255,0.1)',
-              padding: '8px 16px',
+              background: 'rgba(255,255,255,0.08)',
+              padding: '10px 18px',
               borderRadius: '50px',
-              marginBottom: '20px'
+              marginBottom: '24px',
+              backdropFilter: 'blur(10px)',
+              border: '1px solid rgba(255,255,255,0.1)'
             }}>
-              <span style={{ color: '#FFD700' }}>✨</span>
-              <span style={{ color: '#fff', fontSize: '14px', fontWeight: 500 }}>For Healthier, Happier you</span>
+              <span style={{ fontSize: '14px' }}>✨</span>
+              <span style={{ color: '#fff', fontSize: '13px', fontWeight: 500 }}>For Healthier, Happier you</span>
             </div>
             
             <h1 style={{
-              fontSize: '56px',
+              fontSize: '48px',
               fontWeight: 700,
               color: '#FFFFFF',
-              lineHeight: 1.1,
+              lineHeight: 1.15,
               marginBottom: '24px',
-              fontFamily: 'Epilogue, sans-serif'
+              fontFamily: 'Epilogue, sans-serif',
+              letterSpacing: '-0.5px'
             }}>
               Therapeutic Diet<br />
               Plans: Mend-<br />
@@ -160,42 +169,45 @@ export default function TherapeuticPlanPage() {
             </h1>
             
             <p style={{
-              color: 'rgba(255,255,255,0.85)',
-              fontSize: '16px',
-              lineHeight: 1.7,
+              color: 'rgba(255,255,255,0.75)',
+              fontSize: '15px',
+              lineHeight: 1.75,
               marginBottom: '32px',
-              maxWidth: '500px'
+              maxWidth: '480px'
             }}>
               Meet the visionary force behind central India's leading company, Our expert 
               therapeutic Dietitian Poonam Sagar - a dynamic and inspirational leader, a powerful 
               women entrepreneur, and the guiding light of our dedicated team of dietitians.
             </p>
             
-            <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+            <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
               <button style={{
                 background: '#FF850B',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '50px',
-                padding: '14px 32px',
-                fontSize: '16px',
+                padding: '14px 28px',
+                fontSize: '14px',
                 fontWeight: 600,
                 cursor: 'pointer',
                 display: 'flex',
                 alignItems: 'center',
-                gap: '8px'
+                gap: '8px',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 20px rgba(255,133,11,0.3)'
               }}>
-                Get Started Today →
+                Get Started Today <span style={{ fontSize: '16px' }}>→</span>
               </button>
               <button style={{
                 background: 'transparent',
                 color: '#fff',
-                border: '2px solid rgba(255,255,255,0.3)',
+                border: '2px solid rgba(255,255,255,0.25)',
                 borderRadius: '50px',
-                padding: '14px 32px',
-                fontSize: '16px',
+                padding: '14px 28px',
+                fontSize: '14px',
                 fontWeight: 600,
-                cursor: 'pointer'
+                cursor: 'pointer',
+                transition: 'all 0.3s ease'
               }}>
                 Learn More
               </button>
@@ -203,73 +215,169 @@ export default function TherapeuticPlanPage() {
           </div>
           
           {/* Right Image */}
-          <div style={{ flex: '0 1 400px' }}>
+          <div style={{ 
+            flex: '0 1 420px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
+          }}>
             <Image
               src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/d21d7b0157faacaede7445061a44a9041ebc0603.png"
               alt="Healthy Food Heart"
-              width={400}
-              height={400}
-              style={{ width: '100%', height: 'auto' }}
+              width={420}
+              height={420}
+              style={{ 
+                width: '100%', 
+                height: 'auto',
+                maxWidth: '420px',
+                filter: 'drop-shadow(0 20px 40px rgba(0,0,0,0.3))'
+              }}
             />
+          </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Transform Your Health Section */}
-      <section style={{ background: '#fff', padding: '80px 20px' }}>
+      <section style={{ background: '#fff', padding: '100px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{
-            color: '#0d4043',
-            fontSize: '16px',
+            color: '#FF850B',
+            fontSize: '14px',
             fontWeight: 600,
-            letterSpacing: '8px',
+            letterSpacing: '2px',
             textTransform: 'uppercase',
-            marginBottom: '10px'
+            marginBottom: '16px'
           }}>
             Transform Your Health
           </p>
           <h2 style={{
-            fontSize: '42px',
+            fontSize: '44px',
             fontWeight: 700,
-            color: '#000000',
+            color: '#1a1a1a',
             lineHeight: 1.2,
             marginBottom: '20px',
             fontFamily: 'Epilogue, sans-serif'
           }}>
-            Transform Your Health with Expert <span style={{ color: '#FF850B' }}>Nutrition Plan</span>
+            Transform Your Health with Expert Nutrition Plan
           </h2>
           <p style={{
             color: '#666',
-            fontSize: '16px',
+            fontSize: '17px',
             lineHeight: 1.7,
-            maxWidth: '600px',
-            margin: '0 auto 50px'
+            maxWidth: '680px',
+            margin: '0 auto 60px'
           }}>
             Embark on a transformative journey of wellness and success, led by our true industry trailblazer.
           </p>
 
-          {/* Images Row */}
+          {/* Success Stories Slider */}
           <div style={{
             display: 'flex',
             justifyContent: 'center',
             gap: '30px',
             flexWrap: 'wrap',
+            marginBottom: '50px'
+          }}>
+            {successStories.map((story, index) => (
+              <div key={index} style={{
+                background: '#fff',
+                borderRadius: '24px',
+                overflow: 'hidden',
+                boxShadow: '0 8px 40px rgba(0,0,0,0.1)',
+                width: '320px',
+                transition: 'transform 0.3s ease'
+              }}>
+                <div style={{
+                  background: '#fff',
+                  padding: '20px 20px 0',
+                  textAlign: 'center'
+                }}>
+                  <div style={{
+                    position: 'relative',
+                    display: 'inline-block',
+                    marginBottom: '10px'
+                  }}>
+                    <span style={{ color: '#e74c3c', fontSize: '24px' }}>📍</span>
+                  </div>
+                  <h3 style={{
+                    fontSize: '22px',
+                    fontWeight: 700,
+                    color: '#1a1a1a',
+                    margin: '0 0 8px'
+                  }}>{story.name}</h3>
+                  <p style={{
+                    color: '#FF850B',
+                    fontSize: '16px',
+                    fontWeight: 600,
+                    margin: '0 0 16px'
+                  }}>Lost {story.loss} weight</p>
+                </div>
+                <div style={{ position: 'relative' }}>
+                  <Image
+                    src={story.image}
+                    alt={story.name}
+                    width={320}
+                    height={280}
+                    style={{ 
+                      width: '100%', 
+                      height: '280px',
+                      objectFit: 'cover'
+                    }}
+                  />
+                  <div style={{
+                    position: 'absolute',
+                    bottom: 0,
+                    left: 0,
+                    right: 0,
+                    background: '#16a085',
+                    color: '#fff',
+                    padding: '14px',
+                    textAlign: 'center',
+                    fontSize: '18px',
+                    fontWeight: 700
+                  }}>
+                    In Just {story.days}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Pagination dots */}
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '8px',
             marginBottom: '60px'
           }}>
-            <Image
-              src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/Untitled-design-42.png"
-              alt="Nutrition Plan 1"
-              width={350}
-              height={400}
-              style={{ borderRadius: '20px', objectFit: 'cover' }}
-            />
-            <Image
-              src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/Untitled-design-40.png"
-              alt="Nutrition Plan 2"
-              width={350}
-              height={400}
-              style={{ borderRadius: '20px', objectFit: 'cover' }}
-            />
+            {[...Array(8)].map((_, i) => (
+              <div key={i} style={{
+                width: i < 2 ? '10px' : '8px',
+                height: i < 2 ? '10px' : '8px',
+                borderRadius: '50%',
+                background: i < 2 ? '#FF850B' : '#ddd'
+              }} />
+            ))}
+          </div>
+
+          {/* We are Most Trusted */}
+          <div style={{ marginBottom: '60px' }}>
+            <p style={{
+              fontFamily: "'Pacifico', cursive",
+              fontSize: '48px',
+              color: '#333',
+              marginBottom: '-10px',
+              fontWeight: 400
+            }}>We are</p>
+            <h2 style={{
+              fontSize: '72px',
+              fontWeight: 800,
+              color: '#FF850B',
+              fontFamily: 'Epilogue, sans-serif',
+              margin: 0
+            }}>Most Trusted</h2>
           </div>
 
           {/* Stats */}
@@ -277,218 +385,351 @@ export default function TherapeuticPlanPage() {
             display: 'grid',
             gridTemplateColumns: 'repeat(4, 1fr)',
             gap: '30px',
-            maxWidth: '900px',
+            maxWidth: '1000px',
             margin: '0 auto'
           }}>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', fontWeight: 700, color: '#0d4043' }}>98%</div>
-              <div style={{ color: '#666', fontSize: '16px' }}>Success Rate</div>
+            <div style={{ 
+              textAlign: 'center',
+              background: '#f8f9fa',
+              borderRadius: '20px',
+              padding: '40px 20px'
+            }}>
+              <div style={{ fontSize: '52px', fontWeight: 700, color: '#1a1a1a', marginBottom: '8px' }}>98%</div>
+              <div style={{ color: '#666', fontSize: '15px', fontWeight: 500 }}>Success Rate</div>
             </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', fontWeight: 700, color: '#0d4043' }}>4.9</div>
-              <div style={{ color: '#666', fontSize: '16px' }}>Average Rating</div>
+            <div style={{ 
+              textAlign: 'center',
+              background: '#f8f9fa',
+              borderRadius: '20px',
+              padding: '40px 20px'
+            }}>
+              <div style={{ fontSize: '52px', fontWeight: 700, color: '#1a1a1a', marginBottom: '8px' }}>4.9</div>
+              <div style={{ color: '#666', fontSize: '15px', fontWeight: 500 }}>Average Rating</div>
             </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', fontWeight: 700, color: '#0d4043' }}>100K+</div>
-              <div style={{ color: '#666', fontSize: '16px' }}>Success Stories</div>
+            <div style={{ 
+              textAlign: 'center',
+              background: '#f8f9fa',
+              borderRadius: '20px',
+              padding: '40px 20px'
+            }}>
+              <div style={{ fontSize: '52px', fontWeight: 700, color: '#1a1a1a', marginBottom: '8px' }}>100K+</div>
+              <div style={{ color: '#666', fontSize: '15px', fontWeight: 500 }}>Success Stories</div>
             </div>
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontSize: '48px', fontWeight: 700, color: '#0d4043' }}>#1</div>
-              <div style={{ color: '#666', fontSize: '16px' }}>Achievements & Awards</div>
+            <div style={{ 
+              textAlign: 'center',
+              background: '#f8f9fa',
+              borderRadius: '20px',
+              padding: '40px 20px'
+            }}>
+              <div style={{ fontSize: '52px', fontWeight: 700, color: '#1a1a1a', marginBottom: '8px' }}>#1</div>
+              <div style={{ color: '#666', fontSize: '15px', fontWeight: 500 }}>Achievements & Awards</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* What Do You Get Section */}
-      <section style={{ background: '#f8f9fa', padding: '80px 20px' }}>
+      <section style={{ background: '#f8f9fa', padding: '100px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
           <h2 style={{
-            fontSize: '42px',
+            fontSize: '44px',
             fontWeight: 700,
-            color: '#000000',
+            color: '#FF850B',
             lineHeight: 1.2,
-            marginBottom: '50px',
+            marginBottom: '16px',
             fontFamily: 'Epilogue, sans-serif',
             textAlign: 'center'
           }}>
-            What do you <span style={{ color: '#FF850B' }}>get</span>?
+            What do you get?
           </h2>
+          <div style={{
+            width: '60px',
+            height: '4px',
+            background: '#0d4043',
+            margin: '0 auto 50px',
+            borderRadius: '2px'
+          }} />
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '20px'
+            gridTemplateColumns: 'repeat(3, 1fr)',
+            gap: '24px'
           }}>
-            {whatYouGet.map((item, index) => (
-              <div key={index} style={{
-                background: '#fff',
-                borderRadius: '16px',
-                padding: '24px 20px',
-                textAlign: 'center',
-                boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                transition: '0.3s ease',
-                cursor: 'pointer'
-              }}>
-                <div style={{
-                  display: 'inline-flex',
+            {whatYouGet.map((item, index) => {
+              const isHighlighted = index === 4 || index === 7;
+              return (
+                <div key={index} style={{
+                  background: isHighlighted ? '#0d4043' : '#fff',
+                  borderRadius: '20px',
+                  padding: '28px 24px',
+                  display: 'flex',
                   alignItems: 'center',
-                  justifyContent: 'center',
-                  width: '50px',
-                  height: '50px',
-                  background: '#0d4043',
-                  borderRadius: '12px',
-                  marginBottom: '16px'
+                  gap: '20px',
+                  boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
+                  transition: '0.3s ease',
+                  cursor: 'pointer'
                 }}>
-                  <span style={{ color: '#fff', fontSize: '18px', fontWeight: 700 }}>{item.number}</span>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    width: '56px',
+                    height: '56px',
+                    background: isHighlighted ? '#FF850B' : '#0d4043',
+                    borderRadius: '14px',
+                    flexShrink: 0
+                  }}>
+                    <span style={{ color: '#fff', fontSize: '18px', fontWeight: 700 }}>{item.number}</span>
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '16px',
+                    flex: 1
+                  }}>
+                    <h3 style={{
+                      fontSize: '16px',
+                      fontWeight: 600,
+                      color: isHighlighted ? '#fff' : '#333',
+                      margin: 0,
+                      lineHeight: 1.4
+                    }}>{item.title}</h3>
+                    <div style={{
+                      display: 'flex',
+                      gap: '8px',
+                      marginLeft: 'auto'
+                    }}>
+                      <div style={{
+                        width: '60px',
+                        height: '60px',
+                        borderRadius: '50%',
+                        background: isHighlighted ? 'rgba(255,133,11,0.3)' : 'rgba(13,64,67,0.08)'
+                      }} />
+                      <div style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: isHighlighted ? 'rgba(255,133,11,0.5)' : 'rgba(13,64,67,0.15)',
+                        marginTop: '20px'
+                      }} />
+                    </div>
+                  </div>
+                  {isHighlighted && (
+                    <div style={{
+                      position: 'absolute',
+                      right: '20px',
+                      top: '20px',
+                      width: '8px',
+                      height: '8px',
+                      borderRadius: '50%',
+                      background: '#FF850B'
+                    }} />
+                  )}
                 </div>
-                <h3 style={{
-                  fontSize: '16px',
-                  fontWeight: 600,
-                  color: '#333',
-                  margin: 0,
-                  lineHeight: 1.4
-                }}>{item.title}</h3>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
 
       {/* BMI Calculator Section */}
       <section style={{
-        background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
-        padding: '80px 20px'
+        background: '#FF850B',
+        padding: '80px 20px',
+        position: 'relative',
+        overflow: 'hidden'
       }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
-          <h2 style={{
-            fontSize: '36px',
-            fontWeight: 700,
-            color: '#FFFFFF',
-            lineHeight: 1.2,
-            marginBottom: '10px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
-            Flab or Fab? Find Out Fast!
-          </h2>
-          <p style={{
-            color: 'rgba(255,255,255,0.8)',
-            fontSize: '18px',
-            marginBottom: '40px'
-          }}>
-            Enter your stats and get your body fat score in under 30 seconds.
-          </p>
+        {/* Top wave decoration */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          height: '80px',
+          background: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1440 100\'%3E%3Cpath fill=\'%23f8f9fa\' d=\'M0,0 C480,100 960,100 1440,0 L1440,0 L0,0 Z\'/%3E%3C/svg%3E")',
+          backgroundSize: 'cover'
+        }} />
+        
+        {/* Bottom wave decoration */}
+        <div style={{
+          position: 'absolute',
+          bottom: 0,
+          left: 0,
+          right: 0,
+          height: '80px',
+          background: 'url("data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1440 100\'%3E%3Cpath fill=\'%23fff\' d=\'M0,100 C480,0 960,0 1440,100 L1440,100 L0,100 Z\'/%3E%3C/svg%3E")',
+          backgroundSize: 'cover'
+        }} />
+        
+        <div style={{ 
+          maxWidth: '1100px', 
+          margin: '0 auto',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '60px',
+          flexWrap: 'wrap',
+          padding: '40px 0'
+        }}>
+          {/* Left Content */}
+          <div style={{ flex: '1 1 300px', maxWidth: '400px' }}>
+            <h2 style={{
+              fontSize: '42px',
+              fontWeight: 700,
+              color: '#FFFFFF',
+              lineHeight: 1.2,
+              marginBottom: '20px',
+              fontFamily: 'Epilogue, sans-serif'
+            }}>
+              Flab or Fab? Find Out Fast!
+            </h2>
+            <p style={{
+              color: 'rgba(255,255,255,0.9)',
+              fontSize: '17px',
+              lineHeight: 1.7
+            }}>
+              Enter your stats and get your body fat score in under 30 seconds.
+            </p>
+          </div>
 
+          {/* Right Form */}
           <div style={{
-            background: 'rgba(255,255,255,0.1)',
+            flex: '1 1 500px',
+            background: '#FFF5EC',
             borderRadius: '24px',
             padding: '40px',
-            backdropFilter: 'blur(10px)'
+            boxShadow: '0 20px 60px rgba(0,0,0,0.15)'
           }}>
             <h3 style={{
-              color: '#fff',
-              fontSize: '24px',
-              fontWeight: 600,
+              color: '#1a1a1a',
+              fontSize: '28px',
+              fontWeight: 700,
               marginBottom: '30px'
             }}>Body Fat & BMI</h3>
 
             <div style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(2, 1fr)',
-              gap: '20px',
-              marginBottom: '30px'
+              gridTemplateColumns: '1fr',
+              gap: '16px',
+              marginBottom: '24px'
             }}>
-              <input
-                type="number"
-                placeholder="Age (years)"
-                value={bmiData.age}
-                onChange={(e) => setBmiData({...bmiData, age: e.target.value})}
-                style={{
-                  background: 'rgba(255,255,255,0.15)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  borderRadius: '12px',
-                  padding: '16px 20px',
-                  color: '#fff',
-                  fontSize: '16px',
-                  outline: 'none'
-                }}
-              />
-              <select
-                value={bmiData.gender}
-                onChange={(e) => setBmiData({...bmiData, gender: e.target.value})}
-                style={{
-                  background: 'rgba(255,255,255,0.15)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  borderRadius: '12px',
-                  padding: '16px 20px',
-                  color: '#fff',
-                  fontSize: '16px',
-                  outline: 'none'
-                }}
-              >
-                <option value="male" style={{ color: '#000' }}>Male</option>
-                <option value="female" style={{ color: '#000' }}>Female</option>
-              </select>
-              <input
-                type="number"
-                placeholder="Height (ft)"
-                value={bmiData.heightFt}
-                onChange={(e) => setBmiData({...bmiData, heightFt: e.target.value})}
-                style={{
-                  background: 'rgba(255,255,255,0.15)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  borderRadius: '12px',
-                  padding: '16px 20px',
-                  color: '#fff',
-                  fontSize: '16px',
-                  outline: 'none'
-                }}
-              />
-              <input
-                type="number"
-                placeholder="Height (in)"
-                value={bmiData.heightIn}
-                onChange={(e) => setBmiData({...bmiData, heightIn: e.target.value})}
-                style={{
-                  background: 'rgba(255,255,255,0.15)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  borderRadius: '12px',
-                  padding: '16px 20px',
-                  color: '#fff',
-                  fontSize: '16px',
-                  outline: 'none'
-                }}
-              />
-              <input
-                type="number"
-                placeholder="Weight (kg)"
-                value={bmiData.weight}
-                onChange={(e) => setBmiData({...bmiData, weight: e.target.value})}
-                style={{
-                  background: 'rgba(255,255,255,0.15)',
-                  border: '1px solid rgba(255,255,255,0.2)',
-                  borderRadius: '12px',
-                  padding: '16px 20px',
-                  color: '#fff',
-                  fontSize: '16px',
-                  outline: 'none',
-                  gridColumn: 'span 2'
-                }}
-              />
+              <div>
+                <label style={{ display: 'block', color: '#666', fontSize: '14px', marginBottom: '8px' }}>Age (years)</label>
+                <input
+                  type="number"
+                  placeholder=""
+                  value={bmiData.age}
+                  onChange={(e) => setBmiData({...bmiData, age: e.target.value})}
+                  style={{
+                    width: '100%',
+                    background: '#fff',
+                    border: '2px solid #e0e0e0',
+                    borderRadius: '12px',
+                    padding: '14px 18px',
+                    color: '#333',
+                    fontSize: '16px',
+                    outline: 'none',
+                    boxSizing: 'border-box'
+                  }}
+                />
+              </div>
+              <div>
+                <label style={{ display: 'block', color: '#666', fontSize: '14px', marginBottom: '8px' }}>Gender</label>
+                <select
+                  value={bmiData.gender}
+                  onChange={(e) => setBmiData({...bmiData, gender: e.target.value})}
+                  style={{
+                    width: '100%',
+                    background: '#fff',
+                    border: '2px solid #e0e0e0',
+                    borderRadius: '12px',
+                    padding: '14px 18px',
+                    color: '#333',
+                    fontSize: '16px',
+                    outline: 'none',
+                    boxSizing: 'border-box'
+                  }}
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div>
+                  <label style={{ display: 'block', color: '#666', fontSize: '14px', marginBottom: '8px' }}>Height (ft)</label>
+                  <input
+                    type="number"
+                    placeholder=""
+                    value={bmiData.heightFt}
+                    onChange={(e) => setBmiData({...bmiData, heightFt: e.target.value})}
+                    style={{
+                      width: '100%',
+                      background: '#fff',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '12px',
+                      padding: '14px 18px',
+                      color: '#333',
+                      fontSize: '16px',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+                <div>
+                  <label style={{ display: 'block', color: '#666', fontSize: '14px', marginBottom: '8px' }}>Height (in)</label>
+                  <input
+                    type="number"
+                    placeholder=""
+                    value={bmiData.heightIn}
+                    onChange={(e) => setBmiData({...bmiData, heightIn: e.target.value})}
+                    style={{
+                      width: '100%',
+                      background: '#fff',
+                      border: '2px solid #e0e0e0',
+                      borderRadius: '12px',
+                      padding: '14px 18px',
+                      color: '#333',
+                      fontSize: '16px',
+                      outline: 'none',
+                      boxSizing: 'border-box'
+                    }}
+                  />
+                </div>
+              </div>
+              <div>
+                <label style={{ display: 'block', color: '#666', fontSize: '14px', marginBottom: '8px' }}>Weight (kg)</label>
+                <input
+                  type="number"
+                  placeholder=""
+                  value={bmiData.weight}
+                  onChange={(e) => setBmiData({...bmiData, weight: e.target.value})}
+                  style={{
+                    width: '100%',
+                    background: '#fff',
+                    border: '2px solid #e0e0e0',
+                    borderRadius: '12px',
+                    padding: '14px 18px',
+                    color: '#333',
+                    fontSize: '16px',
+                    outline: 'none',
+                    boxSizing: 'border-box'
+                  }}
+                />
+              </div>
             </div>
 
             <button
               onClick={calculateBMI}
               style={{
-                background: '#FF850B',
+                background: '#0d4043',
                 color: '#fff',
                 border: 'none',
-                borderRadius: '50px',
-                padding: '16px 48px',
-                fontSize: '18px',
+                borderRadius: '12px',
+                padding: '18px 48px',
+                fontSize: '16px',
                 fontWeight: 600,
                 cursor: 'pointer',
-                width: '100%'
+                width: '100%',
+                transition: 'all 0.3s ease'
               }}
             >
               Calculate
@@ -498,10 +739,11 @@ export default function TherapeuticPlanPage() {
               <div style={{
                 marginTop: '30px',
                 padding: '20px',
-                background: 'rgba(255,255,255,0.15)',
-                borderRadius: '16px'
+                background: '#fff',
+                borderRadius: '16px',
+                border: '2px solid #e0e0e0'
               }}>
-                <div style={{ color: '#fff', fontSize: '24px', fontWeight: 700 }}>
+                <div style={{ color: '#1a1a1a', fontSize: '24px', fontWeight: 700 }}>
                   Your BMI: {bmiResult.bmi}
                 </div>
                 <div style={{ color: '#FF850B', fontSize: '18px', fontWeight: 600, marginTop: '8px' }}>
@@ -514,34 +756,34 @@ export default function TherapeuticPlanPage() {
       </section>
 
       {/* Pricing Section */}
-      <section style={{ background: '#fff', padding: '80px 20px' }}>
+      <section style={{ background: '#fff', padding: '100px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{
-            color: '#0d4043',
-            fontSize: '16px',
+            color: '#FF850B',
+            fontSize: '14px',
             fontWeight: 600,
-            letterSpacing: '8px',
+            letterSpacing: '2px',
             textTransform: 'uppercase',
-            marginBottom: '10px'
+            marginBottom: '16px'
           }}>
             Exclusive Offers
           </p>
           <h2 style={{
-            fontSize: '42px',
+            fontSize: '44px',
             fontWeight: 700,
-            color: '#000000',
+            color: '#1a1a1a',
             lineHeight: 1.2,
             marginBottom: '20px',
             fontFamily: 'Epilogue, sans-serif'
           }}>
-            Choose Your <span style={{ color: '#FF850B' }}>Perfect Plan</span>
+            Choose Your Perfect Plan
           </h2>
           <p style={{
             color: '#666',
-            fontSize: '16px',
+            fontSize: '17px',
             lineHeight: 1.7,
             maxWidth: '600px',
-            margin: '0 auto 50px'
+            margin: '0 auto 60px'
           }}>
             Flexible pricing options designed to fit your wellness journey.
           </p>
@@ -553,200 +795,144 @@ export default function TherapeuticPlanPage() {
           }}>
             {pricingPlans.map((plan, index) => (
               <div key={index} style={{
-                background: plan.popular ? '#0d4043' : '#fff',
+                background: 'linear-gradient(180deg, #FFE5D9 0%, #FFEEE6 100%)',
                 borderRadius: '24px',
-                padding: '32px 24px',
-                boxShadow: '0 10px 40px rgba(0,0,0,0.1)',
+                padding: '30px 24px',
                 position: 'relative',
-                border: plan.popular ? 'none' : '2px solid #eee',
-                transform: plan.popular ? 'scale(1.05)' : 'none'
-              }}>
-                {plan.popular && (
-                  <div style={{
-                    position: 'absolute',
-                    top: '-12px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    background: '#FF850B',
-                    color: '#fff',
-                    padding: '6px 20px',
-                    borderRadius: '50px',
-                    fontSize: '12px',
-                    fontWeight: 700,
-                    textTransform: 'uppercase'
-                  }}>Most Popular</div>
-                )}
-                <h3 style={{
-                  fontSize: '18px',
-                  fontWeight: 600,
-                  color: plan.popular ? '#fff' : '#333',
-                  marginBottom: '16px'
-                }}>{plan.duration}</h3>
-                <div style={{
-                  fontSize: '36px',
-                  fontWeight: 700,
-                  color: plan.popular ? '#FF850B' : '#0d4043',
-                  marginBottom: '8px'
-                }}>{plan.price}</div>
-                <del style={{
-                  color: plan.popular ? 'rgba(255,255,255,0.5)' : '#999',
-                  fontSize: '16px'
-                }}>{plan.originalPrice}</del>
-
-                <ul style={{
-                  listStyle: 'none',
-                  padding: 0,
-                  margin: '24px 0',
-                  textAlign: 'left'
-                }}>
-                  {plan.features.map((feature, fIndex) => (
-                    <li key={fIndex} style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '10px',
-                      color: plan.popular ? 'rgba(255,255,255,0.9)' : '#666',
-                      fontSize: '14px',
-                      marginBottom: '12px'
-                    }}>
-                      <span style={{ color: '#FF850B' }}>✓</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-
-                <button style={{
-                  background: plan.popular ? '#FF850B' : '#0d4043',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '50px',
-                  padding: '14px 24px',
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  width: '100%'
-                }}>
-                  Get Started
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Real Stories Section */}
-      <section style={{ background: '#f8f9fa', padding: '80px 20px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
-          <p style={{
-            color: '#0d4043',
-            fontSize: '16px',
-            fontWeight: 600,
-            letterSpacing: '8px',
-            textTransform: 'uppercase',
-            marginBottom: '10px'
-          }}>
-            Real Stories, Real Results
-          </p>
-          <h2 style={{
-            fontSize: '42px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.2,
-            marginBottom: '50px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
-            Our Success <span style={{ color: '#FF850B' }}>Stories</span>
-          </h2>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '30px'
-          }}>
-            {successStories.map((story, index) => (
-              <div key={index} style={{
-                position: 'relative',
-                borderRadius: '20px',
                 overflow: 'hidden',
-                height: '350px',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.15)'
+                minHeight: '420px',
+                display: 'flex',
+                flexDirection: 'column'
               }}>
-                <Image
-                  src={story.image}
-                  alt={story.name}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
+                {/* Tiffin box image */}
                 <div style={{
                   position: 'absolute',
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  background: 'linear-gradient(to top, rgba(13,64,67,0.95) 0%, transparent 100%)',
-                  padding: '80px 20px 20px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'flex-end'
+                  top: '20px',
+                  right: '-20px',
+                  width: '140px',
+                  height: '100px',
+                  zIndex: 1
                 }}>
-                  <div style={{ textAlign: 'left' }}>
-                    <div style={{ color: '#fff', fontSize: '20px', fontWeight: 700 }}>{story.name}</div>
-                    <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '14px' }}>Lost {story.loss}</div>
-                  </div>
-                  <div style={{
-                    background: '#FF850B',
-                    color: '#fff',
-                    padding: '8px 16px',
-                    borderRadius: '50px',
-                    fontSize: '13px',
-                    fontWeight: 700
+                  <Image
+                    src={plan.image}
+                    alt="Tiffin"
+                    width={140}
+                    height={100}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
+
+                {/* Plan duration */}
+                <div style={{ textAlign: 'left', marginBottom: '20px', zIndex: 2 }}>
+                  <h3 style={{
+                    fontSize: '28px',
+                    fontWeight: 700,
+                    color: '#1a1a1a',
+                    lineHeight: 1.2,
+                    margin: 0
                   }}>
-                    In {story.days}
-                  </div>
+                    {plan.duration}<br />
+                    {plan.durationSub}<br />
+                    {plan.durationEnd}
+                  </h3>
+                </div>
+
+                {/* Pricing */}
+                <div style={{ textAlign: 'left', marginTop: 'auto' }}>
+                  <del style={{
+                    color: '#999',
+                    fontSize: '18px',
+                    fontWeight: 500,
+                    display: 'block',
+                    marginBottom: '4px'
+                  }}>{plan.originalPrice}</del>
+                  <div style={{
+                    fontSize: '36px',
+                    fontWeight: 700,
+                    color: '#FF850B',
+                    marginBottom: '20px'
+                  }}>{plan.price}</div>
+                </div>
+
+                {/* Decorative leaf */}
+                <div style={{
+                  position: 'absolute',
+                  bottom: '60px',
+                  right: '20px',
+                  opacity: 0.15
+                }}>
+                  <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
+                    <path d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40Z" fill="#0d4043"/>
+                  </svg>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Hover above the card text */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(4, 1fr)',
+            gap: '24px',
+            marginTop: '16px'
+          }}>
+            {pricingPlans.map((_, index) => (
+              <p key={index} style={{
+                color: '#999',
+                fontSize: '14px',
+                fontStyle: 'italic'
+              }}>
+                Hover above the card !
+              </p>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* Real Stories Section - Hidden since we show it earlier */}
+
       {/* Watch Success Stories Section */}
-      <section style={{ background: '#fff', padding: '80px 20px' }}>
+      <section style={{ background: '#fff', padding: '100px 20px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{
-            color: '#0d4043',
-            fontSize: '16px',
+            color: '#FF850B',
+            fontSize: '14px',
             fontWeight: 600,
-            letterSpacing: '8px',
+            letterSpacing: '2px',
             textTransform: 'uppercase',
-            marginBottom: '10px'
+            marginBottom: '16px'
           }}>
-            Watch Our Success Stories
+            Real Stories, Real Results
           </p>
           <h2 style={{
-            fontSize: '42px',
+            fontSize: '44px',
             fontWeight: 700,
-            color: '#000000',
+            color: '#1a1a1a',
             lineHeight: 1.2,
             marginBottom: '20px',
             fontFamily: 'Epilogue, sans-serif'
           }}>
-            Video <span style={{ color: '#FF850B' }}>Testimonials</span>
+            Watch Our Success Stories
           </h2>
           <p style={{
             color: '#666',
-            fontSize: '16px',
+            fontSize: '17px',
             lineHeight: 1.7,
             maxWidth: '600px',
-            margin: '0 auto 50px'
+            margin: '0 auto 60px'
           }}>
             Hear directly from our clients about their transformative journey.
           </p>
 
+          {/* Phone mockups slider */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '24px'
+            display: 'flex',
+            justifyContent: 'center',
+            gap: '20px',
+            flexWrap: 'wrap',
+            marginBottom: '40px'
           }}>
-            {youtubeVideos.map((videoId, index) => (
+            {youtubeVideos.slice(0, 5).map((videoId, index) => (
               <a
                 key={index}
                 href={`https://www.youtube.com/watch?v=${videoId}`}
@@ -754,40 +940,105 @@ export default function TherapeuticPlanPage() {
                 rel="noopener noreferrer"
                 style={{
                   display: 'block',
-                  position: 'relative',
-                  borderRadius: '16px',
-                  overflow: 'hidden',
-                  aspectRatio: '16/9',
-                  boxShadow: '0 8px 24px rgba(0,0,0,0.12)'
+                  textDecoration: 'none'
                 }}
               >
-                <Image
-                  src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`}
-                  alt={`Success Story ${index + 1}`}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
                 <div style={{
-                  position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  width: '60px',
-                  height: '60px',
-                  background: 'rgba(255,133,11,0.9)',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
+                  width: '180px',
+                  height: '380px',
+                  background: '#000',
+                  borderRadius: '36px',
+                  padding: '8px',
+                  position: 'relative',
+                  boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
+                  border: '3px solid #333'
                 }}>
+                  {/* Phone notch */}
                   <div style={{
-                    width: 0,
-                    height: 0,
-                    borderTop: '10px solid transparent',
-                    borderBottom: '10px solid transparent',
-                    borderLeft: '16px solid #fff',
-                    marginLeft: '4px'
-                  }}></div>
+                    position: 'absolute',
+                    top: '12px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    width: '70px',
+                    height: '24px',
+                    background: '#000',
+                    borderRadius: '20px',
+                    zIndex: 10
+                  }} />
+                  
+                  {/* Status bar */}
+                  <div style={{
+                    position: 'absolute',
+                    top: '12px',
+                    left: '20px',
+                    right: '20px',
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    zIndex: 5
+                  }}>
+                    <span style={{ color: '#fff', fontSize: '12px', fontWeight: 600 }}>5:13</span>
+                    <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
+                      <span style={{ color: '#fff', fontSize: '10px' }}>⦿</span>
+                      <span style={{ color: '#fff', fontSize: '10px' }}>📶</span>
+                      <span style={{ color: '#fff', fontSize: '10px' }}>🔋</span>
+                    </div>
+                  </div>
+                  
+                  {/* Video thumbnail */}
+                  <div style={{
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '28px',
+                    overflow: 'hidden',
+                    position: 'relative'
+                  }}>
+                    <Image
+                      src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                      alt="Success Story"
+                      fill
+                      style={{ objectFit: 'cover' }}
+                    />
+                    
+                    {/* Play button */}
+                    <div style={{
+                      position: 'absolute',
+                      top: '50%',
+                      left: '50%',
+                      transform: 'translate(-50%, -50%)',
+                      width: '50px',
+                      height: '50px',
+                      background: 'rgba(255,255,255,0.9)',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center'
+                    }}>
+                      <div style={{
+                        width: 0,
+                        height: 0,
+                        borderTop: '10px solid transparent',
+                        borderBottom: '10px solid transparent',
+                        borderLeft: '16px solid #1a1a1a',
+                        marginLeft: '4px'
+                      }} />
+                    </div>
+                    
+                    {/* Bottom navigation bar */}
+                    <div style={{
+                      position: 'absolute',
+                      bottom: '10px',
+                      left: '20px',
+                      right: '20px',
+                      display: 'flex',
+                      justifyContent: 'space-around',
+                      alignItems: 'center'
+                    }}>
+                      <span style={{ fontSize: '18px' }}>🏠</span>
+                      <span style={{ fontSize: '18px' }}>🔍</span>
+                      <span style={{ fontSize: '18px' }}>👤</span>
+                    </div>
+                  </div>
                 </div>
               </a>
             ))}

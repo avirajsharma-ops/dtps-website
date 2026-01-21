@@ -58,9 +58,9 @@ export default function Navbar() {
 
   return (
     <>
-      <header className="absolute top-0 left-0 right-0 z-50">
-        <div className="mx-auto w-full max-w-[1300px] px-4">
-          <div className="mt-6 flex items-center justify-between gap-4 rounded-[28px] border border-white/20 bg-white/10 px-4 py-3 backdrop-blur-md">
+      <header className="relative z-50 w-full">
+        <div className="mx-auto w-full max-w-[1200px] px-4">
+          <div className="flex items-center justify-between gap-4 py-4">
             <Link href="/" className="flex items-center">
               <Image
                 src="/assets/img/logo.png"
@@ -130,14 +130,14 @@ export default function Navbar() {
 
             <Link
               href="/appointment"
-              className="hidden rounded-full bg-[#FF8A1F] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#F9D67B] hover:text-[#014E4E] lg:inline-flex"
+              className="hidden rounded-full bg-[#FF8A1F] px-6 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-[#e07a1a] lg:inline-flex"
             >
               Book Appointment
             </Link>
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F9D67B] text-[#014E4E] lg:hidden"
+              className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#FF8A1F] text-white lg:hidden"
               aria-label="Toggle menu"
               aria-expanded={isMobileMenuOpen}
             >
@@ -151,7 +151,7 @@ export default function Navbar() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="absolute left-4 right-4 top-24 z-40 rounded-2xl bg-[#F9D67B] p-5 shadow-xl lg:hidden">
+        <div className="absolute left-4 right-4 top-20 z-40 rounded-2xl bg-[#F9D67B] p-5 shadow-xl lg:hidden">
           {navItems.map((item) => (
             <div key={item.label}>
               {item.children ? (

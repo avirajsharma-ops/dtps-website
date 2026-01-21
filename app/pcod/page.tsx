@@ -2,7 +2,7 @@
 
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
-import PageWrapper from '@/components/PageWrapper';
+import Navbar from '@/components/Navbar';
 
 const whatYouGet = [
   { icon: '📊', title: 'Ongoing Support', desc: 'Regular follow-ups to adapt your diet plan as needed and ensure progress results.' },
@@ -73,60 +73,60 @@ export default function PCODPage() {
 
   return (
     <>
-      <PageWrapper>
-        {/* Hero Section */}
-        <section className="pcod-hero">
-          <div className="pcod-deco-soft"></div>
-          <div className="pcod-deco-ring"></div>
-          <div className="pcod-ring-left"></div>
+      {/* Hero Section with Navbar */}
+      <div className="pcod-hero-wrapper">
+        <div className="pcod-hero-section">
+          <Navbar />
+          
+          <div className="pcod-hero-content">
+            <div className="pcod-hero__grid">
+              <div className="pcod-hero__left">
+                <div className="pcod-hero__badge">✨ For Healthier, Happier you</div>
+                
+                <div className="pcod-titlewrap">
+                  <h1 className="pcod-hero__title">PCOD/PCOS</h1>
+                  <div className="pcod-underline"></div>
+                </div>
 
-          <div className="pcod-hero__grid">
-            <div className="pcod-hero__left">
-              <div className="pcod-hero__badge">✨ For Healthier, Happier you</div>
-              
-              <div className="pcod-titlewrap">
-                <h1 className="pcod-hero__title">PCOD/PCOS</h1>
-                <div className="pcod-underline"></div>
+                <p className="pcod-hero__desc">
+                  Transform your health with India&apos;s only diet where &apos;Ghar Ka Khana&apos; becomes your superpower for managing PCOD and achieving sustainable weight loss.
+                </p>
+
+                <div className="pcod-hero__buttons">
+                  <a href="/appointment" className="pcod-btn-primary">
+                    Get Started Today
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </a>
+                  <a href="#benefits" className="pcod-btn-orange">Learn More</a>
+                </div>
               </div>
 
-              <p className="pcod-hero__desc">
-                Transform your health with India&apos;s only diet where &apos;Ghar Ka Khana&apos; becomes your superpower for managing PCOD and achieving sustainable weight loss.
-              </p>
+              <div className="pcod-hero__right">
+                <div className="pcod-hero__imgcard">
+                  <Image 
+                    className="pcod-hero__img"
+                    src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/pcos-1-removebg-preview.png"
+                    alt="PCOD/PCOS"
+                    width={500}
+                    height={550}
+                    style={{ objectFit: 'contain' }}
+                  />
+                </div>
 
-              <div className="pcod-hero__buttons">
-                <a href="/appointment" className="pcod-btn-primary">
-                  Get Started Today
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </a>
-                <a href="#benefits" className="pcod-btn-orange">Learn More</a>
-              </div>
-            </div>
-
-            <div className="pcod-hero__right">
-              <div className="pcod-hero__imgcard">
-                <Image 
-                  className="pcod-hero__img"
-                  src="/img/pink-shirt.png"
-                  alt="PCOD/PCOS"
-                  width={500}
-                  height={550}
-                  style={{ objectFit: 'contain' }}
-                />
-              </div>
-
-              <div className="pcod-success">
-                <div className="pcod-success__icon">✓</div>
-                <div className="pcod-success__text">
-                  <h3>1000+</h3>
-                  <p>Success Stories</p>
+                <div className="pcod-success">
+                  <div className="pcod-success__icon">✓</div>
+                  <div className="pcod-success__text">
+                    <h3>1000+</h3>
+                    <p>Success Stories</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
-      </PageWrapper>
+        </div>
+      </div>
 
       {/* Role of Diet Section */}
       <section className="pcod-section" id="benefits">
@@ -249,13 +249,46 @@ export default function PCODPage() {
         </p>
       </div>
 
+      {/* Symptoms Image Section */}
+      <div className="pcod-symptoms-image">
+        <Image 
+          src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/Group-316.webp" 
+          alt="Symptoms & Nutritional Concerns" 
+          width={1200} 
+          height={600}
+          style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+        />
+      </div>
+
+      {/* Stats Section */}
+      <section className="pcod-stats">
+        <div className="pcod-stat">
+          <div className="pcod-stat-num orange">1000+</div>
+          <div className="pcod-stat-label">Women Helped</div>
+        </div>
+        <div className="pcod-stat">
+          <div className="pcod-stat-num teal">95%</div>
+          <div className="pcod-stat-label">Success Rate</div>
+        </div>
+        <div className="pcod-stat">
+          <div className="pcod-stat-num orange">24/7</div>
+          <div className="pcod-stat-label">Support Available</div>
+        </div>
+      </section>
+
       {/* What You Will Get */}
       <section className="pcod-benefits-sec">
         <div className="pcod-benefits-wrap">
           <div className="pcod-benefits-grid-2">
             <div className="pcod-img-card">
               <div className="pcod-img-frame">
-                <Image src="/img/what-we-do-image-1.jpg" alt="Benefits" width={500} height={400} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image 
+                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/file-1536x1024-1.webp" 
+                  alt="Benefits" 
+                  width={500} 
+                  height={400} 
+                  style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
+                />
               </div>
               <div className="pcod-float-badge">
                 <p className="pcod-badge-num">100%</p>
@@ -306,7 +339,13 @@ export default function PCODPage() {
 
             <div className="pcod-gkk-diagram">
               <div className="pcod-gkk-center">
-                <Image src="/img/what-we-do-image-2.jpg" alt="Healthy plate" width={520} height={360} style={{ objectFit: 'contain' }} />
+                <Image 
+                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/table.png" 
+                  alt="Healthy plate" 
+                  width={520} 
+                  height={360} 
+                  style={{ objectFit: 'contain' }} 
+                />
               </div>
 
               {gkkBenefits.map((benefit, index) => (
@@ -386,7 +425,7 @@ export default function PCODPage() {
                     </li>
                   ))}
                 </ul>
-                <button className="pcod-plan-cta">Get Started</button>
+                <a href="/appointment" className="pcod-plan-cta">Get Started</a>
               </div>
             ))}
           </div>
