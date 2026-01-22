@@ -39,8 +39,16 @@ export async function POST(request: NextRequest) {
 
     await dbConnect();
 
-    const body = await request.json();
-    const recognition = await Recognition.create(body);
+  const body = await request.json();
+  const payload = { ...body };
+
+  if (!payload.title) payload.title = 'Recognition Image';
+  if (!payload.description) payload.description = 'Recognition image';
+  if (!payload.year) payload.year = `${new Date().getFullYear()}`;
+  if (payload.isActive === undefined) payload.isActive = true;
+  if (payload.order === undefined || payload.order === null) payload.order = 0;
+
+  const recognition = await Recognition.create(payload);
 
     return NextResponse.json({
       success: true,

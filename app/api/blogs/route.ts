@@ -59,16 +59,49 @@ export async function POST(request: NextRequest) {
     await dbConnect();
 
     const body = await request.json();
-    
+    const payload = { ...body };
+
+    if (!payload.title) {
+      payload.title = `Image ${Date.now()}`;
+    }
+
+    if (!payload.content) {
+      payload.content = 'Image content';
+    }
+
+    if (!payload.excerpt && payload.description) {
+      payload.excerpt = payload.description;
+    }
+
+    if (!payload.featuredImage && payload.image) {
+      payload.featuredImage = payload.image;
+    }
+
+    if (payload.published === undefined && payload.isPublished !== undefined) {
+      payload.published = payload.isPublished;
+    }
+
+    if (!payload.author) {
+      payload.author = 'DTPS Admin';
+    }
+
+    if (!payload.category) {
+      payload.category = 'Health & Nutrition';
+    }
+
+    if (!payload.readTime) {
+      payload.readTime = '1 min read';
+    }
+
     // Generate slug from title if not provided
-    if (!body.slug && body.title) {
-      body.slug = body.title
+    if (!payload.slug && payload.title) {
+      payload.slug = payload.title
         .toLowerCase()
         .replace(/[^a-z0-9]+/g, '-')
         .replace(/(^-|-$)/g, '');
     }
 
-    const blog = await Blog.create(body);
+    const blog = await Blog.create(payload);
 
     return NextResponse.json({
       success: true,

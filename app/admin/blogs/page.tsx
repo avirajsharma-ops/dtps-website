@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Button from '@/components/ui/Button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import {
   Dialog,
   DialogContent,
@@ -18,6 +15,7 @@ import {
 } from '@/components/ui/dialog';
 import { Plus, Edit, Trash2, Newspaper, AlertCircle, CheckCircle, Eye } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
+import ImageUpload from '@/components/admin/ImageUpload';
 
 interface Blog {
   _id: string;
@@ -35,11 +33,11 @@ interface Blog {
 }
 
 const initialFormState: Omit<Blog, '_id' | 'createdAt'> = {
-  title: '',
-  description: '',
-  content: '',
+  title: 'Image',
+  description: 'Image description',
+  content: 'Image content',
   image: '',
-  author: '',
+  author: 'DTPS Admin',
   category: 'wellness',
   tags: [],
   views: 0,
@@ -204,115 +202,12 @@ export default function BlogsPage() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Title
-                </Label>
-                <Input
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  placeholder="Blog title"
-                  required
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Description
-                </Label>
-                <Textarea
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Short description for preview"
-                  rows={2}
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Content
-                </Label>
-                <Textarea
-                  value={formData.content}
-                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  placeholder="Full blog content"
-                  required
-                  rows={6}
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Author
-                  </Label>
-                  <Input
-                    value={formData.author}
-                    onChange={(e) => setFormData({ ...formData, author: e.target.value })}
-                    placeholder="Author name"
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Category
-                  </Label>
-                  <select
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className={`w-full px-3 py-2 rounded-md border ${
-                      theme === 'dark'
-                        ? 'bg-slate-700/50 border-slate-600 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  >
-                    <option value="wellness">Wellness</option>
-                    <option value="nutrition">Nutrition</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="health">Health</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Image URL
-                </Label>
-                <Input
+                <ImageUpload
+                  label="Featured Image"
+                  folder="blogs"
                   value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="https://example.com/image.jpg"
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
+                  onChange={(url) => setFormData({ ...formData, image: url })}
                 />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <label className={`flex items-center gap-2 cursor-pointer ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
-                }`}>
-                  <input
-                    type="checkbox"
-                    checked={formData.isPublished}
-                    onChange={(e) => setFormData({ ...formData, isPublished: e.target.checked })}
-                    className="rounded"
-                  />
-                  Published
-                </label>
-
-                <label className={`flex items-center gap-2 cursor-pointer ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
-                }`}>
-                  <input
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                    className="rounded"
-                  />
-                  Active
-                </label>
               </div>
 
               <DialogFooter>

@@ -43,8 +43,18 @@ export async function POST(request: NextRequest) {
 
     await dbConnect();
 
-    const body = await request.json();
-    const testimonial = await Testimonial.create(body);
+  const body = await request.json();
+  const payload = { ...body };
+
+  if (!payload.name) payload.name = 'Image';
+  if (!payload.content) payload.content = 'Image testimonial';
+  if (!payload.page) payload.page = 'home';
+  if (payload.rating === undefined || payload.rating === null) payload.rating = 5;
+  if (payload.featured === undefined) payload.featured = false;
+  if (payload.isActive === undefined) payload.isActive = true;
+  if (payload.order === undefined || payload.order === null) payload.order = 0;
+
+  const testimonial = await Testimonial.create(payload);
 
     return NextResponse.json({
       success: true,
