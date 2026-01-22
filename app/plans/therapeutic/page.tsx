@@ -100,7 +100,7 @@ export default function TherapeuticPlanPage() {
         padding: '12px 50px 0 50px',
       }}>
         <div style={{
-          background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
+          background: 'linear-gradient(135deg, #014e4e 0%, #00332d 100%)',
           borderRadius: '30px',
           position: 'relative',
           overflow: 'hidden',
@@ -112,7 +112,7 @@ export default function TherapeuticPlanPage() {
           </div>
 
           {/* Hero Content */}
-          <div style={{ padding: '40px 60px 100px' }}>
+          <div style={{ padding: '60px 60px 120px' }}>
             {/* Background decorative elements */}
             <div style={{
               position: 'absolute',
@@ -443,7 +443,7 @@ export default function TherapeuticPlanPage() {
           <div style={{
             width: '60px',
             height: '4px',
-            background: '#0d4043',
+            background: '#014e4e',
             margin: '0 auto 50px',
             borderRadius: '2px'
           }} />
@@ -457,7 +457,7 @@ export default function TherapeuticPlanPage() {
               const isHighlighted = index === 4 || index === 7;
               return (
                 <div key={index} style={{
-                  background: isHighlighted ? '#0d4043' : '#fff',
+                  background: isHighlighted ? '#014e4e' : '#fff',
                   borderRadius: '20px',
                   padding: '28px 24px',
                   display: 'flex',
@@ -473,7 +473,7 @@ export default function TherapeuticPlanPage() {
                     justifyContent: 'center',
                     width: '56px',
                     height: '56px',
-                    background: isHighlighted ? '#FF850B' : '#0d4043',
+                    background: isHighlighted ? '#FF850B' : '#014e4e',
                     borderRadius: '14px',
                     flexShrink: 0
                   }}>
@@ -718,7 +718,7 @@ export default function TherapeuticPlanPage() {
             <button
               onClick={calculateBMI}
               style={{
-                background: '#0d4043',
+                background: '#014e4e',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '12px',
@@ -860,7 +860,7 @@ export default function TherapeuticPlanPage() {
                   opacity: 0.15
                 }}>
                   <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
-                    <path d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40Z" fill="#0d4043"/>
+                    <path d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40Z" fill="#014e4e"/>
                   </svg>
                 </div>
               </div>
@@ -1046,7 +1046,7 @@ export default function TherapeuticPlanPage() {
 
       {/* CTA Section */}
       <section style={{
-        background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
+        background: 'linear-gradient(135deg, #014e4e 0%, #00332d 100%)',
         padding: '80px 20px'
       }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>

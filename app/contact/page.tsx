@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Button from '@/components/ui/Button';
 import PageWrapper from '@/components/PageWrapper';
+import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 
 export const metadata: Metadata = {
   title: 'Contact Us | Dietitian Poonam Sagar',
@@ -15,10 +16,10 @@ const contactInfo = [
 ];
 
 const socialLinks = [
-  { icon: '📱', label: 'WhatsApp', href: 'https://wa.me/919893027688' },
-  { icon: '📷', label: 'Instagram', href: '#' },
-  { icon: 'f', label: 'Facebook', href: '#' },
-  { icon: '📷', label: 'Pinterest', href: '#' },
+  { icon: FaWhatsapp, label: 'WhatsApp', href: 'https://wa.me/919893027688' },
+  { icon: FaInstagram, label: 'Instagram', href: 'https://instagram.com' },
+  { icon: FaFacebook, label: 'Facebook', href: 'https://facebook.com' },
+  { icon: FaXTwitter, label: 'X (Twitter)', href: 'https://x.com' },
 ];
 
 export default function ContactPage() {
@@ -96,11 +97,14 @@ export default function ContactPage() {
               <div className="contact-social">
                 <span className="social-label">Stay Connected:</span>
                 <div className="social-icons">
-                  {socialLinks.map((social) => (
-                    <a key={social.label} href={social.href} className="social-icon">
-                      {social.icon}
-                    </a>
-                  ))}
+                  {socialLinks.map((social) => {
+                    const IconComponent = social.icon;
+                    return (
+                      <a key={social.label} href={social.href} className="social-icon" title={social.label} target="_blank" rel="noopener noreferrer">
+                        <IconComponent size={24} />
+                      </a>
+                    );
+                  })}
                 </div>
               </div>
             </div>
