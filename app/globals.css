@@ -67,9 +67,87 @@
   ul {
     list-style: none;
   }
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 3.9%;
+    --primary: 0 0% 9%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 0 0% 96.1%;
+    --secondary-foreground: 0 0% 9%;
+    --muted: 0 0% 96.1%;
+    --muted-foreground: 0 0% 45.1%;
+    --accent: 0 0% 96.1%;
+    --accent-foreground: 0 0% 9%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 89.8%;
+    --input: 0 0% 89.8%;
+    --ring: 0 0% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 0 0% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 0 0% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 0 0% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 0 0% 9%;
+    --secondary: 0 0% 14.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+    --accent: 0 0% 14.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 0 0% 14.9%;
+    --input: 0 0% 14.9%;
+    --ring: 0 0% 83.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
 }
 
 @layer components {
+  /* Shadcn/ui components */
+  .border-border {
+    border-color: hsl(var(--border));
+  }
+
+  .bg-background {
+    background-color: hsl(var(--background));
+  }
+
+  .bg-foreground {
+    background-color: hsl(var(--foreground));
+  }
+
+  .bg-card {
+    background-color: hsl(var(--card));
+  }
+
+  .text-foreground {
+    color: hsl(var(--foreground));
+  }
+
+  .text-card-foreground {
+    color: hsl(var(--card-foreground));
+  }
+
   .container {
     max-width: 1280px;
     margin: 0 auto;
@@ -145,6 +223,7 @@
     background: var(--accent-hover);
     transform: translateY(-2px);
   }
+
 
   /* Mobile Menu Button */
   .mobile-menu-btn {
@@ -4250,48 +4329,59 @@
 
 .wl-pricing-card {
   background: white;
-  border-radius: 20px;
-  padding: 30px 24px;
-  box-shadow: var(--shadow-sm);
-  transition: var(--transition);
+  border-radius: 16px;
+  padding: 28px 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
   position: relative;
-  border: 2px solid transparent;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  flex-direction: column;
 }
 
 .wl-pricing-card:hover {
-  transform: translateY(-5px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  border-color: #d1d5db;
 }
 
 .wl-pricing-card.wl-popular {
   border-color: var(--accent);
-  transform: scale(1.05);
+  box-shadow: 0 8px 24px rgba(255, 133, 11, 0.15);
+  transform: translateY(0);
   z-index: 10;
 }
 
 .wl-pricing-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   margin-bottom: 12px;
+  gap: 12px;
 }
 
 .wl-pricing-label {
-  font-size: 14px;
-  font-weight: 600;
-  color: var(--primary);
+  font-size: 13px;
+  font-weight: 700;
+  color: #1f2937;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  line-height: 1.4;
 }
 
 .wl-pricing-badge {
-  padding: 4px 12px;
-  border-radius: 20px;
-  font-size: 11px;
-  font-weight: 500;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 700;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .wl-badge-gray {
-  background: var(--gray-100);
-  color: var(--gray-600);
+  background: #f3f4f6;
+  color: #6b7280;
 }
 
 .wl-badge-orange {
@@ -4299,31 +4389,92 @@
   color: white;
 }
 
+.wl-badge-green {
+  background: #d1fae5;
+  color: #059669;
+}
+
+.wl-badge-blue {
+  background: #dbeafe;
+  color: #0284c7;
+}
+
+.wl-badge-red {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.wl-badge-purple {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
 .wl-pricing-plan {
   font-size: 12px;
-  color: var(--gray-400);
-  margin-bottom: 8px;
+  color: #9ca3af;
+  margin: 12px 0 8px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.wl-pricing-price-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .wl-pricing-price {
-  font-size: 28px;
-  font-weight: 700;
-  color: var(--primary);
-  margin-bottom: 4px;
+  font-size: 32px;
+  font-weight: 800;
+  color: #014e4e;
+  margin-bottom: 2px;
+  line-height: 1;
+}
+
+.wl-pricing-circle-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  animation: slideInRight 0.6s ease-out;
+}
+
+.wl-pricing-circle-badge svg {
+  filter: drop-shadow(0 2px 4px rgba(255, 133, 11, 0.2));
+  transition: transform 0.3s ease;
+}
+
+.wl-pricing-circle-badge:hover svg {
+  transform: scale(1.1);
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .wl-pricing-original {
-  font-size: 14px;
-  color: var(--gray-400);
+  font-size: 15px;
+  color: #d1d5db;
   text-decoration: line-through;
-  font-weight: 400;
+  font-weight: 500;
+  margin-left: 8px;
 }
 
 .wl-pricing-whatget {
-  font-size: 13px;
-  color: var(--gray-500);
-  margin: 16px 0 12px;
-  font-weight: 500;
+  font-size: 12px;
+  color: #6b7280;
+  margin: 18px 0 14px;
+  font-weight: 600;
+  letter-spacing: 0.3px;
 }
 
 .wl-popular-badge {
@@ -4333,24 +4484,26 @@
   transform: translateX(-50%);
   background: var(--accent);
   color: white;
-  padding: 4px 16px;
-  border-radius: 20px;
-  font-size: 12px;
-  font-weight: 600;
+  padding: 5px 18px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
   white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
 }
 
 .wl-pricing-duration {
   font-size: 18px;
-  font-weight: 600;
+  font-weight: 700;
   color: var(--primary);
   margin-bottom: 8px;
 }
 
 .wl-per-month {
-  font-size: 14px;
-  font-weight: 400;
-  color: var(--gray-500);
+  font-size: 13px;
+  font-weight: 500;
+  color: #9ca3af;
 }
 
 .wl-pricing-features {
@@ -4358,16 +4511,19 @@
   margin-bottom: 24px;
   padding: 0;
   list-style: none;
+  flex: 1;
 }
 
 .wl-pricing-features li {
   font-size: 13px;
-  color: var(--gray-600);
-  padding: 8px 0;
-  border-bottom: 1px solid var(--gray-100);
+  color: #6b7280;
+  padding: 10px 0;
+  border-bottom: 1px solid #f3f4f6;
   display: flex;
   align-items: center;
   gap: 10px;
+  font-weight: 400;
+  line-height: 1.5;
 }
 
 .wl-pricing-features li:last-child {
@@ -4375,13 +4531,30 @@
 }
 
 .wl-pricing-check {
-  color: var(--teal);
-  font-weight: 600;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.wl-feature-icon-circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.wl-feature-icon-circle svg {
+  width: 16px;
+  height: 16px;
 }
 
 .wl-pricing-btn {
   width: 100%;
   text-align: center;
+  margin-top: auto;
 }
 
 /* Testimonials Section */
@@ -6194,4 +6367,3 @@
     padding: 30px 20px;
   }
 }
-

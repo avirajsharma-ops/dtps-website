@@ -1,7 +1,9 @@
 "use client";
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import { getPricingByPage } from '@/lib/api';
+import type { Pricing } from '@/lib/api';
 
 const successStories = [
   { name: 'Soranya', loss: '15 kgs', days: '97 Days', image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/SORANYA-1-1.webp' },
@@ -20,7 +22,8 @@ const whatYouGet = [
   { number: '08', title: 'Guaranteed Results' },
 ];
 
-const pricingPlans = [
+// Fallback pricing if database is empty
+const fallbackPricingPlans = [
   {
     duration: 'One',
     durationSub: 'Month',
@@ -77,6 +80,40 @@ export default function TherapeuticPlanPage() {
     weight: ''
   });
   const [bmiResult, setBmiResult] = useState<{ bmi: number; category: string } | null>(null);
+  const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
+  const [loadingPricing, setLoadingPricing] = useState(true);
+
+  // Fetch pricing from database on component mount
+  useEffect(() => {
+    const fetchPricing = async () => {
+      try {
+        const dbPricing = await getPricingByPage('therapeutic');
+        
+        if (dbPricing && dbPricing.length > 0) {
+          // Transform database pricing to match display format
+          const formattedPricing = dbPricing.map((plan: Pricing) => ({
+            duration: plan.planName.split(' ')[0],
+            durationSub: plan.planName.split(' ').slice(1).join(' '),
+            durationEnd: 'Plan',
+            price: `₹ ${plan.price.toLocaleString()}`,
+            originalPrice: `₹ ${plan.originalPrice.toLocaleString()}`,
+            image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
+            popular: plan.popular,
+            badge: plan.badge,
+            features: plan.features
+          }));
+          setPricingPlans(formattedPricing);
+        }
+      } catch (error) {
+        console.error('Error fetching pricing:', error);
+        setPricingPlans(fallbackPricingPlans);
+      } finally {
+        setLoadingPricing(false);
+      }
+    };
+
+    fetchPricing();
+  }, []);
 
   const calculateBMI = () => {
     const heightInMeters = ((parseInt(bmiData.heightFt) * 12 + parseInt(bmiData.heightIn)) * 0.0254);

@@ -1,8 +1,10 @@
 "use client";
 import Image from 'next/image';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import { getPricingByPage } from '@/lib/api';
+import type { Pricing } from '@/lib/api';
 
 // Tab data for "What Happens" section
 const tabsData: Record<string, { image: string; benefits: string[] }> = {
@@ -133,6 +135,9 @@ const pricingPlans = [
   }
 ];
 
+// Fallback pricing if database is empty
+const fallbackPricingPlans = pricingPlans;
+
 const awards = [
   {
     image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/image-27.webp',
@@ -150,6 +155,37 @@ const awards = [
 
 export default function WeddingPlanPage() {
   const [activeTab, setActiveTab] = useState('brides');
+  const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
+  const [loadingPricing, setLoadingPricing] = useState(true);
+
+  // Fetch pricing from database on component mount
+  useEffect(() => {
+    const fetchPricing = async () => {
+      try {
+        const dbPricing = await getPricingByPage('wedding');
+        
+        if (dbPricing && dbPricing.length > 0) {
+          // Transform database pricing to match display format
+          const formattedPricing = dbPricing.map((plan: Pricing) => ({
+            duration: plan.duration,
+            badge: plan.badge,
+            price: `₹${plan.price}`,
+            originalPrice: `₹${plan.originalPrice}`,
+            features: plan.features.map(f => f.text),
+            timeline: plan.durationLabel
+          }));
+          setPricingPlans(formattedPricing);
+        }
+      } catch (error) {
+        console.error('Error fetching pricing:', error);
+        setPricingPlans(fallbackPricingPlans);
+      } finally {
+        setLoadingPricing(false);
+      }
+    };
+
+    fetchPricing();
+  }, []);
 
   return (
     <>
@@ -979,7 +1015,7 @@ export default function WeddingPlanPage() {
 
                 <div style={{ fontWeight: 600, fontSize: '18px', margin: '18px 0 14px', color: '#111' }}>What you'll get:</div>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: '12px' }}>
-                  {plan.features.map((feature, fIndex) => (
+                  {plan.features.map((feature: any, fIndex: number) => (
                     <li key={fIndex} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: '#6B7280', fontWeight: 400, fontSize: '14px', lineHeight: 1.35 }}>
                       <span style={{
                         flex: '0 0 18px',

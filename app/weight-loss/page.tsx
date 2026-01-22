@@ -1,15 +1,13 @@
-import { Metadata } from 'next';
+'use client';
+
 import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import Button from '@/components/ui/Button';
 import FiveCycleProgram from '@/components/FiveCycleProgram';
 import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
 import PageWrapper from '@/components/PageWrapper';
-
-export const metadata: Metadata = {
-  title: 'Weight Loss Programs | Dietitian Poonam Sagar',
-  description:
-    'Achieve guaranteed weight loss with our personalized Ghar Ka Khana diet plans. Lose up to 5 kg in a month with expert guidance.',
-};
+import { getPricingByPage } from '@/lib/api';
+import type { Pricing } from '@/lib/api';
 
 const successStories = [
   { name: 'Garima', loss: 'Lost 8 kgs weight', days: 'In 30 Days', image: '/img/Garima-Mam.jpeg' },
@@ -68,7 +66,7 @@ const stats = [
   { value: '5+', label: 'Business Achievers & News 18 Award' },
 ];
 
-const pricingPlans = [
+const fallbackPricingPlans = [
   { 
     label: '10 DAYS TRIAL', 
     badge: 'Trial',
@@ -131,6 +129,39 @@ const testimonials = [
 ];
 
 export default function WeightLossPage() {
+  const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
+  const [loadingPricing, setLoadingPricing] = useState(true);
+
+  // Fetch pricing from database on component mount
+  useEffect(() => {
+    const fetchPricing = async () => {
+      try {
+        const dbPricing = await getPricingByPage('weight-loss');
+        
+        if (dbPricing && dbPricing.length > 0) {
+          // Transform database pricing to match display format
+          const formattedPricing = dbPricing.map((plan: Pricing) => ({
+            label: plan.planName,
+            badge: plan.badge,
+            badgeColor: plan.badgeColor?.toLowerCase() || 'gray',
+            price: `₹${plan.price.toLocaleString()}`,
+            original: `₹${plan.originalPrice.toLocaleString()}`,
+            features: plan.features.map(f => f.text),
+            planId: plan._id
+          }));
+          setPricingPlans(formattedPricing);
+        }
+      } catch (error) {
+        console.error('Error fetching pricing:', error);
+        setPricingPlans(fallbackPricingPlans);
+      } finally {
+        setLoadingPricing(false);
+      }
+    };
+
+    fetchPricing();
+  }, []);
+
   return (
     <>
       <PageWrapper>
@@ -395,21 +426,29 @@ export default function WeightLossPage() {
             Join our Plan today and embark on a journey to better health with our weight loss plan!
           </p>
           <div className="wl-pricing-grid">
-            {pricingPlans.map((plan, index) => (
+            {pricingPlans.map((plan: any, index: number) => (
               <div key={index} className="wl-pricing-card">
                 <div className="wl-pricing-header">
                   <span className="wl-pricing-label">{plan.label}</span>
                   <span className={`wl-pricing-badge wl-badge-${plan.badgeColor}`}>{plan.badge}</span>
                 </div>
                 <div className="wl-pricing-plan">Plan</div>
-                <div className="wl-pricing-price">
-                  {plan.price} <span className="wl-pricing-original">{plan.original}</span>
+                <div className="wl-pricing-price-wrapper">
+                  <div className="wl-pricing-price">
+                    {plan.price} <span className="wl-pricing-original">{plan.original}</span>
+                  </div>
+                 
                 </div>
                 <div className="wl-pricing-whatget">What you&apos;ll get:</div>
                 <ul className="wl-pricing-features">
-                  {plan.features.map((feature, idx) => (
+                  {plan.features.map((feature: any, idx: number) => (
                     <li key={idx}>
-                      <span className="wl-pricing-check">✓</span>
+                      <div className="wl-feature-icon-circle">
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle cx="8" cy="8" r="8" fill="var(--accent)" />
+                          <path d="M5 8L7 10L11 6" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        </svg>
+                      </div>
                       {feature}
                     </li>
                   ))}
