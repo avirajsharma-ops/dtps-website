@@ -97,7 +97,7 @@ export default function TherapeuticPlanPage() {
       {/* Hero Section with integrated Navbar */}
       <section style={{
         background: '#fff',
-        padding: '30px 50px 0',
+        padding: '12px 50px 0 50px',
       }}>
         <div style={{
           background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
@@ -105,8 +105,6 @@ export default function TherapeuticPlanPage() {
           position: 'relative',
           overflow: 'hidden',
           minHeight: '620px',
-          maxWidth: '1400px',
-          margin: '0 auto'
         }}>
           {/* Navbar inside the hero section */}
           <div style={{ position: 'relative', zIndex: 10 }}>

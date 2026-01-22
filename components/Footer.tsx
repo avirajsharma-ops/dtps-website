@@ -18,111 +18,73 @@ const legalLinks = [
 
 const socialLinks = [
   { label: 'Facebook', icon: 'f', href: 'https://www.facebook.com/p/Dt-Poonam-Sagar-100087289226000/' },
-  { label: 'Instagram', icon: '📷', href: 'https://www.instagram.com/dt.poonamsagar/' },
-  { label: 'YouTube', icon: '▶', href: 'https://www.youtube.com/channel/UC_6LfLF7RtbHVZfOogc9zag' },
+  { label: 'Instagram', icon: '○', href: 'https://www.instagram.com/dt.poonamsagar/' },
+  { label: 'YouTube', icon: '▷', href: 'https://www.youtube.com/channel/UC_6LfLF7RtbHVZfOogc9zag' },
   { label: 'LinkedIn', icon: 'in', href: 'https://in.linkedin.com/company/dietitian-poonam-sagar' },
-];
-
-const mobileScreens = [
-  'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/mobile-screen-1.webp',
-  'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/mobile-screen-2.webp',
-  'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/mobile-screen-3.webp',
-  'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/mobile-screen-4.webp',
-  'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/mobile-screen-5.webp',
-  'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/mobile-screen-6.webp',
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0b4c4c]">
-      {/* Mobile Screens Section */}
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-8 lg:px-12">
-        <div className="flex items-end justify-center gap-3 sm:gap-4 lg:gap-6 py-10 lg:py-16 overflow-x-auto">
-          {mobileScreens.map((screen, index) => (
-            <div 
-              key={index} 
-              className="relative flex-shrink-0 group"
-              style={{ 
-                width: 'clamp(100px, 15vw, 180px)',
-              }}
-            >
-              {/* Phone Frame */}
-              <div className="relative bg-[#1a1a1a] rounded-[20px] sm:rounded-[28px] p-1.5 sm:p-2 shadow-2xl">
-                {/* Screen */}
-                <div className="relative rounded-[16px] sm:rounded-[22px] overflow-hidden bg-black">
-                  <Image
-                    src={screen}
-                    alt={`Mobile screen ${index + 1}`}
-                    width={180}
-                    height={360}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-                {/* Bottom Navigation Bar */}
-                <div className="absolute bottom-3 sm:bottom-4 left-1/2 transform -translate-x-1/2 flex items-center justify-center gap-2 sm:gap-3">
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/20 flex items-center justify-center">
-                    <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                      <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/>
-                    </svg>
-                  </div>
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/20 flex items-center justify-center">
-                    <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
-                  </div>
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 rounded-full bg-white/20 flex items-center justify-center">
-                    <svg className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Main Footer Content */}
-      <div className="mx-auto max-w-[1400px] px-4 sm:px-8 lg:px-12 pb-8 lg:pb-12">
+    <footer style={{ background: '#fff', padding: '40px 50px 50px 50px' }}>
+      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
         <div
-          className="rounded-[30px] sm:rounded-[40px] lg:rounded-[50px] bg-[#014E4E] px-6 sm:px-10 lg:px-16 py-12 lg:py-16 text-white shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
           style={{
-            backgroundImage:
-              'url(https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png)',
+            background: '#014E4E',
+            borderRadius: '40px',
+            padding: '50px 70px 0 70px',
+            color: '#fff',
+            backgroundImage: 'url(https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
           }}
         >
-          <div className="flex flex-col gap-10 lg:flex-row lg:gap-20 xl:gap-32">
+          {/* Main Content */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '60px', flexWrap: 'wrap', paddingBottom: '40px' }}>
             {/* Left Column - Logo & Info */}
-            <div className="flex-1 max-w-[500px]">
+            <div style={{ flex: '1', maxWidth: '550px' }}>
               <Image
                 src="/assets/img/logo.png"
                 alt="Dietitian Poonam Sagar"
                 width={220}
                 height={80}
-                className="h-[60px] sm:h-[70px] w-auto"
+                style={{ height: '70px', width: 'auto' }}
               />
-              <p className="mt-6 lg:mt-8 text-[15px] sm:text-base leading-relaxed text-white/80">
+              <p style={{ marginTop: '24px', fontSize: '15px', lineHeight: '1.8', color: 'rgba(255,255,255,0.85)' }}>
                 India&apos;s only diet where &apos;Ghar Ka Khana&apos; becomes your superpower for getting fit and losing weight!
               </p>
-              <div className="mt-6 lg:mt-8 flex flex-wrap gap-3 sm:gap-4">
+              <div style={{ marginTop: '28px', display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
                 <a
                   href="tel:+919893027688"
-                  className="rounded-xl border border-white/30 px-4 sm:px-5 py-2.5 text-sm font-medium text-white transition hover:border-[#F9D67B] hover:text-[#F9D67B]"
+                  style={{
+                    borderRadius: '12px',
+                    border: '1px solid rgba(255,255,255,0.35)',
+                    padding: '14px 24px',
+                    fontSize: '14px',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                  }}
                 >
                   +91 9893027688
                 </a>
                 <a
                   href="mailto:support@dtpoonamsagar.com"
-                  className="rounded-xl border border-white/30 px-4 sm:px-5 py-2.5 text-sm font-medium text-white transition hover:border-[#F9D67B] hover:text-[#F9D67B]"
+                  style={{
+                    borderRadius: '12px',
+                    border: '1px solid rgba(255,255,255,0.35)',
+                    padding: '14px 24px',
+                    fontSize: '14px',
+                    color: '#fff',
+                    textDecoration: 'none',
+                    fontWeight: 500,
+                  }}
                 >
                   support@dtpoonamsagar.com
                 </a>
               </div>
-              <div className="mt-8 lg:mt-10 flex items-center gap-4 sm:gap-5">
-                <span className="text-base sm:text-lg font-semibold">Follow on:</span>
-                <div className="flex items-center gap-3">
+              <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '20px' }}>
+                <span style={{ fontSize: '16px', fontWeight: 600 }}>Follow on:</span>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
                   {socialLinks.map((link) => (
                     <a
                       key={link.label}
@@ -130,7 +92,18 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={link.label}
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-white/30 text-sm font-medium text-white transition hover:border-[#F9D67B] hover:bg-[#F9D67B]/10 hover:text-[#F9D67B]"
+                      style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        width: '42px',
+                        height: '42px',
+                        borderRadius: '50%',
+                        border: '1px solid rgba(255,255,255,0.35)',
+                        fontSize: '15px',
+                        color: '#fff',
+                        textDecoration: 'none',
+                      }}
                     >
                       {link.icon}
                     </a>
@@ -140,14 +113,22 @@ export default function Footer() {
             </div>
 
             {/* Right Column - Services */}
-            <div className="min-w-[200px]">
-              <h3 className="text-xl font-semibold mb-6 lg:mb-8">Services</h3>
-              <ul className="space-y-3 sm:space-y-4 text-[15px] font-medium text-white/80">
+            <div style={{ minWidth: '180px' }}>
+              <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '24px' }}>Services</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                 {serviceLinks.map((link) => (
-                  <li key={link.href + link.label}>
+                  <li key={link.href + link.label} style={{ marginBottom: '16px' }}>
                     <Link 
                       href={link.href} 
-                      className="inline-flex items-center gap-1.5 transition hover:text-[#F9D67B]"
+                      style={{ 
+                        color: 'rgba(255,255,255,0.9)', 
+                        textDecoration: 'none',
+                        fontSize: '15px',
+                        fontWeight: 500,
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}
                     >
                       {link.label}
                       {link.hasDropdown && (
@@ -163,15 +144,25 @@ export default function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="mt-10 lg:mt-14 flex flex-col items-center justify-between gap-5 border-t border-white/20 pt-6 lg:pt-8 text-sm text-white/70 lg:flex-row">
-            <p>Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <div style={{ 
+            padding: '24px 0', 
+            borderTop: '1px solid rgba(255,255,255,0.2)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            flexWrap: 'wrap',
+            gap: '20px',
+            fontSize: '14px',
+            color: 'rgba(255,255,255,0.8)'
+          }}>
+            <p style={{ margin: 0 }}>Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               {legalLinks.map((link, index) => (
-                <span key={link.href} className="flex items-center gap-2 sm:gap-3">
-                  <Link href={link.href} className="transition hover:text-[#F9D67B]">
+                <span key={link.href} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                  <Link href={link.href} style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>
                     {link.label}
                   </Link>
-                  {index < legalLinks.length - 1 && <span className="text-white/40">–</span>}
+                  {index < legalLinks.length - 1 && <span style={{ color: 'rgba(255,255,255,0.5)' }}>–</span>}
                 </span>
               ))}
             </div>

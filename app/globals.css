@@ -93,8 +93,8 @@
   /* ===== Page Wrapper for Inner Pages ===== */
   .page-wrapper {
     background: var(--primary);
-    margin: 12px 80px;
-    border-radius: 40px;
+    margin: 12px 50px 0 50px;
+    border-radius: 30px;
     overflow: hidden;
   }
 
@@ -197,7 +197,7 @@
   /* ===== Hero Section ===== */
   .hero-wrapper {
     background: #fff;
-    padding: 12px 80px 0 80px;
+    padding: 12px 50px 0 50px;
   }
 
   .hero {
@@ -206,7 +206,7 @@
     position: relative;
     overflow: hidden;
     padding-top: 0;
-    border-radius: 40px;
+    border-radius: 30px;
   }
 
   .hero-bg-shapes {
@@ -1531,7 +1531,7 @@
   }
   
   .page-wrapper {
-    margin: 12px 40px;
+    margin: 12px 40px 0 40px;
   }
   
   .why-section,
@@ -1575,7 +1575,7 @@
   }
   
   .page-wrapper {
-    margin: 12px 20px;
+    margin: 12px 20px 0 20px;
     border-radius: 30px;
   }
   
@@ -1730,7 +1730,7 @@
   }
 
   .page-wrapper {
-    margin: 12px 20px;
+    margin: 12px 20px 0 20px;
     border-radius: 30px;
   }
 }
@@ -2869,15 +2869,14 @@
 /* Wedding Hero Section - Maroon/Burgundy theme */
 .wedding-hero-wrapper {
   background: #fff;
-  padding: 12px 60px;
+  padding: 12px 50px 0 50px;
 }
 
 .wedding-hero-section {
-  max-width: 1820px;
   margin: 0 auto;
   background: #4E0101;
   min-height: 700px;
-  border-radius: 40px;
+  border-radius: 30px;
   overflow: hidden;
   position: relative;
   background-image: url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Div.png');
@@ -3468,14 +3467,12 @@
 /* ===== Weight Loss Page Specific Styles ===== */
 
 .wl-hero {
-  padding: 20px 20px 60px;
+  padding: 40px 40px 60px;
 }
 
 .wl-hero-container {
-  max-width: 1200px;
+  max-width: 900px;
   margin: 0 auto;
-  background: linear-gradient(135deg, var(--primary) 0%, #0f5258 100%);
-  border-radius: 30px;
   padding: 80px 60px;
   text-align: center;
   position: relative;
@@ -4793,7 +4790,7 @@
 /* PCOD Hero Wrapper - Main Container */
 .pcod-hero-wrapper {
   background: #fff;
-  padding: 35px 60px 0 60px;
+  padding: 12px 50px 0 50px;
 }
 
 .pcod-hero-section {
@@ -4801,10 +4798,9 @@
   background-image: url('https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png');
   background-size: cover;
   background-position: center;
-  border-radius: 50px;
+  border-radius: 30px;
   overflow: hidden;
   position: relative;
-  max-width: 1820px;
   margin: 0 auto;
   min-height: 600px;
 }
