@@ -45,8 +45,17 @@ export async function POST(request: NextRequest) {
 
     await dbConnect();
 
-    const body = await request.json();
-    const successStory = await SuccessStory.create(body);
+  const body = await request.json();
+  const payload = { ...body };
+
+  if (!payload.name) payload.name = payload.clientName || 'Success Story';
+  if (!payload.page) payload.page = 'weight-loss';
+  if (!payload.type) payload.type = 'transformation';
+  if (payload.featured === undefined) payload.featured = false;
+  if (payload.isActive === undefined) payload.isActive = true;
+  if (payload.order === undefined || payload.order === null) payload.order = 0;
+
+  const successStory = await SuccessStory.create(payload);
 
     return NextResponse.json({
       success: true,

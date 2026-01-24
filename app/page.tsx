@@ -1,13 +1,75 @@
 "use client"
+import { useState, useEffect } from 'react';
 import Hero from '@/components/Hero';
 import AboutUsSection from '@/components/AboutUsSection';
 import ServicesSection from '@/components/ServicesSection';
 import WhatWeDoSection from '@/components/WhatWeDoSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
 import Image from 'next/image';
-import Link from 'next/link';
+import { getOptimizedUrl } from '@/lib/imagekit';
+
+type Testimonial = {
+  _id?: string;
+  name: string;
+  role?: string;
+  content: string;
+  image: string;
+};
+
+const fallbackTestimonials: Testimonial[] = [
+  {
+    name: 'Kalyani Satpathy',
+    content: 'The diet plan is very simple and it included home cooked meal. Nothing fancy they will tell you and this is the best part of my journey.',
+    image: '/assets/img/testimonial-1.jpg',
+  },
+  {
+    name: 'Farah',
+    content: 'I saw ad of Dt Poonam Sagar on Instagram and thought to give it a try and I dont regret my decision.',
+    image: '/assets/img/testimonial-2.jpg',
+  },
+  {
+    name: 'Rimpy Thakur',
+    content: "Great experience with Dietician Poonam Sagar's team. Special thanks to Ritika Bhatnagar ma'am who created a special diet plan for me",
+    image: '/assets/img/testimonial-3.jpg',
+  },
+  {
+    name: 'Payal Padamwar',
+    content: 'I lost 6 kg in just 3 months with a simple yet highly effective diet plan. The best part was the team\'s support.',
+    image: '/assets/img/testimonial-1.jpg',
+  },
+];
 
 export default function HomePage() {
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(fallbackTestimonials);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch('/api/testimonials?page=home&active=true');
+        if (!res.ok) throw new Error('Failed to fetch testimonials');
+        const data = await res.json();
+        const normalized = (data.testimonials || []).map((item: Testimonial & { _id?: string }) => ({
+          _id: item._id,
+          name: item.name || 'Client',
+          role: item.role || '',
+          content: item.content || '',
+          image: getOptimizedUrl(item.image || '/assets/img/testimonial-1.jpg', {
+            width: 300,
+            height: 350,
+            quality: 80,
+            format: 'auto',
+          }),
+        }));
+        if (normalized.length > 0) {
+          setTestimonials(normalized);
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error);
+      }
+    };
+
+    fetchTestimonials();
+  }, []);
   return (
     <>
       <Hero />
@@ -733,63 +795,29 @@ export default function HomePage() {
             </h2>
             {/* Testimonial Cards Grid */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
-              {/* Testimonial 1 */}
-              <div style={{ 
-                background: '#fff', 
-                borderRadius: '16px', 
-                padding: '1.5rem',
-                boxShadow: '0 2px 15px rgba(0,0,0,0.05)'
-              }}>
-                <div style={{ color: '#ff9100', marginBottom: '0.75rem' }}>★★★★★</div>
-                <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                  "The diet plan is very simple and it included home cooked meal. Nothing fancy they will tell you and this is the best part of my journey."
-                </p>
-                <div style={{ fontWeight: 700, color: '#222' }}>Kalyani Satpathy</div>
-              </div>
-              {/* Testimonial 2 */}
-              <div style={{ 
-                background: '#ff9100', 
-                borderRadius: '16px', 
-                padding: '1.5rem'
-              }}>
-                <div style={{ color: '#fff', marginBottom: '0.75rem' }}>★★★★★</div>
-                <p style={{ color: '#fff', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                  "I saw ad of Dt Poonam Sagar on Instagram and thought to give it a try and I dont regret my decision."
-                </p>
-                <div style={{ fontWeight: 700, color: '#fff' }}>Farah</div>
-              </div>
-              {/* Testimonial 3 */}
-              <div style={{ 
-                background: '#fff', 
-                borderRadius: '16px', 
-                padding: '1.5rem',
-                boxShadow: '0 2px 15px rgba(0,0,0,0.05)'
-              }}>
-                <div style={{ color: '#ff9100', marginBottom: '0.75rem' }}>★★★★★</div>
-                <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                  "Great experience with Dietician Poonam Sagar's team. Special thanks to Ritika Bhatnagar ma'am who created a special diet plan for me"
-                </p>
-                <div style={{ fontWeight: 700, color: '#222' }}>Rimpy Thakur</div>
-              </div>
-              {/* Testimonial 4 */}
-              <div style={{ 
-                background: '#fff', 
-                borderRadius: '16px', 
-                padding: '1.5rem',
-                boxShadow: '0 2px 15px rgba(0,0,0,0.05)'
-              }}>
-                <div style={{ color: '#ff9100', marginBottom: '0.75rem' }}>★★★★★</div>
-                <p style={{ color: '#555', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                  "I lost 6 kg in just 3 months with a simple yet highly effective diet plan. The best part was the team's support."
-                </p>
-                <div style={{ fontWeight: 700, color: '#222' }}>Payal Padamwar</div>
-              </div>
+              {testimonials.slice(0, 4).map((testimonial, index) => (
+                <div 
+                  key={testimonial._id || index}
+                  style={{ 
+                    background: index === 1 ? '#ff9100' : '#fff', 
+                    borderRadius: '16px', 
+                    padding: '1.5rem',
+                    boxShadow: index === 1 ? 'none' : '0 2px 15px rgba(0,0,0,0.05)'
+                  }}
+                >
+                  <div style={{ color: index === 1 ? '#fff' : '#ff9100', marginBottom: '0.75rem' }}>★★★★★</div>
+                  <p style={{ color: index === 1 ? '#fff' : '#555', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1rem' }}>
+                    &ldquo;{testimonial.content}&rdquo;
+                  </p>
+                  <div style={{ fontWeight: 700, color: index === 1 ? '#fff' : '#222' }}>{testimonial.name}</div>
+                </div>
+              ))}
             </div>
           </div>
           {/* Right Side Images */}
           <div style={{ flex: '1', minWidth: '350px', position: 'relative' }}>
             <Image 
-              src="/assets/img/testimonial-1.jpg" 
+              src={testimonials[0]?.image || '/assets/img/testimonial-1.jpg'} 
               alt="Happy client" 
               width={280} 
               height={350}
@@ -803,7 +831,7 @@ export default function HomePage() {
               }}
             />
             <Image 
-              src="/assets/img/testimonial-2.jpg" 
+              src={testimonials[1]?.image || '/assets/img/testimonial-2.jpg'} 
               alt="Healthy lifestyle" 
               width={250} 
               height={300}
@@ -818,7 +846,7 @@ export default function HomePage() {
               }}
             />
             <Image 
-              src="/assets/img/testimonial-3.jpg" 
+              src={testimonials[2]?.image || '/assets/img/testimonial-3.jpg'} 
               alt="Kitchen cooking" 
               width={300} 
               height={200}
@@ -863,3 +891,5 @@ export default function HomePage() {
     </>
   );
 }
+// Removed local fallback implementations of useState/useEffect — using React's useState and useEffect imported above.
+

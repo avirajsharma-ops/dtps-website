@@ -1,11 +1,19 @@
 import ImageKit from 'imagekit';
 
-// Initialize ImageKit
-const imagekit = new ImageKit({
-  publicKey: process.env.IMAGEKIT_PUBLIC_KEY || '',
-  privateKey: process.env.IMAGEKIT_PRIVATE_KEY || '',
-  urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT || '',
-});
+const hasImageKitConfig = Boolean(
+  process.env.IMAGEKIT_PUBLIC_KEY &&
+    process.env.IMAGEKIT_PRIVATE_KEY &&
+    process.env.IMAGEKIT_URL_ENDPOINT
+);
+
+// Initialize ImageKit only when config is available (server-side)
+const imagekit = hasImageKitConfig
+  ? new ImageKit({
+      publicKey: process.env.IMAGEKIT_PUBLIC_KEY as string,
+      privateKey: process.env.IMAGEKIT_PRIVATE_KEY as string,
+      urlEndpoint: process.env.IMAGEKIT_URL_ENDPOINT as string,
+    })
+  : null;
 
 // Folder structure for DTPS-Ecommerce
 export const IMAGEKIT_FOLDERS = {
@@ -42,6 +50,15 @@ interface UploadResponse {
  * ImageKit automatically compresses and optimizes images
  */
 export async function uploadImage(options: UploadOptions): Promise<UploadResponse> {
+  if (!imagekit) {
+    if (typeof window === 'undefined') {
+      console.warn('ImageKit upload skipped: missing IMAGEKIT_* environment variables.');
+    }
+    return {
+      success: false,
+      error: 'ImageKit is not configured',
+    };
+  }
   try {
     const response = await imagekit.upload({
       file: options.file,
@@ -65,11 +82,11 @@ export async function uploadImage(options: UploadOptions): Promise<UploadRespons
       fileId: response.fileId,
       thumbnailUrl: response.thumbnailUrl,
     };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('ImageKit upload error:', error);
     return {
       success: false,
-      error: error.message || 'Failed to upload image',
+      error: error instanceof Error ? error.message : 'Failed to upload image',
     };
   }
 }
@@ -78,14 +95,20 @@ export async function uploadImage(options: UploadOptions): Promise<UploadRespons
  * Delete image from ImageKit
  */
 export async function deleteImage(fileId: string): Promise<{ success: boolean; error?: string }> {
+  if (!imagekit) {
+    if (typeof window === 'undefined') {
+      console.warn('ImageKit delete skipped: missing IMAGEKIT_* environment variables.');
+    }
+    return { success: false, error: 'ImageKit is not configured' };
+  }
   try {
     await imagekit.deleteFile(fileId);
     return { success: true };
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('ImageKit delete error:', error);
     return {
       success: false,
-      error: error.message || 'Failed to delete image',
+      error: error instanceof Error ? error.message : 'Failed to delete image',
     };
   }
 }
@@ -107,6 +130,15 @@ export function getOptimizedUrl(
 ): string {
   if (!url || !url.includes('imagekit.io')) return url;
 
+  let urlObj: URL;
+  try {
+    urlObj = new URL(url);
+  } catch {
+    return url;
+  }
+
+  if (urlObj.pathname.includes('/tr:')) return url;
+
   const transformations: string[] = [];
 
   if (options.width) transformations.push(`w-${options.width}`);
@@ -122,17 +154,31 @@ export function getOptimizedUrl(
   if (transformations.length === 0) return url;
 
   // Insert transformations into URL
-  const urlParts = url.split('/');
-  const endpoint = process.env.IMAGEKIT_URL_ENDPOINT || '';
-  const path = url.replace(endpoint, '');
-  
-  return `${endpoint}/tr:${transformations.join(',')}${path}`;
+  const endpointFromEnv = process.env.IMAGEKIT_URL_ENDPOINT;
+  const pathSegments = urlObj.pathname.split('/').filter(Boolean);
+
+  if (pathSegments.length === 0) return url;
+
+  const inferredEndpoint = endpointFromEnv
+    ? endpointFromEnv
+    : `${urlObj.origin}/${pathSegments[0]}`;
+  const inferredPath = endpointFromEnv
+    ? url.replace(endpointFromEnv, '')
+    : `/${pathSegments.slice(1).join('/')}`;
+
+  return `${inferredEndpoint}/tr:${transformations.join(',')}${inferredPath}`;
 }
 
 /**
  * Get authentication parameters for client-side upload
  */
 export function getAuthenticationParameters() {
+  if (!imagekit) {
+    if (typeof window === 'undefined') {
+      console.warn('ImageKit auth skipped: missing IMAGEKIT_* environment variables.');
+    }
+    return null;
+  }
   return imagekit.getAuthenticationParameters();
 }
 

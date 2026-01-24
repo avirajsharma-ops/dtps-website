@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Button from '@/components/ui/Button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import {
   Dialog,
   DialogContent,
@@ -18,6 +15,7 @@ import {
 } from '@/components/ui/dialog';
 import { Plus, Edit, Trash2, Zap, AlertCircle, CheckCircle } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
+import ImageUpload from '@/components/admin/ImageUpload';
 
 interface Transformation {
   _id: string;
@@ -34,14 +32,14 @@ interface Transformation {
 }
 
 const initialFormState: Omit<Transformation, '_id'> = {
-  title: '',
-  clientName: '',
+  title: 'Image',
+  clientName: 'Image',
   duration: '',
   metrics: '',
   beforeImage: '',
   afterImage: '',
   category: 'weight-loss',
-  description: '',
+  description: 'Transformation image',
   isFeatured: false,
   isActive: true,
 };
@@ -202,146 +200,24 @@ export default function TransformationsPage() {
             </DialogHeader>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Transformation Title
-                </Label>
-                <Input
-                  value={formData.title}
-                  onChange={(e) => setFormData({ ...formData, title: e.target.value })}
-                  placeholder="e.g., Amazing Weight Loss Journey"
-                  required
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Client Name
-                  </Label>
-                  <Input
-                    value={formData.clientName}
-                    onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-                    placeholder="e.g., John Doe"
-                    required
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Duration
-                  </Label>
-                  <Input
-                    value={formData.duration}
-                    onChange={(e) => setFormData({ ...formData, duration: e.target.value })}
-                    placeholder="e.g., 6 months"
-                    required
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Category
-                  </Label>
-                  <select
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className={`w-full px-3 py-2 rounded-md border ${
-                      theme === 'dark'
-                        ? 'bg-slate-700/50 border-slate-600 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  >
-                    <option value="weight-loss">Weight Loss</option>
-                    <option value="pcod">PCOD</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="nutrition">Nutrition</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Key Metrics
-                  </Label>
-                  <Input
-                    value={formData.metrics}
-                    onChange={(e) => setFormData({ ...formData, metrics: e.target.value })}
-                    placeholder="e.g., 20kg loss, BMI -5.2"
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Description
-                </Label>
-                <Textarea
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Transformation journey and details"
-                  rows={3}
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Before Image URL
-                  </Label>
-                  <Input
+                  <ImageUpload
+                    label="Before Image"
+                    folder="transformations"
                     value={formData.beforeImage}
-                    onChange={(e) => setFormData({ ...formData, beforeImage: e.target.value })}
-                    placeholder="https://example.com/before.jpg"
-                    required
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
+                    onChange={(url) => setFormData({ ...formData, beforeImage: url })}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    After Image URL
-                  </Label>
-                  <Input
+                  <ImageUpload
+                    label="After Image"
+                    folder="transformations"
                     value={formData.afterImage}
-                    onChange={(e) => setFormData({ ...formData, afterImage: e.target.value })}
-                    placeholder="https://example.com/after.jpg"
-                    required
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
+                    onChange={(url) => setFormData({ ...formData, afterImage: url })}
                   />
                 </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <label className={`flex items-center gap-2 cursor-pointer ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
-                }`}>
-                  <input
-                    type="checkbox"
-                    checked={formData.isFeatured}
-                    onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
-                    className="rounded"
-                  />
-                  Featured
-                </label>
-
-                <label className={`flex items-center gap-2 cursor-pointer ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
-                }`}>
-                  <input
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                    className="rounded"
-                  />
-                  Active
-                </label>
               </div>
 
               <DialogFooter>

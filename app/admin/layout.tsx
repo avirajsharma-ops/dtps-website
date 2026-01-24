@@ -1,5 +1,7 @@
 'use client';
 
+import 'react-quill/dist/quill.snow.css';
+
 import { useSession, signOut } from 'next-auth/react';
 import { useRouter, usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';

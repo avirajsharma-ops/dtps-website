@@ -43,8 +43,18 @@ export async function POST(request: NextRequest) {
 
     await dbConnect();
 
-    const body = await request.json();
-    const transformation = await Transformation.create(body);
+  const body = await request.json();
+  const payload = { ...body };
+
+  if (!payload.clientName) payload.clientName = payload.title || 'Transformation';
+  if (!payload.weightLost) payload.weightLost = payload.metrics || '0';
+  if (!payload.daysToAchieve) payload.daysToAchieve = payload.duration || '0';
+  if (!payload.page) payload.page = 'weight-loss';
+  if (payload.featured === undefined) payload.featured = false;
+  if (payload.isActive === undefined) payload.isActive = true;
+  if (payload.order === undefined || payload.order === null) payload.order = 0;
+
+  const transformation = await Transformation.create(payload);
 
     return NextResponse.json({
       success: true,

@@ -7,6 +7,7 @@ import FiveCycleProgram from '@/components/FiveCycleProgram';
 import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
 import PageWrapper from '@/components/PageWrapper';
 import { getPricingByPage } from '@/lib/api';
+import { getOptimizedUrl } from '@/lib/imagekit';
 import type { Pricing } from '@/lib/api';
 
 const successStories = [
@@ -101,7 +102,7 @@ const fallbackPricingPlans = [
   },
 ];
 
-const testimonials = [
+const fallbackTestimonials = [
   {
     name: 'Bessie Cooper',
     role: 'Co-Founder',
@@ -128,9 +129,25 @@ const testimonials = [
   },
 ];
 
+type Testimonial = {
+  _id?: string;
+  name: string;
+  role?: string;
+  content: string;
+  image: string;
+};
+
 export default function WeightLossPage() {
   const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
   const [loadingPricing, setLoadingPricing] = useState(true);
+  const [testimonials, setTestimonials] = useState<Testimonial[]>(fallbackTestimonials);
+
+  const testimonialImages = testimonials.length > 0 ? testimonials : fallbackTestimonials;
+  const heroImage1 = testimonialImages[0]?.image || '/img/what-we-do-image-1.jpg';
+  const heroImage2 = testimonialImages[1]?.image || '/img/what-we-do-image-2.jpg';
+  const heroImage3 = testimonialImages[2]?.image || '/img/why-choose-image.png';
+  const badgeImage1 = testimonialImages[0]?.image || '/img/what-we-do-image-1.jpg';
+  const badgeImage2 = testimonialImages[1]?.image || '/img/what-we-do-image-2.jpg';
 
   // Fetch pricing from database on component mount
   useEffect(() => {
@@ -160,6 +177,36 @@ export default function WeightLossPage() {
     };
 
     fetchPricing();
+  }, []);
+
+  useEffect(() => {
+    const fetchTestimonials = async () => {
+      try {
+        const res = await fetch('/api/testimonials?page=weight-loss&active=true');
+        if (!res.ok) throw new Error('Failed to fetch testimonials');
+        const data = await res.json();
+        const normalized = (data.testimonials || []).map((item: any) => ({
+          _id: item._id,
+          name: item.name || 'Client',
+          role: item.role || '',
+          content: item.content || '',
+          image: getOptimizedUrl(item.image || '/img/default-avatar.png', {
+            width: 180,
+            height: 180,
+            quality: 80,
+            format: 'auto',
+          }),
+        }));
+        if (normalized.length > 0) {
+          setTestimonials(normalized);
+        }
+      } catch (error) {
+        console.error('Error fetching testimonials:', error);
+        setTestimonials(fallbackTestimonials);
+      }
+    };
+
+    fetchTestimonials();
   }, []);
 
   return (
@@ -496,7 +543,7 @@ export default function WeightLossPage() {
             <div className="wl-testimonials-images">
               <div className="wl-testimonial-img-1">
                 <Image 
-                  src="/img/what-we-do-image-1.jpg" 
+                  src={heroImage1}
                   alt="Success story" 
                   width={250} 
                   height={300} 
@@ -505,7 +552,7 @@ export default function WeightLossPage() {
               </div>
               <div className="wl-testimonial-img-2">
                 <Image 
-                  src="/img/what-we-do-image-2.jpg" 
+                  src={heroImage2}
                   alt="Success story" 
                   width={200} 
                   height={250} 
@@ -514,7 +561,7 @@ export default function WeightLossPage() {
               </div>
               <div className="wl-testimonial-img-3">
                 <Image 
-                  src="/img/why-choose-image.png" 
+                  src={heroImage3}
                   alt="Success story" 
                   width={280} 
                   height={220} 
@@ -523,8 +570,8 @@ export default function WeightLossPage() {
               </div>
               <div className="wl-testimonial-badge">
                 <div className="wl-badge-avatars">
-                  <Image src="/img/what-we-do-image-1.jpg" alt="" width={30} height={30} style={{ borderRadius: '50%' }} />
-                  <Image src="/img/what-we-do-image-2.jpg" alt="" width={30} height={30} style={{ borderRadius: '50%' }} />
+                  <Image src={badgeImage1} alt="" width={30} height={30} style={{ borderRadius: '50%' }} />
+                  <Image src={badgeImage2} alt="" width={30} height={30} style={{ borderRadius: '50%' }} />
                 </div>
                 <span className="wl-badge-count">13K</span>
                 <div className="wl-badge-rating">0.4 ★ ( 6 k riview )</div>

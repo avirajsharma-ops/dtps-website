@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Button from '@/components/ui/Button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import {
   Dialog,
   DialogContent,
@@ -18,6 +15,7 @@ import {
 } from '@/components/ui/dialog';
 import { Plus, Edit, Trash2, Star, AlertCircle, CheckCircle } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
+import ImageUpload from '@/components/admin/ImageUpload';
 
 interface SuccessStory {
   _id: string;
@@ -34,7 +32,7 @@ interface SuccessStory {
 }
 
 const initialFormState: Omit<SuccessStory, '_id'> = {
-  clientName: '',
+  clientName: 'Image',
   transformation: '',
   results: '',
   beforeImage: '',
@@ -204,150 +202,21 @@ export default function SuccessStoriesPage() {
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Client Name
-                  </Label>
-                  <Input
-                    value={formData.clientName}
-                    onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-                    placeholder="e.g., Sarah Johnson"
-                    required
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Category
-                  </Label>
-                  <select
-                    value={formData.category}
-                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className={`w-full px-3 py-2 rounded-md border ${
-                      theme === 'dark'
-                        ? 'bg-slate-700/50 border-slate-600 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  >
-                    <option value="weight-loss">Weight Loss</option>
-                    <option value="pcod">PCOD</option>
-                    <option value="fitness">Fitness</option>
-                    <option value="nutrition">Nutrition</option>
-                  </select>
-                </div>
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Transformation Title
-                </Label>
-                <Input
-                  value={formData.transformation}
-                  onChange={(e) => setFormData({ ...formData, transformation: e.target.value })}
-                  placeholder="e.g., Lost 15 kg in 3 months"
-                  required
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Results/Achievements
-                </Label>
-                <Textarea
-                  value={formData.results}
-                  onChange={(e) => setFormData({ ...formData, results: e.target.value })}
-                  placeholder="e.g., 15kg weight loss, increased energy, better sleep"
-                  rows={2}
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Testimonial
-                </Label>
-                <Textarea
-                  value={formData.testimonial}
-                  onChange={(e) => setFormData({ ...formData, testimonial: e.target.value })}
-                  placeholder="Client's testimonial or feedback"
-                  rows={3}
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Before Image URL
-                  </Label>
-                  <Input
+                  <ImageUpload
+                    label="Before Image"
+                    folder="success-stories"
                     value={formData.beforeImage}
-                    onChange={(e) => setFormData({ ...formData, beforeImage: e.target.value })}
-                    placeholder="https://example.com/before.jpg"
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
+                    onChange={(url) => setFormData({ ...formData, beforeImage: url })}
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    After Image URL
-                  </Label>
-                  <Input
+                  <ImageUpload
+                    label="After Image"
+                    folder="success-stories"
                     value={formData.afterImage}
-                    onChange={(e) => setFormData({ ...formData, afterImage: e.target.value })}
-                    placeholder="https://example.com/after.jpg"
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
+                    onChange={(url) => setFormData({ ...formData, afterImage: url })}
                   />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Rating
-                  </Label>
-                  <select
-                    value={formData.rating}
-                    onChange={(e) => setFormData({ ...formData, rating: parseInt(e.target.value) })}
-                    className={`w-full px-3 py-2 rounded-md border ${
-                      theme === 'dark'
-                        ? 'bg-slate-700/50 border-slate-600 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  >
-                    <option value="5">5 Stars</option>
-                    <option value="4">4 Stars</option>
-                    <option value="3">3 Stars</option>
-                    <option value="2">2 Stars</option>
-                    <option value="1">1 Star</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2 flex items-end">
-                  <div className="flex items-center gap-2 cursor-pointer">
-                    <input
-                      type="checkbox"
-                      checked={formData.isFeatured}
-                      onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
-                      className="rounded"
-                    />
-                    <label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                      Featured
-                    </label>
-                  </div>
-
-                  <div className="flex items-center gap-2 cursor-pointer ml-4">
-                    <input
-                      type="checkbox"
-                      checked={formData.isActive}
-                      onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                      className="rounded"
-                    />
-                    <label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                      Active
-                    </label>
-                  </div>
                 </div>
               </div>
 

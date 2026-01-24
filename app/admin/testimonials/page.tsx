@@ -4,9 +4,6 @@ import { useEffect, useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Button from '@/components/ui/Button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
 import {
   Dialog,
   DialogContent,
@@ -18,6 +15,7 @@ import {
 } from '@/components/ui/dialog';
 import { Plus, Edit, Trash2, Star, AlertCircle, CheckCircle } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
+import ImageUpload from '@/components/admin/ImageUpload';
 
 interface Testimonial {
   _id: string;
@@ -33,9 +31,9 @@ interface Testimonial {
 }
 
 const initialFormState: Omit<Testimonial, '_id'> = {
-  name: '',
+  name: 'Image',
   role: '',
-  content: '',
+  content: 'Image testimonial',
   image: '',
   rating: 5,
   featured: false,
@@ -199,125 +197,13 @@ export default function TestimonialsPage() {
             </DialogHeader>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Name
-                  </Label>
-                  <Input
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Customer name"
-                    required
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Role/Title
-                  </Label>
-                  <Input
-                    value={formData.role}
-                    onChange={(e) => setFormData({ ...formData, role: e.target.value })}
-                    placeholder="e.g., Patient, Client"
-                    className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                  />
-                </div>
-              </div>
-
               <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Testimonial Content
-                </Label>
-                <Textarea
-                  value={formData.content}
-                  onChange={(e) => setFormData({ ...formData, content: e.target.value })}
-                  placeholder="Write the testimonial..."
-                  required
-                  rows={4}
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
-                />
-              </div>
-
-              <div className="space-y-2">
-                <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                  Image URL
-                </Label>
-                <Input
+                <ImageUpload
+                  label="Testimonial Image"
+                  folder="testimonials"
                   value={formData.image}
-                  onChange={(e) => setFormData({ ...formData, image: e.target.value })}
-                  placeholder="https://example.com/image.jpg"
-                  className={theme === 'dark' ? 'bg-slate-700/50 border-slate-600 text-white' : ''}
+                  onChange={(url) => setFormData({ ...formData, image: url })}
                 />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Page
-                  </Label>
-                  <select
-                    value={formData.page}
-                    onChange={(e) => setFormData({ ...formData, page: e.target.value })}
-                    className={`w-full px-3 py-2 rounded-md border ${
-                      theme === 'dark'
-                        ? 'bg-slate-700/50 border-slate-600 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  >
-                    <option value="home">Home</option>
-                    <option value="weight-loss">Weight Loss</option>
-                    <option value="pcod">PCOD</option>
-                  </select>
-                </div>
-
-                <div className="space-y-2">
-                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
-                    Rating (1-5)
-                  </Label>
-                  <select
-                    value={formData.rating}
-                    onChange={(e) => setFormData({ ...formData, rating: parseInt(e.target.value) })}
-                    className={`w-full px-3 py-2 rounded-md border ${
-                      theme === 'dark'
-                        ? 'bg-slate-700/50 border-slate-600 text-white'
-                        : 'bg-white border-slate-300 text-slate-900'
-                    }`}
-                  >
-                    {[1, 2, 3, 4, 5].map((n) => (
-                      <option key={n} value={n}>
-                        {'⭐'.repeat(n)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <label className={`flex items-center gap-2 cursor-pointer ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
-                }`}>
-                  <input
-                    type="checkbox"
-                    checked={formData.featured}
-                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                    className="rounded"
-                  />
-                  Featured
-                </label>
-
-                <label className={`flex items-center gap-2 cursor-pointer ${
-                  theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
-                }`}>
-                  <input
-                    type="checkbox"
-                    checked={formData.isActive}
-                    onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                    className="rounded"
-                  />
-                  Active
-                </label>
               </div>
 
               <DialogFooter>
