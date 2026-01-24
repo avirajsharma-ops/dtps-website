@@ -1,9 +1,7 @@
 "use client";
 import Image from 'next/image';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import Navbar from '@/components/Navbar';
-import { getPricingByPage } from '@/lib/api';
-import type { Pricing } from '@/lib/api';
 
 const successStories = [
   { name: 'Soranya', loss: '15 kgs', days: '97 Days', image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/SORANYA-1-1.webp' },
@@ -20,46 +18,6 @@ const whatYouGet = [
   { number: '06', title: 'Experienced Team of Dieticians' },
   { number: '07', title: 'Sustainable Weight Management' },
   { number: '08', title: 'Guaranteed Results' },
-];
-
-// Fallback pricing if database is empty
-const fallbackPricingPlans = [
-  {
-    duration: 'One',
-    durationSub: 'Month',
-    durationEnd: 'Plan',
-    price: '₹ 4,500',
-    originalPrice: '₹ 5,000',
-    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
-    popular: false
-  },
-  {
-    duration: 'Three',
-    durationSub: 'Months',
-    durationEnd: 'Plan',
-    price: '₹ 13,000',
-    originalPrice: '₹ 15,000',
-    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin2.png',
-    popular: false
-  },
-  {
-    duration: 'Six',
-    durationSub: 'Months',
-    durationEnd: 'Plan',
-    price: '₹ 24,000',
-    originalPrice: '₹ 30,000',
-    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin3.png',
-    popular: false
-  },
-  {
-    duration: 'One',
-    durationSub: 'Year',
-    durationEnd: 'Plan',
-    price: '₹ 48,000',
-    originalPrice: '₹ 64,000',
-    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin4.png',
-    popular: false
-  }
 ];
 
 const youtubeVideos = [
@@ -80,40 +38,6 @@ export default function TherapeuticPlanPage() {
     weight: ''
   });
   const [bmiResult, setBmiResult] = useState<{ bmi: number; category: string } | null>(null);
-  const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
-  const [loadingPricing, setLoadingPricing] = useState(true);
-
-  // Fetch pricing from database on component mount
-  useEffect(() => {
-    const fetchPricing = async () => {
-      try {
-        const dbPricing = await getPricingByPage('therapeutic');
-        
-        if (dbPricing && dbPricing.length > 0) {
-          // Transform database pricing to match display format
-          const formattedPricing = dbPricing.map((plan: Pricing) => ({
-            duration: plan.planName.split(' ')[0],
-            durationSub: plan.planName.split(' ').slice(1).join(' '),
-            durationEnd: 'Plan',
-            price: `₹ ${plan.price.toLocaleString()}`,
-            originalPrice: `₹ ${plan.originalPrice.toLocaleString()}`,
-            image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
-            popular: plan.popular,
-            badge: plan.badge,
-            features: plan.features
-          }));
-          setPricingPlans(formattedPricing);
-        }
-      } catch (error) {
-        console.error('Error fetching pricing:', error);
-        setPricingPlans(fallbackPricingPlans);
-      } finally {
-        setLoadingPricing(false);
-      }
-    };
-
-    fetchPricing();
-  }, []);
 
   const calculateBMI = () => {
     const heightInMeters = ((parseInt(bmiData.heightFt) * 12 + parseInt(bmiData.heightIn)) * 0.0254);
@@ -137,7 +61,7 @@ export default function TherapeuticPlanPage() {
         padding: '12px 50px 0 50px',
       }}>
         <div style={{
-          background: 'linear-gradient(135deg, #014e4e 0%, #00332d 100%)',
+          background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
           borderRadius: '30px',
           position: 'relative',
           overflow: 'hidden',
@@ -149,7 +73,7 @@ export default function TherapeuticPlanPage() {
           </div>
 
           {/* Hero Content */}
-          <div style={{ padding: '60px 60px 120px' }}>
+          <div style={{ padding: '40px 60px 100px' }}>
             {/* Background decorative elements */}
             <div style={{
               position: 'absolute',
@@ -480,7 +404,7 @@ export default function TherapeuticPlanPage() {
           <div style={{
             width: '60px',
             height: '4px',
-            background: '#014e4e',
+            background: '#0d4043',
             margin: '0 auto 50px',
             borderRadius: '2px'
           }} />
@@ -494,7 +418,7 @@ export default function TherapeuticPlanPage() {
               const isHighlighted = index === 4 || index === 7;
               return (
                 <div key={index} style={{
-                  background: isHighlighted ? '#014e4e' : '#fff',
+                  background: isHighlighted ? '#0d4043' : '#fff',
                   borderRadius: '20px',
                   padding: '28px 24px',
                   display: 'flex',
@@ -510,7 +434,7 @@ export default function TherapeuticPlanPage() {
                     justifyContent: 'center',
                     width: '56px',
                     height: '56px',
-                    background: isHighlighted ? '#FF850B' : '#014e4e',
+                    background: isHighlighted ? '#FF850B' : '#0d4043',
                     borderRadius: '14px',
                     flexShrink: 0
                   }}>
@@ -755,7 +679,7 @@ export default function TherapeuticPlanPage() {
             <button
               onClick={calculateBMI}
               style={{
-                background: '#014e4e',
+                background: '#0d4043',
                 color: '#fff',
                 border: 'none',
                 borderRadius: '12px',
@@ -791,135 +715,73 @@ export default function TherapeuticPlanPage() {
       </section>
 
       {/* Pricing Section */}
-      <section style={{ background: '#fff', padding: '100px 20px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', textAlign: 'center' }}>
-          <p style={{
-            color: '#FF850B',
-            fontSize: '14px',
-            fontWeight: 600,
-            letterSpacing: '2px',
-            textTransform: 'uppercase',
-            marginBottom: '16px'
-          }}>
-            Exclusive Offers
-          </p>
-          <h2 style={{
-            fontSize: '44px',
-            fontWeight: 700,
-            color: '#1a1a1a',
-            lineHeight: 1.2,
-            marginBottom: '20px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
-            Choose Your Perfect Plan
-          </h2>
-          <p style={{
-            color: '#666',
-            fontSize: '17px',
-            lineHeight: 1.7,
-            maxWidth: '600px',
-            margin: '0 auto 60px'
-          }}>
-            Flexible pricing options designed to fit your wellness journey.
-          </p>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '24px'
-          }}>
-            {pricingPlans.map((plan, index) => (
-              <div key={index} style={{
-                background: 'linear-gradient(180deg, #FFE5D9 0%, #FFEEE6 100%)',
-                borderRadius: '24px',
-                padding: '30px 24px',
-                position: 'relative',
-                overflow: 'hidden',
-                minHeight: '420px',
-                display: 'flex',
-                flexDirection: 'column'
-              }}>
-                {/* Tiffin box image */}
-                <div style={{
-                  position: 'absolute',
-                  top: '20px',
-                  right: '-20px',
-                  width: '140px',
-                  height: '100px',
-                  zIndex: 1
-                }}>
-                  <Image
-                    src={plan.image}
-                    alt="Tiffin"
-                    width={140}
-                    height={100}
-                    style={{ objectFit: 'contain' }}
-                  />
-                </div>
-
-                {/* Plan duration */}
-                <div style={{ textAlign: 'left', marginBottom: '20px', zIndex: 2 }}>
-                  <h3 style={{
-                    fontSize: '28px',
-                    fontWeight: 700,
-                    color: '#1a1a1a',
-                    lineHeight: 1.2,
-                    margin: 0
-                  }}>
-                    {plan.duration}<br />
-                    {plan.durationSub}<br />
-                    {plan.durationEnd}
-                  </h3>
-                </div>
-
-                {/* Pricing */}
-                <div style={{ textAlign: 'left', marginTop: 'auto' }}>
-                  <del style={{
-                    color: '#999',
-                    fontSize: '18px',
-                    fontWeight: 500,
-                    display: 'block',
-                    marginBottom: '4px'
-                  }}>{plan.originalPrice}</del>
-                  <div style={{
-                    fontSize: '36px',
-                    fontWeight: 700,
-                    color: '#FF850B',
-                    marginBottom: '20px'
-                  }}>{plan.price}</div>
-                </div>
-
-                {/* Decorative leaf */}
-                <div style={{
-                  position: 'absolute',
-                  bottom: '60px',
-                  right: '20px',
-                  opacity: 0.15
-                }}>
-                  <svg width="100" height="80" viewBox="0 0 100 80" fill="none">
-                    <path d="M80 40C80 62.0914 62.0914 80 40 80C17.9086 80 0 62.0914 0 40C0 17.9086 17.9086 0 40 0C62.0914 0 80 17.9086 80 40Z" fill="#014e4e"/>
-                  </svg>
-                </div>
-              </div>
-            ))}
+      <section className="bg-white px-5 py-[100px]">
+        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-10">
+          <div className="text-center">
+            <p className="mb-4 text-sm font-semibold uppercase tracking-[2px] text-[#FF850B]">Exclusive Offers</p>
+            <h2 className="mb-5 font-[Epilogue] text-[44px] font-bold leading-[1.2] text-[#1a1a1a]">
+              Choose Your Perfect Plan
+            </h2>
+            <p className="mx-auto max-w-[600px] text-[17px] leading-[1.7] text-[#666]">
+              Flexible pricing options designed to fit your wellness journey.
+            </p>
           </div>
 
-          {/* Hover above the card text */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '24px',
-            marginTop: '16px'
-          }}>
-            {pricingPlans.map((_, index) => (
-              <p key={index} style={{
-                color: '#999',
-                fontSize: '14px',
-                fontStyle: 'italic'
-              }}>
-                Hover above the card !
-              </p>
-            ))}
+          <div className="relative flex w-full max-w-[980px] flex-col items-center gap-8 lg:flex-row lg:items-stretch">
+            <div className="group relative w-full max-w-[560px] overflow-hidden rounded-[28px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
+              <div className="relative h-full min-h-[420px]">
+                <div className="absolute inset-0 flex flex-col justify-between bg-white p-10 transition-transform duration-500 ease-out group-hover:-translate-x-full">
+                  <div>
+                    <h3 className="text-[34px] font-bold leading-[1.1] text-[#0f172a]">
+                      One<br />Month<br />Plan
+                    </h3>
+                    <div className="mt-4 text-lg text-[#8b8b8b]">
+                      <span className="line-through">₹ 5,000</span>
+                      <span className="ml-3 block text-[32px] font-semibold text-[#FF850B]">₹ 4,500</span>
+                    </div>
+                  </div>
+                  <p className="text-sm italic text-[#9b9b9b]">Hover above the card !</p>
+                </div>
+
+                <div className="absolute inset-0 flex flex-col justify-between bg-[#0d4043] p-10 text-white transition-transform duration-500 ease-out translate-x-full group-hover:translate-x-0">
+                  <div>
+                    <div className="text-lg font-semibold">
+                      One Month Plan - <span className="line-through opacity-70">₹ 5,000</span>
+                    </div>
+                    <div className="mt-2 text-[28px] font-bold text-[#FFB154]">₹ 4,500</div>
+                    <ul className="mt-6 space-y-3 text-sm leading-6">
+                      <li>8 hours of Chat support</li>
+                      <li>Dietitian Consultation (12)</li>
+                      <li>Customized Meal Plan</li>
+                      <li>Progress Tracking</li>
+                      <li>Diet Recipe eBook (100+)</li>
+                      <li>Stay on track: weekly check ins to ensure your progress.</li>
+                    </ul>
+                  </div>
+                  <a
+                    href="https://dtpoonamsagar.com/checkout/?buy-now=35346&quantity=1"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex"
+                  >
+                    <button className="rounded-full bg-[#FF850B] px-8 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(255,133,11,0.35)] transition-transform duration-300 hover:scale-[1.02]">
+                      Start Today
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <div className="relative flex w-full max-w-[360px] items-center justify-center">
+              <div className="relative h-[320px] w-[320px]">
+                <Image
+                  src="https://www.dtpoonamsagar.com/wp-content/uploads/2025/05/One-Month.png"
+                  alt="One Month Plan"
+                  fill
+                  className="object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.2)]"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -1083,7 +945,7 @@ export default function TherapeuticPlanPage() {
 
       {/* CTA Section */}
       <section style={{
-        background: 'linear-gradient(135deg, #014e4e 0%, #00332d 100%)',
+        background: 'linear-gradient(135deg, #0d4043 0%, #0a2f31 100%)',
         padding: '80px 20px'
       }}>
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
