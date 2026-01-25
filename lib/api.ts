@@ -11,6 +11,7 @@ export interface Pricing {
   badge: string;
   badgeColor: string;
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
+  category: 'weight-loss' | 'pcod' | 'new-wedding-plan' | 'therapeutic-diet-plans';
   popular: boolean;
   isActive: boolean;
 }
@@ -30,6 +31,24 @@ export interface Recognition {
 export async function getPricingByPage(page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding'): Promise<Pricing[]> {
   try {
     const res = await fetch(`/api/pricing?page=${page}`, {
+      next: { revalidate: 60 } // Cache for 60 seconds
+    });
+    
+    if (!res.ok) {
+      throw new Error('Failed to fetch pricing');
+    }
+    
+    const data = await res.json();
+    return data.pricing?.filter((p: Pricing) => p.isActive) || [];
+  } catch (error) {
+    console.error('Error fetching pricing:', error);
+    return [];
+  }
+}
+
+export async function getPricingByCategory(category: 'weight-loss' | 'pcod' | 'new-wedding-plan' | 'therapeutic-diet-plans'): Promise<Pricing[]> {
+  try {
+    const res = await fetch(`/api/pricing?category=${category}`, {
       next: { revalidate: 60 } // Cache for 60 seconds
     });
     

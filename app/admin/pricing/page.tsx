@@ -35,6 +35,7 @@ interface Pricing {
   badge: string;
   badgeColor: string;
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
+  category: 'weight-loss' | 'pcod' | 'new-wedding-plan' | 'therapeutic-diet-plans';
   popular: boolean;
   isActive: boolean;
 }
@@ -49,6 +50,7 @@ const initialFormState: Omit<Pricing, '_id'> = {
   badge: '',
   badgeColor: '',
   page: 'weight-loss',
+  category: 'weight-loss',
   popular: false,
   isActive: true,
 };
@@ -154,6 +156,7 @@ export default function PricingPage() {
       badge: item.badge,
       badgeColor: item.badgeColor,
       page: item.page,
+      category: item.category,
       popular: item.popular,
       isActive: item.isActive,
     });
@@ -337,6 +340,28 @@ export default function PricingPage() {
                     <option value="wedding">Wedding</option>
                   </select>
                 </div>
+
+                <div className="space-y-2">
+                  <Label className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
+                    Category *
+                  </Label>
+                  <select
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value as any })}
+                    required
+                    className={`w-full px-3 py-2 rounded-md border ${
+                      theme === 'dark'
+                        ? 'bg-slate-700/50 border-slate-600 text-white'
+                        : 'bg-white border-slate-300 text-slate-900'
+                    }`}
+                  >
+                    <option value="">Select a category</option>
+                    <option value="weight-loss">Weight Loss</option>
+                    <option value="pcod">PCOD</option>
+                    <option value="new-wedding-plan">New Wedding Plan</option>
+                    <option value="therapeutic-diet-plans">Therapeutic Diet Plans</option>
+                  </select>
+                </div>
               </div>
 
               <div className="space-y-2">
@@ -476,9 +501,24 @@ export default function PricingPage() {
               )}
 
               <CardHeader className={plan.popular ? 'pt-8' : ''}>
-                <CardTitle className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>
-                  {plan.planName}
-                </CardTitle>
+                <div className="flex items-start justify-between gap-2 mb-2">
+                  <CardTitle className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>
+                    {plan.planName}
+                  </CardTitle>
+                  {plan.category && (
+                    <Badge className={`text-xs whitespace-nowrap ${
+                      plan.category === 'weight-loss' ? 'bg-blue-500/20 text-blue-700 dark:text-blue-400' :
+                      plan.category === 'pcod' ? 'bg-purple-500/20 text-purple-700 dark:text-purple-400' :
+                      plan.category === 'new-wedding-plan' ? 'bg-pink-500/20 text-pink-700 dark:text-pink-400' :
+                      'bg-green-500/20 text-green-700 dark:text-green-400'
+                    }`}>
+                      {plan.category === 'weight-loss' ? '⚖️ Weight Loss' :
+                       plan.category === 'pcod' ? '🏥 PCOD' :
+                       plan.category === 'new-wedding-plan' ? '💍 Wedding' :
+                       '🏋️ Therapeutic'}
+                    </Badge>
+                  )}
+                </div>
                 <CardDescription className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}>
                   {plan.durationLabel}
                 </CardDescription>

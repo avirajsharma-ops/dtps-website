@@ -38,6 +38,43 @@ export default function TherapeuticPlanPage() {
     weight: ''
   });
   const [bmiResult, setBmiResult] = useState<{ bmi: number; category: string } | null>(null);
+<<<<<<< HEAD
+=======
+  const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
+  const [loadingPricing, setLoadingPricing] = useState(true);
+
+  // Fetch pricing from database on component mount
+  useEffect(() => {
+    const fetchPricing = async () => {
+      try {
+        const dbPricing = await getPricingByCategory('therapeutic-diet-plans');
+        
+        if (dbPricing && dbPricing.length > 0) {
+          // Transform database pricing to match display format
+          const formattedPricing = dbPricing.map((plan: Pricing) => ({
+            duration: plan.planName.split(' ')[0],
+            durationSub: plan.planName.split(' ').slice(1).join(' '),
+            durationEnd: 'Plan',
+            price: `₹ ${plan.price.toLocaleString()}`,
+            originalPrice: `₹ ${plan.originalPrice.toLocaleString()}`,
+            image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
+            popular: plan.popular,
+            badge: plan.badge,
+            features: plan.features
+          }));
+          setPricingPlans(formattedPricing);
+        }
+      } catch (error) {
+        console.error('Error fetching pricing:', error);
+        setPricingPlans(fallbackPricingPlans);
+      } finally {
+        setLoadingPricing(false);
+      }
+    };
+
+    fetchPricing();
+  }, []);
+>>>>>>> a14b523 (feat: Add UUID for orders, Orders/Payments sidebar menu, and detail pages)
 
   const calculateBMI = () => {
     const heightInMeters = ((parseInt(bmiData.heightFt) * 12 + parseInt(bmiData.heightIn)) * 0.0254);
@@ -140,7 +177,18 @@ export default function TherapeuticPlanPage() {
             </p>
             
             <div style={{ display: 'flex', gap: '14px', flexWrap: 'wrap' }}>
-              <button style={{
+              <button 
+                onClick={() => {
+                  const product = {
+                    id: 'therapeutic-plan-3months',
+                    name: 'Therapeutic Plan - 3 Months',
+                    price: 13000,
+                    quantity: 1
+                  };
+                  sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                  window.location.href = '/checkout';
+                }}
+                style={{
                 background: '#FF850B',
                 color: '#fff',
                 border: 'none',
@@ -231,95 +279,13 @@ export default function TherapeuticPlanPage() {
             Embark on a transformative journey of wellness and success, led by our true industry trailblazer.
           </p>
 
-          {/* Success Stories Slider */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '30px',
-            flexWrap: 'wrap',
-            marginBottom: '50px'
-          }}>
-            {successStories.map((story, index) => (
-              <div key={index} style={{
-                background: '#fff',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                boxShadow: '0 8px 40px rgba(0,0,0,0.1)',
-                width: '320px',
-                transition: 'transform 0.3s ease'
-              }}>
-                <div style={{
-                  background: '#fff',
-                  padding: '20px 20px 0',
-                  textAlign: 'center'
-                }}>
-                  <div style={{
-                    position: 'relative',
-                    display: 'inline-block',
-                    marginBottom: '10px'
-                  }}>
-                    <span style={{ color: '#e74c3c', fontSize: '24px' }}>📍</span>
-                  </div>
-                  <h3 style={{
-                    fontSize: '22px',
-                    fontWeight: 700,
-                    color: '#1a1a1a',
-                    margin: '0 0 8px'
-                  }}>{story.name}</h3>
-                  <p style={{
-                    color: '#FF850B',
-                    fontSize: '16px',
-                    fontWeight: 600,
-                    margin: '0 0 16px'
-                  }}>Lost {story.loss} weight</p>
-                </div>
-                <div style={{ position: 'relative' }}>
-                  <Image
-                    src={story.image}
-                    alt={story.name}
-                    width={320}
-                    height={280}
-                    style={{ 
-                      width: '100%', 
-                      height: '280px',
-                      objectFit: 'cover'
-                    }}
-                  />
-                  <div style={{
-                    position: 'absolute',
-                    bottom: 0,
-                    left: 0,
-                    right: 0,
-                    background: '#16a085',
-                    color: '#fff',
-                    padding: '14px',
-                    textAlign: 'center',
-                    fontSize: '18px',
-                    fontWeight: 700
-                  }}>
-                    In Just {story.days}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Pagination dots */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '8px',
-            marginBottom: '60px'
-          }}>
-            {[...Array(8)].map((_, i) => (
-              <div key={i} style={{
-                width: i < 2 ? '10px' : '8px',
-                height: i < 2 ? '10px' : '8px',
-                borderRadius: '50%',
-                background: i < 2 ? '#FF850B' : '#ddd'
-              }} />
-            ))}
-          </div>
+          {/* Success Stories Section */}
+          <TransformationGallery 
+            page="therapeutic"
+            title="Transform Your Health with Expert Nutrition Plan"
+            subtitle="Embark on a transformative journey of wellness and success, led by our true industry trailblazer."
+            maxItems={6}
+          />
 
           {/* We are Most Trusted */}
           <div style={{ marginBottom: '60px' }}>
@@ -967,7 +933,18 @@ export default function TherapeuticPlanPage() {
           }}>
             Start your personalized therapeutic diet plan today and experience the change you deserve.
           </p>
-          <button style={{
+          <button 
+            onClick={() => {
+              const product = {
+                id: 'therapeutic-plan-3months',
+                name: 'Therapeutic Plan - 3 Months',
+                price: 13000,
+                quantity: 1
+              };
+              sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+              window.location.href = '/checkout';
+            }}
+            style={{
             background: '#FF850B',
             color: '#fff',
             border: 'none',

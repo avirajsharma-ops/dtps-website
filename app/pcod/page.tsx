@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
+import TransformationGallery from '@/components/TransformationGallery';
 
 const whatYouGet = [
   { icon: '📊', title: 'Ongoing Support', desc: 'Regular follow-ups to adapt your diet plan as needed and ensure progress results.' },
@@ -384,6 +385,14 @@ export default function PCODPage() {
         </div>
       </section>
 
+      {/* Transformation Gallery Section */}
+      <TransformationGallery 
+        page="pcod"
+        title="Success Stories from Our PCOD Patients"
+        subtitle="Real transformations, real health improvements - join thousands who have managed their PCOD successfully"
+        maxItems={6}
+      />
+
       {/* Pricing Section */}
       <section className="pcod-pricing-section">
         <div className="pcod-pricing-wrap">
@@ -425,7 +434,22 @@ export default function PCODPage() {
                     </li>
                   ))}
                 </ul>
-                <a href="/appointment" className="pcod-plan-cta">Get Started</a>
+                <a 
+                  onClick={() => {
+                    const product = {
+                      id: `pcod-${plan.duration.toLowerCase().replace(/\s+/g, '-')}`,
+                      name: `PCOD Management Plan - ${plan.duration}`,
+                      price: parseInt(plan.price),
+                      quantity: 1
+                    };
+                    sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                    window.location.href = '/checkout';
+                  }}
+                  className="pcod-plan-cta"
+                  style={{ cursor: 'pointer' }}
+                >
+                  Get Started
+                </a>
               </div>
             ))}
           </div>

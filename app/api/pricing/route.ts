@@ -11,10 +11,12 @@ export async function GET(request: NextRequest) {
 
     const { searchParams } = new URL(request.url);
     const page = searchParams.get('page');
+    const category = searchParams.get('category');
     const isActive = searchParams.get('active');
 
     const query: any = {};
     if (page) query.page = page;
+    if (category) query.category = category;
     if (isActive === 'true') query.isActive = true;
 
     const pricing = await Pricing.find(query).sort({ order: 1, price: 1 });

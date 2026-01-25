@@ -13,36 +13,41 @@ import {
   DialogTrigger,
   DialogFooter,
 } from '@/components/ui/dialog';
-import { Plus, Edit, Trash2, Newspaper, AlertCircle, CheckCircle, Eye } from 'lucide-react';
+import { Plus, Edit, Trash2, Newspaper, AlertCircle, CheckCircle, Eye, X } from 'lucide-react';
 import { useTheme } from '@/app/providers/ThemeProvider';
 import ImageUpload from '@/components/admin/ImageUpload';
+import RichTextEditor from '@/components/admin/RichTextEditor';
 
 interface Blog {
   _id: string;
   title: string;
+  slug: string;
+  excerpt: string;
   description: string;
   content: string;
-  image: string;
-  author: string;
+  featuredImage: string;
   category: string;
   tags: string[];
+  author: string;
   views: number;
-  isPublished: boolean;
-  isActive: boolean;
+  published: boolean;
+  featured: boolean;
   createdAt: string;
 }
 
 const initialFormState: Omit<Blog, '_id' | 'createdAt'> = {
-  title: 'Image',
-  description: 'Image description',
-  content: 'Image content',
-  image: '',
+  title: '',
+  slug: '',
+  excerpt: '',
+  description: '',
+  content: '',
+  featuredImage: '',
   author: 'DTPS Admin',
-  category: 'wellness',
+  category: 'Health & Nutrition',
   tags: [],
   views: 0,
-  isPublished: false,
-  isActive: true,
+  published: false,
+  featured: false,
 };
 
 export default function BlogsPage() {
@@ -54,6 +59,8 @@ export default function BlogsPage() {
   const [formData, setFormData] = useState(initialFormState);
   const [saving, setSaving] = useState(false);
   const [message, setMessage] = useState<{ type: 'success' | 'error'; text: string } | null>(null);
+  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
+  const [tagInput, setTagInput] = useState('');
 
   useEffect(() => {
     fetchBlogs();
@@ -72,8 +79,53 @@ export default function BlogsPage() {
     }
   };
 
+  const generateSlug = (title: string) => {
+    return title
+      .toLowerCase()
+      .trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  };
+
+  const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const title = e.target.value;
+    setFormData({
+      ...formData,
+      title,
+      slug: generateSlug(title),
+    });
+  };
+
+  const handleAddTag = () => {
+    if (tagInput.trim() && !formData.tags.includes(tagInput.trim())) {
+      setFormData({
+        ...formData,
+        tags: [...formData.tags, tagInput.trim()],
+      });
+      setTagInput('');
+    }
+  };
+
+  const handleRemoveTag = (tag: string) => {
+    setFormData({
+      ...formData,
+      tags: formData.tags.filter(t => t !== tag),
+    });
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    if (!formData.title.trim()) {
+      setMessage({ type: 'error', text: 'Title is required' });
+      return;
+    }
+    if (!formData.content.trim()) {
+      setMessage({ type: 'error', text: 'Content is required' });
+      return;
+    }
+
     setSaving(true);
 
     try {
@@ -132,15 +184,17 @@ export default function BlogsPage() {
     setEditingId(blog._id);
     setFormData({
       title: blog.title,
+      slug: blog.slug,
+      excerpt: blog.excerpt,
       description: blog.description,
       content: blog.content,
-      image: blog.image,
+      featuredImage: blog.featuredImage,
       author: blog.author,
       category: blog.category,
       tags: blog.tags,
       views: blog.views,
-      isPublished: blog.isPublished,
-      isActive: blog.isActive,
+      published: blog.published,
+      featured: blog.featured,
     });
     setOpen(true);
   };
@@ -149,6 +203,7 @@ export default function BlogsPage() {
     setOpen(false);
     setEditingId(null);
     setFormData(initialFormState);
+    setTagInput('');
   };
 
   if (loading) {
@@ -190,7 +245,7 @@ export default function BlogsPage() {
             theme === 'dark'
               ? 'bg-slate-800 border-slate-700'
               : 'bg-white border-slate-200'
-          } max-w-3xl max-h-[90vh] overflow-y-auto`}>
+          } max-w-4xl max-h-[90vh] overflow-y-auto`}>
             <DialogHeader>
               <DialogTitle className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>
                 {editingId ? 'Edit Blog Post' : 'Create New Blog Post'}
@@ -201,13 +256,215 @@ export default function BlogsPage() {
             </DialogHeader>
 
             <form onSubmit={handleSubmit} className="space-y-4">
+              {/* Featured Image */}
               <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Featured Image
+                </label>
                 <ImageUpload
-                  label="Featured Image"
-                  folder="blogs"
-                  value={formData.image}
-                  onChange={(url) => setFormData({ ...formData, image: url })}
+                  label="Upload Featured Image"
+                  folder="DTPS-Ecommerce/blogs"
+                  value={formData.featuredImage}
+                  onChange={(url) => setFormData({ ...formData, featuredImage: url })}
                 />
+                {formData.featuredImage && (
+                  <div className="mt-2">
+                    <img
+                      src={formData.featuredImage}
+                      alt="Preview"
+                      className="w-32 h-32 object-cover rounded-lg cursor-pointer hover:opacity-75"
+                      onClick={() => setLightboxImage(formData.featuredImage)}
+                    />
+                  </div>
+                )}
+              </div>
+
+              {/* Title */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Title *
+                </label>
+                <input
+                  type="text"
+                  value={formData.title}
+                  onChange={handleTitleChange}
+                  placeholder="Enter blog title"
+                  className={`w-full px-4 py-2 rounded-lg border ${
+                    theme === 'dark'
+                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
+                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                  } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                />
+              </div>
+
+              {/* Slug (Auto-generated) */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Slug (Auto-generated)
+                </label>
+                <input
+                  type="text"
+                  value={formData.slug}
+                  readOnly
+                  className={`w-full px-4 py-2 rounded-lg border ${
+                    theme === 'dark'
+                      ? 'bg-slate-700 border-slate-600 text-slate-400'
+                      : 'bg-slate-100 border-slate-300 text-slate-600'
+                  } cursor-not-allowed`}
+                />
+              </div>
+
+              {/* Excerpt */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Excerpt
+                </label>
+                <textarea
+                  value={formData.excerpt}
+                  onChange={(e) => setFormData({ ...formData, excerpt: e.target.value })}
+                  placeholder="Brief summary of the blog post (for SEO and listings)"
+                  rows={2}
+                  className={`w-full px-4 py-2 rounded-lg border ${
+                    theme === 'dark'
+                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
+                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                  } focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none`}
+                />
+              </div>
+
+              {/* Description */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Description
+                </label>
+                <textarea
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  placeholder="Short description of the blog"
+                  rows={2}
+                  className={`w-full px-4 py-2 rounded-lg border ${
+                    theme === 'dark'
+                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
+                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                  } focus:outline-none focus:ring-2 focus:ring-emerald-500 resize-none`}
+                />
+              </div>
+
+              {/* Content (Rich Text) */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Content * (Rich Text)
+                </label>
+                <RichTextEditor
+                  value={formData.content}
+                  onChange={(content) => setFormData({ ...formData, content })}
+                />
+              </div>
+
+              {/* Category */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Category
+                </label>
+                <select
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  className={`w-full px-4 py-2 rounded-lg border ${
+                    theme === 'dark'
+                      ? 'bg-slate-700 border-slate-600 text-white'
+                      : 'bg-white border-slate-300 text-slate-900'
+                  } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                >
+                  <option>Health & Nutrition</option>
+                  <option>Weight Loss</option>
+                  <option>PCOD Management</option>
+                  <option>Wellness</option>
+                  <option>Fitness</option>
+                  <option>Recipes</option>
+                  <option>Tips & Tricks</option>
+                </select>
+              </div>
+
+              {/* Tags */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Tags
+                </label>
+                <div className="flex gap-2">
+                  <input
+                    type="text"
+                    value={tagInput}
+                    onChange={(e) => setTagInput(e.target.value)}
+                    onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), handleAddTag())}
+                    placeholder="Add a tag and press Enter"
+                    className={`flex-1 px-4 py-2 rounded-lg border ${
+                      theme === 'dark'
+                        ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
+                        : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                    } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                  />
+                  <Button type="button" onClick={handleAddTag} className="bg-emerald-500 hover:bg-emerald-600">
+                    Add
+                  </Button>
+                </div>
+                {formData.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {formData.tags.map((tag) => (
+                      <Badge
+                        key={tag}
+                        className="bg-emerald-500/10 text-emerald-600 border-emerald-500/30 hover:bg-emerald-500/20 cursor-pointer"
+                        onClick={() => handleRemoveTag(tag)}
+                      >
+                        {tag}
+                        <X className="w-3 h-3 ml-1" />
+                      </Badge>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Author */}
+              <div className="space-y-2">
+                <label className={`block text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
+                  Author
+                </label>
+                <input
+                  type="text"
+                  value={formData.author}
+                  onChange={(e) => setFormData({ ...formData, author: e.target.value })}
+                  placeholder="Author name"
+                  className={`w-full px-4 py-2 rounded-lg border ${
+                    theme === 'dark'
+                      ? 'bg-slate-700 border-slate-600 text-white placeholder-slate-400'
+                      : 'bg-white border-slate-300 text-slate-900 placeholder-slate-400'
+                  } focus:outline-none focus:ring-2 focus:ring-emerald-500`}
+                />
+              </div>
+
+              {/* Checkboxes */}
+              <div className="space-y-3">
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={formData.published}
+                    onChange={(e) => setFormData({ ...formData, published: e.target.checked })}
+                    className="w-5 h-5 accent-emerald-500 rounded"
+                  />
+                  <span className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
+                    Publish this blog
+                  </span>
+                </label>
+                <label className="flex items-center gap-3 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={formData.featured}
+                    onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
+                    className="w-5 h-5 accent-emerald-500 rounded"
+                  />
+                  <span className={theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}>
+                    Mark as featured
+                  </span>
+                </label>
               </div>
 
               <DialogFooter>
@@ -269,11 +526,12 @@ export default function BlogsPage() {
             } transition-colors`}>
               <CardContent className="pt-6">
                 <div className="flex items-start gap-4">
-                  {blog.image && (
+                  {blog.featuredImage && (
                     <img
-                      src={blog.image}
+                      src={blog.featuredImage}
                       alt={blog.title}
-                      className="w-24 h-24 rounded-lg object-cover flex-shrink-0"
+                      className="w-24 h-24 rounded-lg object-cover flex-shrink-0 cursor-pointer hover:opacity-75"
+                      onClick={() => setLightboxImage(blog.featuredImage)}
                     />
                   )}
 
@@ -315,7 +573,7 @@ export default function BlogsPage() {
                     <p className={`text-sm mb-3 line-clamp-2 ${
                       theme === 'dark' ? 'text-slate-300' : 'text-slate-700'
                     }`}>
-                      {blog.description}
+                      {blog.description || blog.excerpt}
                     </p>
 
                     <div className="flex items-center justify-between pt-3 border-t border-slate-700">
@@ -323,14 +581,14 @@ export default function BlogsPage() {
                         <Badge variant="outline" className={theme === 'dark' ? 'border-slate-600 text-slate-400' : ''}>
                           {blog.category}
                         </Badge>
-                        {blog.isPublished && (
+                        {blog.published && (
                           <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 hover:bg-emerald-500/10">
                             Published
                           </Badge>
                         )}
-                        {!blog.isActive && (
-                          <Badge variant="destructive" className="bg-red-500/10 text-red-400 border-red-500/30">
-                            Inactive
+                        {blog.featured && (
+                          <Badge className="bg-yellow-500/10 text-yellow-400 border-yellow-500/30 hover:bg-yellow-500/10">
+                            Featured
                           </Badge>
                         )}
                       </div>
@@ -347,6 +605,28 @@ export default function BlogsPage() {
               </CardContent>
             </Card>
           ))}
+        </div>
+      )}
+
+      {/* Lightbox Modal */}
+      {lightboxImage && (
+        <div
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setLightboxImage(null)}
+        >
+          <div className="relative max-w-2xl w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setLightboxImage(null)}
+              className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 rounded-full p-2 transition"
+            >
+              <X className="w-6 h-6 text-white" />
+            </button>
+            <img
+              src={lightboxImage}
+              alt="Blog Featured Image"
+              className="w-full h-auto rounded-lg"
+            />
+          </div>
         </div>
       )}
     </div>

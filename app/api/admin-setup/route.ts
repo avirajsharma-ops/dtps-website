@@ -12,11 +12,17 @@ export async function GET() {
     return NextResponse.json({
       adminExists: !!adminExists,
     });
-  } catch (error) {
-    console.error('Error checking admin:', error);
+  } catch (error: any) {
+    console.error('Error checking admin:', error?.message || error);
+    
+    // Return a graceful error response instead of 500
     return NextResponse.json(
-      { error: 'Failed to check admin status' },
-      { status: 500 }
+      { 
+        adminExists: false,
+        warning: 'Database connection unavailable. Running in offline mode.',
+        error: error?.message || 'Database connection failed'
+      },
+      { status: 200 } // Return 200 to allow UI to load
     );
   }
 }
@@ -66,7 +72,15 @@ export async function POST(request: NextRequest) {
       { status: 201 }
     );
   } catch (error: any) {
-    console.error('Error creating admin:', error);
+    console.error('Error creating admin:', error?.message || error);
+    
+    // Check for database connection errors
+    if (error?.message?.includes('MongoDB connection') || error?.message?.includes('ECONNREFUSED')) {
+      return NextResponse.json(
+        { error: 'Database connection unavailable. Please check your MongoDB connection.' },
+        { status: 503 } // Service Unavailable
+      );
+    }
     
     if (error.code === 11000) {
       return NextResponse.json(

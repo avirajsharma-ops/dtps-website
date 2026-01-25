@@ -6,7 +6,8 @@ import Button from '@/components/ui/Button';
 import FiveCycleProgram from '@/components/FiveCycleProgram';
 import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
 import PageWrapper from '@/components/PageWrapper';
-import { getPricingByPage } from '@/lib/api';
+import TransformationGallery from '@/components/TransformationGallery';
+import { getPricingByCategory } from '@/lib/api';
 import { getOptimizedUrl } from '@/lib/imagekit';
 import type { Pricing } from '@/lib/api';
 
@@ -153,7 +154,7 @@ export default function WeightLossPage() {
   useEffect(() => {
     const fetchPricing = async () => {
       try {
-        const dbPricing = await getPricingByPage('weight-loss');
+        const dbPricing = await getPricingByCategory('weight-loss');
         
         if (dbPricing && dbPricing.length > 0) {
           // Transform database pricing to match display format
@@ -230,35 +231,13 @@ export default function WeightLossPage() {
         </section>
       </PageWrapper>
 
-      {/* Success Stories Section */}
-      <section className="wl-section">
-        <div className="container">
-          <div className="wl-section-label">
-            <span className="wl-star">✦</span> Our Testimonials
-          </div>
-          <h2 className="wl-section-title">
-            Over 75,000+<br />People Enjoy Weight Loss
-          </h2>
-          <p className="wl-section-desc">
-            Join our Plan today and embark on a journey to better health with our weight loss plan!
-          </p>
-          <div className="wl-stories-grid">
-            {successStories.map((story) => (
-              <div key={story.name} className="wl-story-card">
-                <div className="wl-story-image">
-                  <Image 
-                    src={story.image} 
-                    alt={story.name} 
-                    width={400} 
-                    height={500} 
-                    style={{ objectFit: 'contain', width: '100%', height: '100%' }} 
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      {/* Transformations Gallery Section */}
+      <TransformationGallery 
+        page="weight-loss"
+        title="Over 75,000+ People Enjoy Weight Loss"
+        subtitle="Real Stories, Real Results - Join Our Community"
+        maxItems={6}
+      />
 
       {/* Five Cycle Program */}
       <div className="container">
@@ -500,7 +479,21 @@ export default function WeightLossPage() {
                     </li>
                   ))}
                 </ul>
-                <Button href="/appointment" variant="primary" className="wl-pricing-btn">
+                <Button 
+                  onClick={() => {
+                    const price = plan.price.replace('₹', '').replace(',', '');
+                    const product = {
+                      id: `weight-loss-${plan.label.toLowerCase().replace(/\s+/g, '-')}`,
+                      name: `Weight Loss Plan - ${plan.label}`,
+                      price: parseInt(price),
+                      quantity: 1
+                    };
+                    sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                    window.location.href = '/checkout';
+                  }}
+                  variant="primary" 
+                  className="wl-pricing-btn"
+                >
                   BUY NOW
                 </Button>
               </div>

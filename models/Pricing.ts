@@ -16,6 +16,7 @@ export interface IPricing extends Document {
   badgeColor: string;
   features: IPricingFeature[];
   page: 'weight-loss' | 'pcod' | 'therapeutic' | 'wedding';
+  category: 'weight-loss' | 'pcod' | 'new-wedding-plan' | 'therapeutic-diet-plans';
   popular: boolean;
   isActive: boolean;
   order: number;
@@ -68,6 +69,11 @@ const PricingSchema = new Schema<IPricing>(
       type: String,
       enum: ['weight-loss', 'pcod', 'therapeutic', 'wedding'],
       required: [true, 'Page is required'],
+    },
+    category: {
+      type: String,
+      enum: ['weight-loss', 'pcod', 'new-wedding-plan', 'therapeutic-diet-plans'],
+      required: [true, 'Category is required'],
     },
     popular: {
       type: Boolean,

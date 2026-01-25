@@ -3,7 +3,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
-import { getPricingByPage } from '@/lib/api';
+import TransformationShowcase from '@/components/TransformationShowcase';
+import LoseWeightSection from '@/components/LoseWeightSection';
+import { getPricingByCategory } from '@/lib/api';
 import type { Pricing } from '@/lib/api';
 
 // Tab data for "What Happens" section
@@ -162,7 +164,7 @@ export default function WeddingPlanPage() {
   useEffect(() => {
     const fetchPricing = async () => {
       try {
-        const dbPricing = await getPricingByPage('wedding');
+        const dbPricing = await getPricingByCategory('new-wedding-plan');
         
         if (dbPricing && dbPricing.length > 0) {
           // Transform database pricing to match display format
@@ -206,63 +208,8 @@ export default function WeddingPlanPage() {
         </div>
       </section>
 
-      {/* Lose 5-7 Kg Section */}
-      <section style={{ background: '#fff', padding: '100px 0 50px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <h2 style={{
-            textAlign: 'center',
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.3,
-            marginBottom: '10px',
-            fontFamily: 'Epilogue, sans-serif',
-            maxWidth: '67%',
-            margin: '0 auto 40px'
-          }}>
-            Lose <span style={{ color: '#ff850b' }}>5–7 Kilos</span> in just 30 Days<br />
-            & Still Eat the Food You Love!
-          </h2>
-
-          {/* Success Stories Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(2, 1fr)',
-            gap: '20px',
-            maxWidth: '75%',
-            margin: '0 auto 40px'
-          }}>
-            <Image
-              src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Sharadha-min-1.webp"
-              alt="Transformation 1"
-              width={500}
-              height={400}
-              style={{ width: '100%', height: 'auto', borderRadius: '16px' }}
-            />
-            <Image
-              src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Akansha-Shukala-min-1.webp"
-              alt="Transformation 2"
-              width={500}
-              height={400}
-              style={{ width: '100%', height: 'auto', borderRadius: '16px' }}
-            />
-          </div>
-
-          <p style={{
-            textAlign: 'center',
-            fontSize: '20px',
-            fontWeight: 500,
-            lineHeight: 1.6,
-            color: '#1E1E1E',
-            maxWidth: '75%',
-            margin: '0 auto',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
-            Forget diets. They were never built for people like you.<br />
-            At DTPS, we don't tell you to drink hot water and hate your meals. We take the food already on your plate and make it work for your body, rather than against it.
-          </p>
-        </div>
-      </section>
+      {/* Lose 5-7 Kg Section with Dynamic Data */}
+      <LoseWeightSection />
 
       {/* What Happens When You Start Section */}
       <section style={{ background: '#fff', padding: '50px 0' }}>
@@ -548,78 +495,14 @@ export default function WeddingPlanPage() {
         </div>
       </section>
 
-      {/* Over 50,000+ People Section */}
-      <section style={{ background: '#fff', padding: '10px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <h2 style={{
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.3,
-            marginBottom: '10px',
-            fontFamily: 'Epilogue, sans-serif',
-            maxWidth: '67%',
-            margin: '0 auto 40px',
-            textAlign: 'left'
-          }}>
-            Over <span style={{ color: '#ff850b' }}>50,000+</span><br />
-            People Enjoy Weight Loss
-          </h2>
-
-          {/* Transformation Cards Grid */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '32px'
-          }}>
-            {transformations.map((item, index) => (
-              <div key={index} style={{
-                height: '294px',
-                position: 'relative',
-                borderRadius: '18px',
-                overflow: 'hidden',
-                background: '#000',
-                boxShadow: '0 10px 24px rgba(0,0,0,0.18)',
-                transition: '0.25s ease'
-              }}>
-                <Image
-                  src={item.image}
-                  alt={item.name}
-                  fill
-                  style={{ objectFit: 'cover' }}
-                />
-                <div style={{
-                  position: 'absolute',
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  gap: '16px',
-                  padding: '18px 20px',
-                  color: '#fff',
-                  background: 'linear-gradient(180deg, #5b0c0c, #3a0606)'
-                }}>
-                  <div>
-                    <div style={{ fontWeight: 800, fontSize: '22px', lineHeight: 1.1, marginBottom: '4px', color: '#fff' }}>{item.name}</div>
-                    <div style={{ opacity: 0.92, fontSize: '16px', fontWeight: 600, color: '#fff' }}>Lost {item.loss} Weight</div>
-                  </div>
-                  <div style={{
-                    background: '#ffa726',
-                    color: '#fff',
-                    fontWeight: 800,
-                    fontSize: '14px',
-                    padding: '10px 16px',
-                    borderRadius: '999px',
-                    whiteSpace: 'nowrap',
-                    boxShadow: '0 6px 14px rgba(255,167,38,0.35)'
-                  }}>In {item.days}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
+      {/* Over 75,000+ People Section */}
+      <section style={{ background: '#fff', padding: '60px 20px' }}>
+        <TransformationShowcase 
+          page="wedding"
+          title="People Enjoy Weight Loss"
+          subtitle="Real Stories, Real Results - Join Our Community"
+          maxItems={6}
+        />
       </section>
 
       {/* Five Step Cycle Program Section */}
@@ -1036,19 +919,34 @@ export default function WeddingPlanPage() {
                 <p style={{ marginTop: '16px', color: '#6B7280', fontSize: '14px', lineHeight: 1.45 }}>
                   Wedding timeline fit:<br />{plan.timeline}
                 </p>
-                <button style={{
-                  marginTop: '22px',
-                  fontSize: '12px',
-                  background: 'linear-gradient(180deg, #ff9b2a, #f7931a)',
-                  color: '#fff',
-                  border: 'none',
-                  borderRadius: '999px',
-                  fontWeight: 900,
-                  padding: '14px 18px',
-                  cursor: 'pointer',
-                  width: '100%',
-                  boxShadow: '0 10px 20px rgba(255,155,42,0.3)'
-                }}>BUY NOW</button>
+                <button 
+                  onClick={() => {
+                    const price = plan.price.replace('₹', '').replace(',', '');
+                    const product = {
+                      id: `wedding-${plan.duration.toLowerCase().replace(/\s+/g, '-')}`,
+                      name: `Wedding Prep Plan - ${plan.duration}`,
+                      price: parseInt(price),
+                      quantity: 1
+                    };
+                    sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                    window.location.href = '/checkout';
+                  }}
+                  style={{
+                    marginTop: '22px',
+                    fontSize: '12px',
+                    background: 'linear-gradient(180deg, #ff9b2a, #f7931a)',
+                    color: '#fff',
+                    border: 'none',
+                    borderRadius: '999px',
+                    fontWeight: 900,
+                    padding: '14px 18px',
+                    cursor: 'pointer',
+                    width: '100%',
+                    boxShadow: '0 10px 20px rgba(255,155,42,0.3)'
+                  }}
+                >
+                  BUY NOW
+                </button>
               </div>
             ))}
           </div>

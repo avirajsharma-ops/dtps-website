@@ -19,6 +19,8 @@ import {
   ChevronDown,
   Moon,
   Sun,
+  ShoppingCart,
+  CreditCard,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -33,6 +35,8 @@ import { useTheme } from '@/app/providers/ThemeProvider';
 
 const sidebarItems = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: Home },
+  { name: 'Orders', href: '/admin/orders', icon: ShoppingCart },
+  { name: 'Payments', href: '/admin/payments', icon: CreditCard },
   { name: 'Testimonials', href: '/admin/testimonials', icon: Users },
   { name: 'Recognition', href: '/admin/recognition', icon: Trophy },
   { name: 'Pricing Plans', href: '/admin/pricing', icon: DollarSign },
