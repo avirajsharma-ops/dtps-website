@@ -1,7 +1,10 @@
 "use client";
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import TransformationGallery from '@/components/TransformationGallery';
+import { getPricingByCategory } from '@/lib/api';
+import type { IPricing } from '@/models/Pricing';
 
 const successStories = [
   { name: 'Soranya', loss: '15 kgs', days: '97 Days', image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/SORANYA-1-1.webp' },
@@ -29,6 +32,42 @@ const youtubeVideos = [
   'QRIWXRkjEXE'
 ];
 
+const fallbackPricingPlans = [
+  {
+    duration: '1',
+    durationSub: 'Month',
+    durationEnd: 'Plan',
+    price: '₹ 4,500',
+    originalPrice: '₹ 5,000',
+    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
+    popular: false,
+    badge: '',
+    features: ['8 hours of Chat support', 'Dietitian Consultation (12)', 'Customized Meal Plan', 'Progress Tracking']
+  },
+  {
+    duration: '3',
+    durationSub: 'Months',
+    durationEnd: 'Plan',
+    price: '₹ 12,000',
+    originalPrice: '₹ 15,000',
+    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
+    popular: true,
+    badge: 'Most Popular',
+    features: ['24/7 Chat support', 'Dietitian Consultation (36)', 'Customized Meal Plan', 'Progress Tracking', 'Weekly Check-ins']
+  },
+  {
+    duration: '6',
+    durationSub: 'Months',
+    durationEnd: 'Plan',
+    price: '₹ 22,000',
+    originalPrice: '₹ 30,000',
+    image: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/tiffin1.png',
+    popular: false,
+    badge: 'Best Value',
+    features: ['24/7 Chat support', 'Dietitian Consultation (72)', 'Customized Meal Plan', 'Progress Tracking', 'Weekly Check-ins', 'Custom Recipes']
+  }
+];
+
 export default function TherapeuticPlanPage() {
   const [bmiData, setBmiData] = useState({
     age: '',
@@ -38,8 +77,6 @@ export default function TherapeuticPlanPage() {
     weight: ''
   });
   const [bmiResult, setBmiResult] = useState<{ bmi: number; category: string } | null>(null);
-<<<<<<< HEAD
-=======
   const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
   const [loadingPricing, setLoadingPricing] = useState(true);
 
@@ -51,7 +88,7 @@ export default function TherapeuticPlanPage() {
         
         if (dbPricing && dbPricing.length > 0) {
           // Transform database pricing to match display format
-          const formattedPricing = dbPricing.map((plan: Pricing) => ({
+          const formattedPricing = dbPricing.map((plan: any) => ({
             duration: plan.planName.split(' ')[0],
             durationSub: plan.planName.split(' ').slice(1).join(' '),
             durationEnd: 'Plan',
@@ -74,7 +111,7 @@ export default function TherapeuticPlanPage() {
 
     fetchPricing();
   }, []);
->>>>>>> a14b523 (feat: Add UUID for orders, Orders/Payments sidebar menu, and detail pages)
+
 
   const calculateBMI = () => {
     const heightInMeters = ((parseInt(bmiData.heightFt) * 12 + parseInt(bmiData.heightIn)) * 0.0254);
