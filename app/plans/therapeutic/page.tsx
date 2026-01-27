@@ -68,6 +68,7 @@ const fallbackPricingPlans = [
   }
 ];
 
+
 export default function TherapeuticPlanPage() {
   const [bmiData, setBmiData] = useState({
     age: '',
