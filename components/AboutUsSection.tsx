@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function AboutUsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredFeature, setHoveredFeature] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -80,33 +81,10 @@ export default function AboutUsSection() {
             }}
           >
             <Image
-              src="/img/what-we-do-image-1.jpg"
+              src="/img/image-24-1.webp"
               alt="Woman enjoying healthy food"
               fill
               style={{ objectFit: 'cover' }}
-            />
-            {/* Decorative dots */}
-            <div
-              style={{
-                position: 'absolute',
-                top: '20px',
-                left: '20px',
-                width: '12px',
-                height: '12px',
-                background: '#f5a623',
-                borderRadius: '50%',
-              }}
-            />
-            <div
-              style={{
-                position: 'absolute',
-                top: '20px',
-                right: '20px',
-                width: '8px',
-                height: '8px',
-                background: '#f5a623',
-                borderRadius: '50%',
-              }}
             />
           </div>
 
@@ -129,57 +107,80 @@ export default function AboutUsSection() {
             }}
           >
             <Image
-              src="/img/what-we-do-image-2.jpg"
+              src="/img/image-27.webp"
               alt="Woman with healthy vegetables"
               fill
               style={{ objectFit: 'cover' }}
             />
           </div>
 
-          {/* Decorative Dashed Arrow */}
-          <svg
+          {/* Decorative Dashed Circle with Arrow */}
+          <div
             style={{
               position: 'absolute',
-              right: '80px',
-              bottom: '120px',
+              right: '60px',
+              top: '50%',
+              transform: 'translateY(-50%)',
               width: '80px',
               height: '80px',
               opacity: isVisible ? 1 : 0,
               transition: 'opacity 0.8s ease 0.6s',
               zIndex: 4,
             }}
-            viewBox="0 0 80 80"
-            fill="none"
           >
-            <path
-              d="M40 5 C60 5, 70 20, 70 40 C70 60, 55 75, 40 75"
-              stroke="#333"
-              strokeWidth="2"
-              strokeDasharray="6 4"
+            <svg
+              width="80"
+              height="80"
+              viewBox="0 0 80 80"
               fill="none"
-            />
-            <path
-              d="M35 68 L40 78 L48 72"
-              stroke="#333"
-              strokeWidth="2"
+              className="rotating-circle"
+            >
+              <circle
+                cx="40"
+                cy="40"
+                r="35"
+                stroke="#333"
+                strokeWidth="2"
+                strokeDasharray="6 6"
+                fill="none"
+              />
+            </svg>
+            <svg
+              style={{
+                position: 'absolute',
+                bottom: '-15px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+              }}
+              width="20"
+              height="20"
+              viewBox="0 0 24 24"
               fill="none"
-            />
-          </svg>
+            >
+              <path
+                d="M12 5v14M5 12l7 7 7-7"
+                stroke="#333"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </div>
 
           {/* Years Badge */}
           <div
             style={{
               position: 'absolute',
-              right: '40px',
-              bottom: '20px',
+              left: '50%',
+              bottom: '30px',
+              transform: isVisible ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0.8)',
               background: 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)',
               borderRadius: '16px',
               padding: '1rem 1.5rem',
               display: 'flex',
               alignItems: 'center',
-              gap: '0.5rem',
+              gap: '0.75rem',
               boxShadow: '0 10px 30px rgba(245, 124, 0, 0.4)',
-              transform: isVisible ? 'translateY(0) scale(1)' : 'translateY(30px) scale(0.8)',
               opacity: isVisible ? 1 : 0,
               transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s',
               zIndex: 5,
@@ -233,7 +234,7 @@ export default function AboutUsSection() {
             <span style={{ color: '#f5a623', fontSize: '1.2rem' }}>✦</span>
             <span
               style={{
-                color: '#f5a623',
+                color: '#0d9488',
                 fontSize: '1rem',
                 fontWeight: '600',
                 letterSpacing: '0.5px',
@@ -292,13 +293,20 @@ export default function AboutUsSection() {
               {features.map((feature, index) => (
                 <div
                   key={index}
+                  onMouseEnter={() => setHoveredFeature(index)}
+                  onMouseLeave={() => setHoveredFeature(null)}
                   style={{
                     display: 'flex',
                     alignItems: 'center',
                     gap: '0.75rem',
                     transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
                     opacity: isVisible ? 1 : 0,
-                    transition: `all 0.5s ease ${0.5 + index * 0.1}s`,
+                    transition: `all 0.3s ease`,
+                    transitionDelay: isVisible ? `${0.5 + index * 0.1}s` : '0s',
+                    padding: '0.5rem 0.75rem',
+                    borderRadius: '8px',
+                    background: hoveredFeature === index ? '#0d9488' : 'transparent',
+                    cursor: 'pointer',
                   }}
                 >
                   <div
@@ -306,11 +314,12 @@ export default function AboutUsSection() {
                       width: '24px',
                       height: '24px',
                       borderRadius: '50%',
-                      background: '#0d9488',
+                      background: hoveredFeature === index ? '#fff' : '#0d9488',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       flexShrink: 0,
+                      transition: 'all 0.3s ease',
                     }}
                   >
                     <svg
@@ -321,7 +330,7 @@ export default function AboutUsSection() {
                     >
                       <path
                         d="M3 7L6 10L11 4"
-                        stroke="#fff"
+                        stroke={hoveredFeature === index ? '#0d9488' : '#fff'}
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -331,8 +340,9 @@ export default function AboutUsSection() {
                   <span
                     style={{
                       fontSize: '0.95rem',
-                      color: '#333',
+                      color: hoveredFeature === index ? '#fff' : '#333',
                       fontWeight: '500',
+                      transition: 'all 0.3s ease',
                     }}
                   >
                     {feature}
@@ -373,6 +383,13 @@ export default function AboutUsSection() {
       </div>
 
       <style jsx>{`
+        @keyframes rotateDashed {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .rotating-circle {
+          animation: rotateDashed 10s linear infinite;
+        }
         @media (max-width: 900px) {
           .about-us-section > div {
             flex-direction: column !important;

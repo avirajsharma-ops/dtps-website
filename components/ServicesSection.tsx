@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function ServicesSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState<number | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -101,6 +102,7 @@ export default function ServicesSection() {
       >
         {/* Grid Layout */}
         <div
+          className="services-grid"
           style={{
             display: 'grid',
             gridTemplateColumns: 'repeat(3, 1fr)',
@@ -196,15 +198,19 @@ export default function ServicesSection() {
 
           {/* Weight Loss Card - Featured Orange */}
           <div
+            onMouseEnter={() => setHoveredCard(0)}
+            onMouseLeave={() => setHoveredCard(null)}
             style={{
               background: 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)',
               borderRadius: '20px',
               padding: '2rem',
               display: 'flex',
               flexDirection: 'column',
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transform: isVisible ? (hoveredCard === 0 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
               opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease 0.1s',
+              transition: 'all 0.4s ease',
+              cursor: 'pointer',
+              boxShadow: hoveredCard === 0 ? '0 20px 40px rgba(245, 124, 0, 0.4)' : 'none',
             }}
           >
             <div
@@ -264,29 +270,34 @@ export default function ServicesSection() {
 
           {/* PCOD Management Card */}
           <div
+            onMouseEnter={() => setHoveredCard(1)}
+            onMouseLeave={() => setHoveredCard(null)}
             style={{
-              background: '#fff',
+              background: hoveredCard === 1 ? 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)' : '#fff',
               borderRadius: '20px',
               padding: '2rem',
               display: 'flex',
               flexDirection: 'column',
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transform: isVisible ? (hoveredCard === 1 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
               opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease 0.2s',
+              transition: 'all 0.4s ease',
+              cursor: 'pointer',
+              boxShadow: hoveredCard === 1 ? '0 20px 40px rgba(245, 124, 0, 0.3)' : 'none',
             }}
           >
             <div
               style={{
                 width: '56px',
                 height: '56px',
-                background: '#fff',
-                border: '2px solid #0d9488',
+                background: hoveredCard === 1 ? 'rgba(255,255,255,0.2)' : '#fff',
+                border: hoveredCard === 1 ? 'none' : '2px solid #0d9488',
                 borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '1.5rem',
-                color: '#0d9488',
+                color: hoveredCard === 1 ? '#fff' : '#0d9488',
+                transition: 'all 0.4s ease',
               }}
             >
               {services[1].icon}
@@ -295,8 +306,9 @@ export default function ServicesSection() {
               style={{
                 fontSize: '1.35rem',
                 fontWeight: '700',
-                color: '#1a1a1a',
+                color: hoveredCard === 1 ? '#fff' : '#1a1a1a',
                 marginBottom: '1rem',
+                transition: 'all 0.4s ease',
               }}
             >
               {services[1].title}
@@ -304,10 +316,11 @@ export default function ServicesSection() {
             <p
               style={{
                 fontSize: '0.9rem',
-                color: '#6b7280',
+                color: hoveredCard === 1 ? 'rgba(255,255,255,0.9)' : '#6b7280',
                 lineHeight: '1.7',
                 marginBottom: '1.5rem',
                 flex: 1,
+                transition: 'all 0.4s ease',
               }}
             >
               {services[1].description}
@@ -318,10 +331,11 @@ export default function ServicesSection() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                color: '#0d9488',
+                color: hoveredCard === 1 ? '#fff' : '#0d9488',
                 fontSize: '0.95rem',
                 fontWeight: '600',
                 textDecoration: 'none',
+                transition: 'all 0.4s ease',
               }}
             >
               Read More
@@ -333,28 +347,33 @@ export default function ServicesSection() {
 
           {/* Therapeutic Nutrition Card */}
           <div
+            onMouseEnter={() => setHoveredCard(2)}
+            onMouseLeave={() => setHoveredCard(null)}
             style={{
-              background: '#fff',
+              background: hoveredCard === 2 ? 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)' : '#fff',
               borderRadius: '20px',
               padding: '2rem',
               display: 'flex',
               flexDirection: 'column',
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transform: isVisible ? (hoveredCard === 2 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
               opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease 0.3s',
+              transition: 'all 0.4s ease',
+              cursor: 'pointer',
+              boxShadow: hoveredCard === 2 ? '0 20px 40px rgba(245, 124, 0, 0.3)' : 'none',
             }}
           >
             <div
               style={{
                 width: '56px',
                 height: '56px',
-                background: '#e6f7f6',
+                background: hoveredCard === 2 ? 'rgba(255,255,255,0.2)' : '#e6f7f6',
                 borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '1.5rem',
-                color: '#0d9488',
+                color: hoveredCard === 2 ? '#fff' : '#0d9488',
+                transition: 'all 0.4s ease',
               }}
             >
               {services[2].icon}
@@ -363,8 +382,9 @@ export default function ServicesSection() {
               style={{
                 fontSize: '1.35rem',
                 fontWeight: '700',
-                color: '#1a1a1a',
+                color: hoveredCard === 2 ? '#fff' : '#1a1a1a',
                 marginBottom: '1rem',
+                transition: 'all 0.4s ease',
               }}
             >
               {services[2].title}
@@ -372,10 +392,11 @@ export default function ServicesSection() {
             <p
               style={{
                 fontSize: '0.9rem',
-                color: '#6b7280',
+                color: hoveredCard === 2 ? 'rgba(255,255,255,0.9)' : '#6b7280',
                 lineHeight: '1.7',
                 marginBottom: '1.5rem',
                 flex: 1,
+                transition: 'all 0.4s ease',
               }}
             >
               {services[2].description}
@@ -386,10 +407,11 @@ export default function ServicesSection() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                color: '#0d9488',
+                color: hoveredCard === 2 ? '#fff' : '#0d9488',
                 fontSize: '0.95rem',
                 fontWeight: '600',
                 textDecoration: 'none',
+                transition: 'all 0.4s ease',
               }}
             >
               Read More
@@ -401,28 +423,33 @@ export default function ServicesSection() {
 
           {/* Women's Health Card */}
           <div
+            onMouseEnter={() => setHoveredCard(3)}
+            onMouseLeave={() => setHoveredCard(null)}
             style={{
-              background: '#fff',
+              background: hoveredCard === 3 ? 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)' : '#fff',
               borderRadius: '20px',
               padding: '2rem',
               display: 'flex',
               flexDirection: 'column',
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
+              transform: isVisible ? (hoveredCard === 3 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
               opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease 0.4s',
+              transition: 'all 0.4s ease',
+              cursor: 'pointer',
+              boxShadow: hoveredCard === 3 ? '0 20px 40px rgba(245, 124, 0, 0.3)' : 'none',
             }}
           >
             <div
               style={{
                 width: '56px',
                 height: '56px',
-                background: '#e6f7f6',
+                background: hoveredCard === 3 ? 'rgba(255,255,255,0.2)' : '#e6f7f6',
                 borderRadius: '12px',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
                 marginBottom: '1.5rem',
-                color: '#0d9488',
+                color: hoveredCard === 3 ? '#fff' : '#0d9488',
+                transition: 'all 0.4s ease',
               }}
             >
               {services[3].icon}
@@ -431,8 +458,9 @@ export default function ServicesSection() {
               style={{
                 fontSize: '1.35rem',
                 fontWeight: '700',
-                color: '#1a1a1a',
+                color: hoveredCard === 3 ? '#fff' : '#1a1a1a',
                 marginBottom: '1rem',
+                transition: 'all 0.4s ease',
               }}
             >
               {services[3].title}
@@ -440,10 +468,11 @@ export default function ServicesSection() {
             <p
               style={{
                 fontSize: '0.9rem',
-                color: '#6b7280',
+                color: hoveredCard === 3 ? 'rgba(255,255,255,0.9)' : '#6b7280',
                 lineHeight: '1.7',
                 marginBottom: '1.5rem',
                 flex: 1,
+                transition: 'all 0.4s ease',
               }}
             >
               {services[3].description}
@@ -454,10 +483,11 @@ export default function ServicesSection() {
                 display: 'flex',
                 alignItems: 'center',
                 gap: '0.5rem',
-                color: '#0d9488',
+                color: hoveredCard === 3 ? '#fff' : '#0d9488',
                 fontSize: '0.95rem',
                 fontWeight: '600',
                 textDecoration: 'none',
+                transition: 'all 0.4s ease',
               }}
             >
               Read More

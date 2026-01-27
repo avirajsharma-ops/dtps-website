@@ -1,10 +1,11 @@
-"use client"
+﻿"use client"
 import { useState, useEffect } from 'react';
 import Hero from '@/components/Hero';
 import AboutUsSection from '@/components/AboutUsSection';
 import ServicesSection from '@/components/ServicesSection';
 import WhatWeDoSection from '@/components/WhatWeDoSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
+import FAQSection from '@/components/FAQSection';
 import Image from 'next/image';
 import { getOptimizedUrl } from '@/lib/imagekit';
 
@@ -86,36 +87,110 @@ export default function HomePage() {
       {/* Why Choose Us Section */}
       {/* ...existing code... */}
       {/* Expert Guidance Section */}
-      <section className="expert-guidance-section" style={{ background: '#fff', padding: '0 0 3rem 0', display: 'flex', justifyContent: 'center' }}>
-        <div style={{ borderRadius: '20px', maxWidth: '1200px', width: '100%', margin: '0 auto', padding: '4rem 3rem 4rem 3rem', background: '#fff', boxShadow: '0 4px 24px rgba(0,0,0,0.07)', transform: 'scale(1.3)', transformOrigin: 'top center' }}>
-          <div style={{ color: '#222', textAlign: 'center', marginBottom: '1.5rem' }}>
-            <div style={{ fontWeight: 700, fontSize: '2rem', marginBottom: '0.5rem' }}>
-              You are under Expert’s Guidance
+      <section className="expert-guidance-section" style={{ background: '#fff', padding: '4rem 2rem' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          {/* Section Header */}
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+              <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
+              <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Expert Guidance</span>
             </div>
-            <div style={{ fontWeight: 400, fontSize: '1.1rem', marginBottom: '1.5rem' }}>
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2 }}>
+              You are under Expert&apos;s Guidance
+            </h2>
+            <p style={{ color: '#666', fontSize: '1.1rem', marginTop: '0.5rem' }}>
               Meet our award Winning Dietitian
-            </div>
+            </p>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {/* ...existing code for expert guidance content... */}
-            <div style={{ minWidth: 220, textAlign: 'center', background: '#fff', borderRadius: '16px', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', padding: '1rem' }}>
-              <Image
-                src="/assets/img/D-I-E-T-I-C-I-AN.png"
-                alt="Dietitian Poonam Sagar"
-                width={220}
-                height={300}
-                style={{ borderRadius: '16px', objectFit: 'cover', marginBottom: '0.5rem' }}
-              />
-              <div style={{ background: '#0b4c4c', color: '#fff', fontWeight: 700, borderRadius: '8px', padding: '0.25rem 0.75rem', display: 'inline-block', fontSize: '0.95rem', marginTop: '0.5rem' }}>
-                An Award winning Dietitian
-              </div>
+          
+          {/* Expert Content */}
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+            {/* Left - Vertical SAGAR Text */}
+            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+              {'SAGAR'.split('').map((letter, i) => (
+                <span key={i} style={{ 
+                  fontWeight: 800, 
+                  fontSize: '2.5rem', 
+                  color: '#0b4c4c',
+                  lineHeight: 1,
+                  letterSpacing: '2px'
+                }}>{letter}</span>
+              ))}
             </div>
-            <div style={{ color: '#222', maxWidth: 400, textAlign: 'left', background: '#fff', borderRadius: '16px', boxShadow: '0 2px 12px rgba(0,0,0,0.07)', padding: '1rem' }}>
-              <div style={{ fontWeight: 700, fontSize: '1.2rem', marginBottom: '0.5rem', letterSpacing: '0.5px', color: '#0b4c4c' }}>
-                Dt. Poonam Sagar
+            
+            {/* Center - Image with decoration */}
+            <div style={{ position: 'relative' }}>
+              <Image
+                src="/img/Group-319-2-1.webp"
+                alt="Dietitian Poonam Sagar"
+                width={320}
+                height={400}
+                style={{ borderRadius: '20px', objectFit: 'cover' }}
+              />
+              {/* Decorative circles */}
+              <div style={{
+                position: 'absolute',
+                top: '-15px',
+                right: '-15px',
+                width: '60px',
+                height: '60px',
+                border: '2px dashed #009688',
+                borderRadius: '50%',
+                animation: 'spin 10s linear infinite'
+              }} />
+              <div style={{
+                position: 'absolute',
+                bottom: '-10px',
+                left: '-10px',
+                width: '40px',
+                height: '40px',
+                background: '#ff9100',
+                borderRadius: '50%',
+                opacity: 0.8
+              }} />
+            </div>
+            
+            {/* Right - Description Card */}
+            <div style={{ 
+              maxWidth: '400px', 
+              background: '#0b4c4c', 
+              borderRadius: '20px', 
+              padding: '2rem',
+              color: '#fff',
+              position: 'relative'
+            }}>
+              <div style={{ 
+                position: 'absolute',
+                top: '-20px',
+                left: '20px',
+                background: '#ff9100',
+                color: '#fff',
+                fontWeight: 700,
+                borderRadius: '8px',
+                padding: '0.5rem 1rem',
+                fontSize: '0.85rem'
+              }}>
+                25+ Years Experience
               </div>
-              <div style={{ fontWeight: 400, fontSize: '1rem', lineHeight: 1.6 }}>
-                Dt. Poonam Sagar has 25+ years dietary and clinical expertise. That’s why we are trusted by 15,000+ clients for their health and nutrition goals. Her approach is rooted in evidence-based nutrition, personalized care, and a passion for helping people achieve lasting results. You are always in expert hands, receiving a combination of compassion, knowledge, and motivation to create a healthier you.
+              <h3 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '0.5rem', marginTop: '1rem' }}>
+                Dt. Poonam Sagar
+              </h3>
+              <p style={{ fontSize: '0.9rem', opacity: 0.9, marginBottom: '1rem' }}>
+                Award Winning Dietitian
+              </p>
+              <p style={{ fontSize: '0.95rem', lineHeight: 1.7, opacity: 0.95 }}>
+                Dt. Poonam Sagar has 25+ years dietary and clinical expertise. That&apos;s why we are trusted by 15,000+ clients for their health and nutrition goals. Her approach is rooted in evidence-based nutrition, personalized care, and a passion for helping people achieve lasting results.
+              </p>
+              {/* Stats */}
+              <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem' }}>
+                <div>
+                  <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#ff9100' }}>15K+</div>
+                  <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Happy Clients</div>
+                </div>
+                <div>
+                  <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#ff9100' }}>25+</div>
+                  <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Years Experience</div>
+                </div>
               </div>
             </div>
           </div>
@@ -124,112 +199,147 @@ export default function HomePage() {
 
       {/* Our Video Section */}
       <section style={{ 
-        background: `linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/assets/img/video-bg.jpg')`,
+        background: 'url("/img/what-we-do-image-1.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
-        padding: '4rem 2rem',
+        padding: '5rem 2rem',
         position: 'relative',
-        minHeight: '500px'
+        minHeight: '600px'
       }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
-          <div style={{ maxWidth: '500px', color: '#fff' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-              <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-              <span style={{ color: '#ff9100', fontWeight: 600, fontSize: '1rem' }}>Our Video</span>
-            </div>
-            <h2 style={{ fontSize: '2.8rem', fontWeight: 700, lineHeight: 1.2, marginBottom: '1.5rem' }}>
-              Lives through wellness<br />video stories
-            </h2>
-            <p style={{ fontSize: '1rem', lineHeight: 1.7, marginBottom: '2rem', opacity: 0.9 }}>
-              Explore inspiring stories of transformation and growth through our wellness videos, showcasing real journeys toward healthier, happier lives.
-            </p>
-            <button style={{ 
-              background: '#ff9100', 
-              color: '#fff', 
-              fontWeight: 600, 
-              fontSize: '1rem', 
-              border: 'none', 
-              borderRadius: '2rem', 
-              padding: '0.9rem 2rem', 
-              cursor: 'pointer' 
-            }}>
-              Explore More
-            </button>
-          </div>
-          <div style={{ position: 'relative' }}>
-            <div style={{ 
-              width: '80px', 
-              height: '80px', 
-              background: '#ff9100', 
-              borderRadius: '50%', 
-              display: 'flex', 
-              alignItems: 'center', 
-              justifyContent: 'center',
-              cursor: 'pointer',
-              boxShadow: '0 4px 20px rgba(255,145,0,0.4)'
-            }}>
-              <div style={{ 
-                width: 0, 
-                height: 0, 
-                borderLeft: '20px solid #fff', 
-                borderTop: '12px solid transparent', 
-                borderBottom: '12px solid transparent',
-                marginLeft: '5px'
-              }}></div>
-            </div>
-            <div style={{ 
-              position: 'absolute', 
-              top: '50%', 
-              left: '50%', 
-              transform: 'translate(-50%, -50%)',
-              width: '150px',
-              height: '150px',
-              border: '1px dashed rgba(255,255,255,0.3)',
-              borderRadius: '50%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              animation: 'spin 20s linear infinite'
-            }}>
-              <span style={{ 
-                position: 'absolute',
-                fontSize: '0.7rem',
-                color: '#fff',
-                whiteSpace: 'nowrap',
-                letterSpacing: '2px'
+        {/* Dark overlay */}
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'linear-gradient(135deg, rgba(11, 76, 76, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%)'
+        }} />
+        
+        <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '3rem' }}>
+            {/* Left content */}
+            <div style={{ maxWidth: '500px', color: '#fff' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
+                <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
+                <span style={{ color: '#ff9100', fontWeight: 600, fontSize: '1rem' }}>Our Video</span>
+              </div>
+              <h2 style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2, marginBottom: '1.5rem' }}>
+                Lives through wellness<br />video stories
+              </h2>
+              <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem', opacity: 0.9 }}>
+                Explore inspiring stories of transformation and growth through our wellness videos, showcasing real journeys toward healthier, happier lives.
+              </p>
+              <button style={{ 
+                background: '#ff9100', 
+                color: '#fff', 
+                fontWeight: 600, 
+                fontSize: '1rem', 
+                border: 'none', 
+                borderRadius: '2rem', 
+                padding: '1rem 2.5rem', 
+                cursor: 'pointer',
+                transition: 'all 0.3s ease',
+                boxShadow: '0 4px 15px rgba(255, 145, 0, 0.4)'
               }}>
-              </span>
+                Explore More
+              </button>
+            </div>
+            
+            {/* Right - Play button with rotating text */}
+            <div style={{ position: 'relative', width: '200px', height: '200px' }}>
+              {/* Center play button */}
+              <div style={{ 
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '80px', 
+                height: '80px', 
+                background: '#ff9100', 
+                borderRadius: '50%', 
+                display: 'flex', 
+                alignItems: 'center', 
+                justifyContent: 'center',
+                cursor: 'pointer',
+                boxShadow: '0 4px 30px rgba(255,145,0,0.5)',
+                zIndex: 2
+              }}>
+                <div style={{ 
+                  width: 0, 
+                  height: 0, 
+                  borderLeft: '22px solid #fff', 
+                  borderTop: '14px solid transparent', 
+                  borderBottom: '14px solid transparent',
+                  marginLeft: '6px'
+                }} />
+              </div>
+              
+              {/* Rotating circular text */}
+              <svg style={{ 
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '200px',
+                height: '200px',
+                animation: 'spin 15s linear infinite'
+              }} viewBox="0 0 200 200">
+                <defs>
+                  <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
+                </defs>
+                <text fill="#fff" fontSize="12" fontWeight="500" letterSpacing="3">
+                  <textPath href="#circlePath">
+                    • WATCH VIDEO • TRANSFORMATION • SUCCESS STORIES • WELLNESS JOURNEY 
+                  </textPath>
+                </text>
+              </svg>
+              
+              {/* Dashed circle border */}
+              <div style={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)',
+                width: '170px',
+                height: '170px',
+                border: '2px dashed rgba(255,255,255,0.3)',
+                borderRadius: '50%'
+              }} />
             </div>
           </div>
-        </div>
-        {/* Stats Bar */}
-        <div style={{ 
-          maxWidth: '1200px', 
-          margin: '3rem auto 0', 
-          display: 'flex', 
-          justifyContent: 'space-between', 
-          flexWrap: 'wrap',
-          gap: '2rem'
-        }}>
-          <div style={{ textAlign: 'center', color: '#fff' }}>
-            <div style={{ fontSize: '3rem', fontWeight: 700 }}>25+</div>
-            <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Year of experience</div>
-          </div>
-          <div style={{ textAlign: 'center', color: '#fff' }}>
-            <div style={{ fontSize: '3rem', fontWeight: 700 }}>260<span style={{ color: '#ff9100' }}>+</span></div>
-            <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Hours of coaching</div>
-          </div>
-          <div style={{ textAlign: 'center', color: '#fff' }}>
-            <div style={{ fontSize: '3rem', fontWeight: 700 }}>550+</div>
-            <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Complete courses</div>
-          </div>
-          <div style={{ textAlign: 'center', color: '#fff' }}>
-            <div style={{ fontSize: '3rem', fontWeight: 700 }}>20K+</div>
-            <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Happy customer</div>
-          </div>
-          <div style={{ textAlign: 'center', color: '#fff' }}>
-            <div style={{ fontSize: '3rem', fontWeight: 700 }}>359+</div>
-            <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Awards win</div>
+          
+          {/* Stats Bar */}
+          <div style={{ 
+            marginTop: '4rem', 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            flexWrap: 'wrap',
+            gap: '2rem',
+            padding: '2rem',
+            background: 'rgba(255,255,255,0.1)',
+            borderRadius: '20px',
+            backdropFilter: 'blur(10px)'
+          }}>
+            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700 }}>25<span style={{ color: '#ff9100' }}>+</span></div>
+              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Year of experience</div>
+            </div>
+            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700 }}>260<span style={{ color: '#ff9100' }}>+</span></div>
+              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Hours of coaching</div>
+            </div>
+            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700 }}>550<span style={{ color: '#ff9100' }}>+</span></div>
+              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Complete courses</div>
+            </div>
+            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700 }}>20K<span style={{ color: '#ff9100' }}>+</span></div>
+              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Happy customer</div>
+            </div>
+            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
+              <div style={{ fontSize: '3rem', fontWeight: 700 }}>359<span style={{ color: '#ff9100' }}>+</span></div>
+              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Awards win</div>
+            </div>
           </div>
         </div>
       </section>
@@ -255,13 +365,14 @@ export default function HomePage() {
               border: 'none', 
               borderRadius: '2rem', 
               padding: '0.8rem 2rem', 
-              cursor: 'pointer' 
+              cursor: 'pointer',
+              transition: 'all 0.3s ease'
             }}>
               All Programs
             </button>
           </div>
           <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
-            {/* Program Card 1 */}
+            {/* Program Card 1 - Using Garima-Mam.jpeg */}
             <div style={{ 
               background: '#222', 
               borderRadius: '20px', 
@@ -270,61 +381,38 @@ export default function HomePage() {
               height: '450px',
               position: 'relative',
               cursor: 'pointer',
-              transition: 'transform 0.3s'
-            }}>
-              <img src="/assets/img/program-1.jpg" alt="Weight Management Program" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              transition: 'transform 0.3s, box-shadow 0.3s'
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+            >
+              <img src="/img/Garima-Mam.jpeg" alt="Weight Management Program" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ 
                 position: 'absolute', 
                 left: 0, 
                 bottom: 0, 
                 width: '100%', 
                 padding: '1.5rem', 
-                background: 'linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 70%, transparent 100%)',
+                background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
                 color: '#fff'
               }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Weight Management<br />Program</h3>
-                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>DAINIK BHASKAR WOMEN ENTREPRENEUR AWARD<br /><span style={{ opacity: 0.7 }}>Former IPS Smt. Kiran Bedi Awarded Dietician Poonam Sagar</span></p>
-              </div>
-            </div>
-            {/* Program Card 2 */}
-            <div style={{ 
-              background: '#222', 
-              borderRadius: '20px', 
-              overflow: 'hidden', 
-              width: '360px', 
-              height: '450px',
-              position: 'relative',
-              cursor: 'pointer',
-              transition: 'transform 0.3s'
-            }}>
-              <img src="/assets/img/program-2.jpg" alt="Stress Reduction & Mindfulness" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ 
-                position: 'absolute', 
-                left: 0, 
-                bottom: 0, 
-                width: '100%', 
-                padding: '1.5rem', 
-                background: 'linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 70%, transparent 100%)',
-                color: '#fff'
-              }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Stress Reduction &<br />Mindfulness</h3>
-                <button style={{ 
+                <div style={{ 
+                  display: 'inline-block', 
                   background: '#ff9100', 
-                  color: '#fff', 
-                  fontWeight: 600, 
-                  fontSize: '0.9rem', 
-                  border: 'none', 
-                  borderRadius: '2rem', 
-                  padding: '0.6rem 1.5rem', 
-                  cursor: 'pointer',
-                  marginTop: '0.5rem'
+                  padding: '0.3rem 0.8rem', 
+                  borderRadius: '20px', 
+                  fontSize: '0.75rem', 
+                  fontWeight: 600,
+                  marginBottom: '0.5rem'
                 }}>
-                  Read More
-                </button>
-                <p style={{ fontSize: '0.85rem', opacity: 0.9, marginTop: '0.5rem' }}>NEWS 18 NARAYANI NAM<br /><span style={{ opacity: 0.7 }}>Leading Women Entrepreneur (Health & Nutrition) Dietician Poonam Sagar</span></p>
+                  WEIGHT LOSS
+                </div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Weight Management<br />Program</h3>
+                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Customized diet plans for effective and sustainable weight loss results.</p>
               </div>
             </div>
-            {/* Program Card 3 */}
+            
+            {/* Program Card 2 - Using Shivani.jpeg */}
             <div style={{ 
               background: '#222', 
               borderRadius: '20px', 
@@ -333,20 +421,74 @@ export default function HomePage() {
               height: '450px',
               position: 'relative',
               cursor: 'pointer',
-              transition: 'transform 0.3s'
-            }}>
-              <img src="/assets/img/program-3.jpg" alt="Fitness And Movement Coaching" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              transition: 'transform 0.3s, box-shadow 0.3s'
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+            >
+              <img src="/img/Shivani.jpeg" alt="PCOD/PCOS Program" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
               <div style={{ 
                 position: 'absolute', 
                 left: 0, 
                 bottom: 0, 
                 width: '100%', 
                 padding: '1.5rem', 
-                background: 'linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 70%, transparent 100%)',
+                background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
                 color: '#fff'
               }}>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Fitness And Movement<br />Coaching</h3>
-                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>MID DAY ICONIC BUSINESS WOMAN (Health & Nutrition) AWARD<br /><span style={{ opacity: 0.7 }}>Actress Bhagyashree & Rishabh Sawhney Awarded Dietician Poonam Sagar</span></p>
+                <div style={{ 
+                  display: 'inline-block', 
+                  background: '#009688', 
+                  padding: '0.3rem 0.8rem', 
+                  borderRadius: '20px', 
+                  fontSize: '0.75rem', 
+                  fontWeight: 600,
+                  marginBottom: '0.5rem'
+                }}>
+                  PCOD/PCOS
+                </div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>PCOD/PCOS<br />Management</h3>
+                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Specialized nutrition programs for hormonal balance and PCOD management.</p>
+              </div>
+            </div>
+            
+            {/* Program Card 3 - Using Anshu-Jain.jpeg */}
+            <div style={{ 
+              background: '#222', 
+              borderRadius: '20px', 
+              overflow: 'hidden', 
+              width: '360px', 
+              height: '450px',
+              position: 'relative',
+              cursor: 'pointer',
+              transition: 'transform 0.3s, box-shadow 0.3s'
+            }}
+            onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'; }}
+            onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+            >
+              <img src="/img/Anshu-Jain.jpeg" alt="Therapeutic Diet Program" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+              <div style={{ 
+                position: 'absolute', 
+                left: 0, 
+                bottom: 0, 
+                width: '100%', 
+                padding: '1.5rem', 
+                background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
+                color: '#fff'
+              }}>
+                <div style={{ 
+                  display: 'inline-block', 
+                  background: '#0b4c4c', 
+                  padding: '0.3rem 0.8rem', 
+                  borderRadius: '20px', 
+                  fontSize: '0.75rem', 
+                  fontWeight: 600,
+                  marginBottom: '0.5rem'
+                }}>
+                  THERAPEUTIC
+                </div>
+                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Therapeutic Diet<br />Program</h3>
+                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Medical nutrition therapy for diabetes, thyroid, and other health conditions.</p>
               </div>
             </div>
           </div>
@@ -669,220 +811,182 @@ export default function HomePage() {
       </section>
 
       {/* FAQ Section */}
-      <section style={{ background: '#f5f7fa', padding: '5rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'center' }}>
-          <div style={{ flex: '1', minWidth: '300px', position: 'relative' }}>
-            <div style={{ position: 'relative' }}>
-              <Image 
-                src="/assets/img/faq-img-1.jpg" 
-                alt="Healthy lifestyle" 
-                width={350} 
-                height={400}
-                style={{ borderRadius: '16px', objectFit: 'cover' }}
-              />
-              <div style={{ 
-                position: 'absolute', 
-                top: '50%', 
-                right: '-30px',
-                width: '60px',
-                height: '60px',
-                border: '2px dashed #009688',
-                borderRadius: '50%'
-              }}></div>
-            </div>
-            <Image 
-              src="/assets/img/faq-img-2.jpg" 
-              alt="Diet consultation" 
-              width={300} 
-              height={250}
-              style={{ 
-                borderRadius: '16px', 
-                objectFit: 'cover', 
-                position: 'absolute', 
-                bottom: '-50px', 
-                right: '0',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
-              }}
-            />
-            <div style={{ 
-              position: 'absolute', 
-              bottom: '0', 
-              left: '0',
-              display: 'grid',
-              gridTemplateColumns: 'repeat(3, 1fr)',
-              gap: '5px'
-            }}>
-              {[...Array(9)].map((_, i) => (
-                <span key={i} style={{ color: '#009688', fontSize: '0.6rem' }}>✦</span>
-              ))}
-            </div>
-          </div>
-          <div style={{ flex: '1', minWidth: '400px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-              <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Frequently Asked Questions</span>
-            </div>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2, marginBottom: '2rem' }}>
-              Common Questions About<br />Our Diet Plans
-            </h2>
-            {/* FAQ Items */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <div style={{ 
-                background: '#fff', 
-                borderRadius: '12px', 
-                padding: '1.2rem 1.5rem',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
-                cursor: 'pointer'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 600, color: '#222' }}>What does Dt Poonam Sagar specialize in?</span>
-                  <span style={{ color: '#ff9100', fontSize: '1.5rem', fontWeight: 300 }}>+</span>
-                </div>
-              </div>
-              <div style={{ 
-                background: '#ff9100', 
-                borderRadius: '12px', 
-                padding: '1.2rem 1.5rem',
-                cursor: 'pointer'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
-                  <span style={{ fontWeight: 600, color: '#fff' }}>How are the diet plans designed?</span>
-                  <span style={{ color: '#fff', fontSize: '1.5rem', fontWeight: 300 }}>−</span>
-                </div>
-                <p style={{ color: '#fff', fontSize: '0.95rem', lineHeight: 1.6 }}>
-                  Every plan starts with a <strong>detailed assessment</strong> of your health goals, medical condition (if any), and dietary habits. Based on this, a tailored nutrition plan is created that fits your routine and helps you achieve sustainable results.
-                </p>
-              </div>
-              <div style={{ 
-                background: '#fff', 
-                borderRadius: '12px', 
-                padding: '1.2rem 1.5rem',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
-                cursor: 'pointer'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 600, color: '#222' }}>Is the nutrition plan difficult to follow?</span>
-                  <span style={{ color: '#ff9100', fontSize: '1.5rem', fontWeight: 300 }}>+</span>
-                </div>
-              </div>
-              <div style={{ 
-                background: '#fff', 
-                borderRadius: '12px', 
-                padding: '1.2rem 1.5rem',
-                boxShadow: '0 2px 10px rgba(0,0,0,0.05)',
-                cursor: 'pointer'
-              }}>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ fontWeight: 600, color: '#222' }}>What results can I expect?</span>
-                  <span style={{ color: '#ff9100', fontSize: '1.5rem', fontWeight: 300 }}>+</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <FAQSection />
 
       {/* Testimonials Section */}
-      <section style={{ background: '#f5f7fa', padding: '5rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '3rem', flexWrap: 'wrap' }}>
-          <div style={{ flex: '1', minWidth: '400px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
+      <section style={{ background: '#fff', padding: '5rem 2rem' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+          {/* Section Header */}
+          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
               <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
               <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Our Testimonials</span>
             </div>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2, marginBottom: '2rem' }}>
-              Success stories from our<br />clients
+            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2 }}>
+              Success stories from our clients
             </h2>
-            {/* Testimonial Cards Grid */}
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
-              {testimonials.slice(0, 4).map((testimonial, index) => (
-                <div 
-                  key={testimonial._id || index}
-                  style={{ 
-                    background: index === 1 ? '#ff9100' : '#fff', 
-                    borderRadius: '16px', 
-                    padding: '1.5rem',
-                    boxShadow: index === 1 ? 'none' : '0 2px 15px rgba(0,0,0,0.05)'
-                  }}
-                >
-                  <div style={{ color: index === 1 ? '#fff' : '#ff9100', marginBottom: '0.75rem' }}>★★★★★</div>
-                  <p style={{ color: index === 1 ? '#fff' : '#555', fontSize: '0.95rem', lineHeight: 1.6, marginBottom: '1rem' }}>
-                    &ldquo;{testimonial.content}&rdquo;
-                  </p>
-                  <div style={{ fontWeight: 700, color: index === 1 ? '#fff' : '#222' }}>{testimonial.name}</div>
-                </div>
-              ))}
-            </div>
           </div>
-          {/* Right Side Images */}
-          <div style={{ flex: '1', minWidth: '350px', position: 'relative' }}>
-            <Image 
-              src={testimonials[0]?.image || '/assets/img/testimonial-1.jpg'} 
-              alt="Happy client" 
-              width={280} 
-              height={350}
-              style={{ 
-                borderRadius: '16px', 
-                objectFit: 'cover',
-                position: 'absolute',
-                top: '0',
-                left: '0',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
-              }}
-            />
-            <Image 
-              src={testimonials[1]?.image || '/assets/img/testimonial-2.jpg'} 
-              alt="Healthy lifestyle" 
-              width={250} 
-              height={300}
-              style={{ 
-                borderRadius: '16px', 
-                objectFit: 'cover',
-                position: 'absolute',
-                top: '30px',
-                right: '0',
-                transform: 'rotate(5deg)',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
-              }}
-            />
-            <Image 
-              src={testimonials[2]?.image || '/assets/img/testimonial-3.jpg'} 
-              alt="Kitchen cooking" 
-              width={300} 
-              height={200}
-              style={{ 
-                borderRadius: '16px', 
-                objectFit: 'cover',
-                position: 'absolute',
-                bottom: '0',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
-              }}
-            />
-            {/* Reviews Badge */}
-            <div style={{ 
-              position: 'absolute', 
-              bottom: '30px', 
-              right: '20px',
-              background: '#0b4c4c',
-              borderRadius: '12px',
-              padding: '0.75rem 1rem',
-              color: '#fff',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              boxShadow: '0 5px 20px rgba(0,0,0,0.2)'
-            }}>
-              <div style={{ 
-                background: '#ff9100', 
-                borderRadius: '50%', 
-                padding: '0.25rem 0.5rem',
-                fontSize: '0.75rem',
-                fontWeight: 700
-              }}>15K</div>
-              <div>
-                <div style={{ fontSize: '0.9rem', fontWeight: 600 }}>0.5 ★ ( 15.5 k riview )</div>
+          
+          <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+            {/* Left - Testimonial Cards */}
+            <div style={{ flex: '1', minWidth: '400px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+                {testimonials.slice(0, 4).map((testimonial, index) => (
+                  <div 
+                    key={testimonial._id || index}
+                    style={{ 
+                      background: index === 1 ? '#ff9100' : '#fff', 
+                      borderRadius: '20px', 
+                      padding: '1.5rem',
+                      boxShadow: index === 1 ? '0 10px 30px rgba(255, 145, 0, 0.3)' : '0 5px 20px rgba(0,0,0,0.08)',
+                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
+                      cursor: 'pointer'
+                    }}
+                    onMouseOver={(e) => { 
+                      e.currentTarget.style.transform = 'translateY(-5px)'; 
+                      e.currentTarget.style.boxShadow = index === 1 ? '0 15px 40px rgba(255, 145, 0, 0.4)' : '0 10px 30px rgba(0,0,0,0.12)';
+                    }}
+                    onMouseOut={(e) => { 
+                      e.currentTarget.style.transform = 'translateY(0)'; 
+                      e.currentTarget.style.boxShadow = index === 1 ? '0 10px 30px rgba(255, 145, 0, 0.3)' : '0 5px 20px rgba(0,0,0,0.08)';
+                    }}
+                  >
+                    <div style={{ 
+                      color: index === 1 ? '#fff' : '#ff9100', 
+                      marginBottom: '0.75rem',
+                      fontSize: '1.1rem',
+                      letterSpacing: '2px'
+                    }}>★★★★★</div>
+                    <p style={{ 
+                      color: index === 1 ? '#fff' : '#555', 
+                      fontSize: '0.95rem', 
+                      lineHeight: 1.7, 
+                      marginBottom: '1rem',
+                      fontStyle: 'italic'
+                    }}>
+                      &ldquo;{testimonial.content}&rdquo;
+                    </p>
+                    <div style={{ 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '0.75rem',
+                      paddingTop: '0.75rem',
+                      borderTop: index === 1 ? '1px solid rgba(255,255,255,0.2)' : '1px solid #eee'
+                    }}>
+                      <div style={{
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '50%',
+                        background: index === 1 ? 'rgba(255,255,255,0.2)' : '#009688',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        color: '#fff',
+                        fontWeight: 700,
+                        fontSize: '1rem'
+                      }}>
+                        {testimonial.name.charAt(0)}
+                      </div>
+                      <div style={{ fontWeight: 700, color: index === 1 ? '#fff' : '#222' }}>{testimonial.name}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Right - Stats and Badge */}
+            <div style={{ flex: '1', minWidth: '350px', position: 'relative', height: '450px' }}>
+              {/* Main Stats Card */}
+              <div style={{
+                background: '#0b4c4c',
+                borderRadius: '30px',
+                padding: '3rem',
+                color: '#fff',
+                height: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                position: 'relative',
+                overflow: 'hidden'
+              }}>
+                {/* Background decoration */}
+                <div style={{
+                  position: 'absolute',
+                  top: '-50px',
+                  right: '-50px',
+                  width: '200px',
+                  height: '200px',
+                  borderRadius: '50%',
+                  background: 'rgba(255, 145, 0, 0.1)'
+                }} />
+                <div style={{
+                  position: 'absolute',
+                  bottom: '-30px',
+                  left: '-30px',
+                  width: '150px',
+                  height: '150px',
+                  borderRadius: '50%',
+                  background: 'rgba(0, 150, 136, 0.2)'
+                }} />
+                
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <div style={{ 
+                    fontSize: '5rem', 
+                    fontWeight: 800, 
+                    lineHeight: 1,
+                    marginBottom: '0.5rem'
+                  }}>
+                    15K<span style={{ color: '#ff9100' }}>+</span>
+                  </div>
+                  <div style={{ 
+                    fontSize: '1.5rem', 
+                    fontWeight: 600,
+                    marginBottom: '1.5rem',
+                    opacity: 0.9
+                  }}>
+                    Happy Clients
+                  </div>
+                  <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '0.5rem',
+                    background: 'rgba(255,255,255,0.1)',
+                    padding: '0.75rem 1rem',
+                    borderRadius: '12px',
+                    width: 'fit-content'
+                  }}>
+                    <span style={{ color: '#ff9100', fontSize: '1.5rem' }}>★</span>
+                    <span style={{ fontSize: '1.2rem', fontWeight: 600 }}>4.9</span>
+                    <span style={{ opacity: 0.8, fontSize: '0.9rem' }}>Average Rating</span>
+                  </div>
+                  
+                  {/* Trust badges */}
+                  <div style={{ 
+                    display: 'flex', 
+                    gap: '1rem', 
+                    marginTop: '2rem',
+                    flexWrap: 'wrap'
+                  }}>
+                    <div style={{
+                      background: '#ff9100',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '8px',
+                      fontSize: '0.85rem',
+                      fontWeight: 600
+                    }}>
+                      ✓ Verified Reviews
+                    </div>
+                    <div style={{
+                      background: 'rgba(255,255,255,0.15)',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '8px',
+                      fontSize: '0.85rem',
+                      fontWeight: 600
+                    }}>
+                      ✓ 25+ Years Trust
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -892,4 +996,3 @@ export default function HomePage() {
   );
 }
 // Removed local fallback implementations of useState/useEffect — using React's useState and useEffect imported above.
-

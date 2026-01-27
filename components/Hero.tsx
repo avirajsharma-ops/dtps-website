@@ -73,7 +73,8 @@ export default function Hero() {
                 className="hero-main-img"
                 priority
               />
-              <div className="hero-badge">
+              {/* Badge positioned at bottom right of image */}
+              <div className="hero-badge-bottom">
                 <span className="badge-number">25</span>
                 <span className="badge-text">Years of<br />experience</span>
               </div>

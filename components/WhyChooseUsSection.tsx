@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 export default function WhyChooseUsSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [hoveredFeature, setHoveredFeature] = useState<string | null>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -177,23 +178,28 @@ export default function WhyChooseUsSection() {
             {leftFeatures.map((feature, index) => (
               <div
                 key={index}
+                onMouseEnter={() => setHoveredFeature(`left-${index}`)}
+                onMouseLeave={() => setHoveredFeature(null)}
                 style={{
                   transform: isVisible ? 'translateX(0)' : 'translateX(-30px)',
                   opacity: isVisible ? 1 : 0,
                   transition: `all 0.6s ease ${0.2 + index * 0.1}s`,
+                  cursor: 'pointer',
                 }}
               >
                 <div
                   style={{
                     width: '48px',
                     height: '48px',
-                    background: 'rgba(255,255,255,0.1)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: '12px',
+                    background: hoveredFeature === `left-${index}` ? '#f5a623' : 'rgba(255,255,255,0.1)',
+                    border: hoveredFeature === `left-${index}` ? 'none' : '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: '1rem',
+                    transition: 'all 0.3s ease',
+                    transform: hoveredFeature === `left-${index}` ? 'scale(1.1)' : 'scale(1)',
                   }}
                 >
                   {feature.icon}
@@ -217,16 +223,6 @@ export default function WhyChooseUsSection() {
                 >
                   {feature.description}
                 </p>
-                {index === 0 && (
-                  <div
-                    style={{
-                      width: '100%',
-                      height: '1px',
-                      background: 'rgba(255,255,255,0.15)',
-                      marginTop: '2rem',
-                    }}
-                  />
-                )}
               </div>
             ))}
           </div>
@@ -251,7 +247,7 @@ export default function WhyChooseUsSection() {
               }}
             >
               <Image
-                src="/img/pink-shirt.png"
+                src="/img/why-choose-image.png"
                 alt="Health Expert"
                 fill
                 style={{ objectFit: 'contain', objectPosition: 'bottom' }}
@@ -271,23 +267,28 @@ export default function WhyChooseUsSection() {
             {rightFeatures.map((feature, index) => (
               <div
                 key={index}
+                onMouseEnter={() => setHoveredFeature(`right-${index}`)}
+                onMouseLeave={() => setHoveredFeature(null)}
                 style={{
                   transform: isVisible ? 'translateX(0)' : 'translateX(30px)',
                   opacity: isVisible ? 1 : 0,
                   transition: `all 0.6s ease ${0.2 + index * 0.1}s`,
+                  cursor: 'pointer',
                 }}
               >
                 <div
                   style={{
                     width: '48px',
                     height: '48px',
-                    background: 'rgba(255,255,255,0.1)',
-                    border: '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: '12px',
+                    background: hoveredFeature === `right-${index}` ? '#f5a623' : 'rgba(255,255,255,0.1)',
+                    border: hoveredFeature === `right-${index}` ? 'none' : '1px solid rgba(255,255,255,0.2)',
+                    borderRadius: '50%',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
                     marginBottom: '1rem',
+                    transition: 'all 0.3s ease',
+                    transform: hoveredFeature === `right-${index}` ? 'scale(1.1)' : 'scale(1)',
                   }}
                 >
                   {feature.icon}
