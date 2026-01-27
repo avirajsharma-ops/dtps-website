@@ -1,5 +1,7 @@
 import mongoose, { Schema, Document } from 'mongoose';
 
+const { v4: uuidv4 } = require('uuid');
+
 export interface IOrder extends Document {
   orderId: string;
   customerName: string;
@@ -29,6 +31,7 @@ const OrderSchema = new Schema<IOrder>(
       type: String,
       required: true,
       unique: true,
+      default: () => uuidv4(),
     },
     customerName: {
       type: String,

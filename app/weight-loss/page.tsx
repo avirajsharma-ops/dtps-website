@@ -7,6 +7,8 @@ import FiveCycleProgram from '@/components/FiveCycleProgram';
 import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
 import PageWrapper from '@/components/PageWrapper';
 import TransformationGallery from '@/components/TransformationGallery';
+import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
+import DynamicHeroBanner from '@/components/DynamicHeroBanner';
 import { getPricingByCategory } from '@/lib/api';
 import { getOptimizedUrl } from '@/lib/imagekit';
 import type { Pricing } from '@/lib/api';
@@ -213,6 +215,11 @@ export default function WeightLossPage() {
   return (
     <>
       <PageWrapper>
+        {/* Dynamic Hero Banner */}
+        <div style={{ margin: '20px 0' }}>
+          <DynamicHeroBanner />
+        </div>
+
         {/* Hero Section */}
         <section className="wl-hero">
           <div className="wl-hero-container">

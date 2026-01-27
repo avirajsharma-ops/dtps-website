@@ -8,8 +8,6 @@ import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import {
   Home,
-  Users,
-  Trophy,
   DollarSign,
   Newspaper,
   Images,
@@ -37,10 +35,7 @@ const sidebarItems = [
   { name: 'Dashboard', href: '/admin/dashboard', icon: Home },
   { name: 'Orders', href: '/admin/orders', icon: ShoppingCart },
   { name: 'Payments', href: '/admin/payments', icon: CreditCard },
-  { name: 'Testimonials', href: '/admin/testimonials', icon: Users },
-  { name: 'Recognition', href: '/admin/recognition', icon: Trophy },
   { name: 'Pricing Plans', href: '/admin/pricing', icon: DollarSign },
-  { name: 'Success Stories', href: '/admin/success-stories', icon: Users },
   { name: 'Transformations', href: '/admin/transformations', icon: Images },
   { name: 'Blog Posts', href: '/admin/blogs', icon: Newspaper },
   { name: 'Settings', href: '/admin/settings', icon: Settings },

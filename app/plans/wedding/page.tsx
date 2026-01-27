@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import TransformationShowcase from '@/components/TransformationShowcase';
 import LoseWeightSection from '@/components/LoseWeightSection';
+import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
 import { getPricingByCategory } from '@/lib/api';
 import type { Pricing } from '@/lib/api';
 
@@ -830,8 +831,15 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Pricing Section */}
-      <section style={{ background: '#fff', padding: '30px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
+      <section style={{ background: '#fff', padding: '60px 20px' }}>
+        <div style={{ 
+          maxWidth: '100%', 
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          textAlign: 'center'
+        }}>
           <span style={{
             color: '#ff850b',
             fontSize: '16px',
@@ -859,96 +867,35 @@ export default function WeddingPlanPage() {
             margin: '0 auto 40px',
             fontFamily: 'Epilogue, sans-serif'
           }}>
-            Join our Plan today and embark on a journey to better health with our weight loss plan!
+            Join our Plan today and embark on a journey to better health with our wedding plan!
           </p>
 
-          {/* Pricing Cards */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '20px'
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'center',
+            padding: '0 20px'
           }}>
-            {pricingPlans.map((plan, index) => (
-              <div key={index} style={{
-                background: '#fff',
-                borderRadius: '18px',
-                border: '2px solid #4d0c0c',
-                boxShadow: '0 10px 28px rgba(77,12,12,0.12)',
-                padding: '22px 12px 24px',
-                filter: 'drop-shadow(3px 3px 0 #4C0202)',
-                textAlign: 'left'
-              }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px', flexWrap: 'wrap', gap: '12px' }}>
-                  <span style={{ fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#6B7280', fontSize: '14px' }}>{plan.duration}</span>
-                  <span style={{
-                    fontWeight: 600,
-                    fontSize: '12px',
-                    letterSpacing: '0.04em',
-                    textTransform: 'uppercase',
-                    color: '#5b0c0c',
-                    background: '#fff',
-                    border: '1px solid #FF850B',
-                    padding: '6px 10px',
-                    borderRadius: '999px'
-                  }}>{plan.badge}</span>
-                </div>
-                <div style={{ fontWeight: 600, color: '#111', letterSpacing: '0.06em', textTransform: 'uppercase' }}>Plan</div>
-                <div style={{ fontWeight: 700, fontSize: '35px', color: '#8b0d0d', margin: '8px 0' }}>{plan.price}</div>
-                <del style={{ color: '#6B7280', fontSize: '16px' }}>{plan.originalPrice}</del>
-
-                <div style={{ fontWeight: 600, fontSize: '18px', margin: '18px 0 14px', color: '#111' }}>What you'll get:</div>
-                <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'grid', gap: '12px' }}>
-                  {plan.features.map((feature: any, fIndex: number) => (
-                    <li key={fIndex} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px', color: '#6B7280', fontWeight: 400, fontSize: '14px', lineHeight: 1.35 }}>
-                      <span style={{
-                        flex: '0 0 18px',
-                        width: '18px',
-                        height: '18px',
-                        marginTop: '2px',
-                        backgroundImage: 'url(https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Vector-2.svg)',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'contain',
-                        backgroundPosition: 'center',
-                        borderRadius: '4px'
-                      }}></span>
-                      {typeof feature === 'string' ? feature : <del>{feature.text}</del>}
-                    </li>
-                  ))}
-                </ul>
-
-                <p style={{ marginTop: '16px', color: '#6B7280', fontSize: '14px', lineHeight: 1.45 }}>
-                  Wedding timeline fit:<br />{plan.timeline}
-                </p>
-                <button 
-                  onClick={() => {
-                    const price = plan.price.replace('₹', '').replace(',', '');
-                    const product = {
-                      id: `wedding-${plan.duration.toLowerCase().replace(/\s+/g, '-')}`,
-                      name: `Wedding Prep Plan - ${plan.duration}`,
-                      price: parseInt(price),
-                      quantity: 1
-                    };
-                    sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
-                    window.location.href = '/checkout';
-                  }}
-                  style={{
-                    marginTop: '22px',
-                    fontSize: '12px',
-                    background: 'linear-gradient(180deg, #ff9b2a, #f7931a)',
-                    color: '#fff',
-                    border: 'none',
-                    borderRadius: '999px',
-                    fontWeight: 900,
-                    padding: '14px 18px',
-                    cursor: 'pointer',
-                    width: '100%',
-                    boxShadow: '0 10px 20px rgba(255,155,42,0.3)'
-                  }}
-                >
-                  BUY NOW
-                </button>
-              </div>
-            ))}
+            <div style={{
+              maxWidth: '1400px',
+              width: '100%'
+            }}>
+              <DynamicPlansDisplay 
+                category="new-wedding-plan"
+                showHeader={false}
+                columns="4"
+                onSelectPlan={(plan) => {
+                  const product = {
+                    id: `wedding-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
+                    name: `Wedding Prep Plan - ${plan.planName}`,
+                    price: plan.price,
+                    quantity: 1
+                  };
+                  sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                  window.location.href = '/checkout';
+                }}
+              />
+            </div>
           </div>
         </div>
       </section>

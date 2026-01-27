@@ -2,6 +2,7 @@
 
 import { usePathname } from 'next/navigation';
 import Footer from './Footer';
+import DynamicMarquee from './DynamicMarquee';
 
 export default function LayoutWrapper({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
@@ -9,6 +10,7 @@ export default function LayoutWrapper({ children }: { children: React.ReactNode 
 
   return (
     <>
+      {!isAdminRoute && <DynamicMarquee />}
       {children}
       {!isAdminRoute && <Footer />}
     </>

@@ -263,7 +263,7 @@ export default function BlogsPage() {
                 </label>
                 <ImageUpload
                   label="Upload Featured Image"
-                  folder="DTPS-Ecommerce/blogs"
+                  folder="blogs"
                   value={formData.featuredImage}
                   onChange={(url) => setFormData({ ...formData, featuredImage: url })}
                 />

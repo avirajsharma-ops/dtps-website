@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import TransformationGallery from '@/components/TransformationGallery';
+import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
 import { getPricingByCategory } from '@/lib/api';
 import type { IPricing } from '@/models/Pricing';
 
@@ -720,8 +721,8 @@ export default function TherapeuticPlanPage() {
 
       {/* Pricing Section */}
       <section className="bg-white px-5 py-[100px]">
-        <div className="mx-auto flex max-w-[1200px] flex-col items-center gap-10">
-          <div className="text-center">
+        <div className="flex flex-col items-center justify-center w-full">
+          <div className="text-center mb-10">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[2px] text-[#FF850B]">Exclusive Offers</p>
             <h2 className="mb-5 font-[Epilogue] text-[44px] font-bold leading-[1.2] text-[#1a1a1a]">
               Choose Your Perfect Plan
@@ -731,60 +732,23 @@ export default function TherapeuticPlanPage() {
             </p>
           </div>
 
-          <div className="relative flex w-full max-w-[980px] flex-col items-center gap-8 lg:flex-row lg:items-stretch">
-            <div className="group relative w-full max-w-[560px] overflow-hidden rounded-[28px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.12)]">
-              <div className="relative h-full min-h-[420px]">
-                <div className="absolute inset-0 flex flex-col justify-between bg-white p-10 transition-transform duration-500 ease-out group-hover:-translate-x-full">
-                  <div>
-                    <h3 className="text-[34px] font-bold leading-[1.1] text-[#0f172a]">
-                      One<br />Month<br />Plan
-                    </h3>
-                    <div className="mt-4 text-lg text-[#8b8b8b]">
-                      <span className="line-through">₹ 5,000</span>
-                      <span className="ml-3 block text-[32px] font-semibold text-[#FF850B]">₹ 4,500</span>
-                    </div>
-                  </div>
-                  <p className="text-sm italic text-[#9b9b9b]">Hover above the card !</p>
-                </div>
-
-                <div className="absolute inset-0 flex flex-col justify-between bg-[#0d4043] p-10 text-white transition-transform duration-500 ease-out translate-x-full group-hover:translate-x-0">
-                  <div>
-                    <div className="text-lg font-semibold">
-                      One Month Plan - <span className="line-through opacity-70">₹ 5,000</span>
-                    </div>
-                    <div className="mt-2 text-[28px] font-bold text-[#FFB154]">₹ 4,500</div>
-                    <ul className="mt-6 space-y-3 text-sm leading-6">
-                      <li>8 hours of Chat support</li>
-                      <li>Dietitian Consultation (12)</li>
-                      <li>Customized Meal Plan</li>
-                      <li>Progress Tracking</li>
-                      <li>Diet Recipe eBook (100+)</li>
-                      <li>Stay on track: weekly check ins to ensure your progress.</li>
-                    </ul>
-                  </div>
-                  <a
-                    href="https://dtpoonamsagar.com/checkout/?buy-now=35346&quantity=1"
-                    target="_blank"
-                    rel="noreferrer"
-                    className="inline-flex"
-                  >
-                    <button className="rounded-full bg-[#FF850B] px-8 py-3 text-sm font-semibold text-white shadow-[0_10px_30px_rgba(255,133,11,0.35)] transition-transform duration-300 hover:scale-[1.02]">
-                      Start Today
-                    </button>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="relative flex w-full max-w-[360px] items-center justify-center">
-              <div className="relative h-[320px] w-[320px]">
-                <Image
-                  src="https://www.dtpoonamsagar.com/wp-content/uploads/2025/05/One-Month.png"
-                  alt="One Month Plan"
-                  fill
-                  className="object-contain drop-shadow-[0_25px_60px_rgba(0,0,0,0.2)]"
-                />
-              </div>
+          <div className="w-full flex justify-center">
+            <div className="max-w-[1400px] w-full px-5">
+              <DynamicPlansDisplay
+                category="therapeutic-diet-plans"
+                showHeader={false}
+                columns="3"
+                onSelectPlan={(plan) => {
+                  const product = {
+                    id: `therapeutic-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
+                    name: `Therapeutic Diet Plan - ${plan.planName}`,
+                    price: plan.price,
+                    quantity: 1
+                  };
+                  sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                  window.location.href = '/checkout';
+                }}
+              />
             </div>
           </div>
         </div>

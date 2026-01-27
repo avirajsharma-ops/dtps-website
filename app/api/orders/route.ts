@@ -5,10 +5,18 @@ import Order from '@/models/Order';
 import Payment from '@/models/Payment';
 import Razorpay from 'razorpay';
 
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID!,
-  key_secret: process.env.RAZORPAY_KEY_SECRET!,
-});
+// Initialize Razorpay instance safely
+let razorpay: Razorpay | null = null;
+
+function getRazorpayInstance() {
+  if (!razorpay) {
+    razorpay = new Razorpay({
+      key_id: process.env.RAZORPAY_KEY_ID || '',
+      key_secret: process.env.RAZORPAY_KEY_SECRET || '',
+    });
+  }
+  return razorpay;
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -19,7 +27,7 @@ export async function POST(req: NextRequest) {
       // Create order
       const orderId = uuidv4();
       
-      const razorpayOrder = await razorpay.orders.create({
+      const razorpayOrder = await getRazorpayInstance().orders.create({
         amount: Math.round(data.total * 100), // Amount in paise
         currency: 'INR',
         receipt: orderId,
@@ -57,7 +65,7 @@ export async function POST(req: NextRequest) {
       const { razorpayPaymentId, razorpayOrderId, orderId } = data;
 
       // Get payment details from Razorpay
-      const payment = await razorpay.payments.fetch(razorpayPaymentId);
+      const payment = await getRazorpayInstance().payments.fetch(razorpayPaymentId);
 
       if (payment.status === 'captured') {
         // Update order
@@ -75,7 +83,7 @@ export async function POST(req: NextRequest) {
           orderId,
           razorpayPaymentId,
           razorpayOrderId,
-          amount: payment.amount / 100, // Convert from paise
+          amount: (payment.amount as number) / 100, // Convert from paise
           currency: payment.currency,
           status: 'completed',
           paymentMethod: payment.method,

@@ -131,8 +131,9 @@ export default function TransformationGallery({
             el: '.swiper-pagination-custom',
           }}
           autoplay={{
-            delay: 5000,
+            delay: 4000,
             disableOnInteraction: false,
+            pauseOnMouseEnter: false,
           }}
           loop={true}
           breakpoints={{
@@ -157,35 +158,22 @@ export default function TransformationGallery({
               }}>
             
 
-                {/* Before/After Images */}
+                {/* Single Image Display */}
                 <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '1fr 1fr',
-                  gap: 0,
-                  height: '400px'
+                  position: 'relative',
+                  overflow: 'hidden',
+                  height: '400px',
+                  width: '100%'
                 }}>
-                  <div style={{ position: 'relative', overflow: 'hidden' }}>
-                    <img
-                      src={transformation.beforeImage || '/img/placeholder.jpg'}
-                      alt={`${transformation.clientName} Before`}
-                      style={{ 
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                      }}
-                    />
-                  </div>
-                  <div style={{ position: 'relative', overflow: 'hidden' }}>
-                    <img
-                      src={transformation.afterImage || '/img/placeholder.jpg'}
-                      alt={`${transformation.clientName} After`}
-                      style={{ 
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover'
-                      }}
-                    />
-                  </div>
+                  <img
+                    src={transformation.afterImage || '/img/placeholder.jpg'}
+                    alt={`${transformation.clientName} Result`}
+                    style={{ 
+                      width: '100%',
+                      height: '100%',
+                      objectFit: 'cover'
+                    }}
+                  />
                 </div>
 
                 {/* Info Footer */}

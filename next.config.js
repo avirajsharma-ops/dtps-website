@@ -7,7 +7,8 @@ const nextConfig = {
       'placehold.co',
       'img.youtube.com',
       'www.dtpoonamsagar.com',
-      'dtpoonamsagar.com'
+      'dtpoonamsagar.com',
+      'ik.imagekit.io'
     ],
   },
 };

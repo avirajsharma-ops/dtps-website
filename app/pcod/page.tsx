@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import TransformationGallery from '@/components/TransformationGallery';
+import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
 
 const whatYouGet = [
   { icon: '📊', title: 'Ongoing Support', desc: 'Regular follow-ups to adapt your diet plan as needed and ensure progress results.' },
@@ -18,45 +19,6 @@ const gkkBenefits = [
   { title: 'Energy Boost', desc: 'Feel more active and vibrant' },
   { title: 'Weight Loss', desc: 'Sustainable and healthy reduction' },
   { title: 'Better Skin', desc: 'Clear, glowing, and healthy' },
-];
-
-const pricingPlans = [
-  { 
-    duration: '01 Month', 
-    price: '4,500',
-    originalPrice: '6,000',
-    tag: 'MOST POPULAR',
-    color: 'orange',
-    features: [
-      'Customized Therapeutic Plan(PCOD/PCOS)',
-      '1 Senior Dietitian (Expert in Therapeutic treatment)',
-      '1 Health Counsellor',
-      '1 Clinical Dietitian',
-      '8 Hours of Chat Support',
-      'Dietitian Consultation Sessions (06)',
-      'Customized Therapeutic Meal Plan',
-      'Diet Recipe eBook (50+)',
-      'Stay on track: weekly check ins to ensure your progress',
-    ],
-  },
-  { 
-    duration: '03 Month', 
-    price: '12,000',
-    originalPrice: '15,000',
-    tag: 'PREMIUM',
-    color: 'teal',
-    features: [
-      'Customized Therapeutic Plan(PCOD/PCOS)',
-      '1 Senior Dietitian (Expert in Therapeutic treatment)',
-      '1 Health Counsellor',
-      '1 Clinical Dietitian',
-      '8 Hours of Chat Support',
-      'Dietitian Consultation Sessions (12)',
-      'Customized Therapeutic Meal Plan',
-      'Diet Recipe eBook (100+)',
-      'Stay on track: weekly check ins to ensure your progress',
-    ],
-  },
 ];
 
 export default function PCODPage() {
@@ -394,70 +356,33 @@ export default function PCODPage() {
       />
 
       {/* Pricing Section */}
-      <section className="pcod-pricing-section">
-        <div className="pcod-pricing-wrap">
-          <div className="pcod-pricing-kicker">
-            <div className="pcod-pricing-dash"></div>
-            <span>PRICING</span>
+      <section className="wl-section">
+        <div className="container">
+          <div className="wl-section-label wl-center">
+            <span className="wl-star wl-teal-text">✦</span> <span className="wl-teal-text">PRICING</span>
           </div>
-
-          <h2 className="pcod-pricing-title">Take the first step towards a healthier<br/>Future</h2>
-          <p className="pcod-pricing-sub">
+          <h2 className="wl-section-title wl-center">Take the first step towards a healthier Future</h2>
+          <p className="wl-section-desc wl-center">
             Join our Plan today and embark on a journey to better health with our PCOD diet plan!
           </p>
-
-          <div className="pcod-pricing-grid">
-            <div className="pcod-pricing-badge">
-              <div className="pct">25%</div>
-              <div className="off">OFF</div>
+          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+            <div style={{ maxWidth: '1200px', width: '100%' }}>
+              <DynamicPlansDisplay 
+                category="pcod"
+                showHeader={false}
+                columns="3"
+                onSelectPlan={(plan) => {
+                  const product = {
+                    id: `pcod-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
+                    name: `PCOD Management Plan - ${plan.planName}`,
+                    price: plan.price,
+                    quantity: 1
+                  };
+                  sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                  window.location.href = '/checkout';
+                }}
+              />
             </div>
-
-            {pricingPlans.map((plan, index) => (
-              <div key={index} className={`pcod-plan ${plan.color}`}>
-                <div className="pcod-plan-pill">{plan.tag}</div>
-                <div className="pcod-plan-month">
-                  <div className="big">{plan.duration}</div>
-                  <div className="small">Plan</div>
-                </div>
-                <div className="pcod-plan-priceRow">
-                  <span className="rupee">₹</span>
-                  <span className="price">{plan.price}</span>
-                  <span className="strike">₹{plan.originalPrice}</span>
-                </div>
-                <div className="pcod-plan-note">One-time payment • No hidden fees</div>
-                <div className="pcod-plan-divider"></div>
-                <ul className="pcod-plan-features">
-                  {plan.features.map((feature, idx) => (
-                    <li key={idx}>
-                      <span className="dot"></span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <a 
-                  onClick={() => {
-                    const product = {
-                      id: `pcod-${plan.duration.toLowerCase().replace(/\s+/g, '-')}`,
-                      name: `PCOD Management Plan - ${plan.duration}`,
-                      price: parseInt(plan.price),
-                      quantity: 1
-                    };
-                    sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
-                    window.location.href = '/checkout';
-                  }}
-                  className="pcod-plan-cta"
-                  style={{ cursor: 'pointer' }}
-                >
-                  Get Started
-                </a>
-              </div>
-            ))}
-          </div>
-
-          <div className="pcod-pricing-bottom">
-            <span><i></i> Money Back Guarantee</span>
-            <span><i></i> 24/7 Support</span>
-            <span><i></i> 100% Natural</span>
           </div>
         </div>
       </section>
