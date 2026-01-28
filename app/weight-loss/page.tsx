@@ -9,6 +9,7 @@ import PageWrapper from '@/components/PageWrapper';
 import TransformationGallery from '@/components/TransformationGallery';
 import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
 import DynamicHeroBanner from '@/components/DynamicHeroBanner';
+import DynamicPopup from '@/components/DynamicPopup';
 import { getPricingByCategory } from '@/lib/api';
 import DynamicPageHero from '@/components/DynamicPageHero';
 import { getOptimizedUrl } from '@/lib/imagekit';
@@ -142,7 +143,7 @@ type Testimonial = {
 };
 
 export default function WeightLossPage() {
-  const [pricingPlans, setPricingPlans] = useState<any[]>(fallbackPricingPlans);
+  const [pricingPlans, setPricingPlans] = useState<any[]>([]);
   const [loadingPricing, setLoadingPricing] = useState(true);
   const [testimonials, setTestimonials] = useState<Testimonial[]>(fallbackTestimonials);
 
@@ -174,7 +175,7 @@ export default function WeightLossPage() {
         }
       } catch (error) {
         console.error('Error fetching pricing:', error);
-        setPricingPlans(fallbackPricingPlans);
+        setPricingPlans([]);
       } finally {
         setLoadingPricing(false);
       }
@@ -215,6 +216,8 @@ export default function WeightLossPage() {
 
   return (
     <>
+      <DynamicPopup page="weight-loss" />
+      
       <PageWrapper>
       
         {/* Dynamic Hero Section */}

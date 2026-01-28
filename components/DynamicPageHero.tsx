@@ -63,7 +63,7 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
   }
 
   return (
-    <section className="wl-hero" style={{ position: 'relative', overflow: 'hidden' }}>
+    <section className="wl-hero" style={{ position: 'relative', overflow: 'hidden', padding: 0 }}>
       {/* Desktop Image - Full Screen */}
       {currentHero.desktopImage && (
         <div 
@@ -135,21 +135,6 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
           />
         </div>
       )}
-
-      {/* Content Overlay */}
-      <div className="wl-hero-container" style={{ position: 'relative', zIndex: 10 }}>
-        <h1 className="wl-hero-title">{currentHero.title}</h1>
-        <div className="wl-hero-badge-wrapper">
-          <div className="wl-hero-badge">{currentHero.subtitle || 'Featured'}</div>
-          <div className="wl-hero-badge-dot"></div>
-        </div>
-        <p className="wl-hero-desc">
-          {currentHero.description}
-        </p>
-        <Button href={currentHero.buttonLink || '/appointment'} variant="primary">
-          {currentHero.buttonText || 'Buy Plan'}
-        </Button>
-      </div>
     </section>
   );
 }
