@@ -3,10 +3,11 @@ import mongoose, { Schema, Document } from 'mongoose';
 export interface ISiteBanner extends Document {
   type: 'marquee' | 'hero-banner';
   title: string;
-  icon: string;
+  icon?: string;
   desktopImage?: string;
   mobileImage?: string;
   link?: string;
+  page?: string; // e.g., 'weight-loss', 'pcod' for hero-banners
   isActive: boolean;
   order?: number;
   createdAt?: Date;
@@ -26,7 +27,7 @@ const SiteBannerSchema = new Schema<ISiteBanner>(
     },
     icon: {
       type: String,
-      required: true,
+      default: null,
     },
     desktopImage: {
       type: String,
@@ -37,6 +38,10 @@ const SiteBannerSchema = new Schema<ISiteBanner>(
       default: null,
     },
     link: {
+      type: String,
+      default: null,
+    },
+    page: {
       type: String,
       default: null,
     },

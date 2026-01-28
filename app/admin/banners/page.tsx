@@ -11,6 +11,7 @@ interface SiteBanner {
   desktopImage?: string;
   mobileImage?: string;
   link?: string;
+  page?: string;
   isActive: boolean;
   order?: number;
 }
@@ -30,6 +31,7 @@ export default function SiteBannersPage() {
     desktopImage: '',
     mobileImage: '',
     link: '',
+    page: '',
     isActive: true,
     order: 0,
   });
@@ -100,16 +102,6 @@ export default function SiteBannersPage() {
       return;
     }
 
-    if (formData.type === 'marquee' && !formData.icon) {
-      alert('Please upload marquee icon image');
-      return;
-    }
-
-    if (formData.type === 'hero-banner' && !formData.desktopImage && !formData.mobileImage) {
-      alert('Please upload at least one image (desktop or mobile)');
-      return;
-    }
-
     try {
       const url = '/api/site-banners';
       const method = editingBanner ? 'PUT' : 'POST';
@@ -123,25 +115,15 @@ export default function SiteBannersPage() {
         body: JSON.stringify(body),
       });
 
-      if (!res.ok) throw new Error(`Failed to ${editingBanner ? 'update' : 'create'} banner`);
+      if (!res.ok) {
+        const errorData = await res.json();
+        throw new Error(errorData.error || `Failed to ${editingBanner ? 'update' : 'create'} banner`);
+      }
 
-      alert(`Banner ${editingBanner ? 'updated' : 'created'} successfully!`);
       setIsModalOpen(false);
-      setEditingBanner(null);
-      setFormData({
-        type: 'marquee',
-        title: '',
-        icon: '',
-        desktopImage: '',
-        mobileImage: '',
-        link: '',
-        isActive: true,
-        order: 0,
-      });
       fetchBanners();
     } catch (error: any) {
       console.error('Error saving banner:', error);
-      alert(error.message);
     }
   };
 
@@ -172,6 +154,7 @@ export default function SiteBannersPage() {
       desktopImage: banner.desktopImage || '',
       mobileImage: banner.mobileImage || '',
       link: banner.link || '',
+      page: banner.page || '',
       isActive: banner.isActive,
       order: banner.order || 0,
     });
@@ -188,6 +171,7 @@ export default function SiteBannersPage() {
       desktopImage: '',
       mobileImage: '',
       link: '',
+      page: '',
       isActive: true,
       order: 0,
     });
@@ -390,6 +374,35 @@ export default function SiteBannersPage() {
                     }}
                   />
                 </div>
+
+                {formData.type === 'hero-banner' && (
+                  <div style={{ marginBottom: '15px' }}>
+                    <label style={{ display: 'block', marginBottom: '5px', fontWeight: '600' }}>
+                      Page (for Hero Banners)
+                    </label>
+                    <select
+                      value={formData.page}
+                      onChange={(e) => setFormData({ ...formData, page: e.target.value })}
+                      style={{
+                        width: '100%',
+                        padding: '10px',
+                        border: '1px solid #ddd',
+                        borderRadius: '4px',
+                        boxSizing: 'border-box',
+                      }}
+                    >
+                      <option value="">No specific page</option>
+                      <option value="home">Home</option>
+                      <option value="weight-loss">Weight Loss</option>
+                      <option value="pcod">PCOD</option>
+                      <option value="plans-therapeutic">Therapeutic Plans</option>
+                      <option value="plans-wedding">Wedding Plans</option>
+                      <option value="appointment">Appointment</option>
+                      <option value="contact">Contact</option>
+                      <option value="blog">Blog</option>
+                    </select>
+                  </div>
+                )}
 
                 {formData.type === 'marquee' && (
                   <div style={{ marginBottom: '15px' }}>

@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import PageWrapper from '@/components/PageWrapper';
+import DynamicPageHero from '@/components/DynamicPageHero';
 
 export const metadata: Metadata = {
   title: 'Blog | Dietitian Poonam Sagar',

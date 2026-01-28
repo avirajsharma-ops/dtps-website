@@ -2,6 +2,7 @@
 import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import DynamicPageHero from '@/components/DynamicPageHero';
 import TransformationGallery from '@/components/TransformationGallery';
 import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
 import { getPricingByCategory } from '@/lib/api';

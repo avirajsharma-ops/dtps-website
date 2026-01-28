@@ -10,6 +10,7 @@ import TransformationGallery from '@/components/TransformationGallery';
 import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
 import DynamicHeroBanner from '@/components/DynamicHeroBanner';
 import { getPricingByCategory } from '@/lib/api';
+import DynamicPageHero from '@/components/DynamicPageHero';
 import { getOptimizedUrl } from '@/lib/imagekit';
 import type { Pricing } from '@/lib/api';
 
@@ -215,27 +216,18 @@ export default function WeightLossPage() {
   return (
     <>
       <PageWrapper>
-        {/* Dynamic Hero Banner */}
-        <div style={{ margin: '20px 0' }}>
-          <DynamicHeroBanner />
-        </div>
-
-        {/* Hero Section */}
-        <section className="wl-hero">
-          <div className="wl-hero-container">
-            <h1 className="wl-hero-title">Guaranteed Weight Loss</h1>
-            <div className="wl-hero-badge-wrapper">
-              <div className="wl-hero-badge">Upto 5 Kg in a Month</div>
-              <div className="wl-hero-badge-dot"></div>
-            </div>
-            <p className="wl-hero-desc">
-              It&apos;s a journey to self-discovery and a healthier, happier you. We believe
-              weight loss is more than just a number on the scale. It&apos;s a transformative
-              journey of self-discovery, leading to a more vibrant and fulfilling life.
-            </p>
-            <Button href="/appointment" variant="primary">Buy Plan</Button>
-          </div>
-        </section>
+      
+        {/* Dynamic Hero Section */}
+        <DynamicPageHero 
+          page="weight-loss"
+          fallback={{
+            title: 'Guaranteed Weight Loss',
+            subtitle: 'Upto 5 Kg in a Month',
+            description: "It's a journey to self-discovery and a healthier, happier you. We believe weight loss is more than just a number on the scale. It's a transformative journey of self-discovery, leading to a more vibrant and fulfilling life.",
+            buttonText: 'Buy Plan',
+            buttonLink: '/appointment',
+          }}
+        />
       </PageWrapper>
 
       {/* Transformations Gallery Section */}

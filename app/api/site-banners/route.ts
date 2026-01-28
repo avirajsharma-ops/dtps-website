@@ -9,10 +9,12 @@ export async function GET(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const type = searchParams.get('type');
     const active = searchParams.get('active');
+    const page = searchParams.get('page');
 
     const query: any = {};
     if (type) query.type = type;
     if (active === 'true') query.isActive = true;
+    if (page) query.page = page;
 
     const banners = await SiteBanner.find(query).sort({ order: 1 });
     
@@ -30,11 +32,11 @@ export async function POST(req: NextRequest) {
     await dbConnect();
     
     const body = await req.json();
-    const { type, title, icon, desktopImage, mobileImage, link, isActive, order } = body;
+    const { type, title, icon, desktopImage, mobileImage, link, page, isActive, order } = body;
 
-    if (!type || !title || !icon) {
+    if (!type || !title) {
       return NextResponse.json(
-        { error: 'Missing required fields: type, title, icon' },
+        { error: 'Missing required fields: type, title' },
         { status: 400 }
       );
     }
@@ -42,10 +44,11 @@ export async function POST(req: NextRequest) {
     const banner = new SiteBanner({
       type,
       title,
-      icon,
+      icon: icon || null,
       desktopImage,
       mobileImage,
       link,
+      page: page || null,
       isActive: isActive !== undefined ? isActive : true,
       order: order || 0,
     });
@@ -54,6 +57,7 @@ export async function POST(req: NextRequest) {
     
     return NextResponse.json(banner, { status: 201 });
   } catch (error: any) {
+    console.error('Banner save error:', error);
     return NextResponse.json(
       { error: error.message },
       { status: 500 }
@@ -66,7 +70,7 @@ export async function PUT(req: NextRequest) {
     await dbConnect();
     
     const body = await req.json();
-    const { id, type, title, icon, desktopImage, mobileImage, link, isActive, order } = body;
+    const { id, type, title, icon, desktopImage, mobileImage, link, page, isActive, order } = body;
 
     if (!id) {
       return NextResponse.json(
@@ -80,10 +84,11 @@ export async function PUT(req: NextRequest) {
       {
         type,
         title,
-        icon,
+        icon: icon || null,
         desktopImage,
         mobileImage,
         link,
+        page: page || null,
         isActive,
         order,
       },

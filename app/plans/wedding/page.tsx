@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
 import Navbar from '@/components/Navbar';
+import DynamicPageHero from '@/components/DynamicPageHero';
 import TransformationShowcase from '@/components/TransformationShowcase';
 import LoseWeightSection from '@/components/LoseWeightSection';
 import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';

@@ -1,12 +1,11 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import Navbar from './Navbar';
-import DynamicMarquee from './DynamicMarquee';
+// DynamicMarquee removed from Hero to avoid marquee on home page
 
 export default function Hero() {
   return (
     <section className="hero-wrapper">
-      <DynamicMarquee />
       <div className="hero">
         <Navbar />
         <div className="hero-bg-shapes">

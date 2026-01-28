@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Button from '@/components/ui/Button';
 import PageWrapper from '@/components/PageWrapper';
+import DynamicPageHero from '@/components/DynamicPageHero';
 import { FaWhatsapp, FaFacebook, FaInstagram, FaXTwitter } from 'react-icons/fa6';
 
 export const metadata: Metadata = {

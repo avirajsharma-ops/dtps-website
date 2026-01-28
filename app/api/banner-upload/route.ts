@@ -4,10 +4,23 @@ import ImageKit from 'imagekit';
 // Function to initialize ImageKit lazily (only when needed)
 function initializeImageKit() {
   try {
+    const publicKey = process.env.IMAGEKIT_PUBLIC_KEY;
+    const privateKey = process.env.IMAGEKIT_PRIVATE_KEY;
+    const urlEndpoint = process.env.IMAGEKIT_URL_ENDPOINT;
+
+    if (!publicKey || !privateKey || !urlEndpoint) {
+      console.error('Missing ImageKit env vars:', {
+        publicKey: !!publicKey,
+        privateKey: !!privateKey,
+        urlEndpoint: !!urlEndpoint,
+      });
+      return null;
+    }
+
     const imagekit = new ImageKit({
-      publicKey: process.env.NEXT_PUBLIC_IMAGEKIT_PUBLIC_KEY!,
-      privateKey: process.env.IMAGEKIT_PRIVATE_KEY!,
-      urlEndpoint: process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!,
+      publicKey: publicKey,
+      privateKey: privateKey,
+      urlEndpoint: urlEndpoint,
     });
     return imagekit;
   } catch (error) {
