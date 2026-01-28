@@ -24,6 +24,7 @@ const blogPosts = [
     slug: 'impact-of-sleep',
   },
   {
+    
     id: 3,
     title: 'Overcoming Common Fitness To Challenge',
     image: 'https://placehold.co/400x300/0d4043/ffffff?text=Fitness+Challenge',
