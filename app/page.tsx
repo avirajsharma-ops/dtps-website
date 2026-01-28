@@ -9,6 +9,7 @@ import FAQSection from '@/components/FAQSection';
 import Image from 'next/image';
 import { getOptimizedUrl } from '@/lib/imagekit';
 
+
 type Testimonial = {
   _id?: string;
   name: string;
