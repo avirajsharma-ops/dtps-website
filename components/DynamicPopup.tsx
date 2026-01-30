@@ -107,7 +107,7 @@ export default function DynamicPopup({ page }: DynamicPopupProps) {
               src={popup.image}
               alt={popup.title || 'Special Offer'}
               fill
-              style={{ objectFit: 'cover' }}
+              className="object-cover"
               priority
             />
           </div>

@@ -66,22 +66,11 @@ export default function DynamicHeroBanner() {
   });
 
   const BannerContent = () => (
-    <div style={{
-      width: '100%',
-      height: 'auto',
-      position: 'relative',
-      overflow: 'hidden',
-      borderRadius: '12px'
-    }}>
+    <div className="w-full h-auto relative overflow-hidden rounded-xl">
       <img
         src={optimizedUrl}
         alt={banner.title}
-        style={{
-          width: '100%',
-          height: 'auto',
-          display: 'block',
-          objectFit: 'cover'
-        }}
+        className="w-full h-auto block object-cover"
         loading="lazy"
       />
     </div>
@@ -89,7 +78,7 @@ export default function DynamicHeroBanner() {
 
   if (banner.link) {
     return (
-      <Link href={banner.link} style={{ textDecoration: 'none' }}>
+      <Link href={banner.link} className="no-underline">
         <BannerContent />
       </Link>
     );

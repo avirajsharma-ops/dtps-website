@@ -214,282 +214,131 @@ export default function WeddingPlanPage() {
       <LoseWeightSection />
 
       {/* What Happens When You Start Section */}
-      <section style={{ background: '#fff', padding: '50px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <h2 style={{
-            textAlign: 'center',
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.3,
-            marginBottom: '60px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
+      <section className="bg-white py-12">
+        <div className="max-w-[1200px] mx-auto px-5">
+          <h2 className="text-center text-5xl font-bold text-black leading-tight mb-16 font-[Epilogue,sans-serif]">
             What Happens<br />
-            When You Start the <span style={{ color: '#ff850b' }}>DTPS Wedding Plan</span>
+            When You Start the <span className="text-[#ff850b]">DTPS Wedding Plan</span>
           </h2>
 
           {/* Tabs */}
-          <div style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            gap: '20px',
-            maxWidth: '996px',
-            margin: '0 auto 32px'
-          }}>
+          <div className="flex justify-between gap-5 max-w-[996px] mx-auto mb-8">
             {/* Brides Tab */}
             <div
               onClick={() => setActiveTab('brides')}
-              style={{
-                height: '240px',
-                width: '220px',
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                transition: '0.3s',
-                transform: activeTab === 'brides' ? 'translateY(-6px) scale(1.06)' : 'none'
-              }}
+              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                activeTab === 'brides' ? '-translate-y-1.5 scale-[1.06]' : ''
+              }`}
             >
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'brides' ? '#ff850b' : '#4e0101',
-                width: '100%',
-                height: '180px',
-                transition: 'background 0.25s ease'
-              }}></div>
-              <div style={{ position: 'absolute', bottom: 0, left: 'calc(50% - 79px)', width: '159px', height: '240px' }}>
-                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-2.png" alt="Brides" fill style={{ objectFit: 'cover' }} />
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${
+                activeTab === 'brides' ? 'bg-[#ff850b]' : 'bg-[#4e0101]'
+              }`}></div>
+              <div className="absolute bottom-0 left-[calc(50%-79px)] w-[159px] h-60">
+                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-2.png" alt="Brides" fill className="object-cover" />
               </div>
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'brides'
-                  ? 'linear-gradient(180deg, rgba(78,1,1,0) 55%, rgba(255,133,11,0.55) 100%)'
-                  : 'linear-gradient(180deg, rgba(78,1,1,0) 60%, #4e0101)',
-                width: '100%',
-                height: '180px'
-              }}></div>
-              <div style={{
-                position: 'absolute',
-                top: '203px',
-                left: 'calc(50% - 38px)',
-                fontWeight: 600,
-                color: '#fff',
-                fontSize: '24px',
-                textShadow: activeTab === 'brides' ? '0 1px 10px rgba(255,133,11,0.45)' : 'none'
-              }}>Brides</div>
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${
+                activeTab === 'brides'
+                  ? 'bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]'
+                  : 'bg-gradient-to-b from-transparent via-transparent to-[#4e0101]'
+              }`}></div>
+              <div className={`absolute top-[203px] left-[calc(50%-38px)] font-semibold text-white text-2xl ${
+                activeTab === 'brides' ? 'drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]' : ''
+              }`}>Brides</div>
             </div>
 
             {/* Grooms Tab */}
             <div
               onClick={() => setActiveTab('grooms')}
-              style={{
-                height: '240px',
-                width: '220px',
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                transition: '0.3s',
-                transform: activeTab === 'grooms' ? 'translateY(-6px) scale(1.06)' : 'none'
-              }}
+              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                activeTab === 'grooms' ? '-translate-y-1.5 scale-[1.06]' : ''
+              }`}
             >
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'grooms' ? '#ff850b' : '#4e0101',
-                width: '100%',
-                height: '180px',
-                transition: 'background 0.25s ease'
-              }}></div>
-              <div style={{ position: 'absolute', bottom: 0, left: 'calc(50% - 100px)', width: '201px', height: '240px' }}>
-                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-3.png" alt="Grooms" fill style={{ objectFit: 'cover' }} />
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${
+                activeTab === 'grooms' ? 'bg-[#ff850b]' : 'bg-[#4e0101]'
+              }`}></div>
+              <div className="absolute bottom-0 left-[calc(50%-100px)] w-[201px] h-60">
+                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-3.png" alt="Grooms" fill className="object-cover" />
               </div>
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'grooms'
-                  ? 'linear-gradient(180deg, rgba(78,1,1,0) 55%, rgba(255,133,11,0.55) 100%)'
-                  : 'linear-gradient(180deg, rgba(78,1,1,0) 60%, #4e0101)',
-                width: '100%',
-                height: '180px'
-              }}></div>
-              <div style={{
-                position: 'absolute',
-                top: '203px',
-                left: 'calc(50% - 47px)',
-                fontWeight: 600,
-                color: '#fff',
-                fontSize: '24px',
-                textShadow: activeTab === 'grooms' ? '0 1px 10px rgba(255,133,11,0.45)' : 'none'
-              }}>Grooms</div>
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${
+                activeTab === 'grooms'
+                  ? 'bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]'
+                  : 'bg-gradient-to-b from-transparent via-transparent to-[#4e0101]'
+              }`}></div>
+              <div className={`absolute top-[203px] left-[calc(50%-47px)] font-semibold text-white text-2xl ${
+                activeTab === 'grooms' ? 'drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]' : ''
+              }`}>Grooms</div>
             </div>
 
             {/* Couples Tab */}
             <div
               onClick={() => setActiveTab('couples')}
-              style={{
-                height: '240px',
-                width: '220px',
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                transition: '0.3s',
-                transform: activeTab === 'couples' ? 'translateY(-6px) scale(1.06)' : 'none'
-              }}
+              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                activeTab === 'couples' ? '-translate-y-1.5 scale-[1.06]' : ''
+              }`}
             >
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'couples' ? '#ff850b' : '#4e0101',
-                width: '100%',
-                height: '180px',
-                transition: 'background 0.25s ease'
-              }}></div>
-              <div style={{ position: 'absolute', bottom: 0, left: 'calc(50% - 80px)', width: '161px', height: '240px' }}>
-                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-4.png" alt="Couples" fill style={{ objectFit: 'cover' }} />
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${
+                activeTab === 'couples' ? 'bg-[#ff850b]' : 'bg-[#4e0101]'
+              }`}></div>
+              <div className="absolute bottom-0 left-[calc(50%-80px)] w-[161px] h-60">
+                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-4.png" alt="Couples" fill className="object-cover" />
               </div>
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'couples'
-                  ? 'linear-gradient(180deg, rgba(78,1,1,0) 55%, rgba(255,133,11,0.55) 100%)'
-                  : 'linear-gradient(180deg, rgba(78,1,1,0) 60%, #4e0101)',
-                width: '100%',
-                height: '180px'
-              }}></div>
-              <div style={{
-                position: 'absolute',
-                top: '203px',
-                left: 'calc(50% - 49px)',
-                fontWeight: 600,
-                color: '#fff',
-                fontSize: '24px',
-                textShadow: activeTab === 'couples' ? '0 1px 10px rgba(255,133,11,0.45)' : 'none'
-              }}>Couples</div>
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${
+                activeTab === 'couples'
+                  ? 'bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]'
+                  : 'bg-gradient-to-b from-transparent via-transparent to-[#4e0101]'
+              }`}></div>
+              <div className={`absolute top-[203px] left-[calc(50%-49px)] font-semibold text-white text-2xl ${
+                activeTab === 'couples' ? 'drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]' : ''
+              }`}>Couples</div>
             </div>
 
             {/* Guests Tab */}
             <div
               onClick={() => setActiveTab('guests')}
-              style={{
-                height: '240px',
-                width: '220px',
-                position: 'relative',
-                borderRadius: '24px',
-                overflow: 'hidden',
-                cursor: 'pointer',
-                transition: '0.3s',
-                transform: activeTab === 'guests' ? 'translateY(-6px) scale(1.06)' : 'none'
-              }}
+              className={`h-60 w-[220px] relative rounded-3xl overflow-hidden cursor-pointer transition-all duration-300 ${
+                activeTab === 'guests' ? '-translate-y-1.5 scale-[1.06]' : ''
+              }`}
             >
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'guests' ? '#ff850b' : '#4e0101',
-                width: '100%',
-                height: '180px',
-                transition: 'background 0.25s ease'
-              }}></div>
-              <div style={{ position: 'absolute', bottom: 0, left: 'calc(50% - 100.5px)', width: '202px', height: '240px' }}>
-                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-5.png" alt="Guests" fill style={{ objectFit: 'cover' }} />
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] transition-colors duration-300 ${
+                activeTab === 'guests' ? 'bg-[#ff850b]' : 'bg-[#4e0101]'
+              }`}></div>
+              <div className="absolute bottom-0 left-[calc(50%-100.5px)] w-[202px] h-60">
+                <Image src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Images-5.png" alt="Guests" fill className="object-cover" />
               </div>
-              <div style={{
-                position: 'absolute',
-                bottom: 0,
-                left: 0,
-                borderRadius: '24px',
-                background: activeTab === 'guests'
-                  ? 'linear-gradient(180deg, rgba(78,1,1,0) 55%, rgba(255,133,11,0.55) 100%)'
-                  : 'linear-gradient(180deg, rgba(78,1,1,0) 60%, #4e0101)',
-                width: '100%',
-                height: '180px'
-              }}></div>
-              <div style={{
-                position: 'absolute',
-                top: '203px',
-                left: 'calc(50% - 43px)',
-                fontWeight: 600,
-                color: '#fff',
-                fontSize: '24px',
-                textShadow: activeTab === 'guests' ? '0 1px 10px rgba(255,133,11,0.45)' : 'none'
-              }}>Guests</div>
+              <div className={`absolute bottom-0 left-0 rounded-3xl w-full h-[180px] ${
+                activeTab === 'guests'
+                  ? 'bg-gradient-to-b from-transparent via-transparent to-[rgba(255,133,11,0.55)]'
+                  : 'bg-gradient-to-b from-transparent via-transparent to-[#4e0101]'
+              }`}></div>
+              <div className={`absolute top-[203px] left-[calc(50%-43px)] font-semibold text-white text-2xl ${
+                activeTab === 'guests' ? 'drop-shadow-[0_1px_10px_rgba(255,133,11,0.45)]' : ''
+              }`}>Guests</div>
             </div>
           </div>
 
           {/* Tab Content Card */}
-          <div style={{
-            background: '#4e0101',
-            borderRadius: '24px',
-            overflow: 'hidden',
-            position: 'relative',
-            minHeight: '467px',
-            maxWidth: '1200px',
-            margin: '0 auto'
-          }}>
+          <div className="bg-[#4e0101] rounded-3xl overflow-hidden relative min-h-[467px] max-w-[1200px] mx-auto">
             {/* Orange Stripe */}
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: '102px',
-              background: '#ff850b',
-              width: '180px',
-              height: '100%'
-            }}></div>
+            <div className="absolute top-0 left-[102px] bg-[#ff850b] w-[180px] h-full"></div>
             {/* Main Image */}
             <Image
               src={tabsData[activeTab].image}
               alt={activeTab}
               width={410}
               height={459}
-              style={{
-                position: 'absolute',
-                bottom: 0,
-                left: '102px',
-                objectFit: 'cover'
-              }}
+              className="absolute bottom-0 left-[102px] object-cover"
             />
             {/* Benefits */}
-            <div style={{
-              position: 'absolute',
-              top: '126px',
-              left: '510px',
-              width: '580px',
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '24px'
-            }}>
+            <div className="absolute top-[126px] left-[510px] w-[580px] flex flex-col gap-6">
               {tabsData[activeTab].benefits.map((benefit, index) => (
-                <div key={index} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                <div key={index} className="flex items-center gap-3">
                   <Image
                     src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/ion_diamond.svg"
                     alt="Diamond"
                     width={24}
                     height={24}
                   />
-                  <div style={{
-                    fontWeight: 600,
-                    textTransform: 'capitalize',
-                    color: '#fff',
-                    fontSize: '16px'
-                  }}>{benefit}</div>
+                  <div className="font-semibold capitalize text-white text-base">{benefit}</div>
                 </div>
               ))}
             </div>
@@ -498,7 +347,7 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Over 75,000+ People Section */}
-      <section style={{ background: '#fff', padding: '60px 20px' }}>
+      <section className="bg-white py-16 px-5">
         <TransformationShowcase 
           page="wedding"
           title="People Enjoy Weight Loss"
@@ -508,45 +357,21 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Five Step Cycle Program Section */}
-      <section style={{ background: '#000', padding: '50px 0 0', margin: '50px 0 0' }}>
-        <div style={{ padding: '0 1rem' }}>
-          <div style={{
-            maxWidth: '1820px',
-            margin: '0 auto',
-            borderRadius: '50px',
-            overflow: 'hidden',
-            position: 'relative',
-            background: '#4E0101',
-            backgroundImage: 'url(https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            padding: '70px 10px 80px'
-          }}>
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(78, 1, 1, 0.95)'
-            }}></div>
-            <div style={{ position: 'relative', zIndex: 1, textAlign: 'center' }}>
-              <h2 style={{
-                fontSize: '48px',
-                fontWeight: 700,
-                color: '#FFFFFF',
-                lineHeight: 1.2,
-                marginBottom: '10px',
-                fontFamily: 'Epilogue, sans-serif'
-              }}>
-                Our <span style={{ color: '#ff850b' }}>Five Step</span> Cycle Program
+      {/* Five Step Cycle Section */}
+      <section className="bg-black py-12 mt-12">
+        <div className="px-4">
+          <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center py-20 px-2.5">
+            <div className="absolute inset-0 bg-[rgba(78,1,1,0.95)]"></div>
+            <div className="relative z-10 text-center">
+              <h2 className="text-5xl font-bold text-white leading-tight mb-2.5 font-[Epilogue,sans-serif]">
+                Our <span className="text-[#ff850b]">Five Step</span> Cycle Program
               </h2>
               <Image
                 src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/cycle-illustration-1.svg"
                 alt="Five Step Cycle"
                 width={800}
                 height={500}
-                style={{ margin: '0 auto', maxWidth: '100%', height: 'auto' }}
+                className="mx-auto max-w-full h-auto"
               />
             </div>
           </div>
@@ -554,78 +379,43 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Why People Trust DTPS Section */}
-      <section style={{ background: '#fff', padding: '50px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <h2 style={{
-            textAlign: 'center',
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.3,
-            marginBottom: '40px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
-            Why people trust <span style={{ color: '#ff850b' }}>DTPS</span>?
+      <section className="bg-white py-12">
+        <div className="max-w-[1200px] mx-auto px-5">
+          <h2 className="text-center text-5xl font-bold text-black leading-tight mb-10 font-[Epilogue,sans-serif]">
+            Why people trust <span className="text-[#ff850b]">DTPS</span>?
           </h2>
 
-          <div style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '20px',
-            maxWidth: '65%',
-            margin: '0 auto'
-          }}>
-            <div style={{
-              background: '#4E0101',
-              borderRadius: '24px',
-              padding: '16px 20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '20px'
-            }}>
+          <div className="flex flex-col gap-5 max-w-[65%] mx-auto">
+            <div className="bg-[#4E0101] rounded-3xl py-4 px-5 flex items-center gap-5">
               <Image
                 src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/icon-our-journey-1.svg"
                 alt="Icon"
                 width={70}
                 height={70}
               />
-              <p style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: 400, lineHeight: 1.6, margin: 0, fontFamily: 'DM Sans, sans-serif' }}>
+              <p className="text-white text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
                 Personalised plan built around<br />your taste, work hours, travel, and culture
               </p>
             </div>
-            <div style={{
-              background: '#4E0101',
-              borderRadius: '24px',
-              padding: '16px 20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '20px'
-            }}>
+            <div className="bg-[#4E0101] rounded-3xl py-4 px-5 flex items-center gap-5">
               <Image
                 src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/icon-our-journey-1.svg"
                 alt="Icon"
                 width={70}
                 height={70}
               />
-              <p style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: 400, lineHeight: 1.6, margin: 0, fontFamily: 'DM Sans, sans-serif' }}>
+              <p className="text-white text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
                 Medical aware for PCOS, thyroid,<br />and diabetes with reports considered
               </p>
             </div>
-            <div style={{
-              background: '#4E0101',
-              borderRadius: '24px',
-              padding: '16px 20px',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '20px'
-            }}>
+            <div className="bg-[#4E0101] rounded-3xl py-4 px-5 flex items-center gap-5">
               <Image
                 src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/icon-our-journey-1.svg"
                 alt="Icon"
                 width={70}
                 height={70}
               />
-              <p style={{ color: '#FFFFFF', fontSize: '20px', fontWeight: 400, lineHeight: 1.6, margin: 0, fontFamily: 'DM Sans, sans-serif' }}>
+              <p className="text-white text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
                 No supplements.<br />No heavy workouts. No starvation.
               </p>
             </div>
@@ -634,52 +424,32 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Stats Section */}
-      <section style={{ background: '#fff', padding: '50px 0' }}>
-        <div style={{ maxWidth: '1120px', margin: '0 auto', padding: '0 20px' }}>
-          <div style={{ display: 'flex', gap: '0' }}>
-            <div style={{ flex: '25%', padding: '5px' }}>
-              <div style={{
-                background: '#FF850B',
-                borderRadius: '16px',
-                padding: '40px 20px',
-                textAlign: 'center'
-              }}>
-                <div style={{ color: '#FFFFFF', fontSize: '48px', fontWeight: 700 }}>4.8</div>
-                <div style={{ color: '#FFFFFF', fontSize: '16px' }}>Google Rating</div>
+      <section className="bg-white py-12">
+        <div className="max-w-[1120px] mx-auto px-5">
+          <div className="flex gap-0">
+            <div className="flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-10 px-5 text-center">
+                <div className="text-white text-5xl font-bold">4.8</div>
+                <div className="text-white text-base">Google Rating</div>
               </div>
             </div>
-            <div style={{ flex: '25%', padding: '5px' }}>
-              <div style={{
-                background: '#FF850B',
-                borderRadius: '16px',
-                padding: '40px 20px',
-                textAlign: 'center'
-              }}>
-                <div style={{ color: '#FFFFFF', fontSize: '48px', fontWeight: 700 }}>98%</div>
-                <div style={{ color: '#FFFFFF', fontSize: '16px' }}>Success Rate</div>
+            <div className="flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-10 px-5 text-center">
+                <div className="text-white text-5xl font-bold">98%</div>
+                <div className="text-white text-base">Success Rate</div>
               </div>
             </div>
-            <div style={{ flex: '25%', padding: '5px' }}>
-              <div style={{
-                background: '#FF850B',
-                borderRadius: '16px',
-                padding: '40px 20px',
-                textAlign: 'center'
-              }}>
-                <div style={{ color: '#FFFFFF', fontSize: '48px', fontWeight: 700 }}>75K+</div>
-                <div style={{ color: '#FFFFFF', fontSize: '16px' }}>Clients</div>
+            <div className="flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-10 px-5 text-center">
+                <div className="text-white text-5xl font-bold">75K+</div>
+                <div className="text-white text-base">Clients</div>
               </div>
             </div>
-            <div style={{ flex: '25%', padding: '5px' }}>
-              <div style={{
-                background: '#FF850B',
-                borderRadius: '16px',
-                padding: '15px 20px 16px',
-                textAlign: 'center'
-              }}>
-                <div style={{ color: '#FFFFFF', fontSize: '14px' }}>Personalised</div>
-                <div style={{ color: '#FFFFFF', fontSize: '30px', fontWeight: 700, margin: '10px 0' }}>GHAR</div>
-                <div style={{ color: '#FFFFFF', fontSize: '14px' }}>ka Khana Diet Plan</div>
+            <div className="flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-4 px-5 text-center">
+                <div className="text-white text-sm">Personalised</div>
+                <div className="text-white text-3xl font-bold my-2.5">GHAR</div>
+                <div className="text-white text-sm">ka Khana Diet Plan</div>
               </div>
             </div>
           </div>
@@ -687,78 +457,29 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* We Do Not Push Section */}
-      <section style={{ background: '#000', padding: '50px 0 80px', margin: '50px 0 0' }}>
-        <div style={{ padding: '0 1rem' }}>
-          <div style={{
-            maxWidth: '1820px',
-            margin: '0 auto',
-            borderRadius: '50px',
-            overflow: 'hidden',
-            position: 'relative',
-            background: '#4E0101',
-            backgroundImage: 'url(https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            padding: '25px 10px 0'
-          }}>
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(78, 1, 1, 0.95)'
-            }}></div>
-            <div style={{
-              position: 'relative',
-              zIndex: 1,
-              display: 'flex',
-              flexWrap: 'wrap',
-              gap: '30px',
-              padding: '10px',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
+      <section className="bg-black pt-12 pb-20 mt-12">
+        <div className="px-4">
+          <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-6 px-2.5">
+            <div className="absolute inset-0 bg-[rgba(78,1,1,0.95)]"></div>
+            <div className="relative z-10 flex flex-wrap gap-7 p-2.5 items-center justify-center">
               {/* Image */}
-              <div style={{ width: 'calc(40% - 20px)' }}>
+              <div className="w-[calc(40%-20px)]">
                 <Image
                   src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride-Cross.png"
                   alt="Bride"
                   width={500}
                   height={550}
-                  style={{ width: '60%', height: 'auto', margin: '0 auto', display: 'block' }}
+                  className="w-[60%] h-auto mx-auto block"
                 />
               </div>
               {/* Content */}
-              <div style={{ width: 'calc(50% - 20px)' }}>
-                <h2 style={{
-                  fontSize: '48px',
-                  fontWeight: 700,
-                  color: '#FFFFFF',
-                  lineHeight: 1.2,
-                  marginBottom: '30px',
-                  fontFamily: 'Epilogue, sans-serif',
-                  padding: '30px 0'
-                }}>
-                  We Do Not <span style={{ color: '#ff850b' }}>Push</span>
+              <div className="w-[calc(50%-20px)]">
+                <h2 className="text-5xl font-bold text-white leading-tight mb-7 font-[Epilogue,sans-serif] py-7">
+                  We Do Not <span className="text-[#ff850b]">Push</span>
                 </h2>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
-                  <div style={{
-                    background: '#FF850B',
-                    borderRadius: '16px',
-                    padding: '8px 10px 8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '20px'
-                  }}>
-                    <div style={{
-                      background: '#fff',
-                      borderRadius: '12px',
-                      padding: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
+                <div className="flex flex-col gap-5">
+                  <div className="bg-[#FF850B] rounded-2xl py-2 px-2.5 flex items-center gap-5">
+                    <div className="bg-white rounded-xl p-2.5 flex items-center justify-center">
                       <Image
                         src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/no_meals.svg"
                         alt="No meals"
@@ -766,26 +487,12 @@ export default function WeddingPlanPage() {
                         height={45}
                       />
                     </div>
-                    <p style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 600, lineHeight: 1.6, margin: 0, fontFamily: 'Epilogue, sans-serif' }}>
+                    <p className="text-white text-lg font-semibold leading-relaxed m-0 font-[Epilogue,sans-serif]">
                       Crash diets. Starvation.
                     </p>
                   </div>
-                  <div style={{
-                    background: '#FF850B',
-                    borderRadius: '16px',
-                    padding: '8px 10px 8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '20px'
-                  }}>
-                    <div style={{
-                      background: '#fff',
-                      borderRadius: '12px',
-                      padding: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
+                  <div className="bg-[#FF850B] rounded-2xl py-2 px-2.5 flex items-center gap-5">
+                    <div className="bg-white rounded-xl p-2.5 flex items-center justify-center">
                       <Image
                         src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/pill-1.svg"
                         alt="Pills"
@@ -793,26 +500,12 @@ export default function WeddingPlanPage() {
                         height={45}
                       />
                     </div>
-                    <p style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 600, lineHeight: 1.6, margin: 0, fontFamily: 'Epilogue, sans-serif' }}>
+                    <p className="text-white text-lg font-semibold leading-relaxed m-0 font-[Epilogue,sans-serif]">
                       Glutathione. Fat-burner pills. Detox teas.
                     </p>
                   </div>
-                  <div style={{
-                    background: '#FF850B',
-                    borderRadius: '16px',
-                    padding: '8px 10px 8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '20px'
-                  }}>
-                    <div style={{
-                      background: '#fff',
-                      borderRadius: '12px',
-                      padding: '10px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center'
-                    }}>
+                  <div className="bg-[#FF850B] rounded-2xl py-2 px-2.5 flex items-center gap-5">
+                    <div className="bg-white rounded-xl p-2.5 flex items-center justify-center">
                       <Image
                         src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/cardio_load.svg"
                         alt="Cardio"
@@ -820,7 +513,7 @@ export default function WeddingPlanPage() {
                         height={45}
                       />
                     </div>
-                    <p style={{ color: '#FFFFFF', fontSize: '18px', fontWeight: 600, lineHeight: 1.6, margin: 0, fontFamily: 'Epilogue, sans-serif' }}>
+                    <p className="text-white text-lg font-semibold leading-relaxed m-0 font-[Epilogue,sans-serif]">
                       Heavy gym plans if you do not want them.
                     </p>
                   </div>
@@ -832,55 +525,18 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Pricing Section */}
-      <section style={{ background: '#fff', padding: '60px 20px' }}>
-        <div style={{ 
-          maxWidth: '100%', 
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
-          textAlign: 'center'
-        }}>
-          <span style={{
-            color: '#ff850b',
-            fontSize: '16px',
-            fontWeight: 600,
-            lineHeight: 1.4,
-            fontFamily: 'Epilogue, sans-serif'
-          }}>Our Pricing</span>
-          <h2 style={{
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.2,
-            margin: '10px auto 20px',
-            fontFamily: 'Epilogue, sans-serif',
-            maxWidth: '56%'
-          }}>
-            Take the First Step to a <span style={{ color: '#ff850b' }}>Healthier Future</span>
+      <section className="bg-white py-16 px-5">
+        <div className="w-full flex flex-col items-center justify-center text-center">
+          <span className="text-[#ff850b] text-base font-semibold leading-relaxed font-[Epilogue,sans-serif]">Our Pricing</span>
+          <h2 className="text-5xl font-bold text-black leading-tight my-2.5 font-[Epilogue,sans-serif] max-w-[56%]">
+            Take the First Step to a <span className="text-[#ff850b]">Healthier Future</span>
           </h2>
-          <p style={{
-            fontSize: '16px',
-            fontWeight: 300,
-            lineHeight: 1.8,
-            color: '#828283',
-            maxWidth: '65%',
-            margin: '0 auto 40px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
+          <p className="text-base font-light leading-relaxed text-[#828283] max-w-[65%] mx-auto mb-10 font-[Epilogue,sans-serif]">
             Join our Plan today and embark on a journey to better health with our wedding plan!
           </p>
 
-          <div style={{
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center',
-            padding: '0 20px'
-          }}>
-            <div style={{
-              maxWidth: '1400px',
-              width: '100%'
-            }}>
+          <div className="w-full flex justify-center px-5">
+            <div className="max-w-[1400px] w-full">
               <DynamicPlansDisplay 
                 category="new-wedding-plan"
                 showHeader={false}
@@ -902,73 +558,28 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Award-Winning Recognition Section */}
-      <section style={{ background: '#fff', padding: '100px 10px 70px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
-          <h2 style={{
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.2,
-            margin: '0 auto 20px',
-            fontFamily: 'Epilogue, sans-serif',
-            maxWidth: '77%'
-          }}>
-            <span style={{ color: '#ff850b' }}>Award-Winning</span> Health & Wellness
+      <section className="bg-white pt-24 pb-16 px-2.5">
+        <div className="max-w-[1200px] mx-auto px-5 text-center">
+          <h2 className="text-5xl font-bold text-black leading-tight mx-auto mb-5 font-[Epilogue,sans-serif] max-w-[77%]">
+            <span className="text-[#ff850b]">Award-Winning</span> Health & Wellness
           </h2>
-          <p style={{
-            fontSize: '16px',
-            fontWeight: 300,
-            lineHeight: 1.8,
-            color: '#828283',
-            maxWidth: '65%',
-            margin: '0 auto 40px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
+          <p className="text-base font-light leading-relaxed text-[#828283] max-w-[65%] mx-auto mb-10 font-[Epilogue,sans-serif]">
             Proud to be recognized for excellence in health, innovation, and results—our weight loss plan has earned top industry awards for effectiveness and success.
           </p>
 
           {/* Award Cards */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gap: '20px'
-          }}>
+          <div className="grid grid-cols-3 gap-5">
             {awards.map((award, index) => (
-              <div key={index} style={{
-                background: '#4C0202',
-                borderRadius: '12px',
-                boxShadow: '0 4px 4px rgba(0,0,0,0.5)',
-                padding: '18px',
-                textAlign: 'left'
-              }}>
+              <div key={index} className="bg-[#4C0202] rounded-xl shadow-[0_4px_4px_rgba(0,0,0,0.5)] p-4 text-left">
                 <Image
                   src={award.image}
                   alt={award.title}
                   width={400}
                   height={250}
-                  style={{ width: '100%', height: 'auto', borderRadius: '10px', marginBottom: '15px' }}
+                  className="w-full h-auto rounded-[10px] mb-4"
                 />
-                <h3 style={{
-                  fontSize: '20px',
-                  fontWeight: 600,
-                  color: '#FFFFFF',
-                  lineHeight: 1.2,
-                  fontFamily: 'Epilogue, sans-serif',
-                  marginBottom: '10px'
-                }}>{award.title}</h3>
-                <button style={{
-                  background: '#4C0202',
-                  color: '#FFFFFF',
-                  border: 'none',
-                  padding: '8px 0',
-                  fontSize: '15px',
-                  fontWeight: 500,
-                  cursor: 'pointer',
-                  fontFamily: 'Epilogue, sans-serif',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px'
-                }}>
+                <h3 className="text-xl font-semibold text-white leading-tight font-[Epilogue,sans-serif] mb-2.5">{award.title}</h3>
+                <button className="bg-[#4C0202] text-white border-none py-2 px-0 text-[15px] font-medium cursor-pointer font-[Epilogue,sans-serif] flex items-center gap-2">
                   Read More →
                 </button>
               </div>
@@ -978,78 +589,32 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Expert's Guidance Section */}
-      <section style={{ background: '#000', padding: '50px 0 0', margin: '50px 0 0' }}>
-        <div style={{ padding: '0 1rem' }}>
-          <div style={{
-            maxWidth: '1820px',
-            margin: '0 auto',
-            borderRadius: '50px',
-            overflow: 'hidden',
-            position: 'relative',
-            background: '#4E0101',
-            backgroundImage: 'url(https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center center',
-            padding: '70px 10px 0'
-          }}>
-            <div style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: 'rgba(78, 1, 1, 0.96)'
-            }}></div>
-            <div style={{ position: 'relative', zIndex: 1 }}>
-              <h2 style={{
-                textAlign: 'center',
-                fontSize: '45px',
-                fontWeight: 700,
-                color: '#FFFFFF',
-                lineHeight: 1.2,
-                marginBottom: '50px',
-                fontFamily: 'Epilogue, sans-serif'
-              }}>
-                You are Under <span style={{ color: '#ff850b' }}>Expert's Guidance</span>
+      <section className="bg-black pt-12 mt-12">
+        <div className="px-4">
+          <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-16 px-2.5">
+            <div className="absolute inset-0 bg-[rgba(78,1,1,0.96)]"></div>
+            <div className="relative z-10">
+              <h2 className="text-center text-[45px] font-bold text-white leading-tight mb-12 font-[Epilogue,sans-serif]">
+                You are Under <span className="text-[#ff850b]">Expert's Guidance</span>
               </h2>
 
-              <div style={{
-                display: 'flex',
-                flexWrap: 'wrap',
-                gap: '30px',
-                padding: '10px',
-                alignItems: 'center',
-                justifyContent: 'center'
-              }}>
+              <div className="flex flex-wrap gap-7 p-2.5 items-center justify-center">
                 {/* Image */}
-                <div style={{ width: 'calc(40% - 20px)' }}>
+                <div className="w-[calc(40%-20px)]">
                   <Image
                     src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Untitled-design-32-1.png"
                     alt="Dt. Poonam Sagar"
                     width={500}
                     height={550}
-                    style={{ width: '60%', height: 'auto', margin: '0 auto', display: 'block' }}
+                    className="w-[60%] h-auto mx-auto block"
                   />
                 </div>
                 {/* Content */}
-                <div style={{ width: 'calc(50% - 20px)' }}>
-                  <p style={{
-                    color: '#FFFFFF',
-                    fontSize: '16px',
-                    fontWeight: 300,
-                    lineHeight: 1.8,
-                    marginBottom: '20px',
-                    fontFamily: 'Epilogue, sans-serif'
-                  }}>
+                <div className="w-[calc(50%-20px)]">
+                  <p className="text-white text-base font-light leading-relaxed mb-5 font-[Epilogue,sans-serif]">
                     Dt. Poonam Sagar understands that one-size-fits-all plans simply don't suffice. That's why we specialize in crafting personalized dietary solutions tailored to your unique needs and preferences. Dt. Sagar's philosophy revolves around creating sustainable meal plans centered on delicious, home-cooked dishes.
                   </p>
-                  <ul style={{
-                    listStyle: 'none',
-                    padding: '20px 5px 20px 15px',
-                    margin: 0,
-                    display: 'grid',
-                    gap: '10px'
-                  }}>
+                  <ul className="list-none py-5 px-4 m-0 grid gap-2.5">
                     {[
                       { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28.svg', text: 'Holistic Health Approach' },
                       { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-1.svg', text: 'Nutritional Counsellors' },
@@ -1058,7 +623,7 @@ export default function WeddingPlanPage() {
                       { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-4.svg', text: 'Weight Management' },
                       { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-5.svg', text: 'Better Health' }
                     ].map((item, index) => (
-                      <li key={index} style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#FFFFFF', fontSize: '16px', fontWeight: 400, lineHeight: 1.5 }}>
+                      <li key={index} className="flex items-center gap-1.5 text-white text-base font-normal leading-normal">
                         <Image src={item.icon} alt="" width={28} height={28} />
                         {item.text}
                       </li>
@@ -1072,44 +637,17 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Time Is Ticking CTA Section */}
-      <section style={{ background: '#fff', padding: '50px 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
-          <h2 style={{
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.2,
-            margin: '0 auto 20px',
-            fontFamily: 'Epilogue, sans-serif',
-            maxWidth: '56%'
-          }}>
-            Time Is <span style={{ color: '#ff850b' }}>Ticking</span><br />
-            Say 'Yes' to Your <span style={{ color: '#ff850b' }}>Best Body</span>!
+      <section className="bg-white py-12">
+        <div className="max-w-[1200px] mx-auto px-5 text-center">
+          <h2 className="text-5xl font-bold text-black leading-tight mx-auto mb-5 font-[Epilogue,sans-serif] max-w-[56%]">
+            Time Is <span className="text-[#ff850b]">Ticking</span><br />
+            Say 'Yes' to Your <span className="text-[#ff850b]">Best Body</span>!
           </h2>
-          <p style={{
-            fontSize: '23px',
-            fontWeight: 400,
-            lineHeight: 1.5,
-            color: '#828283',
-            maxWidth: '65%',
-            margin: '0 auto',
-            padding: '10px 0 40px',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
+          <p className="text-[23px] font-normal leading-normal text-[#828283] max-w-[65%] mx-auto py-2.5 pb-10 font-[Epilogue,sans-serif]">
             Your photos last forever — make sure you love what you see!<br />
             Get the personalized plan brides swear by.
           </p>
-          <button style={{
-            background: '#FF850B',
-            color: '#fff',
-            border: 'none',
-            borderRadius: '48px',
-            padding: '12px 64px',
-            fontSize: '20px',
-            fontWeight: 600,
-            cursor: 'pointer',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
+          <button className="bg-[#FF850B] text-white border-none rounded-[48px] py-3 px-16 text-xl font-semibold cursor-pointer font-[Epilogue,sans-serif] hover:bg-[#e07a1a] transition-colors">
             Get Your Wedding Plan Now!
           </button>
         </div>

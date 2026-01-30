@@ -35,105 +35,53 @@ export default function AboutUsSection() {
   return (
     <section
       ref={sectionRef}
-      className="about-us-section"
-      style={{
-        background: '#fff',
-        padding: '5rem 2rem',
-        overflow: 'hidden',
-      }}
+      className="bg-white py-12 md:py-20 px-4 md:px-8 overflow-hidden"
     >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'flex',
-          alignItems: 'center',
-          gap: '4rem',
-          flexWrap: 'wrap',
-          justifyContent: 'center',
-        }}
-      >
+      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-16 justify-center">
         {/* Left Side - Images */}
-        <div
-          style={{
-            position: 'relative',
-            minWidth: '320px',
-            maxWidth: '550px',
-            flex: '1',
-            height: '500px',
-          }}
-        >
+        <div className="relative w-full md:min-w-[320px] max-w-[400px] md:max-w-[550px] flex-1 h-[320px] md:h-[500px] mx-auto">
           {/* Main Image - Woman eating salad */}
           <div
-            style={{
-              position: 'absolute',
-              left: '0',
-              top: '0',
-              width: '280px',
-              height: '360px',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
-              transform: isVisible ? 'translateY(0) rotate(-3deg)' : 'translateY(50px) rotate(-3deg)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)',
-              zIndex: 2,
-            }}
+            className={`absolute left-[5%] md:left-0 top-0 w-[180px] md:w-[280px] h-[220px] md:h-[360px] rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-[2] transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[50px] opacity-0'
+            }`}
+            style={{ transform: isVisible ? 'translateY(0) rotate(-3deg)' : 'translateY(50px) rotate(-3deg)' }}
           >
             <Image
               src="/img/image-24-1.webp"
               alt="Woman enjoying healthy food"
               fill
-              style={{ objectFit: 'cover' }}
+              className="object-cover"
             />
           </div>
 
           {/* Second Image - Woman with vegetables */}
           <div
-            style={{
-              position: 'absolute',
-              right: '0',
-              top: '30px',
-              width: '240px',
-              height: '300px',
-              borderRadius: '20px',
-              overflow: 'hidden',
-              boxShadow: '0 20px 50px rgba(0,0,0,0.15)',
-              transform: isVisible ? 'translateY(0) rotate(3deg)' : 'translateY(50px) rotate(3deg)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.2s',
-              zIndex: 3,
-              border: '4px solid #fff',
-            }}
+            className={`absolute right-[5%] md:right-0 top-[20px] md:top-[30px] w-[160px] md:w-[240px] h-[200px] md:h-[300px] rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-[3] border-4 border-white transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-200 ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[50px] opacity-0'
+            }`}
+            style={{ transform: isVisible ? 'translateY(0) rotate(3deg)' : 'translateY(50px) rotate(3deg)' }}
           >
             <Image
               src="/img/image-27.webp"
               alt="Woman with healthy vegetables"
               fill
-              style={{ objectFit: 'cover' }}
+              className="object-cover"
             />
           </div>
 
           {/* Decorative Dashed Circle with Arrow */}
           <div
-            style={{
-              position: 'absolute',
-              right: '60px',
-              top: '50%',
-              transform: 'translateY(-50%)',
-              width: '80px',
-              height: '80px',
-              opacity: isVisible ? 1 : 0,
-              transition: 'opacity 0.8s ease 0.6s',
-              zIndex: 4,
-            }}
+            className={`absolute right-[30%] md:right-[60px] top-[45%] md:top-1/2 -translate-y-1/2 w-[50px] md:w-[80px] h-[50px] md:h-[80px] z-[4] transition-opacity duration-[800ms] delay-[600ms] ${
+              isVisible ? 'opacity-100' : 'opacity-0'
+            }`}
           >
             <svg
               width="80"
               height="80"
               viewBox="0 0 80 80"
               fill="none"
-              className="rotating-circle"
+              className="animate-[rotate_10s_linear_infinite] w-full h-full"
             >
               <circle
                 cx="40"
@@ -146,12 +94,7 @@ export default function AboutUsSection() {
               />
             </svg>
             <svg
-              style={{
-                position: 'absolute',
-                bottom: '-15px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-              }}
+              className="absolute -bottom-4 left-1/2 -translate-x-1/2"
               width="20"
               height="20"
               viewBox="0 0 24 24"
@@ -169,41 +112,14 @@ export default function AboutUsSection() {
 
           {/* Years Badge */}
           <div
-            style={{
-              position: 'absolute',
-              left: '50%',
-              bottom: '30px',
-              transform: isVisible ? 'translateX(-50%) scale(1)' : 'translateX(-50%) scale(0.8)',
-              background: 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)',
-              borderRadius: '16px',
-              padding: '1rem 1.5rem',
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.75rem',
-              boxShadow: '0 10px 30px rgba(245, 124, 0, 0.4)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s',
-              zIndex: 5,
-            }}
+            className={`absolute left-1/2 bottom-[10px] md:bottom-[30px] -translate-x-1/2 bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-2xl px-4 py-3 md:px-6 md:py-4 flex items-center gap-2 md:gap-3 shadow-[0_10px_30px_rgba(245,124,0,0.4)] z-[5] transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-[400ms] ${
+              isVisible ? 'scale-100 opacity-100' : 'scale-[0.8] opacity-0'
+            }`}
           >
-            <span
-              style={{
-                fontSize: '2.5rem',
-                fontWeight: '700',
-                color: '#fff',
-                lineHeight: '1',
-              }}
-            >
+            <span className="text-[1.6rem] md:text-[2.5rem] font-bold text-white leading-none">
               25
             </span>
-            <span
-              style={{
-                fontSize: '0.9rem',
-                fontWeight: '500',
-                color: '#fff',
-                lineHeight: '1.3',
-              }}
-            >
+            <span className="text-[0.7rem] md:text-[0.9rem] font-medium text-white leading-tight">
               Years of
               <br />
               experience
@@ -213,121 +129,51 @@ export default function AboutUsSection() {
 
         {/* Right Side - Content */}
         <div
-          style={{
-            flex: '1',
-            minWidth: '320px',
-            maxWidth: '520px',
-            transform: isVisible ? 'translateX(0)' : 'translateX(50px)',
-            opacity: isVisible ? 1 : 0,
-            transition: 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1) 0.3s',
-          }}
+          className={`flex-1 w-full md:min-w-[320px] max-w-[520px] transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-300 text-center md:text-left ${
+            isVisible ? 'translate-x-0 opacity-100' : 'translate-x-[50px] opacity-0'
+          }`}
         >
           {/* Label */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginBottom: '1rem',
-            }}
-          >
-            <span style={{ color: '#f5a623', fontSize: '1.2rem' }}>✦</span>
-            <span
-              style={{
-                color: '#0d9488',
-                fontSize: '1rem',
-                fontWeight: '600',
-                letterSpacing: '0.5px',
-              }}
-            >
+          <div className="flex items-center gap-2 mb-3 md:mb-4 justify-center md:justify-start">
+            <span className="text-[#f5a623] text-lg md:text-xl">✦</span>
+            <span className="text-[#0d9488] text-sm md:text-base font-semibold tracking-wide">
               About Us
             </span>
           </div>
 
           {/* Heading */}
-          <h2
-            style={{
-              fontSize: '2.8rem',
-              fontWeight: '700',
-              color: '#1a1a1a',
-              lineHeight: '1.2',
-              marginBottom: '1.5rem',
-            }}
-          >
+          <h2 className="text-[1.5rem] md:text-[2.8rem] font-bold text-[#1a1a1a] leading-[1.2] mb-3 md:mb-6">
             Your wellness journey
             <br />
             starts here
           </h2>
 
           {/* Description */}
-          <p
-            style={{
-              fontSize: '1rem',
-              color: '#666',
-              lineHeight: '1.8',
-              marginBottom: '2rem',
-            }}
-          >
+          <p className="text-[0.9rem] md:text-base text-[#666] leading-[1.7] md:leading-[1.8] mb-5 md:mb-8">
             25+ years of expertise guiding over 15,000+ clients to their health goals.
             Whether it&apos;s weight loss, PCOD management, disease prevention, or lifestyle
             optimization, we create customized plans that fit your life, not the other way around.
           </p>
 
           {/* Features Box */}
-          <div
-            style={{
-              background: 'linear-gradient(135deg, #f0faf9 0%, #e8f7f6 100%)',
-              border: '1px solid #b8e6e3',
-              borderRadius: '16px',
-              padding: '1.5rem 2rem',
-              marginBottom: '2rem',
-            }}
-          >
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: 'repeat(2, 1fr)',
-                gap: '1rem',
-              }}
-            >
+          <div className="bg-gradient-to-br from-[#f0faf9] to-[#e8f7f6] border border-[#b8e6e3] rounded-2xl p-3 md:p-6 mb-6 md:mb-8">
+            <div className="grid grid-cols-1 gap-2 md:gap-4">
               {features.map((feature, index) => (
                 <div
                   key={index}
                   onMouseEnter={() => setHoveredFeature(index)}
                   onMouseLeave={() => setHoveredFeature(null)}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.75rem',
-                    transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                    opacity: isVisible ? 1 : 0,
-                    transition: `all 0.3s ease`,
-                    transitionDelay: isVisible ? `${0.5 + index * 0.1}s` : '0s',
-                    padding: '0.5rem 0.75rem',
-                    borderRadius: '8px',
-                    background: hoveredFeature === index ? '#0d9488' : 'transparent',
-                    cursor: 'pointer',
-                  }}
+                  className={`flex items-center gap-3 p-2 md:p-3 rounded-lg cursor-pointer transition-all duration-300 ${
+                    hoveredFeature === index ? 'bg-[#0d9488]' : 'bg-transparent'
+                  } ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'}`}
+                  style={{ transitionDelay: isVisible ? `${0.5 + index * 0.1}s` : '0s' }}
                 >
                   <div
-                    style={{
-                      width: '24px',
-                      height: '24px',
-                      borderRadius: '50%',
-                      background: hoveredFeature === index ? '#fff' : '#0d9488',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      flexShrink: 0,
-                      transition: 'all 0.3s ease',
-                    }}
+                    className={`w-5 h-5 md:w-6 md:h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                      hoveredFeature === index ? 'bg-white' : 'bg-[#0d9488]'
+                    }`}
                   >
-                    <svg
-                      width="14"
-                      height="14"
-                      viewBox="0 0 14 14"
-                      fill="none"
-                    >
+                    <svg width="12" height="12" viewBox="0 0 14 14" fill="none" className="md:w-[14px] md:h-[14px]">
                       <path
                         d="M3 7L6 10L11 4"
                         stroke={hoveredFeature === index ? '#0d9488' : '#fff'}
@@ -338,12 +184,9 @@ export default function AboutUsSection() {
                     </svg>
                   </div>
                   <span
-                    style={{
-                      fontSize: '0.95rem',
-                      color: hoveredFeature === index ? '#fff' : '#333',
-                      fontWeight: '500',
-                      transition: 'all 0.3s ease',
-                    }}
+                    className={`text-[0.85rem] md:text-[0.95rem] font-medium transition-all duration-300 text-left ${
+                      hoveredFeature === index ? 'text-white' : 'text-[#333]'
+                    }`}
                   >
                     {feature}
                   </span>
@@ -354,49 +197,12 @@ export default function AboutUsSection() {
 
           {/* CTA Button */}
           <Link href="/about">
-            <button
-              style={{
-                background: 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)',
-                color: '#fff',
-                fontSize: '1rem',
-                fontWeight: '600',
-                padding: '1rem 2rem',
-                borderRadius: '50px',
-                border: 'none',
-                cursor: 'pointer',
-                boxShadow: '0 8px 25px rgba(245, 124, 0, 0.35)',
-                transition: 'all 0.3s ease',
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.transform = 'translateY(-3px)';
-                e.currentTarget.style.boxShadow = '0 12px 35px rgba(245, 124, 0, 0.45)';
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.transform = 'translateY(0)';
-                e.currentTarget.style.boxShadow = '0 8px 25px rgba(245, 124, 0, 0.35)';
-              }}
-            >
+            <button className="bg-gradient-to-br from-[#f5a623] to-[#f57c00] text-white text-sm md:text-base font-semibold px-6 py-3 md:px-8 md:py-4 rounded-full border-none cursor-pointer shadow-[0_8px_25px_rgba(245,124,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_35px_rgba(245,124,0,0.45)]">
               More About Us
             </button>
           </Link>
         </div>
       </div>
-
-      <style jsx>{`
-        @keyframes rotateDashed {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
-        }
-        .rotating-circle {
-          animation: rotateDashed 10s linear infinite;
-        }
-        @media (max-width: 900px) {
-          .about-us-section > div {
-            flex-direction: column !important;
-            text-align: center;
-          }
-        }
-      `}</style>
     </section>
   );
 }

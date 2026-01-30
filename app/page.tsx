@@ -88,109 +88,68 @@ export default function HomePage() {
       {/* Why Choose Us Section */}
       {/* ...existing code... */}
       {/* Expert Guidance Section */}
-      <section className="expert-guidance-section" style={{ background: '#fff', padding: '4rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section className="bg-white py-16 px-8">
+        <div className="max-w-[1200px] mx-auto">
           {/* Section Header */}
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-              <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Expert Guidance</span>
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="text-[#ff9100] text-xl">✦</span>
+              <span className="text-teal-600 font-semibold text-base">Expert Guidance</span>
             </div>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2 }}>
+            <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight">
               You are under Expert&apos;s Guidance
             </h2>
-            <p style={{ color: '#666', fontSize: '1.1rem', marginTop: '0.5rem' }}>
+            <p className="text-gray-600 text-lg mt-2">
               Meet our award Winning Dietitian
             </p>
           </div>
           
           {/* Expert Content */}
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2rem', flexWrap: 'wrap' }}>
+          <div className="flex items-center justify-center gap-8 flex-wrap">
             {/* Left - Vertical SAGAR Text */}
-            <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '0.3rem' }}>
+            <div className="flex flex-col items-center gap-1">
               {'SAGAR'.split('').map((letter, i) => (
-                <span key={i} style={{ 
-                  fontWeight: 800, 
-                  fontSize: '2.5rem', 
-                  color: '#0b4c4c',
-                  lineHeight: 1,
-                  letterSpacing: '2px'
-                }}>{letter}</span>
+                <span key={i} className="font-extrabold text-[2.5rem] text-[#0b4c4c] leading-none tracking-widest">{letter}</span>
               ))}
             </div>
             
             {/* Center - Image with decoration */}
-            <div style={{ position: 'relative' }}>
+            <div className="relative">
               <Image
                 src="/img/Group-319-2-1.webp"
                 alt="Dietitian Poonam Sagar"
                 width={320}
                 height={400}
-                style={{ borderRadius: '20px', objectFit: 'cover' }}
+                className="rounded-[20px] object-cover"
               />
               {/* Decorative circles */}
-              <div style={{
-                position: 'absolute',
-                top: '-15px',
-                right: '-15px',
-                width: '60px',
-                height: '60px',
-                border: '2px dashed #009688',
-                borderRadius: '50%',
-                animation: 'spin 10s linear infinite'
-              }} />
-              <div style={{
-                position: 'absolute',
-                bottom: '-10px',
-                left: '-10px',
-                width: '40px',
-                height: '40px',
-                background: '#ff9100',
-                borderRadius: '50%',
-                opacity: 0.8
-              }} />
+              <div className="absolute -top-[15px] -right-[15px] w-[60px] h-[60px] border-2 border-dashed border-teal-600 rounded-full animate-spin-slow" />
+              <div className="absolute -bottom-2.5 -left-2.5 w-10 h-10 bg-[#ff9100] rounded-full opacity-80" />
             </div>
             
             {/* Right - Description Card */}
-            <div style={{ 
-              maxWidth: '400px', 
-              background: '#0b4c4c', 
-              borderRadius: '20px', 
-              padding: '2rem',
-              color: '#fff',
-              position: 'relative'
-            }}>
-              <div style={{ 
-                position: 'absolute',
-                top: '-20px',
-                left: '20px',
-                background: '#ff9100',
-                color: '#fff',
-                fontWeight: 700,
-                borderRadius: '8px',
-                padding: '0.5rem 1rem',
-                fontSize: '0.85rem'
-              }}>
+            <div className="max-w-[400px] bg-[#0b4c4c] rounded-[20px] p-8 text-white relative">
+              <div className="absolute -top-5 left-5 bg-[#ff9100] text-white font-bold rounded-lg py-2 px-4 text-sm">
                 25+ Years Experience
               </div>
-              <h3 style={{ fontWeight: 700, fontSize: '1.5rem', marginBottom: '0.5rem', marginTop: '1rem' }}>
+              <h3 className="font-bold text-2xl mb-2 mt-4">
                 Dt. Poonam Sagar
               </h3>
-              <p style={{ fontSize: '0.9rem', opacity: 0.9, marginBottom: '1rem' }}>
+              <p className="text-sm opacity-90 mb-4">
                 Award Winning Dietitian
               </p>
-              <p style={{ fontSize: '0.95rem', lineHeight: 1.7, opacity: 0.95 }}>
+              <p className="text-[0.95rem] leading-relaxed opacity-95">
                 Dt. Poonam Sagar has 25+ years dietary and clinical expertise. That&apos;s why we are trusted by 15,000+ clients for their health and nutrition goals. Her approach is rooted in evidence-based nutrition, personalized care, and a passion for helping people achieve lasting results.
               </p>
               {/* Stats */}
-              <div style={{ display: 'flex', gap: '1.5rem', marginTop: '1.5rem' }}>
+              <div className="flex gap-6 mt-6">
                 <div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#ff9100' }}>15K+</div>
-                  <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Happy Clients</div>
+                  <div className="text-3xl font-bold text-[#ff9100]">15K+</div>
+                  <div className="text-xs opacity-80">Happy Clients</div>
                 </div>
                 <div>
-                  <div style={{ fontSize: '1.8rem', fontWeight: 700, color: '#ff9100' }}>25+</div>
-                  <div style={{ fontSize: '0.8rem', opacity: 0.8 }}>Years Experience</div>
+                  <div className="text-3xl font-bold text-[#ff9100]">25+</div>
+                  <div className="text-xs opacity-80">Years Experience</div>
                 </div>
               </div>
             </div>
@@ -199,92 +158,40 @@ export default function HomePage() {
       </section>
 
       {/* Our Video Section */}
-      <section style={{ 
-        background: 'url("/img/what-we-do-image-1.jpg")',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        padding: '5rem 2rem',
-        position: 'relative',
-        minHeight: '600px'
-      }}>
+      <section 
+        className="bg-cover bg-center py-20 px-8 relative min-h-[600px] bg-[url('/img/what-we-do-image-1.jpg')]"
+      >
         {/* Dark overlay */}
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'linear-gradient(135deg, rgba(11, 76, 76, 0.9) 0%, rgba(0, 0, 0, 0.7) 100%)'
-        }} />
+        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(11,76,76,0.9)] to-[rgba(0,0,0,0.7)]" />
         
-        <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '3rem' }}>
+        <div className="max-w-[1200px] mx-auto relative z-10">
+          <div className="flex items-center justify-between flex-wrap gap-12">
             {/* Left content */}
-            <div style={{ maxWidth: '500px', color: '#fff' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem' }}>
-                <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-                <span style={{ color: '#ff9100', fontWeight: 600, fontSize: '1rem' }}>Our Video</span>
+            <div className="max-w-[500px] text-white">
+              <div className="flex items-center gap-2 mb-4">
+                <span className="text-[#ff9100] text-xl">✦</span>
+                <span className="text-[#ff9100] font-semibold text-base">Our Video</span>
               </div>
-              <h2 style={{ fontSize: '3rem', fontWeight: 700, lineHeight: 1.2, marginBottom: '1.5rem' }}>
+              <h2 className="text-5xl font-bold leading-tight mb-6">
                 Lives through wellness<br />video stories
               </h2>
-              <p style={{ fontSize: '1.1rem', lineHeight: 1.8, marginBottom: '2rem', opacity: 0.9 }}>
+              <p className="text-lg leading-relaxed mb-8 opacity-90">
                 Explore inspiring stories of transformation and growth through our wellness videos, showcasing real journeys toward healthier, happier lives.
               </p>
-              <button style={{ 
-                background: '#ff9100', 
-                color: '#fff', 
-                fontWeight: 600, 
-                fontSize: '1rem', 
-                border: 'none', 
-                borderRadius: '2rem', 
-                padding: '1rem 2.5rem', 
-                cursor: 'pointer',
-                transition: 'all 0.3s ease',
-                boxShadow: '0 4px 15px rgba(255, 145, 0, 0.4)'
-              }}>
+              <button className="bg-[#ff9100] text-white font-semibold text-base border-none rounded-full py-4 px-10 cursor-pointer transition-all duration-300 shadow-[0_4px_15px_rgba(255,145,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,145,0,0.5)]">
                 Explore More
               </button>
             </div>
             
             {/* Right - Play button with rotating text */}
-            <div style={{ position: 'relative', width: '200px', height: '200px' }}>
+            <div className="relative w-[200px] h-[200px]">
               {/* Center play button */}
-              <div style={{ 
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '80px', 
-                height: '80px', 
-                background: '#ff9100', 
-                borderRadius: '50%', 
-                display: 'flex', 
-                alignItems: 'center', 
-                justifyContent: 'center',
-                cursor: 'pointer',
-                boxShadow: '0 4px 30px rgba(255,145,0,0.5)',
-                zIndex: 2
-              }}>
-                <div style={{ 
-                  width: 0, 
-                  height: 0, 
-                  borderLeft: '22px solid #fff', 
-                  borderTop: '14px solid transparent', 
-                  borderBottom: '14px solid transparent',
-                  marginLeft: '6px'
-                }} />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-[#ff9100] rounded-full flex items-center justify-center cursor-pointer shadow-[0_4px_30px_rgba(255,145,0,0.5)] z-[2]">
+                <div className="w-0 h-0 border-l-[22px] border-l-white border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent ml-1.5" />
               </div>
               
               {/* Rotating circular text */}
-              <svg style={{ 
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '200px',
-                height: '200px',
-                animation: 'spin 15s linear infinite'
-              }} viewBox="0 0 200 200">
+              <svg className="absolute top-0 left-0 w-[200px] h-[200px] animate-spin-slow" style={{ animationDuration: '15s' }} viewBox="0 0 200 200">
                 <defs>
                   <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
                 </defs>
@@ -296,200 +203,93 @@ export default function HomePage() {
               </svg>
               
               {/* Dashed circle border */}
-              <div style={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
-                transform: 'translate(-50%, -50%)',
-                width: '170px',
-                height: '170px',
-                border: '2px dashed rgba(255,255,255,0.3)',
-                borderRadius: '50%'
-              }} />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[170px] h-[170px] border-2 border-dashed border-white/30 rounded-full" />
             </div>
           </div>
           
           {/* Stats Bar */}
-          <div style={{ 
-            marginTop: '4rem', 
-            display: 'flex', 
-            justifyContent: 'space-between', 
-            flexWrap: 'wrap',
-            gap: '2rem',
-            padding: '2rem',
-            background: 'rgba(255,255,255,0.1)',
-            borderRadius: '20px',
-            backdropFilter: 'blur(10px)'
-          }}>
-            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 700 }}>25<span style={{ color: '#ff9100' }}>+</span></div>
-              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Year of experience</div>
+          <div className="mt-16 flex justify-between flex-wrap gap-8 p-8 bg-white/10 rounded-[20px] backdrop-blur-[10px]">
+            <div className="text-center text-white flex-1 min-w-[150px]">
+              <div className="text-5xl font-bold">25<span className="text-[#ff9100]">+</span></div>
+              <div className="text-[0.95rem] opacity-90">Year of experience</div>
             </div>
-            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 700 }}>260<span style={{ color: '#ff9100' }}>+</span></div>
-              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Hours of coaching</div>
+            <div className="text-center text-white flex-1 min-w-[150px]">
+              <div className="text-5xl font-bold">260<span className="text-[#ff9100]">+</span></div>
+              <div className="text-[0.95rem] opacity-90">Hours of coaching</div>
             </div>
-            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 700 }}>550<span style={{ color: '#ff9100' }}>+</span></div>
-              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Complete courses</div>
+            <div className="text-center text-white flex-1 min-w-[150px]">
+              <div className="text-5xl font-bold">550<span className="text-[#ff9100]">+</span></div>
+              <div className="text-[0.95rem] opacity-90">Complete courses</div>
             </div>
-            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 700 }}>20K<span style={{ color: '#ff9100' }}>+</span></div>
-              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Happy customer</div>
+            <div className="text-center text-white flex-1 min-w-[150px]">
+              <div className="text-5xl font-bold">20K<span className="text-[#ff9100]">+</span></div>
+              <div className="text-[0.95rem] opacity-90">Happy customer</div>
             </div>
-            <div style={{ textAlign: 'center', color: '#fff', flex: 1, minWidth: '150px' }}>
-              <div style={{ fontSize: '3rem', fontWeight: 700 }}>359<span style={{ color: '#ff9100' }}>+</span></div>
-              <div style={{ fontSize: '0.95rem', opacity: 0.9 }}>Awards win</div>
+            <div className="text-center text-white flex-1 min-w-[150px]">
+              <div className="text-5xl font-bold">359<span className="text-[#ff9100]">+</span></div>
+              <div className="text-[0.95rem] opacity-90">Awards win</div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Our Programs Section */}
-      <section style={{ background: '#fff', padding: '5rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
+      <section className="bg-white py-20 px-8">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-                <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Our Programs</span>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#ff9100] text-xl">✦</span>
+                <span className="text-teal-600 font-semibold text-base">Our Programs</span>
               </div>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2 }}>
+              <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight">
                 Tailored programs for<br />your wellness
               </h2>
             </div>
-            <button style={{ 
-              background: '#ff9100', 
-              color: '#fff', 
-              fontWeight: 600, 
-              fontSize: '1rem', 
-              border: 'none', 
-              borderRadius: '2rem', 
-              padding: '0.8rem 2rem', 
-              cursor: 'pointer',
-              transition: 'all 0.3s ease'
-            }}>
+            <button className="bg-[#ff9100] text-white font-semibold text-base border-none rounded-full py-3 px-8 cursor-pointer transition-all duration-300 hover:shadow-lg">
               All Programs
             </button>
           </div>
-          <div style={{ display: 'flex', gap: '1.5rem', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div className="flex gap-6 flex-wrap justify-center">
             {/* Program Card 1 - Using Garima-Mam.jpeg */}
-            <div style={{ 
-              background: '#222', 
-              borderRadius: '20px', 
-              overflow: 'hidden', 
-              width: '360px', 
-              height: '450px',
-              position: 'relative',
-              cursor: 'pointer',
-              transition: 'transform 0.3s, box-shadow 0.3s'
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+            <div 
+              className="bg-gray-900 rounded-[20px] overflow-hidden w-[360px] h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
             >
-              <img src="/img/Garima-Mam.jpeg" alt="Weight Management Program" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ 
-                position: 'absolute', 
-                left: 0, 
-                bottom: 0, 
-                width: '100%', 
-                padding: '1.5rem', 
-                background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
-                color: '#fff'
-              }}>
-                <div style={{ 
-                  display: 'inline-block', 
-                  background: '#ff9100', 
-                  padding: '0.3rem 0.8rem', 
-                  borderRadius: '20px', 
-                  fontSize: '0.75rem', 
-                  fontWeight: 600,
-                  marginBottom: '0.5rem'
-                }}>
+              <img src="/img/Garima-Mam.jpeg" alt="Weight Management Program" className="w-full h-full object-cover" />
+              <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
+                <div className="inline-block bg-[#ff9100] py-1 px-3 rounded-full text-xs font-semibold mb-2">
                   WEIGHT LOSS
                 </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Weight Management<br />Program</h3>
-                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Customized diet plans for effective and sustainable weight loss results.</p>
+                <h3 className="text-xl font-bold mb-2">Weight Management<br />Program</h3>
+                <p className="text-sm opacity-90">Customized diet plans for effective and sustainable weight loss results.</p>
               </div>
             </div>
             
             {/* Program Card 2 - Using Shivani.jpeg */}
-            <div style={{ 
-              background: '#222', 
-              borderRadius: '20px', 
-              overflow: 'hidden', 
-              width: '360px', 
-              height: '450px',
-              position: 'relative',
-              cursor: 'pointer',
-              transition: 'transform 0.3s, box-shadow 0.3s'
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+            <div 
+              className="bg-gray-900 rounded-[20px] overflow-hidden w-[360px] h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
             >
-              <img src="/img/Shivani.jpeg" alt="PCOD/PCOS Program" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ 
-                position: 'absolute', 
-                left: 0, 
-                bottom: 0, 
-                width: '100%', 
-                padding: '1.5rem', 
-                background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
-                color: '#fff'
-              }}>
-                <div style={{ 
-                  display: 'inline-block', 
-                  background: '#009688', 
-                  padding: '0.3rem 0.8rem', 
-                  borderRadius: '20px', 
-                  fontSize: '0.75rem', 
-                  fontWeight: 600,
-                  marginBottom: '0.5rem'
-                }}>
+              <img src="/img/Shivani.jpeg" alt="PCOD/PCOS Program" className="w-full h-full object-cover" />
+              <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
+                <div className="inline-block bg-teal-600 py-1 px-3 rounded-full text-xs font-semibold mb-2">
                   PCOD/PCOS
                 </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>PCOD/PCOS<br />Management</h3>
-                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Specialized nutrition programs for hormonal balance and PCOD management.</p>
+                <h3 className="text-xl font-bold mb-2">PCOD/PCOS<br />Management</h3>
+                <p className="text-sm opacity-90">Specialized nutrition programs for hormonal balance and PCOD management.</p>
               </div>
             </div>
             
             {/* Program Card 3 - Using Anshu-Jain.jpeg */}
-            <div style={{ 
-              background: '#222', 
-              borderRadius: '20px', 
-              overflow: 'hidden', 
-              width: '360px', 
-              height: '450px',
-              position: 'relative',
-              cursor: 'pointer',
-              transition: 'transform 0.3s, box-shadow 0.3s'
-            }}
-            onMouseOver={(e) => { e.currentTarget.style.transform = 'translateY(-10px)'; e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)'; }}
-            onMouseOut={(e) => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none'; }}
+            <div 
+              className="bg-gray-900 rounded-[20px] overflow-hidden w-[360px] h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
             >
-              <img src="/img/Anshu-Jain.jpeg" alt="Therapeutic Diet Program" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-              <div style={{ 
-                position: 'absolute', 
-                left: 0, 
-                bottom: 0, 
-                width: '100%', 
-                padding: '1.5rem', 
-                background: 'linear-gradient(0deg, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%)',
-                color: '#fff'
-              }}>
-                <div style={{ 
-                  display: 'inline-block', 
-                  background: '#0b4c4c', 
-                  padding: '0.3rem 0.8rem', 
-                  borderRadius: '20px', 
-                  fontSize: '0.75rem', 
-                  fontWeight: 600,
-                  marginBottom: '0.5rem'
-                }}>
+              <img src="/img/Anshu-Jain.jpeg" alt="Therapeutic Diet Program" className="w-full h-full object-cover" />
+              <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
+                <div className="inline-block bg-[#0b4c4c] py-1 px-3 rounded-full text-xs font-semibold mb-2">
                   THERAPEUTIC
                 </div>
-                <h3 style={{ fontSize: '1.3rem', fontWeight: 700, marginBottom: '0.5rem' }}>Therapeutic Diet<br />Program</h3>
-                <p style={{ fontSize: '0.85rem', opacity: 0.9 }}>Medical nutrition therapy for diabetes, thyroid, and other health conditions.</p>
+                <h3 className="text-xl font-bold mb-2">Therapeutic Diet<br />Program</h3>
+                <p className="text-sm opacity-90">Medical nutrition therapy for diabetes, thyroid, and other health conditions.</p>
               </div>
             </div>
           </div>
@@ -497,35 +297,27 @@ export default function HomePage() {
       </section>
 
       {/* How It Work Section */}
-      <section style={{ background: '#0b4c4c', padding: '5rem 2rem', borderRadius: '40px 40px 0 0' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '2rem', marginBottom: '3rem' }}>
+      <section className="bg-[#0b4c4c] py-20 px-8 rounded-t-[40px]">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="flex justify-between items-start flex-wrap gap-8 mb-12">
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-                <span style={{ color: '#ff9100', fontWeight: 600, fontSize: '1rem' }}>How It Work</span>
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#ff9100] text-xl">✦</span>
+                <span className="text-[#ff9100] font-semibold text-base">How It Work</span>
               </div>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#fff', lineHeight: 1.2 }}>
+              <h2 className="text-[2.5rem] font-bold text-white leading-tight">
                 Step-by-step guide to<br />better health
               </h2>
             </div>
-            <p style={{ maxWidth: '500px', color: '#fff', opacity: 0.9, fontSize: '1rem', lineHeight: 1.7 }}>
+            <p className="max-w-[500px] text-white opacity-90 text-base leading-relaxed">
               Achieving your health goals has never been easier. Our step-by-step approach provides personalized guidance, actionable strategies, and ongoing support.
             </p>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
+          <div className="flex justify-between flex-wrap gap-8">
             {/* Step 1 */}
-            <div style={{ textAlign: 'center', flex: '1', minWidth: '200px' }}>
-              <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1.5rem' }}>
-                <div style={{ 
-                  width: '80px', 
-                  height: '80px', 
-                  border: '2px solid rgba(255,255,255,0.3)', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center'
-                }}>
+            <div className="text-center flex-1 min-w-[200px]">
+              <div className="relative inline-block mb-6">
+                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
                     <circle cx="12" cy="5" r="3" />
                     <line x1="12" y1="8" x2="12" y2="14" />
@@ -535,37 +327,15 @@ export default function HomePage() {
                     <circle cx="18" cy="20" r="2" />
                   </svg>
                 </div>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: '-5px', 
-                  right: '-5px', 
-                  background: '#ff9100', 
-                  color: '#fff', 
-                  width: '24px', 
-                  height: '24px', 
-                  borderRadius: '50%', 
-                  fontSize: '0.8rem', 
-                  fontWeight: 700,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>1</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">1</div>
               </div>
-              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Custom Coaching Plan</h3>
-              <p style={{ color: '#fff', opacity: 0.8, fontSize: '0.9rem', lineHeight: 1.6 }}>Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-lg mb-2">Custom Coaching Plan</h3>
+              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
             {/* Step 2 */}
-            <div style={{ textAlign: 'center', flex: '1', minWidth: '200px' }}>
-              <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1.5rem' }}>
-                <div style={{ 
-                  width: '80px', 
-                  height: '80px', 
-                  border: '2px solid rgba(255,255,255,0.3)', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center'
-                }}>
+            <div className="text-center flex-1 min-w-[200px]">
+              <div className="relative inline-block mb-6">
+                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
                     <circle cx="12" cy="8" r="4" />
                     <circle cx="6" cy="16" r="3" />
@@ -574,72 +344,28 @@ export default function HomePage() {
                     <line x1="15" y1="11" x2="17" y2="13" />
                   </svg>
                 </div>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: '-5px', 
-                  right: '-5px', 
-                  background: '#ff9100', 
-                  color: '#fff', 
-                  width: '24px', 
-                  height: '24px', 
-                  borderRadius: '50%', 
-                  fontSize: '0.8rem', 
-                  fontWeight: 700,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>2</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">2</div>
               </div>
-              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Ongoing Support</h3>
-              <p style={{ color: '#fff', opacity: 0.8, fontSize: '0.9rem', lineHeight: 1.6 }}>Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-lg mb-2">Ongoing Support</h3>
+              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
             {/* Step 3 */}
-            <div style={{ textAlign: 'center', flex: '1', minWidth: '200px' }}>
-              <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1.5rem' }}>
-                <div style={{ 
-                  width: '80px', 
-                  height: '80px', 
-                  border: '2px solid rgba(255,255,255,0.3)', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center'
-                }}>
+            <div className="text-center flex-1 min-w-[200px]">
+              <div className="relative inline-block mb-6">
+                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                   </svg>
                 </div>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: '-5px', 
-                  right: '-5px', 
-                  background: '#ff9100', 
-                  color: '#fff', 
-                  width: '24px', 
-                  height: '24px', 
-                  borderRadius: '50%', 
-                  fontSize: '0.8rem', 
-                  fontWeight: 700,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>3</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">3</div>
               </div>
-              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Practical Tools</h3>
-              <p style={{ color: '#fff', opacity: 0.8, fontSize: '0.9rem', lineHeight: 1.6 }}>Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-lg mb-2">Practical Tools</h3>
+              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
             {/* Step 4 */}
-            <div style={{ textAlign: 'center', flex: '1', minWidth: '200px' }}>
-              <div style={{ position: 'relative', display: 'inline-block', marginBottom: '1.5rem' }}>
-                <div style={{ 
-                  width: '80px', 
-                  height: '80px', 
-                  border: '2px solid rgba(255,255,255,0.3)', 
-                  borderRadius: '50%', 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  justifyContent: 'center'
-                }}>
+            <div className="text-center flex-1 min-w-[200px]">
+              <div className="relative inline-block mb-6">
+                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
                     <circle cx="12" cy="6" r="2" />
                     <circle cx="6" cy="12" r="2" />
@@ -649,49 +375,28 @@ export default function HomePage() {
                     <line x1="8" y1="12" x2="16" y2="12" />
                   </svg>
                 </div>
-                <div style={{ 
-                  position: 'absolute', 
-                  top: '-5px', 
-                  right: '-5px', 
-                  background: '#ff9100', 
-                  color: '#fff', 
-                  width: '24px', 
-                  height: '24px', 
-                  borderRadius: '50%', 
-                  fontSize: '0.8rem', 
-                  fontWeight: 700,
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>4</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">4</div>
               </div>
-              <h3 style={{ color: '#fff', fontWeight: 700, fontSize: '1.1rem', marginBottom: '0.5rem' }}>Flexible Engagement</h3>
-              <p style={{ color: '#fff', opacity: 0.8, fontSize: '0.9rem', lineHeight: 1.6 }}>Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-lg mb-2">Flexible Engagement</h3>
+              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Appointment Section */}
-      <section style={{ background: '#0b4c4c', padding: '0 2rem 5rem' }}>
-        <div style={{ 
-          maxWidth: '1100px', 
-          margin: '0 auto', 
-          background: '#fff', 
-          borderRadius: '30px', 
-          padding: '3rem',
-          boxShadow: '0 10px 40px rgba(0,0,0,0.1)'
-        }}>
-          <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
-            <div style={{ flex: '1', minWidth: '300px' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-                <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Appointment</span>
+      <section className="bg-[#0b4c4c] px-8 pb-20 pt-0">
+        <div className="max-w-[1100px] mx-auto bg-white rounded-[30px] p-12 shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
+          <div className="flex gap-12 flex-wrap items-start">
+            <div className="flex-1 min-w-[300px]">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-[#ff9100] text-xl">✦</span>
+                <span className="text-teal-600 font-semibold text-base">Appointment</span>
               </div>
-              <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2, marginBottom: '1rem' }}>
+              <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight mb-4">
                 Make appointment
               </h2>
-              <p style={{ color: '#666', fontSize: '1rem', lineHeight: 1.7, marginBottom: '2rem' }}>
+              <p className="text-gray-600 text-base leading-relaxed mb-8">
                 Easy scheduling for a personalized health coaching session. Take the first step towards better health today!
               </p>
               <Image 
@@ -699,75 +404,35 @@ export default function HomePage() {
                 alt="Healthy food" 
                 width={400} 
                 height={300}
-                style={{ borderRadius: '16px', objectFit: 'cover', width: '100%', maxWidth: '400px' }}
+                className="rounded-2xl object-cover w-full max-w-[400px]"
               />
             </div>
-            <div style={{ flex: '1', minWidth: '300px' }}>
-              <form style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            <div className="flex-1 min-w-[300px]">
+              <form className="flex flex-col gap-4">
+                <div className="flex gap-4 flex-wrap">
                   <input 
                     type="text" 
                     placeholder="First Name" 
-                    style={{ 
-                      flex: 1, 
-                      minWidth: '140px',
-                      padding: '1rem', 
-                      border: '1px solid #ddd', 
-                      borderRadius: '8px', 
-                      fontSize: '1rem',
-                      outline: 'none'
-                    }} 
+                    className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
                   />
                   <input 
                     type="text" 
                     placeholder="Last Name" 
-                    style={{ 
-                      flex: 1, 
-                      minWidth: '140px',
-                      padding: '1rem', 
-                      border: '1px solid #ddd', 
-                      borderRadius: '8px', 
-                      fontSize: '1rem',
-                      outline: 'none'
-                    }} 
+                    className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
                   />
                 </div>
                 <input 
                   type="email" 
                   placeholder="Email Address" 
-                  style={{ 
-                    padding: '1rem', 
-                    border: '1px solid #ddd', 
-                    borderRadius: '8px', 
-                    fontSize: '1rem',
-                    outline: 'none'
-                  }} 
+                  className="p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
                 />
                 <input 
                   type="tel" 
                   placeholder="Phone Number" 
-                  style={{ 
-                    padding: '1rem', 
-                    border: '1px solid #ddd', 
-                    borderRadius: '8px', 
-                    fontSize: '1rem',
-                    outline: 'none'
-                  }} 
+                  className="p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
                 />
-                <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                  <select 
-                    style={{ 
-                      flex: 1, 
-                      minWidth: '140px',
-                      padding: '1rem', 
-                      border: '1px solid #ddd', 
-                      borderRadius: '8px', 
-                      fontSize: '1rem',
-                      outline: 'none',
-                      background: '#fff',
-                      color: '#666'
-                    }}
-                  >
+                <div className="flex gap-4 flex-wrap">
+                  <select className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none bg-white text-gray-600 focus:border-teal-500">
                     <option>Service</option>
                     <option>Weight Management</option>
                     <option>PCOD/PCOS</option>
@@ -777,31 +442,12 @@ export default function HomePage() {
                   <input 
                     type="date" 
                     placeholder="dd-mm-yyyy"
-                    style={{ 
-                      flex: 1, 
-                      minWidth: '140px',
-                      padding: '1rem', 
-                      border: '1px solid #ddd', 
-                      borderRadius: '8px', 
-                      fontSize: '1rem',
-                      outline: 'none',
-                      color: '#666'
-                    }} 
+                    className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none text-gray-600 focus:border-teal-500"
                   />
                 </div>
                 <button 
                   type="submit"
-                  style={{ 
-                    background: '#ff9100', 
-                    color: '#fff', 
-                    fontWeight: 600, 
-                    fontSize: '1rem', 
-                    border: 'none', 
-                    borderRadius: '2rem', 
-                    padding: '1rem 2rem', 
-                    cursor: 'pointer',
-                    marginTop: '0.5rem'
-                  }}
+                  className="bg-[#ff9100] text-white font-semibold text-base border-none rounded-full py-4 px-8 cursor-pointer mt-2 hover:shadow-lg transition-all duration-300"
                 >
                   Book An Appointment
                 </button>
@@ -815,80 +461,43 @@ export default function HomePage() {
       <FAQSection />
 
       {/* Testimonials Section */}
-      <section style={{ background: '#fff', padding: '5rem 2rem' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+      <section className="bg-white py-20 px-8">
+        <div className="max-w-[1200px] mx-auto">
           {/* Section Header */}
-          <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-              <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-              <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Our Testimonials</span>
+          <div className="text-center mb-12">
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <span className="text-[#ff9100] text-xl">✦</span>
+              <span className="text-teal-600 font-semibold text-base">Our Testimonials</span>
             </div>
-            <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2 }}>
+            <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight">
               Success stories from our clients
             </h2>
           </div>
           
-          <div style={{ display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+          <div className="flex gap-12 flex-wrap items-start">
             {/* Left - Testimonial Cards */}
-            <div style={{ flex: '1', minWidth: '400px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: '1.5rem' }}>
+            <div className="flex-1 min-w-[400px]">
+              <div className="grid grid-cols-2 gap-6">
                 {testimonials.slice(0, 4).map((testimonial, index) => (
                   <div 
                     key={testimonial._id || index}
-                    style={{ 
-                      background: index === 1 ? '#ff9100' : '#fff', 
-                      borderRadius: '20px', 
-                      padding: '1.5rem',
-                      boxShadow: index === 1 ? '0 10px 30px rgba(255, 145, 0, 0.3)' : '0 5px 20px rgba(0,0,0,0.08)',
-                      transition: 'transform 0.3s ease, box-shadow 0.3s ease',
-                      cursor: 'pointer'
-                    }}
-                    onMouseOver={(e) => { 
-                      e.currentTarget.style.transform = 'translateY(-5px)'; 
-                      e.currentTarget.style.boxShadow = index === 1 ? '0 15px 40px rgba(255, 145, 0, 0.4)' : '0 10px 30px rgba(0,0,0,0.12)';
-                    }}
-                    onMouseOut={(e) => { 
-                      e.currentTarget.style.transform = 'translateY(0)'; 
-                      e.currentTarget.style.boxShadow = index === 1 ? '0 10px 30px rgba(255, 145, 0, 0.3)' : '0 5px 20px rgba(0,0,0,0.08)';
-                    }}
+                    className={`rounded-[20px] p-6 cursor-pointer transition-all duration-300 hover:-translate-y-1 ${
+                      index === 1 
+                        ? 'bg-[#ff9100] shadow-[0_10px_30px_rgba(255,145,0,0.3)] hover:shadow-[0_15px_40px_rgba(255,145,0,0.4)]' 
+                        : 'bg-white shadow-[0_5px_20px_rgba(0,0,0,0.08)] hover:shadow-[0_10px_30px_rgba(0,0,0,0.12)]'
+                    }`}
                   >
-                    <div style={{ 
-                      color: index === 1 ? '#fff' : '#ff9100', 
-                      marginBottom: '0.75rem',
-                      fontSize: '1.1rem',
-                      letterSpacing: '2px'
-                    }}>★★★★★</div>
-                    <p style={{ 
-                      color: index === 1 ? '#fff' : '#555', 
-                      fontSize: '0.95rem', 
-                      lineHeight: 1.7, 
-                      marginBottom: '1rem',
-                      fontStyle: 'italic'
-                    }}>
+                    <div className={`mb-3 text-lg tracking-widest ${index === 1 ? 'text-white' : 'text-[#ff9100]'}`}>★★★★★</div>
+                    <p className={`text-[0.95rem] leading-relaxed mb-4 italic ${index === 1 ? 'text-white' : 'text-gray-600'}`}>
                       &ldquo;{testimonial.content}&rdquo;
                     </p>
-                    <div style={{ 
-                      display: 'flex', 
-                      alignItems: 'center', 
-                      gap: '0.75rem',
-                      paddingTop: '0.75rem',
-                      borderTop: index === 1 ? '1px solid rgba(255,255,255,0.2)' : '1px solid #eee'
-                    }}>
-                      <div style={{
-                        width: '40px',
-                        height: '40px',
-                        borderRadius: '50%',
-                        background: index === 1 ? 'rgba(255,255,255,0.2)' : '#009688',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: '#fff',
-                        fontWeight: 700,
-                        fontSize: '1rem'
-                      }}>
+                    <div className={`flex items-center gap-3 pt-3 ${index === 1 ? 'border-t border-white/20' : 'border-t border-gray-200'}`}>
+                      <div className={`w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-base ${
+                        index === 1 ? 'bg-white/20' : 'bg-teal-600'
+                      }`}>
                         {testimonial.name.charAt(0)}
                       </div>
-                      <div style={{ fontWeight: 700, color: index === 1 ? '#fff' : '#222' }}>{testimonial.name}</div>
+                      <div className={`font-bold ${index === 1 ? 'text-white' : 'text-gray-900'}`}>{testimonial.name}</div>
                     </div>
                   </div>
                 ))}
@@ -896,94 +505,32 @@ export default function HomePage() {
             </div>
             
             {/* Right - Stats and Badge */}
-            <div style={{ flex: '1', minWidth: '350px', position: 'relative', height: '450px' }}>
+            <div className="flex-1 min-w-[350px] relative h-[450px]">
               {/* Main Stats Card */}
-              <div style={{
-                background: '#0b4c4c',
-                borderRadius: '30px',
-                padding: '3rem',
-                color: '#fff',
-                height: '100%',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                position: 'relative',
-                overflow: 'hidden'
-              }}>
+              <div className="bg-[#0b4c4c] rounded-[30px] p-12 text-white h-full flex flex-col justify-center relative overflow-hidden">
                 {/* Background decoration */}
-                <div style={{
-                  position: 'absolute',
-                  top: '-50px',
-                  right: '-50px',
-                  width: '200px',
-                  height: '200px',
-                  borderRadius: '50%',
-                  background: 'rgba(255, 145, 0, 0.1)'
-                }} />
-                <div style={{
-                  position: 'absolute',
-                  bottom: '-30px',
-                  left: '-30px',
-                  width: '150px',
-                  height: '150px',
-                  borderRadius: '50%',
-                  background: 'rgba(0, 150, 136, 0.2)'
-                }} />
+                <div className="absolute -top-[50px] -right-[50px] w-[200px] h-[200px] rounded-full bg-[rgba(255,145,0,0.1)]" />
+                <div className="absolute -bottom-[30px] -left-[30px] w-[150px] h-[150px] rounded-full bg-[rgba(0,150,136,0.2)]" />
                 
-                <div style={{ position: 'relative', zIndex: 1 }}>
-                  <div style={{ 
-                    fontSize: '5rem', 
-                    fontWeight: 800, 
-                    lineHeight: 1,
-                    marginBottom: '0.5rem'
-                  }}>
-                    15K<span style={{ color: '#ff9100' }}>+</span>
+                <div className="relative z-10">
+                  <div className="text-[5rem] font-extrabold leading-none mb-2">
+                    15K<span className="text-[#ff9100]">+</span>
                   </div>
-                  <div style={{ 
-                    fontSize: '1.5rem', 
-                    fontWeight: 600,
-                    marginBottom: '1.5rem',
-                    opacity: 0.9
-                  }}>
+                  <div className="text-2xl font-semibold mb-6 opacity-90">
                     Happy Clients
                   </div>
-                  <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '0.5rem',
-                    background: 'rgba(255,255,255,0.1)',
-                    padding: '0.75rem 1rem',
-                    borderRadius: '12px',
-                    width: 'fit-content'
-                  }}>
-                    <span style={{ color: '#ff9100', fontSize: '1.5rem' }}>★</span>
-                    <span style={{ fontSize: '1.2rem', fontWeight: 600 }}>4.9</span>
-                    <span style={{ opacity: 0.8, fontSize: '0.9rem' }}>Average Rating</span>
+                  <div className="flex items-center gap-2 bg-white/10 py-3 px-4 rounded-xl w-fit">
+                    <span className="text-[#ff9100] text-2xl">★</span>
+                    <span className="text-xl font-semibold">4.9</span>
+                    <span className="opacity-80 text-sm">Average Rating</span>
                   </div>
                   
                   {/* Trust badges */}
-                  <div style={{ 
-                    display: 'flex', 
-                    gap: '1rem', 
-                    marginTop: '2rem',
-                    flexWrap: 'wrap'
-                  }}>
-                    <div style={{
-                      background: '#ff9100',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '8px',
-                      fontSize: '0.85rem',
-                      fontWeight: 600
-                    }}>
+                  <div className="flex gap-4 mt-8 flex-wrap">
+                    <div className="bg-[#ff9100] py-2 px-4 rounded-lg text-sm font-semibold">
                       ✓ Verified Reviews
                     </div>
-                    <div style={{
-                      background: 'rgba(255,255,255,0.15)',
-                      padding: '0.5rem 1rem',
-                      borderRadius: '8px',
-                      fontSize: '0.85rem',
-                      fontWeight: 600
-                    }}>
+                    <div className="bg-white/15 py-2 px-4 rounded-lg text-sm font-semibold">
                       ✓ 25+ Years Trust
                     </div>
                   </div>

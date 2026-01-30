@@ -79,63 +79,23 @@ export default function WhyChooseUsSection() {
   return (
     <section
       ref={sectionRef}
-      style={{
-        background: '#0d4043',
-        padding: '4rem 2rem 0 2rem',
-        overflow: 'hidden',
-      }}
+      className="bg-[#0d4043] pt-16 px-8 pb-0 overflow-hidden"
     >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}
-      >
+      <div className="max-w-[1200px] mx-auto">
         {/* Header */}
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            marginBottom: '3rem',
-            flexWrap: 'wrap',
-            gap: '2rem',
-          }}
-        >
+        <div className="flex justify-between items-start mb-12 flex-wrap gap-8">
           <div
-            style={{
-              transform: isVisible ? 'translateX(0)' : 'translateX(-30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease',
-            }}
+            className={`transition-all duration-[600ms] ease-out ${
+              isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[30px] opacity-0'
+            }`}
           >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '0.75rem',
-              }}
-            >
-              <span style={{ color: '#f5a623', fontSize: '1.1rem' }}>✦</span>
-              <span
-                style={{
-                  color: '#f5a623',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                }}
-              >
+            <div className="flex items-center gap-2 mb-3">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-[#f5a623] text-base font-semibold">
                 Why Choose Us
               </span>
             </div>
-            <h2
-              style={{
-                fontSize: '2.5rem',
-                fontWeight: '700',
-                color: '#fff',
-                lineHeight: '1.2',
-              }}
-            >
+            <h2 className="text-[2.5rem] font-bold text-white leading-tight">
               Your partner in lasting
               <br />
               wellness
@@ -143,84 +103,41 @@ export default function WhyChooseUsSection() {
           </div>
 
           <p
-            style={{
-              maxWidth: '450px',
-              fontSize: '0.95rem',
-              color: 'rgba(255,255,255,0.8)',
-              lineHeight: '1.7',
-              transform: isVisible ? 'translateX(0)' : 'translateX(30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease 0.1s',
-            }}
+            className={`max-w-[450px] text-[0.95rem] text-white/80 leading-relaxed transition-all duration-[600ms] ease-out delay-100 ${
+              isVisible ? 'translate-x-0 opacity-100' : 'translate-x-[30px] opacity-0'
+            }`}
           >
             With a personalized approach and unwavering support, we guide you toward sustainable health and lasting well-being. Trust us to help you achieve your wellness goals.
           </p>
         </div>
 
         {/* Features with Center Image */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: '1fr 1fr 1fr',
-            gap: '2rem',
-            alignItems: 'end',
-          }}
-        >
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-end">
           {/* Left Features */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2.5rem',
-              paddingBottom: '3rem',
-            }}
-          >
+          <div className="flex flex-col gap-10 pb-12">
             {leftFeatures.map((feature, index) => (
               <div
                 key={index}
                 onMouseEnter={() => setHoveredFeature(`left-${index}`)}
                 onMouseLeave={() => setHoveredFeature(null)}
-                style={{
-                  transform: isVisible ? 'translateX(0)' : 'translateX(-30px)',
-                  opacity: isVisible ? 1 : 0,
-                  transition: `all 0.6s ease ${0.2 + index * 0.1}s`,
-                  cursor: 'pointer',
-                }}
+                className={`cursor-pointer transition-all duration-[600ms] ease-out ${
+                  isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[30px] opacity-0'
+                }`}
+                style={{ transitionDelay: `${200 + index * 100}ms` }}
               >
                 <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    background: hoveredFeature === `left-${index}` ? '#f5a623' : 'rgba(255,255,255,0.1)',
-                    border: hoveredFeature === `left-${index}` ? 'none' : '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '1rem',
-                    transition: 'all 0.3s ease',
-                    transform: hoveredFeature === `left-${index}` ? 'scale(1.1)' : 'scale(1)',
-                  }}
+                  className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all duration-300 ${
+                    hoveredFeature === `left-${index}`
+                      ? 'bg-[#f5a623] border-0 scale-110'
+                      : 'bg-white/10 border border-white/20 scale-100'
+                  }`}
                 >
                   {feature.icon}
                 </div>
-                <h4
-                  style={{
-                    fontSize: '1.15rem',
-                    fontWeight: '700',
-                    color: '#fff',
-                    marginBottom: '0.5rem',
-                  }}
-                >
+                <h4 className="text-lg font-bold text-white mb-2">
                   {feature.title}
                 </h4>
-                <p
-                  style={{
-                    fontSize: '0.9rem',
-                    color: 'rgba(255,255,255,0.7)',
-                    lineHeight: '1.6',
-                  }}
-                >
+                <p className="text-sm text-white/70 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -229,87 +146,45 @@ export default function WhyChooseUsSection() {
 
           {/* Center Image */}
           <div
-            style={{
-              position: 'relative',
-              display: 'flex',
-              justifyContent: 'center',
-              transform: isVisible ? 'translateY(0)' : 'translateY(50px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.8s ease 0.3s',
-            }}
+            className={`relative flex justify-center transition-all duration-[800ms] ease-out delay-300 ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[50px] opacity-0'
+            }`}
           >
-            <div
-              style={{
-                position: 'relative',
-                width: '100%',
-                maxWidth: '320px',
-                height: '420px',
-              }}
-            >
+            <div className="relative w-full max-w-[320px] h-[420px]">
               <Image
                 src="/img/why-choose-image.png"
                 alt="Health Expert"
                 fill
-                style={{ objectFit: 'contain', objectPosition: 'bottom' }}
+                className="object-contain object-bottom"
               />
             </div>
           </div>
 
           {/* Right Features */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '2.5rem',
-              paddingBottom: '3rem',
-            }}
-          >
+          <div className="flex flex-col gap-10 pb-12">
             {rightFeatures.map((feature, index) => (
               <div
                 key={index}
                 onMouseEnter={() => setHoveredFeature(`right-${index}`)}
                 onMouseLeave={() => setHoveredFeature(null)}
-                style={{
-                  transform: isVisible ? 'translateX(0)' : 'translateX(30px)',
-                  opacity: isVisible ? 1 : 0,
-                  transition: `all 0.6s ease ${0.2 + index * 0.1}s`,
-                  cursor: 'pointer',
-                }}
+                className={`cursor-pointer transition-all duration-[600ms] ease-out ${
+                  isVisible ? 'translate-x-0 opacity-100' : 'translate-x-[30px] opacity-0'
+                }`}
+                style={{ transitionDelay: `${200 + index * 100}ms` }}
               >
                 <div
-                  style={{
-                    width: '48px',
-                    height: '48px',
-                    background: hoveredFeature === `right-${index}` ? '#f5a623' : 'rgba(255,255,255,0.1)',
-                    border: hoveredFeature === `right-${index}` ? 'none' : '1px solid rgba(255,255,255,0.2)',
-                    borderRadius: '50%',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    marginBottom: '1rem',
-                    transition: 'all 0.3s ease',
-                    transform: hoveredFeature === `right-${index}` ? 'scale(1.1)' : 'scale(1)',
-                  }}
+                  className={`w-12 h-12 rounded-full flex items-center justify-center mb-4 transition-all duration-300 ${
+                    hoveredFeature === `right-${index}`
+                      ? 'bg-[#f5a623] border-0 scale-110'
+                      : 'bg-white/10 border border-white/20 scale-100'
+                  }`}
                 >
                   {feature.icon}
                 </div>
-                <h4
-                  style={{
-                    fontSize: '1.15rem',
-                    fontWeight: '700',
-                    color: '#fff',
-                    marginBottom: '0.5rem',
-                  }}
-                >
+                <h4 className="text-lg font-bold text-white mb-2">
                   {feature.title}
                 </h4>
-                <p
-                  style={{
-                    fontSize: '0.9rem',
-                    color: 'rgba(255,255,255,0.7)',
-                    lineHeight: '1.6',
-                  }}
-                >
+                <p className="text-sm text-white/70 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -317,19 +192,6 @@ export default function WhyChooseUsSection() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 1024px) {
-          section > div > div:last-child {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-        @media (max-width: 768px) {
-          section > div > div:last-child {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -42,32 +42,13 @@ export default function LoseWeightSection() {
 
   if (loading) {
     return (
-      <section style={{ background: '#fff', padding: '100px 0 50px' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <h2 style={{
-            textAlign: 'center',
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000000',
-            lineHeight: 1.3,
-            marginBottom: '10px',
-            fontFamily: 'Epilogue, sans-serif',
-            maxWidth: '67%',
-            margin: '0 auto 40px'
-          }}>
-            Lose <span style={{ color: '#ff850b' }}>5–7 Kilos</span> in just 30 Days<br />
+      <section className="bg-white py-[100px] pb-[50px]">
+        <div className="max-w-[1200px] mx-auto px-5">
+          <h2 className="text-center text-5xl font-bold text-black leading-[1.3] mb-10 font-[Epilogue,sans-serif] max-w-[67%] mx-auto">
+            Lose <span className="text-[#ff850b]">5–7 Kilos</span> in just 30 Days<br />
             & Still Eat the Food You Love!
           </h2>
-          <p style={{
-            textAlign: 'center',
-            fontSize: '20px',
-            fontWeight: 500,
-            lineHeight: 1.6,
-            color: '#1E1E1E',
-            maxWidth: '75%',
-            margin: '0 auto',
-            fontFamily: 'Epilogue, sans-serif'
-          }}>
+          <p className="text-center text-xl font-medium leading-relaxed text-[#1E1E1E] max-w-[75%] mx-auto font-[Epilogue,sans-serif]">
             Loading transformations...
           </p>
         </div>
@@ -76,29 +57,15 @@ export default function LoseWeightSection() {
   }
 
   return (
-    <section style={{ background: '#fff', padding: '100px 0 50px' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-        <h2 style={{
-          textAlign: 'center',
-          fontSize: '48px',
-          fontWeight: 700,
-          color: '#000000',
-          lineHeight: 1.3,
-          marginBottom: '10px',
-          fontFamily: 'Epilogue, sans-serif',
-          maxWidth: '67%',
-          margin: '0 auto 40px'
-        }}>
-          Lose <span style={{ color: '#ff850b' }}>5–7 Kilos</span> in just 30 Days<br />
+    <section className="bg-white py-[100px] pb-[50px]">
+      <div className="max-w-[1200px] mx-auto px-5">
+        <h2 className="text-center text-5xl font-bold text-black leading-[1.3] mb-10 font-[Epilogue,sans-serif] max-w-[67%] mx-auto">
+          Lose <span className="text-[#ff850b]">5–7 Kilos</span> in just 30 Days<br />
           & Still Eat the Food You Love!
         </h2>
 
         {/* Success Stories Grid with Swiper */}
-        <div style={{
-          maxWidth: '75%',
-          margin: '0 auto 40px',
-          position: 'relative'
-        }}>
+        <div className="max-w-[75%] mx-auto mb-10 relative">
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={20}
@@ -126,75 +93,38 @@ export default function LoseWeightSection() {
             {transformations.length > 0 ? (
               transformations.map((transformation) => (
                 <SwiperSlide key={transformation._id}>
-                  <div style={{
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
-                    background: '#fff'
-                  }}>
+                  <div className="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.12)] bg-white">
                     {/* Before/After Images */}
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 1fr',
-                      gap: 0,
-                      height: '400px'
-                    }}>
-                      <div style={{ position: 'relative', overflow: 'hidden' }}>
+                    <div className="grid grid-cols-2 gap-0 h-[400px]">
+                      <div className="relative overflow-hidden">
                         <Image
                           src={transformation.beforeImage}
                           alt={`${transformation.clientName} Before`}
                           fill
-                          style={{ objectFit: 'cover' }}
+                          className="object-cover"
                         />
                       </div>
-                      <div style={{ position: 'relative', overflow: 'hidden' }}>
+                      <div className="relative overflow-hidden">
                         <Image
                           src={transformation.afterImage}
                           alt={`${transformation.clientName} After`}
                           fill
-                          style={{ objectFit: 'cover' }}
+                          className="object-cover"
                         />
                       </div>
                     </div>
 
                     {/* Info Footer */}
-                    <div style={{
-                      background: '#16a085',
-                      padding: '20px',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
-                    }}>
+                    <div className="bg-[#16a085] p-5 flex justify-between items-center">
                       <div>
-                        <h3 style={{
-                          margin: '0 0 4px 0',
-                          fontSize: '20px',
-                          fontWeight: 700,
-                          color: '#fff',
-                          fontFamily: 'Epilogue, sans-serif'
-                        }}>
+                        <h3 className="m-0 mb-1 text-xl font-bold text-white font-[Epilogue,sans-serif]">
                           {transformation.clientName}
                         </h3>
-                        <p style={{
-                          margin: 0,
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          color: '#fff',
-                          fontFamily: 'Epilogue, sans-serif'
-                        }}>
+                        <p className="m-0 text-base font-medium text-white font-[Epilogue,sans-serif]">
                           Lost {transformation.weightLost} weight
                         </p>
                       </div>
-                      <div style={{
-                        background: '#ff850b',
-                        color: '#fff',
-                        padding: '8px 16px',
-                        borderRadius: '20px',
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        whiteSpace: 'nowrap',
-                        fontFamily: 'Epilogue, sans-serif'
-                      }}>
+                      <div className="bg-[#ff850b] text-white py-2 px-4 rounded-[20px] text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">
                         In {transformation.daysToAchieve}
                       </div>
                     </div>
@@ -204,130 +134,56 @@ export default function LoseWeightSection() {
             ) : (
               <>
                 <SwiperSlide>
-                  <div style={{
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
-                    background: '#fff'
-                  }}>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 1fr',
-                      gap: 0,
-                      height: '400px'
-                    }}>
+                  <div className="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.12)] bg-white">
+                    <div className="grid grid-cols-2 gap-0 h-[400px]">
                       <Image
                         src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Sharadha-min-1.webp"
                         alt="Transformation 1"
                         width={250}
                         height={400}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        className="w-full h-full object-cover"
                       />
                       <Image
                         src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Sharadha-min-1.webp"
                         alt="Transformation 1"
                         width={250}
                         height={400}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        className="w-full h-full object-cover"
                       />
                     </div>
-                    <div style={{
-                      background: '#16a085',
-                      padding: '20px',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
-                    }}>
+                    <div className="bg-[#16a085] p-5 flex justify-between items-center">
                       <div>
-                        <h3 style={{
-                          margin: '0 0 4px 0',
-                          fontSize: '20px',
-                          fontWeight: 700,
-                          color: '#fff',
-                          fontFamily: 'Epilogue, sans-serif'
-                        }}>Shivani</h3>
-                        <p style={{
-                          margin: 0,
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          color: '#fff',
-                          fontFamily: 'Epilogue, sans-serif'
-                        }}>Lost 8 kgs weight</p>
+                        <h3 className="m-0 mb-1 text-xl font-bold text-white font-[Epilogue,sans-serif]">Shivani</h3>
+                        <p className="m-0 text-base font-medium text-white font-[Epilogue,sans-serif]">Lost 8 kgs weight</p>
                       </div>
-                      <div style={{
-                        background: '#ff850b',
-                        color: '#fff',
-                        padding: '8px 16px',
-                        borderRadius: '20px',
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        whiteSpace: 'nowrap',
-                        fontFamily: 'Epilogue, sans-serif'
-                      }}>In 90 Days</div>
+                      <div className="bg-[#ff850b] text-white py-2 px-4 rounded-[20px] text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">In 90 Days</div>
                     </div>
                   </div>
                 </SwiperSlide>
                 <SwiperSlide>
-                  <div style={{
-                    borderRadius: '16px',
-                    overflow: 'hidden',
-                    boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
-                    background: '#fff'
-                  }}>
-                    <div style={{
-                      display: 'grid',
-                      gridTemplateColumns: '1fr 1fr',
-                      gap: 0,
-                      height: '400px'
-                    }}>
+                  <div className="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.12)] bg-white">
+                    <div className="grid grid-cols-2 gap-0 h-[400px]">
                       <Image
                         src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Akansha-Shukala-min-1.webp"
                         alt="Transformation 2"
                         width={250}
                         height={400}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        className="w-full h-full object-cover"
                       />
                       <Image
                         src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Akansha-Shukala-min-1.webp"
                         alt="Transformation 2"
                         width={250}
                         height={400}
-                        style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                        className="w-full h-full object-cover"
                       />
                     </div>
-                    <div style={{
-                      background: '#16a085',
-                      padding: '20px',
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center'
-                    }}>
+                    <div className="bg-[#16a085] p-5 flex justify-between items-center">
                       <div>
-                        <h3 style={{
-                          margin: '0 0 4px 0',
-                          fontSize: '20px',
-                          fontWeight: 700,
-                          color: '#fff',
-                          fontFamily: 'Epilogue, sans-serif'
-                        }}>Garima</h3>
-                        <p style={{
-                          margin: 0,
-                          fontSize: '16px',
-                          fontWeight: 500,
-                          color: '#fff',
-                          fontFamily: 'Epilogue, sans-serif'
-                        }}>Lost 8 kgs weight</p>
+                        <h3 className="m-0 mb-1 text-xl font-bold text-white font-[Epilogue,sans-serif]">Garima</h3>
+                        <p className="m-0 text-base font-medium text-white font-[Epilogue,sans-serif]">Lost 8 kgs weight</p>
                       </div>
-                      <div style={{
-                        background: '#ff850b',
-                        color: '#fff',
-                        padding: '8px 16px',
-                        borderRadius: '20px',
-                        fontSize: '14px',
-                        fontWeight: 600,
-                        whiteSpace: 'nowrap',
-                        fontFamily: 'Epilogue, sans-serif'
-                      }}>In 30 Days</div>
+                      <div className="bg-[#ff850b] text-white py-2 px-4 rounded-[20px] text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">In 30 Days</div>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -336,13 +192,7 @@ export default function LoseWeightSection() {
           </Swiper>
 
           {/* Pagination Dots */}
-          <div className="swiper-pagination-custom" style={{
-            display: 'flex',
-            justifyContent: 'center',
-            gap: '8px',
-            marginTop: '24px',
-            position: 'relative'
-          }}>
+          <div className="swiper-pagination-custom flex justify-center gap-2 mt-6 relative">
             <style>{`
               .swiper-pagination-custom {
                 display: flex !important;
@@ -368,16 +218,7 @@ export default function LoseWeightSection() {
           </div>
         </div>
 
-        <p style={{
-          textAlign: 'center',
-          fontSize: '20px',
-          fontWeight: 500,
-          lineHeight: 1.6,
-          color: '#1E1E1E',
-          maxWidth: '75%',
-          margin: '0 auto',
-          fontFamily: 'Epilogue, sans-serif'
-        }}>
+        <p className="text-center text-xl font-medium leading-relaxed text-[#1E1E1E] max-w-[75%] mx-auto font-[Epilogue,sans-serif]">
           Forget diets. They were never built for people like you.<br />
           At DTPS, we don't tell you to drink hot water and hate your meals. We take the food already on your plate and make it work for your body, rather than against it.
         </p>

@@ -90,38 +90,21 @@ export default function TransformationGallery({
   }, [page, maxItems]);
 
   return (
-    <section style={{ padding: '60px 20px', maxWidth: '1200px', margin: '0 auto' }}>
+    <section className="py-[60px] px-5 max-w-[1200px] mx-auto">
       {title && (
-        <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-          <h2 style={{
-            fontSize: '48px',
-            fontWeight: 700,
-            color: '#000',
-            marginBottom: '10px',
-            fontFamily: 'Epilogue, sans-serif',
-            lineHeight: 1.2
-          }}>
+        <div className="text-center mb-[50px]">
+          <h2 className="text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
             {title}
           </h2>
           {subtitle && (
-            <p style={{
-              fontSize: '17px',
-              color: '#666',
-              lineHeight: 1.7,
-              maxWidth: '680px',
-              margin: '0 auto'
-            }}>
+            <p className="text-[17px] text-[#666] leading-relaxed max-w-[680px] mx-auto">
               {subtitle}
             </p>
           )}
         </div>
       )}
 
-      <div style={{
-        maxWidth: '100%',
-        margin: '0 auto',
-        position: 'relative'
-      }}>
+      <div className="max-w-full mx-auto relative">
         <Swiper
           modules={[Pagination, Autoplay]}
           spaceBetween={30}
@@ -149,71 +132,29 @@ export default function TransformationGallery({
         >
           {transformations.map((transformation) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
-              <div style={{
-                borderRadius: '16px',
-                overflow: 'hidden',
-                boxShadow: '0 8px 24px rgba(0, 0, 0, 0.12)',
-                background: '#fff',
-                position: 'relative'
-              }}>
+              <div className="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.12)] bg-white relative">
             
 
                 {/* Single Image Display */}
-                <div style={{
-                  position: 'relative',
-                  overflow: 'hidden',
-                  height: '400px',
-                  width: '100%'
-                }}>
+                <div className="relative overflow-hidden h-[400px] w-full">
                   <img
                     src={transformation.afterImage || '/img/placeholder.jpg'}
                     alt={`${transformation.clientName} Result`}
-                    style={{ 
-                      width: '100%',
-                      height: '100%',
-                      objectFit: 'cover'
-                    }}
+                    className="w-full h-full object-cover"
                   />
                 </div>
 
                 {/* Info Footer */}
-                <div style={{
-                  background: '#16a085',
-                  padding: '20px',
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center'
-                }}>
+                <div className="bg-[#16a085] p-5 flex justify-between items-center">
                   <div>
-                    <h3 style={{
-                      margin: '0 0 4px 0',
-                      fontSize: '20px',
-                      fontWeight: 700,
-                      color: '#fff',
-                      fontFamily: 'Epilogue, sans-serif'
-                    }}>
+                    <h3 className="m-0 mb-1 text-xl font-bold text-white font-[Epilogue,sans-serif]">
                       {transformation.clientName}
                     </h3>
-                    <p style={{
-                      margin: 0,
-                      fontSize: '16px',
-                      fontWeight: 500,
-                      color: '#fff',
-                      fontFamily: 'Epilogue, sans-serif'
-                    }}>
+                    <p className="m-0 text-base font-medium text-white font-[Epilogue,sans-serif]">
                       Lost {transformation.weightLost} weight
                     </p>
                   </div>
-                  <div style={{
-                    background: '#ff850b',
-                    color: '#fff',
-                    padding: '8px 16px',
-                    borderRadius: '20px',
-                    fontSize: '14px',
-                    fontWeight: 600,
-                    whiteSpace: 'nowrap',
-                    fontFamily: 'Epilogue, sans-serif'
-                  }}>
+                  <div className="bg-[#ff850b] text-white py-2 px-4 rounded-[20px] text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">
                     In {transformation.daysToAchieve}
                   </div>
                 </div>
@@ -223,13 +164,7 @@ export default function TransformationGallery({
         </Swiper>
 
         {/* Pagination Dots */}
-        <div className="swiper-pagination-custom" style={{
-          display: 'flex',
-          justifyContent: 'center',
-          gap: '8px',
-          marginTop: '24px',
-          position: 'relative'
-        }}>
+        <div className="swiper-pagination-custom flex justify-center gap-2 mt-6 relative">
           <style>{`
             .swiper-pagination-custom {
               display: flex !important;

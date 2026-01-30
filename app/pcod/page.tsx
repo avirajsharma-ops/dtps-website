@@ -69,12 +69,11 @@ export default function PCODPage() {
               <div className="pcod-hero__right">
                 <div className="pcod-hero__imgcard">
                   <Image 
-                    className="pcod-hero__img"
+                    className="pcod-hero__img object-contain"
                     src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/pcos-1-removebg-preview.png"
                     alt="PCOD/PCOS"
                     width={500}
                     height={550}
-                    style={{ objectFit: 'contain' }}
                   />
                 </div>
 
@@ -105,7 +104,7 @@ export default function PCODPage() {
             <div className="pcod-benefit-card">
               <div className="pcod-benefit-card-image">
                 <div className="pcod-benefit-no">1</div>
-                <Image src="/img/what-we-do-image-1.jpg" alt="Balancing Blood Sugar" width={400} height={200} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src="/img/what-we-do-image-1.jpg" alt="Balancing Blood Sugar" width={400} height={200} className="object-cover w-full h-full" />
               </div>
               <div className="pcod-benefit-card-content">
                 <div className="pcod-benefit-line"></div>
@@ -118,7 +117,7 @@ export default function PCODPage() {
             <div className="pcod-benefit-card">
               <div className="pcod-benefit-card-image">
                 <div className="pcod-benefit-no">2</div>
-                <Image src="/img/what-we-do-image-2.jpg" alt="Managing Weight" width={400} height={200} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src="/img/what-we-do-image-2.jpg" alt="Managing Weight" width={400} height={200} className="object-cover w-full h-full" />
               </div>
               <div className="pcod-benefit-card-content">
                 <div className="pcod-benefit-line"></div>
@@ -139,7 +138,7 @@ export default function PCODPage() {
                 <li><span className="pcod-tick">✓</span> Traditional &quot;Ghar ka Khana&quot;</li>
                 <li><span className="pcod-tick">✓</span> Proven results</li>
               </ul>
-              <a href="/appointment" className="pcod-btn-primary" style={{ width: '100%', justifyContent: 'center' }}>
+              <a href="/appointment" className="pcod-btn-primary w-full justify-center">
                 Book Your Consultation
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path d="M5 12h14M12 5l7 7-7 7"/>
@@ -156,7 +155,7 @@ export default function PCODPage() {
             <div className="pcod-benefit-card">
               <div className="pcod-benefit-card-image">
                 <div className="pcod-benefit-no">3</div>
-                <Image src="/img/what-we-do-image-1.jpg" alt="Reducing Inflammation" width={400} height={200} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src="/img/what-we-do-image-1.jpg" alt="Reducing Inflammation" width={400} height={200} className="object-cover w-full h-full" />
               </div>
               <div className="pcod-benefit-card-content">
                 <div className="pcod-benefit-line"></div>
@@ -169,7 +168,7 @@ export default function PCODPage() {
             <div className="pcod-benefit-card">
               <div className="pcod-benefit-card-image">
                 <div className="pcod-benefit-no">4</div>
-                <Image src="/img/what-we-do-image-2.jpg" alt="Increasing Fertility" width={400} height={200} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                <Image src="/img/what-we-do-image-2.jpg" alt="Increasing Fertility" width={400} height={200} className="object-cover w-full h-full" />
               </div>
               <div className="pcod-benefit-card-content">
                 <div className="pcod-benefit-line"></div>
@@ -219,7 +218,7 @@ export default function PCODPage() {
           alt="Symptoms & Nutritional Concerns" 
           width={1200} 
           height={600}
-          style={{ objectFit: 'contain', width: '100%', height: 'auto' }}
+          className="object-contain w-full h-auto"
         />
       </div>
 
@@ -250,7 +249,7 @@ export default function PCODPage() {
                   alt="Benefits" 
                   width={500} 
                   height={400} 
-                  style={{ objectFit: 'cover', width: '100%', height: '100%' }} 
+                  className="object-cover w-full h-full" 
                 />
               </div>
               <div className="pcod-float-badge">
@@ -307,7 +306,7 @@ export default function PCODPage() {
                   alt="Healthy plate" 
                   width={520} 
                   height={360} 
-                  style={{ objectFit: 'contain' }} 
+                  className="object-contain" 
                 />
               </div>
 
@@ -365,8 +364,8 @@ export default function PCODPage() {
           <p className="wl-section-desc wl-center">
             Join our Plan today and embark on a journey to better health with our PCOD diet plan!
           </p>
-          <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
-            <div style={{ maxWidth: '1200px', width: '100%' }}>
+          <div className="flex justify-center w-full">
+            <div className="max-w-[1200px] w-full">
               <DynamicPlansDisplay 
                 category="pcod"
                 showHeader={false}

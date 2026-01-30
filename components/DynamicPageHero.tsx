@@ -63,25 +63,15 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
   }
 
   return (
-    <section className="wl-hero" style={{ position: 'relative', overflow: 'hidden', padding: 0 }}>
+    <section className="wl-hero relative overflow-hidden p-0">
       {/* Desktop Image - Full Screen */}
       {currentHero.desktopImage && (
-        <div 
-          className="wl-hero-desktop-image"
-          style={{
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 0,
-          }}
-        >
+        <div className="wl-hero-desktop-image absolute top-0 right-0 w-full h-full z-0">
           <Image
             src={currentHero.desktopImage}
             alt={currentHero.title}
             fill
-            style={{ objectFit: 'cover' }}
+            className="object-cover"
             priority
             quality={85}
           />
@@ -90,22 +80,12 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
 
       {/* Mobile Image - Full Screen */}
       {currentHero.mobileImage && (
-        <div 
-          className="wl-hero-mobile-image"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 0,
-          }}
-        >
+        <div className="wl-hero-mobile-image absolute top-0 left-0 w-full h-full z-0">
           <Image
             src={currentHero.mobileImage}
             alt={currentHero.title}
             fill
-            style={{ objectFit: 'cover' }}
+            className="object-cover"
             priority
             quality={85}
           />
@@ -114,22 +94,12 @@ export default function DynamicPageHero({ page, fallback }: DynamicPageHeroProps
 
       {/* Fallback: Use desktopImage for mobile if mobileImage not provided */}
       {!currentHero.mobileImage && currentHero.desktopImage && (
-        <div 
-          className="wl-hero-fallback-image"
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 0,
-          }}
-        >
+        <div className="wl-hero-fallback-image absolute top-0 left-0 w-full h-full z-0">
           <Image
             src={currentHero.desktopImage}
             alt={currentHero.title}
             fill
-            style={{ objectFit: 'cover' }}
+            className="object-cover"
             priority
             quality={85}
           />

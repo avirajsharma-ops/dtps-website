@@ -69,6 +69,25 @@ const config: Config = {
   			lg: 'var(--radius)',
   			md: 'calc(var(--radius) - 2px)',
   			sm: 'calc(var(--radius) - 4px)'
+  		},
+  		keyframes: {
+  			float: {
+  				'0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
+  				'50%': { transform: 'translateY(-20px) rotate(5deg)' }
+  			},
+  			rotate: {
+  				from: { transform: 'rotate(0deg)' },
+  				to: { transform: 'rotate(360deg)' }
+  			},
+  			spin: {
+  				from: { transform: 'rotate(0deg)' },
+  				to: { transform: 'rotate(360deg)' }
+  			}
+  		},
+  		animation: {
+  			float: 'float 8s ease-in-out infinite',
+  			rotate: 'rotate 20s linear infinite',
+  			'spin-slow': 'spin 15s linear infinite'
   		}
   	}
   },

@@ -89,107 +89,36 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      style={{
-        background: '#f3f4f6',
-        padding: '5rem 2rem',
-      }}
+      className="bg-gray-100 py-20 px-8"
     >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-        }}
-      >
+      <div className="max-w-[1200px] mx-auto">
         {/* Grid Layout */}
-        <div
-          className="services-grid"
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(3, 1fr)',
-            gridTemplateRows: 'auto auto',
-            gap: '1.5rem',
-          }}
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Header Card */}
           <div
-            style={{
-              background: '#f3f4f6',
-              padding: '1.5rem',
-              display: 'flex',
-              flexDirection: 'column',
-              justifyContent: 'center',
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease',
-            }}
+            className={`bg-gray-100 p-6 flex flex-col justify-center transition-all duration-[600ms] ease-out ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+            }`}
           >
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                marginBottom: '1rem',
-              }}
-            >
-              <span style={{ color: '#f5a623', fontSize: '1.1rem' }}>✦</span>
-              <span
-                style={{
-                  color: '#0d9488',
-                  fontSize: '1rem',
-                  fontWeight: '600',
-                }}
-              >
+            <div className="flex items-center gap-2 mb-4">
+              <span className="text-[#f5a623] text-lg">✦</span>
+              <span className="text-teal-600 text-base font-semibold">
                 Services
               </span>
             </div>
-            <h2
-              style={{
-                fontSize: '2.2rem',
-                fontWeight: '700',
-                color: '#1a1a1a',
-                lineHeight: '1.2',
-                marginBottom: '1rem',
-              }}
-            >
+            <h2 className="text-[2.2rem] font-bold text-gray-900 leading-tight mb-4">
               Personalized
               <br />
               Solutions for Every
               <br />
               Health Goal
             </h2>
-            <p
-              style={{
-                fontSize: '0.95rem',
-                color: '#6b7280',
-                lineHeight: '1.7',
-                marginBottom: '1.5rem',
-              }}
-            >
+            <p className="text-[0.95rem] text-gray-500 leading-relaxed mb-6">
               We offer personalized health coaching services support your wellness journey and empower you to life.
             </p>
             <Link href="/plans/therapeutic">
               <button
-                style={{
-                  background: 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)',
-                  color: '#fff',
-                  fontSize: '0.95rem',
-                  fontWeight: '600',
-                  padding: '0.875rem 1.75rem',
-                  borderRadius: '50px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 6px 20px rgba(245, 124, 0, 0.3)',
-                  transition: 'all 0.3s ease',
-                  width: 'fit-content',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(245, 124, 0, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(245, 124, 0, 0.3)';
-                }}
+                className="bg-gradient-to-br from-[#f5a623] to-[#f57c00] text-white text-[0.95rem] font-semibold py-3.5 px-7 rounded-full border-none cursor-pointer shadow-[0_6px_20px_rgba(245,124,0,0.3)] transition-all duration-300 w-fit hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,124,0,0.4)]"
               >
                 All Services
               </button>
@@ -200,66 +129,24 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(0)}
             onMouseLeave={() => setHoveredCard(null)}
-            style={{
-              background: 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)',
-              borderRadius: '20px',
-              padding: '2rem',
-              display: 'flex',
-              flexDirection: 'column',
-              transform: isVisible ? (hoveredCard === 0 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.4s ease',
-              cursor: 'pointer',
-              boxShadow: hoveredCard === 0 ? '0 20px 40px rgba(245, 124, 0, 0.4)' : 'none',
-            }}
+            className={`bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
+              isVisible 
+                ? (hoveredCard === 0 ? '-translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.4)]' : 'translate-y-0')
+                : 'translate-y-[30px] opacity-0'
+            }`}
           >
-            <div
-              style={{
-                width: '56px',
-                height: '56px',
-                background: 'rgba(255,255,255,0.2)',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '1.5rem',
-                color: '#fff',
-              }}
-            >
+            <div className="w-14 h-14 bg-white/20 rounded-xl flex items-center justify-center mb-6 text-white">
               {services[0].icon}
             </div>
-            <h3
-              style={{
-                fontSize: '1.35rem',
-                fontWeight: '700',
-                color: '#fff',
-                marginBottom: '1rem',
-              }}
-            >
+            <h3 className="text-[1.35rem] font-bold text-white mb-4">
               {services[0].title}
             </h3>
-            <p
-              style={{
-                fontSize: '0.9rem',
-                color: 'rgba(255,255,255,0.9)',
-                lineHeight: '1.7',
-                marginBottom: '1.5rem',
-                flex: 1,
-              }}
-            >
+            <p className="text-sm text-white/90 leading-relaxed mb-6 flex-1">
               {services[0].description}
             </p>
             <Link
               href={services[0].link}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                color: '#fff',
-                fontSize: '0.95rem',
-                fontWeight: '600',
-                textDecoration: 'none',
-              }}
+              className="flex items-center gap-2 text-white text-[0.95rem] font-semibold no-underline"
             >
               Read More
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -272,71 +159,40 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(1)}
             onMouseLeave={() => setHoveredCard(null)}
-            style={{
-              background: hoveredCard === 1 ? 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)' : '#fff',
-              borderRadius: '20px',
-              padding: '2rem',
-              display: 'flex',
-              flexDirection: 'column',
-              transform: isVisible ? (hoveredCard === 1 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.4s ease',
-              cursor: 'pointer',
-              boxShadow: hoveredCard === 1 ? '0 20px 40px rgba(245, 124, 0, 0.3)' : 'none',
-            }}
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
+              hoveredCard === 1 
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]' 
+                : 'bg-white'
+            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              style={{
-                width: '56px',
-                height: '56px',
-                background: hoveredCard === 1 ? 'rgba(255,255,255,0.2)' : '#fff',
-                border: hoveredCard === 1 ? 'none' : '2px solid #0d9488',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '1.5rem',
-                color: hoveredCard === 1 ? '#fff' : '#0d9488',
-                transition: 'all 0.4s ease',
-              }}
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-[400ms] ${
+                hoveredCard === 1 
+                  ? 'bg-white/20 text-white border-0' 
+                  : 'bg-white border-2 border-teal-600 text-teal-600'
+              }`}
             >
               {services[1].icon}
             </div>
             <h3
-              style={{
-                fontSize: '1.35rem',
-                fontWeight: '700',
-                color: hoveredCard === 1 ? '#fff' : '#1a1a1a',
-                marginBottom: '1rem',
-                transition: 'all 0.4s ease',
-              }}
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-[400ms] ${
+                hoveredCard === 1 ? 'text-white' : 'text-gray-900'
+              }`}
             >
               {services[1].title}
             </h3>
             <p
-              style={{
-                fontSize: '0.9rem',
-                color: hoveredCard === 1 ? 'rgba(255,255,255,0.9)' : '#6b7280',
-                lineHeight: '1.7',
-                marginBottom: '1.5rem',
-                flex: 1,
-                transition: 'all 0.4s ease',
-              }}
+              className={`text-sm leading-relaxed mb-6 flex-1 transition-all duration-[400ms] ${
+                hoveredCard === 1 ? 'text-white/90' : 'text-gray-500'
+              }`}
             >
               {services[1].description}
             </p>
             <Link
               href={services[1].link}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                color: hoveredCard === 1 ? '#fff' : '#0d9488',
-                fontSize: '0.95rem',
-                fontWeight: '600',
-                textDecoration: 'none',
-                transition: 'all 0.4s ease',
-              }}
+              className={`flex items-center gap-2 text-[0.95rem] font-semibold no-underline transition-all duration-[400ms] ${
+                hoveredCard === 1 ? 'text-white' : 'text-teal-600'
+              }`}
             >
               Read More
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -349,70 +205,40 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(2)}
             onMouseLeave={() => setHoveredCard(null)}
-            style={{
-              background: hoveredCard === 2 ? 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)' : '#fff',
-              borderRadius: '20px',
-              padding: '2rem',
-              display: 'flex',
-              flexDirection: 'column',
-              transform: isVisible ? (hoveredCard === 2 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.4s ease',
-              cursor: 'pointer',
-              boxShadow: hoveredCard === 2 ? '0 20px 40px rgba(245, 124, 0, 0.3)' : 'none',
-            }}
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
+              hoveredCard === 2 
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]' 
+                : 'bg-white'
+            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              style={{
-                width: '56px',
-                height: '56px',
-                background: hoveredCard === 2 ? 'rgba(255,255,255,0.2)' : '#e6f7f6',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '1.5rem',
-                color: hoveredCard === 2 ? '#fff' : '#0d9488',
-                transition: 'all 0.4s ease',
-              }}
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-[400ms] ${
+                hoveredCard === 2 
+                  ? 'bg-white/20 text-white' 
+                  : 'bg-teal-50 text-teal-600'
+              }`}
             >
               {services[2].icon}
             </div>
             <h3
-              style={{
-                fontSize: '1.35rem',
-                fontWeight: '700',
-                color: hoveredCard === 2 ? '#fff' : '#1a1a1a',
-                marginBottom: '1rem',
-                transition: 'all 0.4s ease',
-              }}
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-[400ms] ${
+                hoveredCard === 2 ? 'text-white' : 'text-gray-900'
+              }`}
             >
               {services[2].title}
             </h3>
             <p
-              style={{
-                fontSize: '0.9rem',
-                color: hoveredCard === 2 ? 'rgba(255,255,255,0.9)' : '#6b7280',
-                lineHeight: '1.7',
-                marginBottom: '1.5rem',
-                flex: 1,
-                transition: 'all 0.4s ease',
-              }}
+              className={`text-sm leading-relaxed mb-6 flex-1 transition-all duration-[400ms] ${
+                hoveredCard === 2 ? 'text-white/90' : 'text-gray-500'
+              }`}
             >
               {services[2].description}
             </p>
             <Link
               href={services[2].link}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                color: hoveredCard === 2 ? '#fff' : '#0d9488',
-                fontSize: '0.95rem',
-                fontWeight: '600',
-                textDecoration: 'none',
-                transition: 'all 0.4s ease',
-              }}
+              className={`flex items-center gap-2 text-[0.95rem] font-semibold no-underline transition-all duration-[400ms] ${
+                hoveredCard === 2 ? 'text-white' : 'text-teal-600'
+              }`}
             >
               Read More
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -425,70 +251,40 @@ export default function ServicesSection() {
           <div
             onMouseEnter={() => setHoveredCard(3)}
             onMouseLeave={() => setHoveredCard(null)}
-            style={{
-              background: hoveredCard === 3 ? 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)' : '#fff',
-              borderRadius: '20px',
-              padding: '2rem',
-              display: 'flex',
-              flexDirection: 'column',
-              transform: isVisible ? (hoveredCard === 3 ? 'translateY(-10px)' : 'translateY(0)') : 'translateY(30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.4s ease',
-              cursor: 'pointer',
-              boxShadow: hoveredCard === 3 ? '0 20px 40px rgba(245, 124, 0, 0.3)' : 'none',
-            }}
+            className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
+              hoveredCard === 3 
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]' 
+                : 'bg-white'
+            } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
-              style={{
-                width: '56px',
-                height: '56px',
-                background: hoveredCard === 3 ? 'rgba(255,255,255,0.2)' : '#e6f7f6',
-                borderRadius: '12px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                marginBottom: '1.5rem',
-                color: hoveredCard === 3 ? '#fff' : '#0d9488',
-                transition: 'all 0.4s ease',
-              }}
+              className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-[400ms] ${
+                hoveredCard === 3 
+                  ? 'bg-white/20 text-white' 
+                  : 'bg-teal-50 text-teal-600'
+              }`}
             >
               {services[3].icon}
             </div>
             <h3
-              style={{
-                fontSize: '1.35rem',
-                fontWeight: '700',
-                color: hoveredCard === 3 ? '#fff' : '#1a1a1a',
-                marginBottom: '1rem',
-                transition: 'all 0.4s ease',
-              }}
+              className={`text-[1.35rem] font-bold mb-4 transition-all duration-[400ms] ${
+                hoveredCard === 3 ? 'text-white' : 'text-gray-900'
+              }`}
             >
               {services[3].title}
             </h3>
             <p
-              style={{
-                fontSize: '0.9rem',
-                color: hoveredCard === 3 ? 'rgba(255,255,255,0.9)' : '#6b7280',
-                lineHeight: '1.7',
-                marginBottom: '1.5rem',
-                flex: 1,
-                transition: 'all 0.4s ease',
-              }}
+              className={`text-sm leading-relaxed mb-6 flex-1 transition-all duration-[400ms] ${
+                hoveredCard === 3 ? 'text-white/90' : 'text-gray-500'
+              }`}
             >
               {services[3].description}
             </p>
             <Link
               href={services[3].link}
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '0.5rem',
-                color: hoveredCard === 3 ? '#fff' : '#0d9488',
-                fontSize: '0.95rem',
-                fontWeight: '600',
-                textDecoration: 'none',
-                transition: 'all 0.4s ease',
-              }}
+              className={`flex items-center gap-2 text-[0.95rem] font-semibold no-underline transition-all duration-[400ms] ${
+                hoveredCard === 3 ? 'text-white' : 'text-teal-600'
+              }`}
             >
               Read More
               <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
@@ -499,73 +295,27 @@ export default function ServicesSection() {
 
           {/* Contact CTA Card */}
           <div
-            style={{
-              borderRadius: '20px',
-              overflow: 'hidden',
-              position: 'relative',
-              minHeight: '280px',
-              transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-              opacity: isVisible ? 1 : 0,
-              transition: 'all 0.6s ease 0.5s',
-            }}
+            className={`rounded-[20px] overflow-hidden relative min-h-[280px] transition-all duration-[600ms] ease-out delay-500 ${
+              isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+            }`}
           >
             <Image
               src="/img/what-we-do-image-1.jpg"
               alt="Contact Us"
               fill
-              style={{ objectFit: 'cover' }}
+              className="object-cover"
             />
-            <div
-              style={{
-                position: 'absolute',
-                inset: 0,
-                background: 'linear-gradient(135deg, rgba(13, 64, 67, 0.85) 0%, rgba(13, 64, 67, 0.75) 100%)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                padding: '2rem',
-              }}
-            >
-              <p
-                style={{
-                  fontSize: '0.9rem',
-                  color: 'rgba(255,255,255,0.8)',
-                  marginBottom: '0.5rem',
-                }}
-              >
+            <div className="absolute inset-0 bg-gradient-to-br from-[rgba(13,64,67,0.85)] to-[rgba(13,64,67,0.75)] flex flex-col justify-center p-8">
+              <p className="text-sm text-white/80 mb-2">
                 Have You any question
               </p>
-              <h3
-                style={{
-                  fontSize: '1.6rem',
-                  fontWeight: '700',
-                  color: '#fff',
-                  lineHeight: '1.3',
-                  marginBottom: '1.5rem',
-                }}
-              >
+              <h3 className="text-[1.6rem] font-bold text-white leading-tight mb-6">
                 Don&apos;t waste your
                 <br />
                 time call us!
               </h3>
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '0.75rem',
-                }}
-              >
-                <div
-                  style={{
-                    width: '44px',
-                    height: '44px',
-                    background: 'rgba(255,255,255,0.15)',
-                    borderRadius: '10px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                  }}
-                >
+              <div className="flex items-center gap-3">
+                <div className="w-11 h-11 bg-white/15 rounded-[10px] flex items-center justify-center">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <path
                       d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
@@ -577,22 +327,10 @@ export default function ServicesSection() {
                   </svg>
                 </div>
                 <div>
-                  <p
-                    style={{
-                      fontSize: '0.8rem',
-                      color: 'rgba(255,255,255,0.7)',
-                      marginBottom: '0.2rem',
-                    }}
-                  >
+                  <p className="text-xs text-white/70 mb-0.5">
                     Call Us 24/7
                   </p>
-                  <p
-                    style={{
-                      fontSize: '1.2rem',
-                      fontWeight: '700',
-                      color: '#fff',
-                    }}
-                  >
+                  <p className="text-xl font-bold text-white">
                     98930 27688
                   </p>
                 </div>
@@ -601,19 +339,6 @@ export default function ServicesSection() {
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 1024px) {
-          section > div > div {
-            grid-template-columns: repeat(2, 1fr) !important;
-          }
-        }
-        @media (max-width: 640px) {
-          section > div > div {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

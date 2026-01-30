@@ -25,66 +25,42 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer style={{ background: '#fff', padding: '40px 50px 50px 50px' }}>
-      <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+    <footer className="bg-white py-10 px-[50px]">
+      <div className="max-w-[1400px] mx-auto">
         <div
-          style={{
-            background: '#014E4E',
-            borderRadius: '40px',
-            padding: '50px 70px 0 70px',
-            color: '#fff',
-            backgroundImage: 'url(https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-          }}
+          className="bg-[#014E4E] rounded-[40px] pt-[50px] px-[70px] pb-0 text-white bg-cover bg-center bg-[url('https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png')]"
         >
           {/* Main Content */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', gap: '60px', flexWrap: 'wrap', paddingBottom: '40px' }}>
+          <div className="flex justify-between gap-[60px] flex-wrap pb-10">
             {/* Left Column - Logo & Info */}
-            <div style={{ flex: '1', maxWidth: '550px' }}>
+            <div className="flex-1 max-w-[550px]">
               <Image
                 src="/assets/img/logo.png"
                 alt="Dietitian Poonam Sagar"
                 width={220}
                 height={80}
-                style={{ height: '70px', width: 'auto' }}
+                className="h-[70px] w-auto"
               />
-              <p style={{ marginTop: '24px', fontSize: '15px', lineHeight: '1.8', color: 'rgba(255,255,255,0.85)' }}>
+              <p className="mt-6 text-[15px] leading-relaxed text-white/85">
                 India&apos;s only diet where &apos;Ghar Ka Khana&apos; becomes your superpower for getting fit and losing weight!
               </p>
-              <div style={{ marginTop: '28px', display: 'flex', flexWrap: 'wrap', gap: '16px' }}>
+              <div className="mt-7 flex flex-wrap gap-4">
                 <a
                   href="tel:+919893027688"
-                  style={{
-                    borderRadius: '12px',
-                    border: '1px solid rgba(255,255,255,0.35)',
-                    padding: '14px 24px',
-                    fontSize: '14px',
-                    color: '#fff',
-                    textDecoration: 'none',
-                    fontWeight: 500,
-                  }}
+                  className="rounded-xl border border-white/35 py-3.5 px-6 text-sm text-white no-underline font-medium"
                 >
                   +91 9893027688
                 </a>
                 <a
                   href="mailto:support@dtpoonamsagar.com"
-                  style={{
-                    borderRadius: '12px',
-                    border: '1px solid rgba(255,255,255,0.35)',
-                    padding: '14px 24px',
-                    fontSize: '14px',
-                    color: '#fff',
-                    textDecoration: 'none',
-                    fontWeight: 500,
-                  }}
+                  className="rounded-xl border border-white/35 py-3.5 px-6 text-sm text-white no-underline font-medium"
                 >
                   support@dtpoonamsagar.com
                 </a>
               </div>
-              <div style={{ marginTop: '32px', display: 'flex', alignItems: 'center', gap: '20px' }}>
-                <span style={{ fontSize: '16px', fontWeight: 600 }}>Follow on:</span>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <div className="mt-8 flex items-center gap-5">
+                <span className="text-base font-semibold">Follow on:</span>
+                <div className="flex items-center gap-3">
                   {socialLinks.map((link) => (
                     <a
                       key={link.label}
@@ -92,18 +68,7 @@ export default function Footer() {
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label={link.label}
-                      style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: '42px',
-                        height: '42px',
-                        borderRadius: '50%',
-                        border: '1px solid rgba(255,255,255,0.35)',
-                        fontSize: '15px',
-                        color: '#fff',
-                        textDecoration: 'none',
-                      }}
+                      className="flex items-center justify-center w-[42px] h-[42px] rounded-full border border-white/35 text-[15px] text-white no-underline"
                     >
                       {link.icon}
                     </a>
@@ -113,22 +78,14 @@ export default function Footer() {
             </div>
 
             {/* Right Column - Services */}
-            <div style={{ minWidth: '180px' }}>
-              <h3 style={{ fontSize: '20px', fontWeight: 600, marginBottom: '24px' }}>Services</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
+            <div className="min-w-[180px]">
+              <h3 className="text-xl font-semibold mb-6">Services</h3>
+              <ul className="list-none p-0 m-0">
                 {serviceLinks.map((link) => (
-                  <li key={link.href + link.label} style={{ marginBottom: '16px' }}>
+                  <li key={link.href + link.label} className="mb-4">
                     <Link 
                       href={link.href} 
-                      style={{ 
-                        color: 'rgba(255,255,255,0.9)', 
-                        textDecoration: 'none',
-                        fontSize: '15px',
-                        fontWeight: 500,
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        gap: '6px'
-                      }}
+                      className="text-white/90 no-underline text-[15px] font-medium inline-flex items-center gap-1.5"
                     >
                       {link.label}
                       {link.hasDropdown && (
@@ -144,25 +101,15 @@ export default function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div style={{ 
-            padding: '24px 0', 
-            borderTop: '1px solid rgba(255,255,255,0.2)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
-            gap: '20px',
-            fontSize: '14px',
-            color: 'rgba(255,255,255,0.8)'
-          }}>
-            <p style={{ margin: 0 }}>Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          <div className="py-6 border-t border-white/20 flex items-center justify-between flex-wrap gap-5 text-sm text-white/80">
+            <p className="m-0">Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
+            <div className="flex items-center gap-4">
               {legalLinks.map((link, index) => (
-                <span key={link.href} style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-                  <Link href={link.href} style={{ color: 'rgba(255,255,255,0.8)', textDecoration: 'none' }}>
+                <span key={link.href} className="flex items-center gap-4">
+                  <Link href={link.href} className="text-white/80 no-underline">
                     {link.label}
                   </Link>
-                  {index < legalLinks.length - 1 && <span style={{ color: 'rgba(255,255,255,0.5)' }}>–</span>}
+                  {index < legalLinks.length - 1 && <span className="text-white/50">–</span>}
                 </span>
               ))}
             </div>

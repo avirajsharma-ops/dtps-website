@@ -25,27 +25,20 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number>(1);
 
   return (
-    <section className="faq-section" style={{ background: '#f5f7fa', padding: '5rem 2rem' }}>
-      <div className="faq-container" style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', gap: '3rem', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+    <section className="bg-[#f5f7fa] py-20 px-8">
+      <div className="max-w-[1200px] mx-auto flex gap-12 flex-wrap items-start">
         {/* Left - Images */}
-        <div className="faq-images" style={{ flex: '1', minWidth: '300px', position: 'relative', height: '550px' }}>
-          <div style={{ position: 'relative' }}>
+        <div className="flex-1 min-w-[300px] relative h-[550px]">
+          <div className="relative">
             <Image 
               src="/img/faq-image-1.jpg" 
               alt="Healthy lifestyle" 
               width={350} 
               height={400}
-              style={{ borderRadius: '20px', objectFit: 'cover' }}
+              className="rounded-[20px] object-cover"
             />
             {/* Rotating dashed circle */}
-            <div style={{ 
-              position: 'absolute', 
-              top: '50%', 
-              right: '-30px',
-              width: '80px',
-              height: '80px',
-              animation: 'spin 10s linear infinite'
-            }}>
+            <div className="absolute top-1/2 -right-[30px] w-20 h-20 animate-spin-slow">
               <svg width="80" height="80" viewBox="0 0 80 80">
                 <circle 
                   cx="40" 
@@ -64,101 +57,63 @@ export default function FAQSection() {
             alt="Diet consultation" 
             width={280} 
             height={220}
-            style={{ 
-              borderRadius: '20px', 
-              objectFit: 'cover', 
-              position: 'absolute', 
-              bottom: '0', 
-              right: '20px',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.15)',
-              border: '4px solid #fff'
-            }}
+            className="rounded-[20px] object-cover absolute bottom-0 right-5 shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-4 border-white"
           />
           {/* Decorative dots */}
-          <div style={{ 
-            position: 'absolute', 
-            bottom: '80px', 
-            left: '0',
-            display: 'grid',
-            gridTemplateColumns: 'repeat(4, 1fr)',
-            gap: '8px'
-          }}>
+          <div className="absolute bottom-20 left-0 grid grid-cols-4 gap-2">
             {[...Array(16)].map((_, i) => (
-              <span key={i} style={{ 
-                width: '8px', 
-                height: '8px', 
-                background: i % 3 === 0 ? '#ff9100' : '#009688', 
-                borderRadius: '50%',
-                opacity: 0.6
-              }} />
+              <span 
+                key={i} 
+                className={`w-2 h-2 rounded-full opacity-60 ${
+                  i % 3 === 0 ? 'bg-[#ff9100]' : 'bg-teal-600'
+                }`}
+              />
             ))}
           </div>
         </div>
         
         {/* Right - FAQ Accordion */}
-        <div style={{ flex: '1', minWidth: '400px' }}>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-            <span style={{ color: '#ff9100', fontSize: '1.2rem' }}>✦</span>
-            <span style={{ color: '#009688', fontWeight: 600, fontSize: '1rem' }}>Frequently Asked Questions</span>
+        <div className="flex-1 min-w-[400px]">
+          <div className="flex items-center gap-2 mb-2">
+            <span className="text-[#ff9100] text-xl">✦</span>
+            <span className="text-teal-600 font-semibold text-base">Frequently Asked Questions</span>
           </div>
-          <h2 style={{ fontSize: '2.5rem', fontWeight: 700, color: '#222', lineHeight: 1.2, marginBottom: '2rem' }}>
+          <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight mb-8">
             Common Questions About<br />Our Diet Plans
           </h2>
           
           {/* FAQ Items */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="flex flex-col gap-4">
             {faqData.map((faq, index) => (
               <div 
                 key={index}
                 onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                style={{ 
-                  background: openIndex === index ? '#ff9100' : '#fff', 
-                  borderRadius: '16px', 
-                  padding: '1.2rem 1.5rem',
-                  boxShadow: openIndex === index ? '0 8px 25px rgba(255, 145, 0, 0.3)' : '0 2px 10px rgba(0,0,0,0.05)',
-                  cursor: 'pointer',
-                  transition: 'all 0.3s ease',
-                  overflow: 'hidden'
-                }}
+                className={`rounded-2xl py-5 px-6 cursor-pointer transition-all duration-300 overflow-hidden ${
+                  openIndex === index 
+                    ? 'bg-[#ff9100] shadow-[0_8px_25px_rgba(255,145,0,0.3)]' 
+                    : 'bg-white shadow-[0_2px_10px_rgba(0,0,0,0.05)]'
+                }`}
               >
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span style={{ 
-                    fontWeight: 600, 
-                    color: openIndex === index ? '#fff' : '#222',
-                    fontSize: '1rem'
-                  }}>
+                <div className="flex justify-between items-center">
+                  <span className={`font-semibold text-base ${
+                    openIndex === index ? 'text-white' : 'text-gray-900'
+                  }`}>
                     {faq.question}
                   </span>
-                  <span style={{ 
-                    color: openIndex === index ? '#fff' : '#ff9100', 
-                    fontSize: '1.5rem', 
-                    fontWeight: 300,
-                    transition: 'transform 0.3s ease',
-                    transform: openIndex === index ? 'rotate(45deg)' : 'rotate(0deg)',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    width: '30px',
-                    height: '30px',
-                    borderRadius: '50%',
-                    background: openIndex === index ? 'rgba(255,255,255,0.2)' : 'rgba(255, 145, 0, 0.1)'
-                  }}>
+                  <span className={`text-2xl font-light transition-transform duration-300 flex items-center justify-center w-[30px] h-[30px] rounded-full ${
+                    openIndex === index 
+                      ? 'text-white bg-white/20 rotate-45' 
+                      : 'text-[#ff9100] bg-[rgba(255,145,0,0.1)] rotate-0'
+                  }`}>
                     +
                   </span>
                 </div>
-                <div style={{
-                  maxHeight: openIndex === index ? '200px' : '0px',
-                  overflow: 'hidden',
-                  transition: 'max-height 0.3s ease, margin-top 0.3s ease, opacity 0.3s ease',
-                  marginTop: openIndex === index ? '1rem' : '0',
-                  opacity: openIndex === index ? 1 : 0
-                }}>
-                  <p style={{ 
-                    color: '#fff', 
-                    fontSize: '0.95rem', 
-                    lineHeight: 1.7,
-                    margin: 0
-                  }}>
+                <div className={`overflow-hidden transition-all duration-300 ${
+                  openIndex === index 
+                    ? 'max-h-[200px] mt-4 opacity-100' 
+                    : 'max-h-0 mt-0 opacity-0'
+                }`}>
+                  <p className="text-white text-[0.95rem] leading-relaxed m-0">
                     {faq.answer}
                   </p>
                 </div>

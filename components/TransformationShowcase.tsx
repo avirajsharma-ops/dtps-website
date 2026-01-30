@@ -75,29 +75,16 @@ export default function TransformationShowcase({
   }, [page, maxItems]);
 
   return (
-    <section style={{ padding: '60px 20px', background: '#fff' }}>
-      <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <section className="py-[60px] px-5 bg-white">
+      <div className="max-w-[1200px] mx-auto">
         {title && (
-          <div style={{ textAlign: 'center', marginBottom: '50px' }}>
-            <h2 style={{
-              fontSize: '48px',
-              fontWeight: 700,
-              color: '#000',
-              marginBottom: '10px',
-              fontFamily: 'Epilogue, sans-serif',
-              lineHeight: 1.2
-            }}>
-              <span style={{ color: '#ff850b' }}>Over 75,000+</span><br />
+          <div className="text-center mb-[50px]">
+            <h2 className="text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
+              <span className="text-[#ff850b]">Over 75,000+</span><br />
               {title}
             </h2>
             {subtitle && (
-              <p style={{
-                fontSize: '17px',
-                color: '#666',
-                lineHeight: 1.7,
-                maxWidth: '680px',
-                margin: '0 auto'
-              }}>
+              <p className="text-[17px] text-[#666] leading-relaxed max-w-[680px] mx-auto">
                 {subtitle}
               </p>
             )}
@@ -318,16 +305,7 @@ export default function TransformationShowcase({
                           </div>
                         </>
                       ) : (
-                        <div style={{
-                          width: '100%',
-                          height: '100%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          backgroundColor: '#e5e7eb',
-                          color: '#999',
-                          fontSize: '12px'
-                        }}>
+                        <div className="w-full h-full flex items-center justify-center bg-[#e5e7eb] text-[#999] text-xs">
                           No Image
                         </div>
                       )}
@@ -347,16 +325,7 @@ export default function TransformationShowcase({
                           </div>
                         </>
                       ) : (
-                        <div style={{
-                          width: '100%',
-                          height: '100%',
-                          display: 'flex',
-                          alignItems: 'center',
-                          justifyContent: 'center',
-                          backgroundColor: '#e5e7eb',
-                          color: '#999',
-                          fontSize: '12px'
-                        }}>
+                        <div className="w-full h-full flex items-center justify-center bg-[#e5e7eb] text-[#999] text-xs">
                           No Image
                         </div>
                       )}

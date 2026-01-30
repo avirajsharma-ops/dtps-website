@@ -76,142 +76,70 @@ export default function WhatWeDoSection() {
   return (
     <section
       ref={sectionRef}
-      style={{
-        background: '#fff',
-        padding: '5rem 2rem',
-      }}
+      className="bg-white py-20 px-8"
     >
-      <div
-        style={{
-          maxWidth: '1200px',
-          margin: '0 auto',
-          display: 'grid',
-          gridTemplateColumns: '1fr 1.2fr 1fr',
-          gap: '2.5rem',
-          alignItems: 'start',
-        }}
-      >
+      <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-[1fr_1.2fr_1fr] gap-10 items-start">
         {/* Left Image */}
         <div
-          style={{
-            position: 'relative',
-            height: '480px',
-            borderRadius: '20px',
-            overflow: 'hidden',
-            transform: isVisible ? 'translateX(0)' : 'translateX(-50px)',
-            opacity: isVisible ? 1 : 0,
-            transition: 'all 0.7s ease',
-          }}
+          className={`relative h-[480px] rounded-[20px] overflow-hidden transition-all duration-[700ms] ease-out ${
+            isVisible ? 'translate-x-0 opacity-100' : '-translate-x-[50px] opacity-0'
+          }`}
         >
           <Image
             src="/img/what-we-do-image-1.jpg"
             alt="Woman preparing healthy drinks"
             fill
-            style={{ objectFit: 'cover' }}
+            className="object-cover"
           />
         </div>
 
         {/* Middle Content */}
         <div
-          style={{
-            transform: isVisible ? 'translateY(0)' : 'translateY(30px)',
-            opacity: isVisible ? 1 : 0,
-            transition: 'all 0.7s ease 0.2s',
-          }}
+          className={`transition-all duration-[700ms] ease-out delay-200 ${
+            isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+          }`}
         >
           {/* Label */}
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '0.5rem',
-              marginBottom: '0.75rem',
-            }}
-          >
-            <span style={{ color: '#f5a623', fontSize: '1.1rem' }}>✦</span>
-            <span
-              style={{
-                color: '#f5a623',
-                fontSize: '1rem',
-                fontWeight: '600',
-              }}
-            >
+          <div className="flex items-center gap-2 mb-3">
+            <span className="text-[#f5a623] text-lg">✦</span>
+            <span className="text-[#f5a623] text-base font-semibold">
               What We Do
             </span>
           </div>
 
           {/* Heading */}
-          <h2
-            style={{
-              fontSize: '2.5rem',
-              fontWeight: '700',
-              color: '#1a1a1a',
-              lineHeight: '1.2',
-              marginBottom: '2rem',
-            }}
-          >
+          <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight mb-8">
             Guiding your
             <br />
             health wellness
           </h2>
 
           {/* Features List */}
-          <div
-            style={{
-              display: 'flex',
-              flexDirection: 'column',
-              gap: '1.5rem',
-            }}
-          >
+          <div className="flex flex-col gap-6">
             {features.map((feature, index) => (
               <div
                 key={index}
                 onMouseEnter={() => setHoveredFeature(index)}
                 onMouseLeave={() => setHoveredFeature(null)}
-                style={{
-                  display: 'flex',
-                  gap: '1rem',
-                  alignItems: 'flex-start',
-                  transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-                  opacity: isVisible ? 1 : 0,
-                  transition: `all 0.5s ease ${0.3 + index * 0.1}s`,
-                  cursor: 'pointer',
-                }}
+                className={`flex gap-4 items-start cursor-pointer transition-all duration-500 ease-out ${
+                  isVisible ? 'translate-y-0 opacity-100' : 'translate-y-5 opacity-0'
+                }`}
+                style={{ transitionDelay: `${300 + index * 100}ms` }}
               >
                 <div
-                  style={{
-                    width: '52px',
-                    height: '52px',
-                    background: hoveredFeature === index ? '#f5a623' : '#e6f7f6',
-                    borderRadius: '12px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    flexShrink: 0,
-                    transition: 'all 0.3s ease',
-                    transform: hoveredFeature === index ? 'scale(1.1)' : 'scale(1)',
-                  }}
+                  className={`w-[52px] h-[52px] rounded-xl flex items-center justify-center flex-shrink-0 transition-all duration-300 ${
+                    hoveredFeature === index 
+                      ? 'bg-[#f5a623] scale-110' 
+                      : 'bg-teal-50 scale-100'
+                  }`}
                 >
                   {renderIcon(index)}
                 </div>
                 <div>
-                  <h4
-                    style={{
-                      fontSize: '1.1rem',
-                      fontWeight: '700',
-                      color: '#1a1a1a',
-                      marginBottom: '0.4rem',
-                    }}
-                  >
+                  <h4 className="text-lg font-bold text-gray-900 mb-1">
                     {feature.title}
                   </h4>
-                  <p
-                    style={{
-                      fontSize: '0.9rem',
-                      color: '#6b7280',
-                      lineHeight: '1.6',
-                    }}
-                  >
+                  <p className="text-sm text-gray-500 leading-relaxed">
                     {feature.description}
                   </p>
                 </div>
@@ -222,96 +150,37 @@ export default function WhatWeDoSection() {
 
         {/* Right Side */}
         <div
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            gap: '1.5rem',
-            transform: isVisible ? 'translateX(0)' : 'translateX(50px)',
-            opacity: isVisible ? 1 : 0,
-            transition: 'all 0.7s ease 0.3s',
-          }}
+          className={`flex flex-col gap-6 transition-all duration-[700ms] ease-out delay-300 ${
+            isVisible ? 'translate-x-0 opacity-100' : 'translate-x-[50px] opacity-0'
+          }`}
         >
           {/* Top Text & Button */}
           <div>
-            <p
-              style={{
-                fontSize: '0.95rem',
-                color: '#6b7280',
-                lineHeight: '1.7',
-                marginBottom: '1rem',
-              }}
-            >
+            <p className="text-[0.95rem] text-gray-500 leading-relaxed mb-4">
               Empowering you to achieve optimal health and wellness with{' '}
-              <span
-                style={{
-                  border: '1px solid #f5a623',
-                  padding: '0.1rem 0.4rem',
-                  borderRadius: '4px',
-                }}
-              >
+              <span className="border border-[#f5a623] px-1.5 py-0.5 rounded">
                 personalized
               </span>{' '}
               coaching, support.
             </p>
             <Link href="/contact">
-              <button
-                style={{
-                  background: 'linear-gradient(135deg, #f5a623 0%, #f57c00 100%)',
-                  color: '#fff',
-                  fontSize: '0.95rem',
-                  fontWeight: '600',
-                  padding: '0.875rem 1.75rem',
-                  borderRadius: '50px',
-                  border: 'none',
-                  cursor: 'pointer',
-                  boxShadow: '0 6px 20px rgba(245, 124, 0, 0.3)',
-                  transition: 'all 0.3s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 8px 25px rgba(245, 124, 0, 0.4)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 6px 20px rgba(245, 124, 0, 0.3)';
-                }}
-              >
+              <button className="bg-gradient-to-br from-[#f5a623] to-[#f57c00] text-white text-[0.95rem] font-semibold py-3.5 px-7 rounded-full border-none cursor-pointer shadow-[0_6px_20px_rgba(245,124,0,0.3)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_25px_rgba(245,124,0,0.4)]">
                 Contact Us
               </button>
             </Link>
           </div>
 
           {/* Right Image */}
-          <div
-            style={{
-              position: 'relative',
-              height: '340px',
-              borderRadius: '20px',
-              overflow: 'hidden',
-            }}
-          >
+          <div className="relative h-[340px] rounded-[20px] overflow-hidden">
             <Image
               src="/img/what-we-do-image-2.jpg"
               alt="Woman with healthy food"
               fill
-              style={{ objectFit: 'cover' }}
+              className="object-cover"
             />
           </div>
         </div>
       </div>
-
-      <style jsx>{`
-        @media (max-width: 1024px) {
-          section > div {
-            grid-template-columns: 1fr 1fr !important;
-          }
-        }
-        @media (max-width: 768px) {
-          section > div {
-            grid-template-columns: 1fr !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

@@ -78,7 +78,7 @@ export default function BlogPage() {
                       alt={post.title}
                       width={400}
                       height={300}
-                      style={{ objectFit: 'cover', borderRadius: '16px', width: '100%', height: 'auto' }}
+                      className="object-cover rounded-2xl w-full h-auto"
                     />
                   </div>
                   <div className="blog-card-content simple-content">

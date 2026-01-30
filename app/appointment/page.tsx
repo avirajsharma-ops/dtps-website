@@ -45,7 +45,7 @@ export default function AppointmentPage() {
                     alt="Health Coaching" 
                     width={400} 
                     height={300} 
-                    style={{ borderRadius: '16px', objectFit: 'cover' }}
+                    className="rounded-2xl object-cover"
                   />
                 </div>
               </div>

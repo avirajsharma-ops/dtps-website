@@ -257,7 +257,7 @@ export default function WeightLossPage() {
                   alt="Healthy food" 
                   width={300} 
                   height={350} 
-                  style={{ objectFit: 'cover', borderRadius: '16px' }} 
+                  className="object-cover rounded-2xl" 
                 />
               </div>
               <div className="wl-expect-img-2">
@@ -266,7 +266,7 @@ export default function WeightLossPage() {
                   alt="Cooking" 
                   width={350} 
                   height={300} 
-                  style={{ objectFit: 'cover', borderRadius: '16px' }} 
+                  className="object-cover rounded-2xl" 
                 />
               </div>
               <div className="wl-expect-decoration">
@@ -304,7 +304,7 @@ export default function WeightLossPage() {
                 alt="100% Money Back Guarantee" 
                 width={250} 
                 height={250} 
-                style={{ objectFit: 'contain' }} 
+                className="object-contain" 
               />
             </div>
             <div className="wl-guarantee-content">
@@ -342,7 +342,7 @@ export default function WeightLossPage() {
                 alt="Fitness woman" 
                 width={450} 
                 height={550} 
-                style={{ objectFit: 'contain' }} 
+                className="object-contain" 
               />
             </div>
           </div>
@@ -361,7 +361,7 @@ export default function WeightLossPage() {
                 alt="Dietitian Poonam Sagar" 
                 width={450} 
                 height={550} 
-                style={{ objectFit: 'contain' }} 
+                className="object-contain" 
               />
             </div>
             <div className="wl-expert-content">
@@ -404,7 +404,7 @@ export default function WeightLossPage() {
                     alt={award.title} 
                     width={400} 
                     height={250} 
-                    style={{ objectFit: 'cover', borderRadius: '12px', width: '100%', height: '220px' }} 
+                    className="object-cover rounded-xl w-full h-[220px]" 
                   />
                 </div>
                 <h4 className="wl-award-title">{award.title}</h4>
@@ -524,7 +524,7 @@ export default function WeightLossPage() {
                         alt={testimonial.name} 
                         width={45} 
                         height={45} 
-                        style={{ borderRadius: '50%', objectFit: 'cover' }} 
+                        className="rounded-full object-cover" 
                       />
                       <div>
                         <strong>{testimonial.name}</strong>
@@ -542,7 +542,7 @@ export default function WeightLossPage() {
                   alt="Success story" 
                   width={250} 
                   height={300} 
-                  style={{ objectFit: 'cover', borderRadius: '16px' }} 
+                  className="object-cover rounded-2xl" 
                 />
               </div>
               <div className="wl-testimonial-img-2">
@@ -551,7 +551,7 @@ export default function WeightLossPage() {
                   alt="Success story" 
                   width={200} 
                   height={250} 
-                  style={{ objectFit: 'cover', borderRadius: '16px' }} 
+                  className="object-cover rounded-2xl" 
                 />
               </div>
               <div className="wl-testimonial-img-3">
@@ -560,13 +560,13 @@ export default function WeightLossPage() {
                   alt="Success story" 
                   width={280} 
                   height={220} 
-                  style={{ objectFit: 'cover', borderRadius: '16px' }} 
+                  className="object-cover rounded-2xl" 
                 />
               </div>
               <div className="wl-testimonial-badge">
                 <div className="wl-badge-avatars">
-                  <Image src={badgeImage1} alt="" width={30} height={30} style={{ borderRadius: '50%' }} />
-                  <Image src={badgeImage2} alt="" width={30} height={30} style={{ borderRadius: '50%' }} />
+                  <Image src={badgeImage1} alt="" width={30} height={30} className="rounded-full" />
+                  <Image src={badgeImage2} alt="" width={30} height={30} className="rounded-full" />
                 </div>
                 <span className="wl-badge-count">13K</span>
                 <div className="wl-badge-rating">0.4 ★ ( 6 k riview )</div>
