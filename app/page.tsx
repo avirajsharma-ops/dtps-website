@@ -88,7 +88,7 @@ export default function HomePage() {
       {/* Why Choose Us Section */}
       {/* ...existing code... */}
       {/* Expert Guidance Section */}
-      <section className="bg-white py-16 px-8">
+      <section className="bg-white py-16 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -159,7 +159,7 @@ export default function HomePage() {
 
       {/* Our Video Section */}
       <section 
-        className="bg-cover bg-center py-20 px-8 relative min-h-[600px] bg-[url('/img/what-we-do-image-1.jpg')]"
+        className="bg-cover bg-center py-20 px-4 md:px-8 relative min-h-[600px] bg-[url('/img/what-we-do-image-1.jpg')]"
       >
         {/* Dark overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[rgba(11,76,76,0.9)] to-[rgba(0,0,0,0.7)]" />
@@ -234,7 +234,7 @@ export default function HomePage() {
       </section>
 
       {/* Our Programs Section */}
-      <section className="bg-white py-20 px-8">
+      <section className="bg-white py-20 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <div>
@@ -253,7 +253,7 @@ export default function HomePage() {
           <div className="flex gap-6 flex-wrap justify-center">
             {/* Program Card 1 - Using Garima-Mam.jpeg */}
             <div 
-              className="bg-gray-900 rounded-[20px] overflow-hidden w-[360px] h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
+              className="bg-gray-900 rounded-[20px] overflow-hidden w-full sm:w-[360px] h-[400px] sm:h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
             >
               <img src="/img/Garima-Mam.jpeg" alt="Weight Management Program" className="w-full h-full object-cover" />
               <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
@@ -267,7 +267,7 @@ export default function HomePage() {
             
             {/* Program Card 2 - Using Shivani.jpeg */}
             <div 
-              className="bg-gray-900 rounded-[20px] overflow-hidden w-[360px] h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
+              className="bg-gray-900 rounded-[20px] overflow-hidden w-full sm:w-[360px] h-[400px] sm:h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
             >
               <img src="/img/Shivani.jpeg" alt="PCOD/PCOS Program" className="w-full h-full object-cover" />
               <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
@@ -281,7 +281,7 @@ export default function HomePage() {
             
             {/* Program Card 3 - Using Anshu-Jain.jpeg */}
             <div 
-              className="bg-gray-900 rounded-[20px] overflow-hidden w-[360px] h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
+              className="bg-gray-900 rounded-[20px] overflow-hidden w-full sm:w-[360px] h-[400px] sm:h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
             >
               <img src="/img/Anshu-Jain.jpeg" alt="Therapeutic Diet Program" className="w-full h-full object-cover" />
               <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
@@ -297,7 +297,7 @@ export default function HomePage() {
       </section>
 
       {/* How It Work Section */}
-      <section className="bg-[#0b4c4c] py-20 px-8 rounded-t-[40px]">
+      <section className="bg-[#0b4c4c] py-20 px-4 md:px-8 rounded-t-[20px] md:rounded-t-[40px]">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex justify-between items-start flex-wrap gap-8 mb-12">
             <div>
@@ -313,12 +313,12 @@ export default function HomePage() {
               Achieving your health goals has never been easier. Our step-by-step approach provides personalized guidance, actionable strategies, and ongoing support.
             </p>
           </div>
-          <div className="flex justify-between flex-wrap gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {/* Step 1 */}
-            <div className="text-center flex-1 min-w-[200px]">
-              <div className="relative inline-block mb-6">
-                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
+            <div className="text-center">
+              <div className="relative inline-block mb-4 md:mb-6">
+                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
                     <circle cx="12" cy="5" r="3" />
                     <line x1="12" y1="8" x2="12" y2="14" />
                     <line x1="12" y1="14" x2="6" y2="20" />
@@ -327,16 +327,16 @@ export default function HomePage() {
                     <circle cx="18" cy="20" r="2" />
                   </svg>
                 </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">1</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">1</div>
               </div>
-              <h3 className="text-white font-bold text-lg mb-2">Custom Coaching Plan</h3>
-              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Custom Coaching Plan</h3>
+              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
             {/* Step 2 */}
-            <div className="text-center flex-1 min-w-[200px]">
-              <div className="relative inline-block mb-6">
-                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
+            <div className="text-center">
+              <div className="relative inline-block mb-4 md:mb-6">
+                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
                     <circle cx="12" cy="8" r="4" />
                     <circle cx="6" cy="16" r="3" />
                     <circle cx="18" cy="16" r="3" />
@@ -344,29 +344,29 @@ export default function HomePage() {
                     <line x1="15" y1="11" x2="17" y2="13" />
                   </svg>
                 </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">2</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">2</div>
               </div>
-              <h3 className="text-white font-bold text-lg mb-2">Ongoing Support</h3>
-              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Ongoing Support</h3>
+              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
             {/* Step 3 */}
-            <div className="text-center flex-1 min-w-[200px]">
-              <div className="relative inline-block mb-6">
-                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
+            <div className="text-center">
+              <div className="relative inline-block mb-4 md:mb-6">
+                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                   </svg>
                 </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">3</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">3</div>
               </div>
-              <h3 className="text-white font-bold text-lg mb-2">Practical Tools</h3>
-              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Practical Tools</h3>
+              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
             {/* Step 4 */}
-            <div className="text-center flex-1 min-w-[200px]">
-              <div className="relative inline-block mb-6">
-                <div className="w-20 h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5">
+            <div className="text-center">
+              <div className="relative inline-block mb-4 md:mb-6">
+                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
                     <circle cx="12" cy="6" r="2" />
                     <circle cx="6" cy="12" r="2" />
                     <circle cx="18" cy="12" r="2" />
@@ -375,18 +375,18 @@ export default function HomePage() {
                     <line x1="8" y1="12" x2="16" y2="12" />
                   </svg>
                 </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-6 h-6 rounded-full text-xs font-bold flex items-center justify-center">4</div>
+                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">4</div>
               </div>
-              <h3 className="text-white font-bold text-lg mb-2">Flexible Engagement</h3>
-              <p className="text-white opacity-80 text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
+              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Flexible Engagement</h3>
+              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* Appointment Section */}
-      <section className="bg-[#0b4c4c] px-8 pb-20 pt-0">
-        <div className="max-w-[1100px] mx-auto bg-white rounded-[30px] p-12 shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
+      <section className="bg-[#0b4c4c] px-4 md:px-8 pb-20 pt-0">
+        <div className="max-w-[1100px] mx-auto bg-white rounded-[20px] md:rounded-[30px] p-6 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
           <div className="flex gap-12 flex-wrap items-start">
             <div className="flex-1 min-w-[300px]">
               <div className="flex items-center gap-2 mb-2">
@@ -461,7 +461,7 @@ export default function HomePage() {
       <FAQSection />
 
       {/* Testimonials Section */}
-      <section className="bg-white py-20 px-8">
+      <section className="bg-white py-20 px-4 md:px-8">
         <div className="max-w-[1200px] mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">

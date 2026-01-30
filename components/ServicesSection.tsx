@@ -89,7 +89,7 @@ export default function ServicesSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-gray-100 py-20 px-8"
+      className="bg-gray-100 py-12 md:py-20 px-4 md:px-8"
     >
       <div className="max-w-[1200px] mx-auto">
         {/* Grid Layout */}

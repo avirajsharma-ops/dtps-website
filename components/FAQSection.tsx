@@ -25,10 +25,10 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number>(1);
 
   return (
-    <section className="bg-[#f5f7fa] py-20 px-8">
-      <div className="max-w-[1200px] mx-auto flex gap-12 flex-wrap items-start">
+    <section className="bg-[#f5f7fa] py-12 md:py-20 px-4 md:px-8">
+      <div className="max-w-[1200px] mx-auto flex gap-8 md:gap-12 flex-wrap items-start">
         {/* Left - Images */}
-        <div className="flex-1 min-w-[300px] relative h-[550px]">
+        <div className="flex-1 w-full md:min-w-[300px] relative h-[400px] md:h-[550px] hidden md:block">
           <div className="relative">
             <Image 
               src="/img/faq-image-1.jpg" 
@@ -73,12 +73,12 @@ export default function FAQSection() {
         </div>
         
         {/* Right - FAQ Accordion */}
-        <div className="flex-1 min-w-[400px]">
+        <div className="flex-1 w-full md:min-w-[400px]">
           <div className="flex items-center gap-2 mb-2">
             <span className="text-[#ff9100] text-xl">✦</span>
             <span className="text-teal-600 font-semibold text-base">Frequently Asked Questions</span>
           </div>
-          <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight mb-8">
+          <h2 className="text-2xl md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-6 md:mb-8">
             Common Questions About<br />Our Diet Plans
           </h2>
           

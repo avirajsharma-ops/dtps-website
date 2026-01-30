@@ -60,7 +60,7 @@ export default function Navbar() {
     <>
       <header className="relative z-50 w-full">
         <div className="mx-auto w-full max-w-[1200px] px-4">
-          <div className="flex items-center justify-between gap-4 py-4">
+          <div className="flex items-center justify-between gap-4 py-2 md:py-4">
             <Link href="/" className="flex items-center">
               <Image
                 src="/assets/img/logo.png"

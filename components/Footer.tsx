@@ -25,21 +25,21 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="bg-white py-10 px-[50px]">
+    <footer className="bg-white py-10 px-4 md:px-[50px]">
       <div className="max-w-[1400px] mx-auto">
         <div
-          className="bg-[#014E4E] rounded-[40px] pt-[50px] px-[70px] pb-0 text-white bg-cover bg-center bg-[url('https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png')]"
+          className="bg-[#014E4E] rounded-[20px] md:rounded-[40px] pt-[30px] md:pt-[50px] px-5 md:px-[70px] pb-0 text-white bg-cover bg-center bg-[url('https://staging.dtpoonamsagar.com/healix/wp-content/uploads/2025/03/hero-bg-gradiant-shape.png')]"
         >
           {/* Main Content */}
-          <div className="flex justify-between gap-[60px] flex-wrap pb-10">
+          <div className="flex justify-between gap-8 md:gap-[60px] flex-wrap pb-10">
             {/* Left Column - Logo & Info */}
-            <div className="flex-1 max-w-[550px]">
+            <div className="flex-1 min-w-full md:min-w-0 md:max-w-[550px]">
               <Image
                 src="/assets/img/logo.png"
                 alt="Dietitian Poonam Sagar"
                 width={220}
                 height={80}
-                className="h-[70px] w-auto"
+                className="h-[50px] md:h-[70px] w-auto"
               />
               <p className="mt-6 text-[15px] leading-relaxed text-white/85">
                 India&apos;s only diet where &apos;Ghar Ka Khana&apos; becomes your superpower for getting fit and losing weight!
@@ -78,9 +78,9 @@ export default function Footer() {
             </div>
 
             {/* Right Column - Services */}
-            <div className="min-w-[180px]">
-              <h3 className="text-xl font-semibold mb-6">Services</h3>
-              <ul className="list-none p-0 m-0">
+            <div className="min-w-0 w-full md:w-auto md:min-w-[180px]">
+              <h3 className="text-lg md:text-xl font-semibold mb-4 md:mb-6">Services</h3>
+              <ul className="list-none p-0 m-0 grid grid-cols-2 md:grid-cols-1 gap-2 md:gap-0">
                 {serviceLinks.map((link) => (
                   <li key={link.href + link.label} className="mb-4">
                     <Link 
@@ -101,9 +101,9 @@ export default function Footer() {
           </div>
 
           {/* Bottom Bar */}
-          <div className="py-6 border-t border-white/20 flex items-center justify-between flex-wrap gap-5 text-sm text-white/80">
+          <div className="py-4 md:py-6 border-t border-white/20 flex flex-col md:flex-row items-center justify-between gap-4 md:gap-5 text-xs md:text-sm text-white/80 text-center md:text-left">
             <p className="m-0">Copyright © {new Date().getFullYear()} All Rights Reserved.</p>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 md:gap-4 flex-wrap justify-center">
               {legalLinks.map((link, index) => (
                 <span key={link.href} className="flex items-center gap-4">
                   <Link href={link.href} className="text-white/80 no-underline">

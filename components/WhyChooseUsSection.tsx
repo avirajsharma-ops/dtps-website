@@ -79,7 +79,7 @@ export default function WhyChooseUsSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-[#0d4043] pt-16 px-8 pb-0 overflow-hidden"
+      className="bg-[#0d4043] pt-12 md:pt-16 px-4 md:px-8 pb-0 overflow-hidden"
     >
       <div className="max-w-[1200px] mx-auto">
         {/* Header */}
