@@ -216,13 +216,13 @@ export default function WeddingPlanPage() {
       {/* What Happens When You Start Section */}
       <section className="bg-white py-12">
         <div className="max-w-[1200px] mx-auto px-5">
-          <h2 className="text-center text-5xl font-bold text-black leading-tight mb-16 font-[Epilogue,sans-serif]">
+          <h2 className="text-center text-2xl md:text-5xl font-bold text-black leading-tight mb-8 md:mb-16 font-[Epilogue,sans-serif]">
             What Happens<br />
             When You Start the <span className="text-[#ff850b]">DTPS Wedding Plan</span>
           </h2>
 
-          {/* Tabs */}
-          <div className="flex justify-between gap-5 max-w-[996px] mx-auto mb-8">
+          {/* Desktop Tabs */}
+          <div className="hidden md:flex justify-between gap-5 max-w-[996px] mx-auto mb-8">
             {/* Brides Tab */}
             <div
               onClick={() => setActiveTab('brides')}
@@ -316,8 +316,25 @@ export default function WeddingPlanPage() {
             </div>
           </div>
 
-          {/* Tab Content Card */}
-          <div className="bg-[#4e0101] rounded-3xl overflow-hidden relative min-h-[467px] max-w-[1200px] mx-auto">
+          {/* Mobile Tabs */}
+          <div className="flex md:hidden flex-wrap justify-center gap-3 mb-6">
+            {['brides', 'grooms', 'couples', 'guests'].map((tab) => (
+              <button
+                key={tab}
+                onClick={() => setActiveTab(tab)}
+                className={`py-2 px-5 rounded-full text-sm font-semibold capitalize transition-all duration-300 ${
+                  activeTab === tab 
+                    ? 'bg-[#ff850b] text-white' 
+                    : 'bg-[#4e0101] text-white'
+                }`}
+              >
+                {tab}
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content Card - Desktop */}
+          <div className="hidden md:block bg-[#4e0101] rounded-3xl overflow-hidden relative min-h-[467px] max-w-[1200px] mx-auto">
             {/* Orange Stripe */}
             <div className="absolute top-0 left-[102px] bg-[#ff850b] w-[180px] h-full"></div>
             {/* Main Image */}
@@ -343,6 +360,36 @@ export default function WeddingPlanPage() {
               ))}
             </div>
           </div>
+
+          {/* Tab Content Card - Mobile */}
+          <div className="md:hidden bg-[#4e0101] rounded-2xl overflow-hidden p-5">
+            <div className="flex flex-col items-center">
+              <div className="relative w-full flex justify-center mb-5">
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-[#ff850b] w-[120px] h-full rounded-lg"></div>
+                <Image
+                  src={tabsData[activeTab].image}
+                  alt={activeTab}
+                  width={200}
+                  height={250}
+                  className="relative z-10 object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-3 w-full">
+                {tabsData[activeTab].benefits.map((benefit, index) => (
+                  <div key={index} className="flex items-start gap-2">
+                    <Image
+                      src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/ion_diamond.svg"
+                      alt="Diamond"
+                      width={18}
+                      height={18}
+                      className="flex-shrink-0 mt-0.5"
+                    />
+                    <div className="font-medium text-white text-sm">{benefit}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -358,7 +405,7 @@ export default function WeddingPlanPage() {
 
       {/* Five Step Cycle Program Section */}
       {/* Five Step Cycle Section */}
-      <section className="bg-black py-12 mt-12">
+      <section className="bg-white py-12 mt-12">
         <div className="px-4">
           <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center py-20 px-2.5">
             <div className="absolute inset-0 bg-[rgba(78,1,1,0.95)]"></div>
@@ -381,42 +428,45 @@ export default function WeddingPlanPage() {
       {/* Why People Trust DTPS Section */}
       <section className="bg-white py-12">
         <div className="max-w-[1200px] mx-auto px-5">
-          <h2 className="text-center text-5xl font-bold text-black leading-tight mb-10 font-[Epilogue,sans-serif]">
+          <h2 className="text-center text-3xl md:text-5xl font-bold text-black leading-tight mb-6 md:mb-10 font-[Epilogue,sans-serif]">
             Why people trust <span className="text-[#ff850b]">DTPS</span>?
           </h2>
 
-          <div className="flex flex-col gap-5 max-w-[65%] mx-auto">
-            <div className="bg-[#4E0101] rounded-3xl py-4 px-5 flex items-center gap-5">
+          <div className="flex flex-col gap-3 md:gap-5 max-w-full md:max-w-[65%] mx-auto">
+            <div className="bg-[#4E0101] rounded-2xl md:rounded-3xl py-3 md:py-4 px-4 md:px-5 flex items-center gap-3 md:gap-5">
               <Image
                 src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/icon-our-journey-1.svg"
                 alt="Icon"
                 width={70}
                 height={70}
+                className="w-12 h-12 md:w-[70px] md:h-[70px]"
               />
-              <p className="text-white text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
-                Personalised plan built around<br />your taste, work hours, travel, and culture
+              <p className="text-white text-sm md:text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
+                Personalised plan built around your taste, work hours, travel, and culture
               </p>
             </div>
-            <div className="bg-[#4E0101] rounded-3xl py-4 px-5 flex items-center gap-5">
+            <div className="bg-[#4E0101] rounded-2xl md:rounded-3xl py-3 md:py-4 px-4 md:px-5 flex items-center gap-3 md:gap-5">
               <Image
                 src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/icon-our-journey-1.svg"
                 alt="Icon"
                 width={70}
                 height={70}
+                className="w-12 h-12 md:w-[70px] md:h-[70px]"
               />
-              <p className="text-white text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
-                Medical aware for PCOS, thyroid,<br />and diabetes with reports considered
+              <p className="text-white text-sm md:text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
+                Medical aware for PCOS, thyroid, and diabetes with reports considered
               </p>
             </div>
-            <div className="bg-[#4E0101] rounded-3xl py-4 px-5 flex items-center gap-5">
+            <div className="bg-[#4E0101] rounded-2xl md:rounded-3xl py-3 md:py-4 px-4 md:px-5 flex items-center gap-3 md:gap-5">
               <Image
                 src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/03/icon-our-journey-1.svg"
                 alt="Icon"
                 width={70}
                 height={70}
+                className="w-12 h-12 md:w-[70px] md:h-[70px]"
               />
-              <p className="text-white text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
-                No supplements.<br />No heavy workouts. No starvation.
+              <p className="text-white text-sm md:text-xl font-normal leading-relaxed m-0 font-[DM_Sans,sans-serif]">
+                No supplements. No heavy workouts. No starvation.
               </p>
             </div>
           </div>
@@ -426,30 +476,30 @@ export default function WeddingPlanPage() {
       {/* Stats Section */}
       <section className="bg-white py-12">
         <div className="max-w-[1120px] mx-auto px-5">
-          <div className="flex gap-0">
-            <div className="flex-[25%] p-1.5">
-              <div className="bg-[#FF850B] rounded-2xl py-10 px-5 text-center">
-                <div className="text-white text-5xl font-bold">4.8</div>
-                <div className="text-white text-base">Google Rating</div>
+          <div className="grid grid-cols-2 md:flex gap-2 md:gap-0">
+            <div className="md:flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-6 md:py-10 px-4 md:px-5 text-center">
+                <div className="text-white text-3xl md:text-5xl font-bold">4.8</div>
+                <div className="text-white text-sm md:text-base">Google Rating</div>
               </div>
             </div>
-            <div className="flex-[25%] p-1.5">
-              <div className="bg-[#FF850B] rounded-2xl py-10 px-5 text-center">
-                <div className="text-white text-5xl font-bold">98%</div>
-                <div className="text-white text-base">Success Rate</div>
+            <div className="md:flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-6 md:py-10 px-4 md:px-5 text-center">
+                <div className="text-white text-3xl md:text-5xl font-bold">98%</div>
+                <div className="text-white text-sm md:text-base">Success Rate</div>
               </div>
             </div>
-            <div className="flex-[25%] p-1.5">
-              <div className="bg-[#FF850B] rounded-2xl py-10 px-5 text-center">
-                <div className="text-white text-5xl font-bold">75K+</div>
-                <div className="text-white text-base">Clients</div>
+            <div className="md:flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-6 md:py-10 px-4 md:px-5 text-center">
+                <div className="text-white text-3xl md:text-5xl font-bold">75K+</div>
+                <div className="text-white text-sm md:text-base">Clients</div>
               </div>
             </div>
-            <div className="flex-[25%] p-1.5">
-              <div className="bg-[#FF850B] rounded-2xl py-4 px-5 text-center">
-                <div className="text-white text-sm">Personalised</div>
-                <div className="text-white text-3xl font-bold my-2.5">GHAR</div>
-                <div className="text-white text-sm">ka Khana Diet Plan</div>
+            <div className="md:flex-[25%] p-1.5">
+              <div className="bg-[#FF850B] rounded-2xl py-4 px-4 md:px-5 text-center">
+                <div className="text-white text-xs md:text-sm">Personalised</div>
+                <div className="text-white text-2xl md:text-3xl font-bold my-1.5 md:my-2.5">GHAR</div>
+                <div className="text-white text-xs md:text-sm">ka Khana Diet Plan</div>
               </div>
             </div>
           </div>
@@ -457,11 +507,12 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* We Do Not Push Section */}
-      <section className="bg-black pt-12 pb-20 mt-12">
+      <section className="bg-white pt-12 pb-20 mt-12">
         <div className="px-4">
           <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-6 px-2.5">
             <div className="absolute inset-0 bg-[rgba(78,1,1,0.95)]"></div>
-            <div className="relative z-10 flex flex-wrap gap-7 p-2.5 items-center justify-center">
+            {/* Desktop Layout */}
+            <div className="relative z-10 hidden md:flex flex-wrap gap-7 p-2.5 items-center justify-center">
               {/* Image */}
               <div className="w-[calc(40%-20px)]">
                 <Image
@@ -520,18 +571,69 @@ export default function WeddingPlanPage() {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Layout */}
+            <div className="relative z-10 md:hidden flex flex-col p-4">
+              <h2 className="text-2xl font-bold text-white leading-tight mb-5 font-[Epilogue,sans-serif] text-center">
+                We Do Not <span className="text-[#ff850b]">Push</span>
+              </h2>
+              <div className="flex justify-center mb-5">
+                <Image
+                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/Bride-Cross.png"
+                  alt="Bride"
+                  width={250}
+                  height={300}
+                  className="h-auto"
+                />
+              </div>
+              <div className="flex flex-col gap-3">
+                <div className="bg-[#FF850B] rounded-xl py-2 px-3 flex items-center gap-3">
+                  <div className="bg-white rounded-lg p-2 flex items-center justify-center flex-shrink-0">
+                    <Image
+                      src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/no_meals.svg"
+                      alt="No meals"
+                      width={30}
+                      height={30}
+                    />
+                  </div>
+                  <p className="text-white text-sm font-semibold m-0">Crash diets. Starvation.</p>
+                </div>
+                <div className="bg-[#FF850B] rounded-xl py-2 px-3 flex items-center gap-3">
+                  <div className="bg-white rounded-lg p-2 flex items-center justify-center flex-shrink-0">
+                    <Image
+                      src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/pill-1.svg"
+                      alt="Pills"
+                      width={30}
+                      height={30}
+                    />
+                  </div>
+                  <p className="text-white text-sm font-semibold m-0">Glutathione. Fat-burner pills. Detox teas.</p>
+                </div>
+                <div className="bg-[#FF850B] rounded-xl py-2 px-3 flex items-center gap-3">
+                  <div className="bg-white rounded-lg p-2 flex items-center justify-center flex-shrink-0">
+                    <Image
+                      src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/cardio_load.svg"
+                      alt="Cardio"
+                      width={30}
+                      height={30}
+                    />
+                  </div>
+                  <p className="text-white text-sm font-semibold m-0">Heavy gym plans if you do not want them.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Pricing Section */}
-      <section className="bg-white py-16 px-5">
+      <section className="bg-white py-12 md:py-16 px-5">
         <div className="w-full flex flex-col items-center justify-center text-center">
-          <span className="text-[#ff850b] text-base font-semibold leading-relaxed font-[Epilogue,sans-serif]">Our Pricing</span>
-          <h2 className="text-5xl font-bold text-black leading-tight my-2.5 font-[Epilogue,sans-serif] max-w-[56%]">
+          <span className="text-[#ff850b] text-sm md:text-base font-semibold leading-relaxed font-[Epilogue,sans-serif]">Our Pricing</span>
+          <h2 className="text-2xl md:text-5xl font-bold text-black leading-tight my-2.5 font-[Epilogue,sans-serif] max-w-full md:max-w-[56%]">
             Take the First Step to a <span className="text-[#ff850b]">Healthier Future</span>
           </h2>
-          <p className="text-base font-light leading-relaxed text-[#828283] max-w-[65%] mx-auto mb-10 font-[Epilogue,sans-serif]">
+          <p className="text-sm md:text-base font-light leading-relaxed text-[#828283] max-w-full md:max-w-[65%] mx-auto mb-6 md:mb-10 font-[Epilogue,sans-serif]">
             Join our Plan today and embark on a journey to better health with our wedding plan!
           </p>
 
@@ -558,17 +660,17 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Award-Winning Recognition Section */}
-      <section className="bg-white pt-24 pb-16 px-2.5">
+      <section className="bg-white pt-12 md:pt-24 pb-16 px-2.5">
         <div className="max-w-[1200px] mx-auto px-5 text-center">
-          <h2 className="text-5xl font-bold text-black leading-tight mx-auto mb-5 font-[Epilogue,sans-serif] max-w-[77%]">
+          <h2 className="text-2xl md:text-5xl font-bold text-black leading-tight mx-auto mb-4 md:mb-5 font-[Epilogue,sans-serif] max-w-full md:max-w-[77%]">
             <span className="text-[#ff850b]">Award-Winning</span> Health & Wellness
           </h2>
-          <p className="text-base font-light leading-relaxed text-[#828283] max-w-[65%] mx-auto mb-10 font-[Epilogue,sans-serif]">
+          <p className="text-sm md:text-base font-light leading-relaxed text-[#828283] max-w-full md:max-w-[65%] mx-auto mb-6 md:mb-10 font-[Epilogue,sans-serif]">
             Proud to be recognized for excellence in health, innovation, and results—our weight loss plan has earned top industry awards for effectiveness and success.
           </p>
 
           {/* Award Cards */}
-          <div className="grid grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-5">
             {awards.map((award, index) => (
               <div key={index} className="bg-[#4C0202] rounded-xl shadow-[0_4px_4px_rgba(0,0,0,0.5)] p-4 text-left">
                 <Image
@@ -589,13 +691,14 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Expert's Guidance Section */}
-      <section className="bg-black pt-12 mt-12">
+      <section className="bg-white pt-12 mt-12">
         <div className="px-4">
           <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-16 px-2.5">
             <div className="absolute inset-0 bg-[rgba(78,1,1,0.96)]"></div>
-            <div className="relative z-10">
+            {/* Desktop Layout */}
+            <div className="relative z-10 hidden md:block">
               <h2 className="text-center text-[45px] font-bold text-white leading-tight mb-12 font-[Epilogue,sans-serif]">
-                You are Under <span className="text-[#ff850b]">Expert's Guidance</span>
+                You are Under <span className="text-[#ff850b]">Expert&apos;s Guidance</span>
               </h2>
 
               <div className="flex flex-wrap gap-7 p-2.5 items-center justify-center">
@@ -612,7 +715,7 @@ export default function WeddingPlanPage() {
                 {/* Content */}
                 <div className="w-[calc(50%-20px)]">
                   <p className="text-white text-base font-light leading-relaxed mb-5 font-[Epilogue,sans-serif]">
-                    Dt. Poonam Sagar understands that one-size-fits-all plans simply don't suffice. That's why we specialize in crafting personalized dietary solutions tailored to your unique needs and preferences. Dt. Sagar's philosophy revolves around creating sustainable meal plans centered on delicious, home-cooked dishes.
+                    Dt. Poonam Sagar understands that one-size-fits-all plans simply don&apos;t suffice. That&apos;s why we specialize in crafting personalized dietary solutions tailored to your unique needs and preferences. Dt. Sagar&apos;s philosophy revolves around creating sustainable meal plans centered on delicious, home-cooked dishes.
                   </p>
                   <ul className="list-none py-5 px-4 m-0 grid gap-2.5">
                     {[
@@ -632,6 +735,40 @@ export default function WeddingPlanPage() {
                 </div>
               </div>
             </div>
+
+            {/* Mobile Layout */}
+            <div className="relative z-10 md:hidden px-4 py-6">
+              <h2 className="text-center text-2xl font-bold text-white leading-tight mb-6 font-[Epilogue,sans-serif]">
+                You are Under <span className="text-[#ff850b]">Expert&apos;s Guidance</span>
+              </h2>
+              <div className="flex justify-center mb-5">
+                <Image
+                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Untitled-design-32-1.png"
+                  alt="Dt. Poonam Sagar"
+                  width={250}
+                  height={300}
+                  className="h-auto"
+                />
+              </div>
+              <p className="text-white text-sm font-light leading-relaxed mb-4 font-[Epilogue,sans-serif] text-center">
+                Dt. Poonam Sagar understands that one-size-fits-all plans simply don&apos;t suffice. We specialize in crafting personalized dietary solutions tailored to your unique needs.
+              </p>
+              <ul className="list-none p-0 m-0 grid grid-cols-2 gap-2">
+                {[
+                  { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28.svg', text: 'Holistic Health' },
+                  { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-1.svg', text: 'Nutritional Care' },
+                  { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-2.svg', text: 'Compassionate' },
+                  { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-3.svg', text: 'Tailored Plan' },
+                  { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-4.svg', text: 'Weight Mgmt' },
+                  { icon: 'https://staging.dtpoonamsagar.com/wp-content/uploads/2025/10/Frame-28-5.svg', text: 'Better Health' }
+                ].map((item, index) => (
+                  <li key={index} className="flex items-center gap-1.5 text-white text-xs font-normal">
+                    <Image src={item.icon} alt="" width={20} height={20} />
+                    {item.text}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -639,15 +776,14 @@ export default function WeddingPlanPage() {
       {/* Time Is Ticking CTA Section */}
       <section className="bg-white py-12">
         <div className="max-w-[1200px] mx-auto px-5 text-center">
-          <h2 className="text-5xl font-bold text-black leading-tight mx-auto mb-5 font-[Epilogue,sans-serif] max-w-[56%]">
+          <h2 className="text-2xl md:text-5xl font-bold text-black leading-tight mx-auto mb-4 md:mb-5 font-[Epilogue,sans-serif] max-w-full md:max-w-[56%]">
             Time Is <span className="text-[#ff850b]">Ticking</span><br />
-            Say 'Yes' to Your <span className="text-[#ff850b]">Best Body</span>!
+            Say &apos;Yes&apos; to Your <span className="text-[#ff850b]">Best Body</span>!
           </h2>
-          <p className="text-[23px] font-normal leading-normal text-[#828283] max-w-[65%] mx-auto py-2.5 pb-10 font-[Epilogue,sans-serif]">
-            Your photos last forever — make sure you love what you see!<br />
-            Get the personalized plan brides swear by.
+          <p className="text-base md:text-[23px] font-normal leading-normal text-[#828283] max-w-full md:max-w-[65%] mx-auto py-2.5 pb-6 md:pb-10 font-[Epilogue,sans-serif]">
+            Your photos last forever — make sure you love what you see! Get the personalized plan brides swear by.
           </p>
-          <button className="bg-[#FF850B] text-white border-none rounded-[48px] py-3 px-16 text-xl font-semibold cursor-pointer font-[Epilogue,sans-serif] hover:bg-[#e07a1a] transition-colors">
+          <button className="bg-[#FF850B] text-white border-none rounded-[48px] py-3 px-8 md:px-16 text-base md:text-xl font-semibold cursor-pointer font-[Epilogue,sans-serif] hover:bg-[#e07a1a] transition-colors">
             Get Your Wedding Plan Now!
           </button>
         </div>
