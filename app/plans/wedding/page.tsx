@@ -192,7 +192,7 @@ export default function WeddingPlanPage() {
   }, []);
 
   return (
-    <>
+    <main className="bg-white">
       {/* Hero Section with Navbar */}
       <section className="wedding-hero-wrapper">
         <div className="wedding-hero-section">
@@ -394,7 +394,7 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Over 75,000+ People Section */}
-      <section className="bg-white py-16 px-5">
+      <section className="bg-white py-10 md:py-16 px-4 md:px-5">
         <TransformationShowcase 
           page="wedding"
           title="People Enjoy Weight Loss"
@@ -405,12 +405,12 @@ export default function WeddingPlanPage() {
 
       {/* Five Step Cycle Program Section */}
       {/* Five Step Cycle Section */}
-      <section className="bg-white py-12 mt-12">
-        <div className="px-4">
-          <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center py-20 px-2.5">
+      <section className="bg-white py-8 md:py-12">
+        <div className="px-2 md:px-4">
+          <div className="max-w-[1820px] mx-auto rounded-[20px] md:rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center py-10 md:py-20 px-2.5">
             <div className="absolute inset-0 bg-[rgba(78,1,1,0.95)]"></div>
             <div className="relative z-10 text-center">
-              <h2 className="text-5xl font-bold text-white leading-tight mb-2.5 font-[Epilogue,sans-serif]">
+              <h2 className="text-2xl md:text-5xl font-bold text-white leading-tight mb-2.5 font-[Epilogue,sans-serif]">
                 Our <span className="text-[#ff850b]">Five Step</span> Cycle Program
               </h2>
               <Image
@@ -474,8 +474,8 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-white py-12">
-        <div className="max-w-[1120px] mx-auto px-5">
+      <section className="bg-white py-8 md:py-12">
+        <div className="max-w-[1120px] mx-auto px-3 md:px-5">
           <div className="grid grid-cols-2 md:flex gap-2 md:gap-0">
             <div className="md:flex-[25%] p-1.5">
               <div className="bg-[#FF850B] rounded-2xl py-6 md:py-10 px-4 md:px-5 text-center">
@@ -507,9 +507,9 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* We Do Not Push Section */}
-      <section className="bg-white pt-12 pb-20 mt-12">
-        <div className="px-4">
-          <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-6 px-2.5">
+      <section className="bg-white pt-8 md:pt-12 pb-10 md:pb-20">
+        <div className="px-2 md:px-4">
+          <div className="max-w-[1820px] mx-auto rounded-[20px] md:rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-6 px-2.5">
             <div className="absolute inset-0 bg-[rgba(78,1,1,0.95)]"></div>
             {/* Desktop Layout */}
             <div className="relative z-10 hidden md:flex flex-wrap gap-7 p-2.5 items-center justify-center">
@@ -691,9 +691,9 @@ export default function WeddingPlanPage() {
       </section>
 
       {/* Expert's Guidance Section */}
-      <section className="bg-white pt-12 mt-12">
-        <div className="px-4">
-          <div className="max-w-[1820px] mx-auto rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-16 px-2.5">
+      <section className="bg-white pt-8 md:pt-12">
+        <div className="px-2 md:px-4">
+          <div className="max-w-[1820px] mx-auto rounded-[20px] md:rounded-[50px] overflow-hidden relative bg-[#4E0101] bg-[url('https://staging.dtpoonamsagar.com/wp-content/uploads/2025/11/1f715e423077509b682c964bc8c674abca623e88-2.png')] bg-cover bg-center pt-10 md:pt-16 px-2.5">
             <div className="absolute inset-0 bg-[rgba(78,1,1,0.96)]"></div>
             {/* Desktop Layout */}
             <div className="relative z-10 hidden md:block">
@@ -788,6 +788,6 @@ export default function WeddingPlanPage() {
           </button>
         </div>
       </section>
-    </>
+    </main>
   );
 }

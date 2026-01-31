@@ -75,16 +75,16 @@ export default function TransformationShowcase({
   }, [page, maxItems]);
 
   return (
-    <section className="py-[60px] px-5 bg-white">
+    <section className="py-10 md:py-[60px] px-5 bg-white">
       <div className="max-w-[1200px] mx-auto">
         {title && (
-          <div className="text-center mb-[50px]">
-            <h2 className="text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
+          <div className="text-center mb-8 md:mb-[50px]">
+            <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
               <span className="text-[#ff850b]">Over 75,000+</span><br />
               {title}
             </h2>
             {subtitle && (
-              <p className="text-[17px] text-[#666] leading-relaxed max-w-[680px] mx-auto">
+              <p className="text-sm md:text-[17px] text-[#666] leading-relaxed max-w-full md:max-w-[680px] mx-auto">
                 {subtitle}
               </p>
             )}

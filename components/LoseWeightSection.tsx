@@ -42,13 +42,12 @@ export default function LoseWeightSection() {
 
   if (loading) {
     return (
-      <section className="bg-white py-[100px] pb-[50px]">
+      <section className="bg-white py-12 md:py-[100px] md:pb-[50px]">
         <div className="max-w-[1200px] mx-auto px-5">
-          <h2 className="text-center text-5xl font-bold text-black leading-[1.3] mb-10 font-[Epilogue,sans-serif] max-w-[67%] mx-auto">
-            Lose <span className="text-[#ff850b]">5–7 Kilos</span> in just 30 Days<br />
-            & Still Eat the Food You Love!
+          <h2 className="text-center text-2xl md:text-5xl font-bold text-black leading-[1.3] mb-6 md:mb-10 font-[Epilogue,sans-serif] max-w-full md:max-w-[67%] mx-auto">
+            Lose <span className="text-[#ff850b]">5–7 Kilos</span> in just 30 Days & Still Eat the Food You Love!
           </h2>
-          <p className="text-center text-xl font-medium leading-relaxed text-[#1E1E1E] max-w-[75%] mx-auto font-[Epilogue,sans-serif]">
+          <p className="text-center text-base md:text-xl font-medium leading-relaxed text-[#1E1E1E] max-w-full md:max-w-[75%] mx-auto font-[Epilogue,sans-serif]">
             Loading transformations...
           </p>
         </div>
@@ -57,15 +56,14 @@ export default function LoseWeightSection() {
   }
 
   return (
-    <section className="bg-white py-[100px] pb-[50px]">
+    <section className="bg-white py-12 md:py-[100px] md:pb-[50px]">
       <div className="max-w-[1200px] mx-auto px-5">
-        <h2 className="text-center text-5xl font-bold text-black leading-[1.3] mb-10 font-[Epilogue,sans-serif] max-w-[67%] mx-auto">
-          Lose <span className="text-[#ff850b]">5–7 Kilos</span> in just 30 Days<br />
-          & Still Eat the Food You Love!
+        <h2 className="text-center text-2xl md:text-5xl font-bold text-black leading-[1.3] mb-6 md:mb-10 font-[Epilogue,sans-serif] max-w-full md:max-w-[67%] mx-auto">
+          Lose <span className="text-[#ff850b]">5–7 Kilos</span> in just 30 Days & Still Eat the Food You Love!
         </h2>
 
         {/* Success Stories Grid with Swiper */}
-        <div className="max-w-[75%] mx-auto mb-10 relative">
+        <div className="max-w-full md:max-w-[75%] mx-auto mb-6 md:mb-10 relative">
           <Swiper
             modules={[Pagination, Autoplay]}
             spaceBetween={20}
@@ -95,7 +93,7 @@ export default function LoseWeightSection() {
                 <SwiperSlide key={transformation._id}>
                   <div className="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.12)] bg-white">
                     {/* Before/After Images */}
-                    <div className="grid grid-cols-2 gap-0 h-[400px]">
+                    <div className="grid grid-cols-2 gap-0 h-[280px] md:h-[400px]">
                       <div className="relative overflow-hidden">
                         <Image
                           src={transformation.beforeImage}
@@ -218,9 +216,8 @@ export default function LoseWeightSection() {
           </div>
         </div>
 
-        <p className="text-center text-xl font-medium leading-relaxed text-[#1E1E1E] max-w-[75%] mx-auto font-[Epilogue,sans-serif]">
-          Forget diets. They were never built for people like you.<br />
-          At DTPS, we don't tell you to drink hot water and hate your meals. We take the food already on your plate and make it work for your body, rather than against it.
+        <p className="text-center text-sm md:text-xl font-medium leading-relaxed text-[#1E1E1E] max-w-full md:max-w-[75%] mx-auto font-[Epilogue,sans-serif]">
+          Forget diets. They were never built for people like you. At DTPS, we don&apos;t tell you to drink hot water and hate your meals. We take the food already on your plate and make it work for your body, rather than against it.
         </p>
       </div>
     </section>
