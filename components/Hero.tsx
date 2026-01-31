@@ -126,7 +126,7 @@ export default function Hero() {
                 alt="Dietician Poonam Sagar Background" 
                 width={450}
                 height={550}
-                className="hero-name-img h-[580px] w-auto opacity-100"
+                className="hero-name-img h-[500px] w-auto opacity-100"
               />
             </div>
             

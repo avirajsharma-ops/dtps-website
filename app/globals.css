@@ -284,7 +284,7 @@
 
   .hero {
     background: var(--primary);
-    min-height: 100vh;
+    min-height: 600px;
     position: relative;
     overflow: hidden;
     padding-top: 0;
@@ -661,7 +661,7 @@
   }
 
   .hero-name-img {
-    height: 500px;
+    height: 480px;
     width: auto;
     opacity: 1;
   }
@@ -3044,7 +3044,7 @@
 .wedding-hero-section {
   margin: 0 auto;
   background: #4E0101;
-  min-height: 700px;
+  min-height: 600px;
   border-radius: 30px;
   overflow: hidden;
   position: relative;
@@ -3092,7 +3092,7 @@
 
   .wedding-hero-section {
     border-radius: 30px;
-    min-height: 550px;
+    min-height: 600px;
   }
 
   .wedding-hero-title {
@@ -3100,7 +3100,7 @@
   }
 
   .wedding-hero-content {
-    min-height: 500px;
+    min-height: 600px;
     padding: 40px 30px 50px;
   }
 }

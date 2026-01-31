@@ -194,7 +194,7 @@ export default function TherapeuticPlanPage() {
 
       {/* Hero Section - Desktop */}
       <section className="bg-white pt-3 px-12 hidden md:block">
-        <div className="bg-gradient-to-br from-[#0d4043] to-[#0a2f31] rounded-[30px] relative overflow-hidden min-h-[620px]">
+        <div className="bg-gradient-to-br from-[#0d4043] to-[#0a2f31] rounded-[30px] relative overflow-hidden min-h-[600px]">
           {/* Navbar inside the hero section */}
           <div className="relative z-10">
             <Navbar />
