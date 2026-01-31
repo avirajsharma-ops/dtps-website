@@ -136,11 +136,11 @@ export default function TransformationGallery({
             
 
                 {/* Single Image Display */}
-                <div className="relative overflow-hidden h-[300px] md:h-[400px] w-full">
+                <div className="relative overflow-hidden h-[350px] md:h-[420px] w-full bg-gray-100">
                   <img
                     src={transformation.afterImage || '/img/placeholder.jpg'}
                     alt={`${transformation.clientName} Result`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-cover object-top"
                   />
                 </div>
 
