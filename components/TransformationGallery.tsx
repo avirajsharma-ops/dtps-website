@@ -145,7 +145,7 @@ export default function TransformationGallery({
                 </div>
 
                 {/* Info Footer */}
-                <div className="bg-[#16a085] p-4 md:p-5 flex justify-between items-center">
+                {/* <div className="bg-[#16a085] p-4 md:p-5 flex justify-between items-center">
                   <div>
                     <h3 className="m-0 mb-1 text-lg md:text-xl font-bold text-white font-[Epilogue,sans-serif]">
                       {transformation.clientName}
@@ -157,7 +157,7 @@ export default function TransformationGallery({
                   <div className="bg-[#ff850b] text-white py-1.5 md:py-2 px-3 md:px-4 rounded-[20px] text-xs md:text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">
                     In {transformation.daysToAchieve}
                   </div>
-                </div>
+                </div> */}
               </div>
             </SwiperSlide>
           ))}
