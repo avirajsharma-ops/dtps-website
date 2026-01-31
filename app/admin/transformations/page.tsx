@@ -82,18 +82,8 @@ export default function TransformationsPage() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    if (!formData.clientName.trim()) {
-      setMessage({ type: 'error', text: 'Client name is required' });
-      return;
-    }
-
-    if (!formData.weightLost.trim()) {
-      setMessage({ type: 'error', text: 'Weight lost is required' });
-      return;
-    }
-
-    if (!formData.daysToAchieve.trim()) {
-      setMessage({ type: 'error', text: 'Days to achieve is required' });
+    if (!formData.afterImage.trim()) {
+      setMessage({ type: 'error', text: 'Please upload an image' });
       return;
     }
 
@@ -197,7 +187,7 @@ export default function TransformationsPage() {
             Transformations
           </h1>
           <p className={`${theme === 'dark' ? 'text-slate-400' : 'text-slate-600'} mt-1`}>
-            Manage success stories with name, weight lost, and timeline
+            Manage transformation images - upload before and after photos with compression
           </p>
         </div>
 
@@ -216,133 +206,22 @@ export default function TransformationsPage() {
           } max-w-2xl max-h-[90vh] overflow-y-auto`}>
             <DialogHeader>
               <DialogTitle className={theme === 'dark' ? 'text-white' : 'text-slate-900'}>
-                {editingId ? 'Edit Transformation' : 'Add New Transformation'}
+                {editingId ? 'Edit Transformation Images' : 'Add Transformation Images'}
               </DialogTitle>
               <DialogDescription className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}>
-                {editingId ? 'Update the transformation details' : 'Fill in the transformation details'}
+                {editingId ? 'Update the transformation image' : 'Upload a transformation image'}
               </DialogDescription>
             </DialogHeader>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {/* Client Name */}
+              {/* Image Upload */}
               <div className="space-y-2">
-                <label className={`text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Client Name *
-                </label>
-                <input
-                  type="text"
-                  value={formData.clientName}
-                  onChange={(e) => setFormData({ ...formData, clientName: e.target.value })}
-                  placeholder="Enter client name"
-                  className={`w-full px-3 py-2 border rounded-md text-sm ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder:text-slate-500'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-500'
-                  }`}
+                <ImageUpload
+                  label="Transformation Image"
+                  folder="transformations"
+                  value={formData.afterImage}
+                  onChange={(url) => setFormData({ ...formData, afterImage: url })}
                 />
-              </div>
-
-              {/* Weight Lost */}
-              <div className="space-y-2">
-                <label className={`text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Weight Lost *
-                </label>
-                <input
-                  type="text"
-                  value={formData.weightLost}
-                  onChange={(e) => setFormData({ ...formData, weightLost: e.target.value })}
-                  placeholder="e.g., 8 kgs, 15 lbs"
-                  className={`w-full px-3 py-2 border rounded-md text-sm ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder:text-slate-500'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-500'
-                  }`}
-                />
-              </div>
-
-              {/* Days to Achieve */}
-              <div className="space-y-2">
-                <label className={`text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Days to Achieve *
-                </label>
-                <input
-                  type="text"
-                  value={formData.daysToAchieve}
-                  onChange={(e) => setFormData({ ...formData, daysToAchieve: e.target.value })}
-                  placeholder="e.g., 30 Days, 90 Days"
-                  className={`w-full px-3 py-2 border rounded-md text-sm ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder:text-slate-500'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-500'
-                  }`}
-                />
-              </div>
-
-              {/* Testimonial */}
-              <div className="space-y-2">
-                <label className={`text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Testimonial
-                </label>
-                <textarea
-                  value={formData.testimonial}
-                  onChange={(e) => setFormData({ ...formData, testimonial: e.target.value })}
-                  placeholder="Share the client's experience (optional)"
-                  rows={3}
-                  className={`w-full px-3 py-2 border rounded-md text-sm ${
-                    theme === 'dark'
-                      ? 'bg-slate-700 border-slate-600 text-white placeholder:text-slate-500'
-                      : 'bg-white border-slate-300 text-slate-900 placeholder:text-slate-500'
-                  }`}
-                />
-              </div>
-
-              {/* Before/After Images */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <ImageUpload
-                    label="Before Image"
-                    folder="transformations"
-                    value={formData.beforeImage}
-                    onChange={(url) => setFormData({ ...formData, beforeImage: url })}
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <ImageUpload
-                    label="After Image"
-                    folder="transformations"
-                    value={formData.afterImage}
-                    onChange={(url) => setFormData({ ...formData, afterImage: url })}
-                  />
-                </div>
-              </div>
-
-              {/* Featured Checkbox */}
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="featured"
-                  checked={formData.featured}
-                  onChange={(e) => setFormData({ ...formData, featured: e.target.checked })}
-                  className="w-4 h-4 rounded"
-                />
-                <label htmlFor="featured" className={`text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Mark as Featured
-                </label>
-              </div>
-
-              {/* Active Checkbox */}
-              <div className="flex items-center gap-2">
-                <input
-                  type="checkbox"
-                  id="isActive"
-                  checked={formData.isActive}
-                  onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
-                  className="w-4 h-4 rounded"
-                />
-                <label htmlFor="isActive" className={`text-sm font-medium ${theme === 'dark' ? 'text-slate-300' : 'text-slate-700'}`}>
-                  Active
-                </label>
               </div>
 
               <DialogFooter>
@@ -402,57 +281,34 @@ export default function TransformationsPage() {
                 ? 'bg-slate-800/50 border-slate-700 hover:border-emerald-500/50'
                 : 'bg-white border-slate-200 hover:border-emerald-500'
             } transition-colors overflow-hidden flex flex-col`}>
-              {/* Before/After Images */}
+              {/* Image Display */}
               <div className="relative h-40 overflow-hidden bg-slate-900">
-                <div className="absolute inset-0 grid grid-cols-2">
-                  {transformation.beforeImage && (
-                    <div 
-                      className="relative overflow-hidden cursor-pointer group"
-                      onClick={() => setLightboxImage(transformation.beforeImage)}
-                    >
-                      <img
-                        src={transformation.beforeImage}
-                        alt="Before"
-                        className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
-                      />
-                      <div className="absolute top-1 left-1 bg-black/60 px-2 py-1 rounded text-xs text-white font-medium">
-                        Before
-                      </div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                        <span className="text-white text-xs font-medium">Click to View</span>
-                      </div>
+                {transformation.afterImage && (
+                  <div 
+                    className="relative overflow-hidden cursor-pointer group h-full"
+                    onClick={() => setLightboxImage(transformation.afterImage)}
+                  >
+                    <img
+                      src={transformation.afterImage}
+                      alt="Transformation"
+                      className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
+                    />
+                    <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
+                      <span className="text-white text-xs font-medium">Click to View</span>
                     </div>
-                  )}
-                  {transformation.afterImage && (
-                    <div 
-                      className="relative overflow-hidden cursor-pointer group"
-                      onClick={() => setLightboxImage(transformation.afterImage)}
-                    >
-                      <img
-                        src={transformation.afterImage}
-                        alt="After"
-                        className="w-full h-full object-cover group-hover:opacity-80 transition-opacity"
-                      />
-                      <div className="absolute top-1 right-1 bg-emerald-600/60 px-2 py-1 rounded text-xs text-white font-medium">
-                        After
-                      </div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/20">
-                        <span className="text-white text-xs font-medium">Click to View</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                  </div>
+                )}
               </div>
 
               <CardHeader>
                 <div className="flex items-start justify-between mb-2">
                   <div className="flex-1">
-                    <CardTitle className={`text-base ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+                    {/* <CardTitle className={`text-base ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
                       {transformation.clientName}
-                    </CardTitle>
-                    <CardDescription className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}>
+                    </CardTitle> */}
+                    {/* <CardDescription className={theme === 'dark' ? 'text-slate-400' : 'text-slate-600'}>
                       Lost {transformation.weightLost}
-                    </CardDescription>
+                    </CardDescription> */}
                   </div>
 
                   <div className="flex gap-2">
@@ -475,26 +331,7 @@ export default function TransformationsPage() {
                   </div>
                 </div>
 
-                <div className="flex items-center gap-2 flex-wrap">
-                  <Badge variant="outline" className={theme === 'dark' ? 'border-slate-600 text-slate-400' : ''}>
-                    {pageOptions.find(p => p.value === transformation.page)?.label}
-                  </Badge>
-                  <Badge className={`${
-                    theme === 'dark' ? 'bg-blue-500/20 text-blue-400 border-blue-500/30' : 'bg-blue-50 text-blue-700 border-blue-200'
-                  } border`}>
-                    {transformation.daysToAchieve}
-                  </Badge>
-                  {transformation.featured && (
-                    <Badge className="bg-emerald-500/10 text-emerald-400 border-emerald-500/30 border">
-                      Featured
-                    </Badge>
-                  )}
-                  {!transformation.isActive && (
-                    <Badge variant="destructive" className="bg-red-500/10 text-red-400 border-red-500/30">
-                      Inactive
-                    </Badge>
-                  )}
-                </div>
+                
               </CardHeader>
 
               <CardContent className="flex-1 space-y-2">

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Schedule your consultation with Dietitian Poonam Sagar. Start your personalized wellness journey today.',
 };
 
-
+ 
 export default function AppointmentPage() {
   return (
     <>
