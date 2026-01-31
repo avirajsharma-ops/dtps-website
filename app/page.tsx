@@ -106,13 +106,6 @@ export default function HomePage() {
           
           {/* Expert Content */}
           <div className="flex items-center justify-center gap-8 flex-wrap">
-            {/* Left - Vertical SAGAR Text */}
-            <div className="flex flex-col items-center gap-1">
-              {'SAGAR'.split('').map((letter, i) => (
-                <span key={i} className="font-extrabold text-[2.5rem] text-[#0b4c4c] leading-none tracking-widest">{letter}</span>
-              ))}
-            </div>
-            
             {/* Center - Image with decoration */}
             <div className="relative">
               <Image
