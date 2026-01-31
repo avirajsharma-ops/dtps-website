@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { FaFacebookF, FaInstagram, FaYoutube, FaLinkedin, FaApple, FaAndroid } from 'react-icons/fa'; // FontAwesome Icons
 
 const serviceLinks = [
   { label: 'Home', href: '/' },
@@ -17,10 +18,10 @@ const legalLinks = [
 ];
 
 const socialLinks = [
-  { label: 'Facebook', icon: 'f', href: 'https://www.facebook.com/p/Dt-Poonam-Sagar-100087289226000/' },
-  { label: 'Instagram', icon: '○', href: 'https://www.instagram.com/dt.poonamsagar/' },
-  { label: 'YouTube', icon: '▷', href: 'https://www.youtube.com/channel/UC_6LfLF7RtbHVZfOogc9zag' },
-  { label: 'LinkedIn', icon: 'in', href: 'https://in.linkedin.com/company/dietitian-poonam-sagar' },
+  { label: 'Facebook', icon: <FaFacebookF />, href: 'https://www.facebook.com/p/Dt-Poonam-Sagar-100087289226000/' },
+  { label: 'Instagram', icon: <FaInstagram />, href: 'https://www.instagram.com/dt.poonamsagar/' },
+  { label: 'YouTube', icon: <FaYoutube />, href: 'https://www.youtube.com/channel/UC_6LfLF7RtbHVZfOogc9zag' },
+  { label: 'LinkedIn', icon: <FaLinkedin />, href: 'https://in.linkedin.com/company/dietitian-poonam-sagar' },
 ];
 
 export default function Footer() {
@@ -73,6 +74,17 @@ export default function Footer() {
                       {link.icon}
                     </a>
                   ))}
+                </div>
+              </div>
+              <div className="mt-8 flex items-center gap-5">
+                <span className="text-base font-semibold">Available on:</span>
+                <div className="flex items-center gap-3">
+                  <a href="https://apps.apple.com" target="_blank" rel="noopener noreferrer" aria-label="Download on iOS">
+                    <FaApple className="text-white text-xl" />
+                  </a>
+                  <a href="https://play.google.com" target="_blank" rel="noopener noreferrer" aria-label="Get it on Android">
+                    <FaAndroid className="text-white text-xl" />
+                  </a>
                 </div>
               </div>
             </div>

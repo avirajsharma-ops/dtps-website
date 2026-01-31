@@ -61,9 +61,9 @@ export default function Hero() {
         </div>
 
         {/* ===== DESKTOP LAYOUT (hidden on mobile, shown on md and up) ===== */}
-        <div className="hero-container hidden md:grid md:grid-cols-2 md:items-end">
+        <div className="hero-container hidden md:grid md:grid-cols-2 md:items-center">
           {/* Desktop Content Section - First column */}
-          <div className="hero-content relative z-[2] pl-5 text-left pb-16 self-center">
+          <div className="hero-content relative z-[2] pl-5 text-left self-center">
             <div className="hero-label inline-flex items-center gap-2 text-[#ff9100] font-medium text-base mb-4">
               <span className="star text-[#ff9100]">✦</span> Holistic Care
             </div>
@@ -120,27 +120,27 @@ export default function Hero() {
           {/* Desktop Image Section - Second column */}
           <div className="hero-image relative flex justify-center items-end self-end">
             {/* Background text - DIETICIAN POONAM SAGAR */}
-            <div className="hero-name-bg absolute right-[-80px] top-1/2 -translate-y-1/2 z-[1]">
+            <div className="hero-name-bg absolute right-[-100px] top-1/2 -translate-y-[85%] z-[1]">
               <Image 
                 src="/images/D-I-E-T-I-C-I-AN.png" 
                 alt="Dietician Poonam Sagar Background" 
-                width={400}
-                height={500}
-                className="hero-name-img h-[500px] w-auto opacity-100"
+                width={450}
+                height={550}
+                className="hero-name-img h-[580px] w-auto opacity-100"
               />
             </div>
             
-            <div className="hero-image-wrapper relative z-[3]">
+            <div className="hero-image-wrapper relative z-[3] -translate-y-[100px]">
               <Image 
                 src="/images/Image-attachment-full-1.png" 
                 alt="Dietitian Poonam Sagar" 
-                width={500}
-                height={580}
-                className="hero-main-img max-h-[580px] w-auto relative z-[2] block"
+                width={550}
+                height={680}
+                className="hero-main-img max-h-[680px] w-auto relative z-[2] block"
                 priority
               />
               {/* Badge positioned at bottom right of image */}
-              <div className="hero-badge-bottom absolute right-[-20px] bottom-[60px] bg-[#ff9100] py-4 px-[22px] rounded-[14px] flex items-center gap-3 z-[4] shadow-[0_10px_30px_rgba(245,124,0,0.3)] animate-[floatBadgeBottom_3s_ease-in-out_infinite]">
+              <div className="hero-badge-bottom absolute right-[-50px] bottom-[100px] bg-[#ff9100] py-4 px-[22px] rounded-[14px] flex items-center gap-3 z-[4] shadow-[0_10px_30px_rgba(245,124,0,0.3)] animate-[floatBadgeBottom_3s_ease-in-out_infinite]">
                 <span className="badge-number text-[2.5rem] font-extrabold text-white leading-none">25</span>
                 <span className="badge-text text-[0.85rem] text-white leading-[1.2] font-medium">Years of<br />experience</span>
               </div>
