@@ -61,7 +61,8 @@ export default function FiveCycleProgram() {
         Fueled by delicious ghar ka khana, targets weight loss
       </p>
 
-      <div className="mwg-circle-wrapper">
+      {/* Desktop Layout */}
+      <div className="mwg-circle-wrapper mwg-desktop">
         <div className="mwg-dotted-circle" />
 
         {cycles.map((c) => (
@@ -82,187 +83,233 @@ export default function FiveCycleProgram() {
         ))}
       </div>
 
-      {/* CSS INSIDE COMPONENT (NO EXTRA FILE NEEDED) */}
+      {/* Mobile Layout - Simple list */}
+      <div className="mwg-mobile-list">
+        {cycles.map((c, index) => (
+          <div key={c.title} className="mwg-mobile-item">
+            <div className="mwg-mobile-icon-wrapper">
+              <Image
+                className="mwg-mobile-icon"
+                src={c.iconSrc}
+                alt={c.title}
+                width={50}
+                height={50}
+              />
+            </div>
+            <div className="mwg-mobile-content">
+              <h3>{c.title}</h3>
+              <p>{c.desc}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* CSS INSIDE COMPONENT */}
       <style jsx>{`
         .mwg-five-cycle {
           background: #0d564b;
-          padding: 80px 20px 30px;
+          padding: 60px 20px 40px;
           color: #fff;
           text-align: center;
           border-radius: 25px;
         }
 
         .mwg-title {
-          font-size: 40px;
+          font-size: 28px;
           font-weight: 700;
           color: #fff !important;
+          margin-bottom: 10px;
         }
 
         .mwg-subtitle {
           opacity: 0.7;
-          margin-bottom: 40px;
+          margin-bottom: 30px;
+          font-size: 14px;
         }
 
-        .mwg-circle-wrapper {
-          position: relative;
-          width: 650px;
-          height: 650px;
-          margin: 0 auto;
+        /* Desktop Circle Layout - Hidden on mobile */
+        .mwg-desktop {
+          display: none;
         }
 
-        .mwg-dotted-circle {
-          width: 360px;
-          height: 360px;
-          border: 3px dashed rgba(255, 255, 255, 0.45);
-          border-radius: 50%;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
+        /* Mobile List Layout */
+        .mwg-mobile-list {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+          max-width: 100%;
+          padding: 0 10px;
         }
 
-        /* Next/Image needs :global for class styling */
-        :global(.mwg-icon-img) {
-          width: 100px;
-          height: 100px !important;
+        .mwg-mobile-item {
+          display: flex;
+          align-items: flex-start;
+          gap: 15px;
+          text-align: left;
+          background: rgba(255, 255, 255, 0.1);
+          padding: 15px;
+          border-radius: 15px;
+        }
+
+        .mwg-mobile-icon-wrapper {
+          flex-shrink: 0;
+          width: 50px;
+          height: 50px;
           background: #fff;
-          border: 4px solid #f5a623 !important;
-          border-radius: 50% !important;
-          padding: 18px;
-          box-shadow: 0 0 10px rgba(0, 0, 0, 0.25) !important;
-          position: absolute !important;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: 3px solid #f5a623;
+        }
+
+        :global(.mwg-mobile-icon) {
+          width: 30px !important;
+          height: 30px !important;
           object-fit: contain;
         }
 
-        /* ICON POSITIONS */
-        :global(.mwg-i-top) {
-          top: 14%;
-          left: 52%;
-          transform: translateX(-50%);
-        }
-        :global(.mwg-i-top-right) {
-          top: 33%;
-          left: 76%;
-          transform: translateX(-50%);
-        }
-        :global(.mwg-i-bottom-right) {
-          top: 60%;
-          left: 70%;
-          transform: translateX(-50%);
-        }
-        :global(.mwg-i-bottom-left) {
-          top: 64%;
-          left: 35%;
-          transform: translateX(-50%);
-        }
-        :global(.mwg-i-top-left) {
-          top: 35%;
-          left: 23%;
-          transform: translateX(-50%);
-        }
-
-        /* TEXT BOXES */
-        .mwg-t {
-          position: absolute;
-          width: 260px;
-          color: #fff;
-        }
-
-        .mwg-t h3 {
-          margin-bottom: 5px;
-          font-size: 24px;
+        .mwg-mobile-content h3 {
+          font-size: 16px;
           font-weight: 600;
           color: #fff;
+          margin-bottom: 5px;
         }
 
-        .mwg-t p {
-          font-size: 16px;
+        .mwg-mobile-content p {
+          font-size: 13px;
           opacity: 0.8;
           line-height: 1.4;
+          margin: 0;
         }
 
-        /* TEXT POSITIONS */
-        .mwg-top-text {
-          top: 0%;
-          left: 50%;
-          transform: translateX(-50%);
-          text-align: center;
-        }
+        @media (min-width: 769px) {
+          .mwg-five-cycle {
+            padding: 80px 20px 30px;
+          }
 
-        .mwg-top-right-text {
-          top: 30%;
-          left: 107%;
-          transform: translateX(-50%);
-          text-align: left;
-        }
+          .mwg-title {
+            font-size: 40px;
+          }
 
-        .mwg-bottom-right-text {
-          top: 63%;
-          left: 100%;
-          transform: translateX(-50%);
-          text-align: left;
-        }
+          .mwg-subtitle {
+            font-size: 16px;
+            margin-bottom: 40px;
+          }
 
-        .mwg-bottom-left-text {
-          top: 65%;
-          left: 4%;
-          transform: translateX(-50%);
-          text-align: right;
-        }
+          .mwg-mobile-list {
+            display: none;
+          }
 
-        .mwg-top-left-text {
-          top: 35%;
-          left: -7%;
-          transform: translateX(-50%);
-          text-align: right;
-        }
-
-        @media (max-width: 768px) {
-          .mwg-circle-wrapper {
-            width: 350px;
-            height: 350px;
+          .mwg-desktop {
+            display: block;
+            position: relative;
+            width: 650px;
+            height: 650px;
+            margin: 0 auto;
           }
 
           .mwg-dotted-circle {
-            width: 220px;
-            height: 220px;
+            width: 360px;
+            height: 360px;
+            border: 3px dashed rgba(255, 255, 255, 0.45);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
           }
 
           :global(.mwg-icon-img) {
-            width: 42px;
-            height: 42px !important;
-            padding: 10px;
+            width: 100px;
+            height: 100px !important;
+            background: #fff;
+            border: 4px solid #f5a623 !important;
+            border-radius: 50% !important;
+            padding: 18px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.25) !important;
+            position: absolute !important;
+            object-fit: contain;
           }
 
           :global(.mwg-i-top) {
-            top: 2%;
-            left: 50%;
+            top: 14%;
+            left: 52%;
+            transform: translateX(-50%);
           }
           :global(.mwg-i-top-right) {
-            top: 20%;
-            left: 90%;
+            top: 33%;
+            left: 76%;
+            transform: translateX(-50%);
           }
           :global(.mwg-i-bottom-right) {
-            top: 70%;
-            left: 80%;
+            top: 60%;
+            left: 70%;
+            transform: translateX(-50%);
           }
           :global(.mwg-i-bottom-left) {
-            top: 70%;
-            left: 20%;
+            top: 64%;
+            left: 35%;
+            transform: translateX(-50%);
           }
           :global(.mwg-i-top-left) {
-            top: 20%;
-            left: 10%;
+            top: 35%;
+            left: 23%;
+            transform: translateX(-50%);
           }
 
           .mwg-t {
-            position: relative;
-            width: 100%;
-            left: 0 !important;
-            top: auto !important;
-            transform: none !important;
-            margin-top: 20px;
-            text-align: center !important;
+            position: absolute;
+            width: 260px;
+            color: #fff;
+          }
+
+          .mwg-t h3 {
+            margin-bottom: 5px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #fff;
+          }
+
+          .mwg-t p {
+            font-size: 16px;
+            opacity: 0.8;
+            line-height: 1.4;
+          }
+
+          .mwg-top-text {
+            top: 0%;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+          }
+
+          .mwg-top-right-text {
+            top: 30%;
+            left: 107%;
+            transform: translateX(-50%);
+            text-align: left;
+          }
+
+          .mwg-bottom-right-text {
+            top: 63%;
+            left: 100%;
+            transform: translateX(-50%);
+            text-align: left;
+          }
+
+          .mwg-bottom-left-text {
+            top: 65%;
+            left: 4%;
+            transform: translateX(-50%);
+            text-align: right;
+          }
+
+          .mwg-top-left-text {
+            top: 35%;
+            left: -7%;
+            transform: translateX(-50%);
+            text-align: right;
           }
         }
       `}</style>

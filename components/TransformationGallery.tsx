@@ -90,14 +90,14 @@ export default function TransformationGallery({
   }, [page, maxItems]);
 
   return (
-    <section className="py-[60px] px-5 max-w-[1200px] mx-auto">
+    <section className="py-10 md:py-[60px] px-4 md:px-5 max-w-[1200px] mx-auto">
       {title && (
-        <div className="text-center mb-[50px]">
-          <h2 className="text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
+        <div className="text-center mb-8 md:mb-[50px]">
+          <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-[17px] text-[#666] leading-relaxed max-w-[680px] mx-auto">
+            <p className="text-sm md:text-[17px] text-[#666] leading-relaxed max-w-full md:max-w-[680px] mx-auto">
               {subtitle}
             </p>
           )}
@@ -136,7 +136,7 @@ export default function TransformationGallery({
             
 
                 {/* Single Image Display */}
-                <div className="relative overflow-hidden h-[400px] w-full">
+                <div className="relative overflow-hidden h-[300px] md:h-[400px] w-full">
                   <img
                     src={transformation.afterImage || '/img/placeholder.jpg'}
                     alt={`${transformation.clientName} Result`}
@@ -145,16 +145,16 @@ export default function TransformationGallery({
                 </div>
 
                 {/* Info Footer */}
-                <div className="bg-[#16a085] p-5 flex justify-between items-center">
+                <div className="bg-[#16a085] p-4 md:p-5 flex justify-between items-center">
                   <div>
-                    <h3 className="m-0 mb-1 text-xl font-bold text-white font-[Epilogue,sans-serif]">
+                    <h3 className="m-0 mb-1 text-lg md:text-xl font-bold text-white font-[Epilogue,sans-serif]">
                       {transformation.clientName}
                     </h3>
-                    <p className="m-0 text-base font-medium text-white font-[Epilogue,sans-serif]">
+                    <p className="m-0 text-sm md:text-base font-medium text-white font-[Epilogue,sans-serif]">
                       Lost {transformation.weightLost} weight
                     </p>
                   </div>
-                  <div className="bg-[#ff850b] text-white py-2 px-4 rounded-[20px] text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">
+                  <div className="bg-[#ff850b] text-white py-1.5 md:py-2 px-3 md:px-4 rounded-[20px] text-xs md:text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">
                     In {transformation.daysToAchieve}
                   </div>
                 </div>

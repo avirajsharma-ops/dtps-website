@@ -131,9 +131,69 @@ export default function TherapeuticPlanPage() {
   };
 
   return (
-    <>
-      {/* Hero Section with integrated Navbar */}
-      <section className="bg-white pt-3 px-12">
+    <main className="bg-white">
+      {/* Hero Section - Mobile */}
+      <section className="bg-white pt-0 px-0 md:hidden">
+        <div className="bg-gradient-to-br from-[#0d4043] to-[#0a2f31] relative overflow-hidden min-h-auto">
+          {/* Navbar inside the hero section */}
+          <div className="relative z-10">
+            <Navbar />
+          </div>
+
+          {/* Hero Content Mobile */}
+          <div className="py-6 px-4 pb-8">
+            <div className="flex flex-col items-center text-center gap-4">
+              <div className="inline-flex items-center gap-2 bg-white/[0.08] py-2 px-3 rounded-full backdrop-blur-[10px] border border-white/10">
+                <span className="text-sm">✨</span>
+                <span className="text-white text-xs font-medium">For Healthier, Happier you</span>
+              </div>
+
+              {/* Image first on mobile */}
+              <div className="w-full flex justify-center">
+                <Image
+                  src="https://staging.dtpoonamsagar.com/wp-content/uploads/2025/12/d21d7b0157faacaede7445061a44a9041ebc0603.png"
+                  alt="Healthy Food Heart"
+                  width={260}
+                  height={260}
+                  className="w-[260px] h-auto drop-shadow-[0_10px_20px_rgba(0,0,0,0.3)]"
+                />
+              </div>
+              
+              <h1 className="text-3xl font-bold text-white leading-tight font-[Epilogue,sans-serif] tracking-tight">
+                Therapeutic Diet Plans: Mend-Your-Menu
+              </h1>
+              
+              <p className="text-white/75 text-sm leading-relaxed px-2">
+                Meet the visionary force behind central India's leading company, Our expert 
+                therapeutic Dietitian Poonam Sagar - a dynamic and inspirational leader.
+              </p>
+              
+              <div className="flex flex-col gap-3 w-full px-2">
+                <button 
+                  onClick={() => {
+                    const product = {
+                      id: 'therapeutic-plan-3months',
+                      name: 'Therapeutic Plan - 3 Months',
+                      price: 13000,
+                      quantity: 1
+                    };
+                    sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                    window.location.href = '/checkout';
+                  }}
+                  className="bg-[#FF850B] text-white border-none rounded-full py-3 px-6 text-sm font-semibold cursor-pointer flex items-center justify-center gap-2 transition-all duration-300 shadow-[0_4px_20px_rgba(255,133,11,0.3)] hover:bg-[#e07a1a] w-full">
+                  Get Started Today <span className="text-base">→</span>
+                </button>
+                <button className="bg-transparent text-white border-2 border-white/25 rounded-full py-3 px-6 text-sm font-semibold cursor-pointer transition-all duration-300 hover:border-white/50 w-full">
+                  Learn More
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Hero Section - Desktop */}
+      <section className="bg-white pt-3 px-12 hidden md:block">
         <div className="bg-gradient-to-br from-[#0d4043] to-[#0a2f31] rounded-[30px] relative overflow-hidden min-h-[620px]">
           {/* Navbar inside the hero section */}
           <div className="relative z-10">
@@ -201,19 +261,48 @@ export default function TherapeuticPlanPage() {
         </div>
       </section>
 
-      {/* Transform Your Health Section */}
-      <section className="bg-white py-24 px-5">
-        <div className="max-w-[1200px] mx-auto text-center">
-          <p className="text-[#FF850B] text-sm font-semibold tracking-widest uppercase mb-4">
-            Transform Your Health
-          </p>
-          <h2 className="text-[44px] font-bold text-[#1a1a1a] leading-tight mb-5 font-[Epilogue,sans-serif]">
-            Transform Your Health with Expert Nutrition Plan
-          </h2>
-          <p className="text-[#666] text-[17px] leading-relaxed max-w-[680px] mx-auto mb-16">
-            Embark on a transformative journey of wellness and success, led by our true industry trailblazer.
-          </p>
+      {/* Transform Your Health Section - Mobile */}
+      <section className="bg-white py-10 px-4 md:hidden">
+        <div className="max-w-full mx-auto text-center">
+          {/* Success Stories Section */}
+          <TransformationGallery 
+            page="therapeutic"
+            title="Transform Your Health with Expert Nutrition Plan"
+            subtitle="Embark on a transformative journey of wellness and success, led by our true industry trailblazer."
+            maxItems={6}
+          />
 
+          {/* We are Most Trusted */}
+          <div className="mb-8 mt-8">
+            <p className="font-['Pacifico',cursive] text-3xl text-[#333] -mb-1 font-normal">We are</p>
+            <h2 className="text-4xl font-extrabold text-[#FF850B] font-[Epilogue,sans-serif] m-0">Most Trusted</h2>
+          </div>
+
+          {/* Stats - 2 columns on mobile */}
+          <div className="grid grid-cols-2 gap-3">
+            <div className="text-center bg-[#f8f9fa] rounded-2xl py-6 px-3">
+              <div className="text-3xl font-bold text-[#1a1a1a] mb-1">98%</div>
+              <div className="text-[#666] text-xs font-medium">Success Rate</div>
+            </div>
+            <div className="text-center bg-[#f8f9fa] rounded-2xl py-6 px-3">
+              <div className="text-3xl font-bold text-[#1a1a1a] mb-1">4.9</div>
+              <div className="text-[#666] text-xs font-medium">Average Rating</div>
+            </div>
+            <div className="text-center bg-[#f8f9fa] rounded-2xl py-6 px-3">
+              <div className="text-3xl font-bold text-[#1a1a1a] mb-1">100K+</div>
+              <div className="text-[#666] text-xs font-medium">Success Stories</div>
+            </div>
+            <div className="text-center bg-[#f8f9fa] rounded-2xl py-6 px-3">
+              <div className="text-3xl font-bold text-[#1a1a1a] mb-1">#1</div>
+              <div className="text-[#666] text-xs font-medium">Achievements</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Transform Your Health Section - Desktop */}
+      <section className="bg-white py-24 px-5 hidden md:block">
+        <div className="max-w-[1200px] mx-auto text-center">
           {/* Success Stories Section */}
           <TransformationGallery 
             page="therapeutic"
@@ -250,8 +339,38 @@ export default function TherapeuticPlanPage() {
         </div>
       </section>
 
-      {/* What Do You Get Section */}
-      <section className="bg-[#f8f9fa] py-24 px-5">
+      {/* What Do You Get Section - Mobile */}
+      <section className="bg-[#f8f9fa] py-10 px-4 md:hidden">
+        <div className="max-w-full mx-auto">
+          <h2 className="text-2xl font-bold text-[#FF850B] leading-tight mb-3 font-[Epilogue,sans-serif] text-center">
+            What do you get?
+          </h2>
+          <div className="w-[40px] h-1 bg-[#0d4043] mx-auto mb-6 rounded-sm" />
+
+          <div className="flex flex-col gap-3">
+            {whatYouGet.map((item, index) => {
+              const isHighlighted = index === 4 || index === 7;
+              return (
+                <div key={index} className={`rounded-2xl py-4 px-4 flex items-center gap-4 shadow-[0_4px_20px_rgba(0,0,0,0.06)] transition-all duration-300 ${
+                  isHighlighted ? 'bg-[#0d4043]' : 'bg-white'
+                }`}>
+                  <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${
+                    isHighlighted ? 'bg-[#FF850B]' : 'bg-[#0d4043]'
+                  }`}>
+                    <span className="text-white text-sm font-bold">{item.number}</span>
+                  </div>
+                  <h3 className={`text-sm font-semibold m-0 leading-normal ${
+                    isHighlighted ? 'text-white' : 'text-[#333]'
+                  }`}>{item.title}</h3>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* What Do You Get Section - Desktop */}
+      <section className="bg-[#f8f9fa] py-24 px-5 hidden md:block">
         <div className="max-w-[1200px] mx-auto">
           <h2 className="text-[44px] font-bold text-[#FF850B] leading-tight mb-4 font-[Epilogue,sans-serif] text-center">
             What do you get?
@@ -293,8 +412,98 @@ export default function TherapeuticPlanPage() {
         </div>
       </section>
 
-      {/* BMI Calculator Section */}
-      <section className="bg-[#FF850B] py-20 px-5 relative overflow-hidden">
+      {/* BMI Calculator Section - Mobile */}
+      <section className="bg-[#FF850B] py-10 px-4 relative overflow-hidden md:hidden">
+        <div className="flex flex-col gap-6">
+          {/* Content */}
+          <div className="text-center">
+            <h2 className="text-2xl font-bold text-white leading-tight mb-3 font-[Epilogue,sans-serif]">
+              Flab or Fab? Find Out Fast!
+            </h2>
+            <p className="text-white/90 text-sm leading-relaxed">
+              Enter your stats and get your body fat score in under 30 seconds.
+            </p>
+          </div>
+
+          {/* Form */}
+          <div className="bg-[#FFF5EC] rounded-2xl p-5 shadow-[0_20px_60px_rgba(0,0,0,0.15)]">
+            <h3 className="text-[#1a1a1a] text-xl font-bold mb-5">Body Fat & BMI</h3>
+
+            <div className="grid grid-cols-1 gap-3 mb-4">
+              <div>
+                <label className="block text-[#666] text-xs mb-1.5">Age (years)</label>
+                <input
+                  type="number"
+                  value={bmiData.age}
+                  onChange={(e) => setBmiData({...bmiData, age: e.target.value})}
+                  className="w-full bg-white border-2 border-[#e0e0e0] rounded-xl py-3 px-3 text-[#333] text-sm outline-none box-border focus:border-[#FF850B]"
+                />
+              </div>
+              <div>
+                <label className="block text-[#666] text-xs mb-1.5">Gender</label>
+                <select
+                  value={bmiData.gender}
+                  onChange={(e) => setBmiData({...bmiData, gender: e.target.value})}
+                  className="w-full bg-white border-2 border-[#e0e0e0] rounded-xl py-3 px-3 text-[#333] text-sm outline-none box-border focus:border-[#FF850B]"
+                >
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+              <div className="grid grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-[#666] text-xs mb-1.5">Height (ft)</label>
+                  <input
+                    type="number"
+                    value={bmiData.heightFt}
+                    onChange={(e) => setBmiData({...bmiData, heightFt: e.target.value})}
+                    className="w-full bg-white border-2 border-[#e0e0e0] rounded-xl py-3 px-3 text-[#333] text-sm outline-none box-border focus:border-[#FF850B]"
+                  />
+                </div>
+                <div>
+                  <label className="block text-[#666] text-xs mb-1.5">Height (in)</label>
+                  <input
+                    type="number"
+                    value={bmiData.heightIn}
+                    onChange={(e) => setBmiData({...bmiData, heightIn: e.target.value})}
+                    className="w-full bg-white border-2 border-[#e0e0e0] rounded-xl py-3 px-3 text-[#333] text-sm outline-none box-border focus:border-[#FF850B]"
+                  />
+                </div>
+              </div>
+              <div>
+                <label className="block text-[#666] text-xs mb-1.5">Weight (kg)</label>
+                <input
+                  type="number"
+                  value={bmiData.weight}
+                  onChange={(e) => setBmiData({...bmiData, weight: e.target.value})}
+                  className="w-full bg-white border-2 border-[#e0e0e0] rounded-xl py-3 px-3 text-[#333] text-sm outline-none box-border focus:border-[#FF850B]"
+                />
+              </div>
+            </div>
+
+            <button
+              onClick={calculateBMI}
+              className="bg-[#0d4043] text-white border-none rounded-xl py-3 px-8 text-sm font-semibold cursor-pointer w-full transition-all duration-300 hover:bg-[#0a3033]"
+            >
+              Calculate
+            </button>
+
+            {bmiResult && (
+              <div className="mt-5 p-4 bg-white rounded-xl border-2 border-[#e0e0e0]">
+                <div className="text-[#1a1a1a] text-xl font-bold">
+                  Your BMI: {bmiResult.bmi}
+                </div>
+                <div className="text-[#FF850B] text-base font-semibold mt-1">
+                  Category: {bmiResult.category}
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      {/* BMI Calculator Section - Desktop */}
+      <section className="bg-[#FF850B] py-20 px-5 relative overflow-hidden hidden md:block">
         {/* Top wave decoration */}
         <div 
           className="absolute top-0 left-0 right-0 h-20 bg-cover"
@@ -399,8 +608,41 @@ export default function TherapeuticPlanPage() {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="bg-white px-5 py-[100px]">
+      {/* Pricing Section - Mobile */}
+      <section className="bg-white px-4 py-10 md:hidden">
+        <div className="flex flex-col items-center justify-center w-full">
+          <div className="text-center mb-6">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-[2px] text-[#FF850B]">Exclusive Offers</p>
+            <h2 className="mb-3 font-[Epilogue] text-2xl font-bold leading-[1.2] text-[#1a1a1a]">
+              Choose Your Perfect Plan
+            </h2>
+            <p className="mx-auto max-w-full text-sm leading-[1.6] text-[#666]">
+              Flexible pricing options designed to fit your wellness journey.
+            </p>
+          </div>
+
+          <div className="w-full">
+            <DynamicPlansDisplay
+              category="therapeutic-diet-plans"
+              showHeader={false}
+              columns="1"
+              onSelectPlan={(plan) => {
+                const product = {
+                  id: `therapeutic-${plan.planName.toLowerCase().replace(/\s+/g, '-')}`,
+                  name: `Therapeutic Diet Plan - ${plan.planName}`,
+                  price: plan.price,
+                  quantity: 1
+                };
+                sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+                window.location.href = '/checkout';
+              }}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Section - Desktop */}
+      <section className="bg-white px-5 py-[100px] hidden md:block">
         <div className="flex flex-col items-center justify-center w-full">
           <div className="text-center mb-10">
             <p className="mb-4 text-sm font-semibold uppercase tracking-[2px] text-[#FF850B]">Exclusive Offers</p>
@@ -436,8 +678,53 @@ export default function TherapeuticPlanPage() {
 
       {/* Real Stories Section - Hidden since we show it earlier */}
 
-      {/* Watch Success Stories Section */}
-      <section className="bg-white py-[100px] px-5">
+      {/* Watch Success Stories Section - Mobile */}
+      <section className="bg-white py-10 px-4 md:hidden">
+        <div className="max-w-full mx-auto text-center">
+          <p className="text-[#FF850B] text-xs font-semibold tracking-[2px] uppercase mb-2">
+            Real Stories, Real Results
+          </p>
+          <h2 className="text-xl font-bold text-[#1a1a1a] leading-tight mb-3 font-[Epilogue,sans-serif]">
+            Watch Our Success Stories
+          </h2>
+          <p className="text-[#666] text-sm leading-relaxed max-w-full mx-auto mb-6">
+            Hear directly from our clients about their transformative journey.
+          </p>
+
+          {/* Phone mockups - 2 per row on mobile */}
+          <div className="grid grid-cols-2 gap-3 mb-6">
+            {youtubeVideos.slice(0, 4).map((videoId, index) => (
+              <a
+                key={index}
+                href={`https://www.youtube.com/watch?v=${videoId}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block no-underline"
+              >
+                <div className="w-full aspect-[9/16] max-w-[140px] mx-auto bg-black rounded-[24px] p-1.5 relative shadow-[0_10px_30px_rgba(0,0,0,0.2)] border-[2px] border-[#333]">
+                  {/* Video thumbnail */}
+                  <div className="w-full h-full rounded-[18px] overflow-hidden relative">
+                    <Image
+                      src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
+                      alt="Success Story"
+                      fill
+                      className="object-cover"
+                    />
+                    
+                    {/* Play button */}
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white/90 rounded-full flex items-center justify-center">
+                      <div className="w-0 h-0 border-t-[8px] border-t-transparent border-b-[8px] border-b-transparent border-l-[12px] border-l-[#1a1a1a] ml-0.5" />
+                    </div>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Watch Success Stories Section - Desktop */}
+      <section className="bg-white py-[100px] px-5 hidden md:block">
         <div className="max-w-[1200px] mx-auto text-center">
           <p className="text-[#FF850B] text-sm font-semibold tracking-[2px] uppercase mb-4">
             Real Stories, Real Results
@@ -501,8 +788,35 @@ export default function TherapeuticPlanPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-br from-[#0d4043] to-[#0a2f31] py-20 px-5">
+      {/* CTA Section - Mobile */}
+      <section className="bg-gradient-to-br from-[#0d4043] to-[#0a2f31] py-10 px-4 md:hidden">
+        <div className="max-w-full mx-auto text-center">
+          <h2 className="text-2xl font-bold text-white leading-tight mb-3 font-[Epilogue,sans-serif]">
+            Ready to Transform Your <span className="text-[#FF850B]">Health</span>?
+          </h2>
+          <p className="text-white/80 text-sm leading-relaxed mb-6">
+            Start your personalized therapeutic diet plan today and experience the change you deserve.
+          </p>
+          <button 
+            onClick={() => {
+              const product = {
+                id: 'therapeutic-plan-3months',
+                name: 'Therapeutic Plan - 3 Months',
+                price: 13000,
+                quantity: 1
+              };
+              sessionStorage.setItem('checkoutProducts', JSON.stringify([product]));
+              window.location.href = '/checkout';
+            }}
+            className="bg-[#FF850B] text-white border-none rounded-full py-3 px-8 text-sm font-semibold cursor-pointer w-full"
+          >
+            Book Your Consultation →
+          </button>
+        </div>
+      </section>
+
+      {/* CTA Section - Desktop */}
+      <section className="bg-gradient-to-br from-[#0d4043] to-[#0a2f31] py-20 px-5 hidden md:block">
         <div className="max-w-[800px] mx-auto text-center">
           <h2 className="text-[42px] font-bold text-white leading-tight mb-5 font-[Epilogue,sans-serif]">
             Ready to Transform Your <span className="text-[#FF850B]">Health</span>?
@@ -527,6 +841,6 @@ export default function TherapeuticPlanPage() {
           </button>
         </div>
       </section>
-    </>
+    </main>
   );
 }

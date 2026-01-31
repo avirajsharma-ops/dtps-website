@@ -7263,3 +7263,99 @@
     max-width: 100% !important;
   }
 }
+
+/* ===== PCOD PAGE MOBILE OPTIMIZATION ===== */
+@media (max-width: 768px) {
+  .pcod-hero-wrapper {
+    padding: 0 !important;
+  }
+  
+  .pcod-hero-section {
+    border-radius: 0 !important;
+    min-height: auto !important;
+  }
+  
+  .pcod-hero-content {
+    padding: 20px 16px 30px !important;
+  }
+  
+  .pcod-section {
+    padding: 30px 16px !important;
+  }
+  
+  .pcod-title-wrap {
+    padding: 24px 16px !important;
+  }
+  
+  .pcod-symptoms-image {
+    padding: 0 16px !important;
+  }
+  
+  .pcod-stats {
+    padding: 24px 16px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  
+  .pcod-benefits-sec {
+    padding: 30px 16px !important;
+  }
+  
+  .pcod-gkk-section {
+    padding: 30px 16px !important;
+  }
+  
+  .wl-section {
+    padding: 30px 16px !important;
+  }
+  
+  /* Remove any gaps between sections */
+  .pcod-hero-section::before,
+  .pcod-hero-section::after {
+    display: none !important;
+  }
+  
+  .pcod-stat {
+    background: rgba(1, 78, 78, 0.1);
+    padding: 16px;
+    border-radius: 12px;
+    text-align: center;
+  }
+  
+  .pcod-stat-num {
+    font-size: 32px !important;
+  }
+  
+  .pcod-stat-label {
+    font-size: 14px !important;
+  }
+  
+  .pcod-title-main {
+    font-size: 22px !important;
+    line-height: 1.3 !important;
+  }
+  
+  .pcod-title-sub {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
+  
+  .pcod-section-title {
+    font-size: 22px !important;
+  }
+  
+  .pcod-section-subtitle {
+    font-size: 13px !important;
+  }
+  
+  .pcod-section-script {
+    font-size: 20px !important;
+    margin-bottom: 24px !important;
+  }
+  
+  .pcod-gkk-title h2 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+}

@@ -215,7 +215,7 @@ export default function WeightLossPage() {
   }, []);
 
   return (
-    <>
+    <main className="bg-white">
       <DynamicPopup page="weight-loss" />
       
       <PageWrapper>
@@ -575,34 +575,6 @@ export default function WeightLossPage() {
           </div>
         </div>
       </section>
-
-      {/* Newsletter Section */}
-      <section className="wl-newsletter">
-        <div className="container">
-          <div className="wl-newsletter-grid">
-            <div className="wl-newsletter-content">
-              <h2 className="wl-newsletter-title">Stay<br />Nourished!</h2>
-              <h3 className="wl-newsletter-subtitle">Subscribe to Our<br />Healthy Food Newsletter!</h3>
-              <p className="wl-newsletter-desc">
-                Embark on a journey of wholesome delights, packed with nutritious recipes
-                and expert tips!
-              </p>
-            </div>
-            <div className="wl-recipe-book">
-              <div className="wl-book-card">
-                <h4>Healthy Recipe Book</h4>
-                <p>
-                  Join our community of health-conscious individuals and receive
-                  exclusive updates on the latest trends in organic, sustainable
-                  foods.
-                </p>
-                <input type="tel" placeholder="Phone Number" className="wl-phone-input" />
-                <Button variant="primary" className="wl-send-btn">Send</Button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
+    </main>
   );
 }
