@@ -37,12 +37,13 @@ export default function AboutUsSection() {
       ref={sectionRef}
       className="bg-white py-12 md:py-20 px-4 md:px-8 overflow-hidden"
     >
-      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-6 md:gap-16 justify-center">
+      <div className="max-w-[1200px] mx-auto flex flex-col md:flex-row items-center gap-8 md:gap-16 justify-center">
         {/* Left Side - Images */}
-        <div className="relative w-full md:min-w-[320px] max-w-[400px] md:max-w-[550px] flex-1 h-[320px] md:h-[500px] mx-auto">
+        {/* Desktop Images Layout */}
+        <div className="relative w-full md:min-w-[320px] max-w-[400px] md:max-w-[550px] flex-1 hidden md:block h-[500px] mx-auto">
           {/* Main Image - Woman eating salad */}
           <div
-            className={`absolute left-[5%] md:left-0 top-0 w-[180px] md:w-[280px] h-[220px] md:h-[360px] rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-[2] transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+            className={`absolute left-0 top-0 w-[280px] h-[360px] rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-[2] transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[50px] opacity-0'
             }`}
             style={{ transform: isVisible ? 'translateY(0) rotate(-3deg)' : 'translateY(50px) rotate(-3deg)' }}
@@ -57,7 +58,7 @@ export default function AboutUsSection() {
 
           {/* Second Image - Woman with vegetables */}
           <div
-            className={`absolute right-[5%] md:right-0 top-[20px] md:top-[30px] w-[160px] md:w-[240px] h-[200px] md:h-[300px] rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-[3] border-4 border-white transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-200 ${
+            className={`absolute right-0 top-[30px] w-[240px] h-[300px] rounded-[20px] overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.15)] z-[3] border-4 border-white transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-200 ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[50px] opacity-0'
             }`}
             style={{ transform: isVisible ? 'translateY(0) rotate(3deg)' : 'translateY(50px) rotate(3deg)' }}
@@ -72,7 +73,7 @@ export default function AboutUsSection() {
 
           {/* Decorative Dashed Circle with Arrow */}
           <div
-            className={`absolute right-[30%] md:right-[60px] top-[45%] md:top-1/2 -translate-y-1/2 w-[50px] md:w-[80px] h-[50px] md:h-[80px] z-[4] transition-opacity duration-[800ms] delay-[600ms] ${
+            className={`absolute right-[60px] top-1/2 -translate-y-1/2 w-[80px] h-[80px] z-[4] transition-opacity duration-[800ms] delay-[600ms] ${
               isVisible ? 'opacity-100' : 'opacity-0'
             }`}
           >
@@ -112,18 +113,70 @@ export default function AboutUsSection() {
 
           {/* Years Badge */}
           <div
-            className={`absolute left-1/2 bottom-[10px] md:bottom-[30px] -translate-x-1/2 bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-2xl px-4 py-3 md:px-6 md:py-4 flex items-center gap-2 md:gap-3 shadow-[0_10px_30px_rgba(245,124,0,0.4)] z-[5] transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-[400ms] ${
+            className={`absolute left-1/2 bottom-[30px] -translate-x-1/2 bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-2xl px-6 py-4 flex items-center gap-3 shadow-[0_10px_30px_rgba(245,124,0,0.4)] z-[5] transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-[400ms] ${
               isVisible ? 'scale-100 opacity-100' : 'scale-[0.8] opacity-0'
             }`}
           >
-            <span className="text-[1.6rem] md:text-[2.5rem] font-bold text-white leading-none">
+            <span className="text-[2.5rem] font-bold text-white leading-none">
               25
             </span>
-            <span className="text-[0.7rem] md:text-[0.9rem] font-medium text-white leading-tight">
+            <span className="text-[0.9rem] font-medium text-white leading-tight">
               Years of
               <br />
               experience
             </span>
+          </div>
+        </div>
+
+        {/* Mobile Images Layout - Separate structure */}
+        <div className="md:hidden w-full max-w-[350px] mx-auto">
+          {/* Years Badge - Top on mobile */}
+          <div
+            className={`mx-auto mb-4 bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-2xl px-4 py-3 flex items-center justify-center gap-2 shadow-[0_10px_30px_rgba(245,124,0,0.4)] w-fit transition-all duration-[600ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+              isVisible ? 'scale-100 opacity-100' : 'scale-[0.8] opacity-0'
+            }`}
+          >
+            <span className="text-[1.6rem] font-bold text-white leading-none">
+              25
+            </span>
+            <span className="text-[0.7rem] font-medium text-white leading-tight">
+              Years of
+              <br />
+              experience
+            </span>
+          </div>
+          
+          {/* Mobile Images - Side by side */}
+          <div className="flex justify-center gap-3 relative">
+            {/* Main Image */}
+            <div
+              className={`w-[150px] h-[200px] rounded-[16px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.15)] transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+              }`}
+              style={{ transform: isVisible ? 'rotate(-3deg)' : 'translateY(30px) rotate(-3deg)' }}
+            >
+              <Image
+                src="/img/image-24-1.webp"
+                alt="Woman enjoying healthy food"
+                fill
+                className="object-cover"
+              />
+            </div>
+
+            {/* Second Image */}
+            <div
+              className={`w-[150px] h-[200px] rounded-[16px] overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.15)] border-3 border-white transition-all duration-[800ms] ease-[cubic-bezier(0.4,0,0.2,1)] delay-200 ${
+                isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
+              }`}
+              style={{ transform: isVisible ? 'rotate(3deg)' : 'translateY(30px) rotate(3deg)' }}
+            >
+              <Image
+                src="/img/image-27.webp"
+                alt="Woman with healthy vegetables"
+                fill
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
 
