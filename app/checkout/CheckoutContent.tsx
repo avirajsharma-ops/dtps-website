@@ -70,9 +70,6 @@ export default function CheckoutContent() {
   const [loading, setLoading] = useState(false);
   const [orderStatus, setOrderStatus] = useState<'idle' | 'processing' | 'success' | 'failed'>('idle');
   const [showTermsModal, setShowTermsModal] = useState(false);
-  const [showPaymentModal, setShowPaymentModal] = useState(false);
-  const [selectedPaymentMethod, setSelectedPaymentMethod] = useState<'card' | 'upi' | 'netbanking' | null>(null);
-  const [orderData, setOrderData] = useState<any>(null);
 
   useEffect(() => {
     // Get products from URL params or session storage
@@ -131,10 +128,71 @@ export default function CheckoutContent() {
       const data = await response.json();
 
       if (data.success) {
-        // Store order data and show payment modal
-        setOrderData(data);
-        setShowPaymentModal(true);
-        setLoading(false);
+        // Open Razorpay directly with user details
+        const options = {
+          key: data.razorpayKey,
+          amount: Math.round(total * 100),
+          currency: 'INR',
+          name: 'Dietitian Poonam Sagar',
+          description: 'Subscription Plan Purchase',
+          order_id: data.razorpayOrderId,
+          handler: async function (razorpayResponse: any) {
+            try {
+              // Verify payment
+              const verifyResponse = await fetch('/api/orders', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                  action: 'verify',
+                  razorpayPaymentId: razorpayResponse.razorpay_payment_id,
+                  razorpayOrderId: razorpayResponse.razorpay_order_id,
+                  orderId: data.order.orderId,
+                }),
+              });
+
+              const verifyData = await verifyResponse.json();
+              if (verifyData.success) {
+                setOrderStatus('success');
+                // Redirect to success page
+                setTimeout(() => {
+                  window.location.href = `/checkout/success?orderId=${data.order.orderId}`;
+                }, 1500);
+              } else {
+                setOrderStatus('failed');
+                setLoading(false);
+              }
+            } catch (error) {
+              console.error('Payment verification error:', error);
+              setOrderStatus('failed');
+              setLoading(false);
+            }
+          },
+          prefill: {
+            name: `${formData.firstName} ${formData.lastName}`,
+            email: formData.email,
+            contact: `+91${formData.phone}`,
+          },
+          notes: {
+            customer_name: `${formData.firstName} ${formData.lastName}`,
+            customer_email: formData.email,
+            customer_phone: formData.phone,
+            customer_city: formData.city,
+          },
+          theme: {
+            color: '#ff850b',
+          },
+          modal: {
+            ondismiss: function () {
+              setOrderStatus('idle');
+              setLoading(false);
+            },
+          },
+        };
+
+        const razorpayWindow = new window.Razorpay(options);
+        razorpayWindow.open();
       } else {
         setOrderStatus('failed');
         alert('Failed to create order');
@@ -146,69 +204,6 @@ export default function CheckoutContent() {
       alert('Error placing order');
       setLoading(false);
     }
-  };
-
-  const openRazorpay = (method?: string) => {
-    if (!orderData) return;
-    
-    const options = {
-      key: orderData.razorpayKey,
-      amount: Math.round(total * 100),
-      currency: 'INR',
-      name: 'Dietitian Poonam Sagar',
-      description: 'Subscription Plan Purchase',
-      order_id: orderData.razorpayOrderId,
-      handler: async function (response: any) {
-        try {
-          // Verify payment
-          const verifyResponse = await fetch('/api/orders', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              action: 'verify',
-              razorpayPaymentId: response.razorpay_payment_id,
-              razorpayOrderId: response.razorpay_order_id,
-              orderId: orderData.order.orderId,
-            }),
-          });
-
-          const verifyData = await verifyResponse.json();
-          if (verifyData.success) {
-            setOrderStatus('success');
-            setShowPaymentModal(false);
-            // Redirect to success page
-            setTimeout(() => {
-              window.location.href = `/checkout/success?orderId=${orderData.order.orderId}`;
-            }, 2000);
-          } else {
-            setOrderStatus('failed');
-          }
-        } catch (error) {
-          console.error('Payment verification error:', error);
-          setOrderStatus('failed');
-        }
-      },
-      prefill: {
-        name: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email,
-        contact: formData.phone,
-        method: method || undefined,
-      },
-      theme: {
-        color: '#ff850b',
-      },
-      modal: {
-        ondismiss: function () {
-          setOrderStatus('idle');
-          setLoading(false);
-        },
-      },
-    };
-
-    const razorpayWindow = new window.Razorpay(options);
-    razorpayWindow.open();
   };
 
   return (
@@ -415,119 +410,6 @@ export default function CheckoutContent() {
               >
                 Close
               </Button>
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* Payment Method Selection Modal */}
-      {showPaymentModal && (
-        <div className="fixed inset-0 bg-black/60 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl max-w-lg w-full shadow-2xl">
-            {/* Modal Header */}
-            <div className="bg-gradient-to-r from-orange-500 to-orange-600 rounded-t-2xl p-6 text-white">
-              <div className="flex justify-between items-center">
-                <div>
-                  <h3 className="text-2xl font-bold">Choose Payment Method</h3>
-                  <p className="text-orange-100 text-sm mt-1">Select your preferred way to pay</p>
-                </div>
-                <button
-                  onClick={() => {
-                    setShowPaymentModal(false);
-                    setOrderStatus('idle');
-                  }}
-                  className="text-white/80 hover:text-white text-3xl"
-                >
-                  ✕
-                </button>
-              </div>
-              <div className="mt-4 bg-white/20 rounded-lg p-3">
-                <div className="flex justify-between items-center">
-                  <span className="text-orange-100">Amount to Pay</span>
-                  <span className="text-2xl font-bold">₹{total.toLocaleString()}</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Payment Options */}
-            <div className="p-6 space-y-4">
-              {/* Card Payment */}
-              <button
-                onClick={() => openRazorpay('card')}
-                className="w-full p-5 border-2 border-gray-200 rounded-xl hover:border-orange-500 hover:bg-orange-50 transition-all flex items-center gap-4 group"
-              >
-                <div className="w-14 h-14 bg-blue-100 rounded-xl flex items-center justify-center group-hover:bg-blue-200 transition-colors">
-                  <svg className="w-7 h-7 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                  </svg>
-                </div>
-                <div className="text-left flex-1">
-                  <div className="font-semibold text-gray-900 text-lg">Credit / Debit Card</div>
-                  <div className="text-gray-500 text-sm">Visa, Mastercard, Rupay</div>
-                </div>
-                <svg className="w-5 h-5 text-gray-400 group-hover:text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* UPI Payment */}
-              <button
-                onClick={() => openRazorpay('upi')}
-                className="w-full p-5 border-2 border-gray-200 rounded-xl hover:border-orange-500 hover:bg-orange-50 transition-all flex items-center gap-4 group"
-              >
-                <div className="w-14 h-14 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
-                  <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                  </svg>
-                </div>
-                <div className="text-left flex-1">
-                  <div className="font-semibold text-gray-900 text-lg">UPI</div>
-                  <div className="text-gray-500 text-sm">Google Pay, PhonePe, Paytm, BHIM</div>
-                </div>
-                <svg className="w-5 h-5 text-gray-400 group-hover:text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* Net Banking */}
-              <button
-                onClick={() => openRazorpay('netbanking')}
-                className="w-full p-5 border-2 border-gray-200 rounded-xl hover:border-orange-500 hover:bg-orange-50 transition-all flex items-center gap-4 group"
-              >
-                <div className="w-14 h-14 bg-purple-100 rounded-xl flex items-center justify-center group-hover:bg-purple-200 transition-colors">
-                  <svg className="w-7 h-7 text-purple-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                </div>
-                <div className="text-left flex-1">
-                  <div className="font-semibold text-gray-900 text-lg">Net Banking</div>
-                  <div className="text-gray-500 text-sm">All major banks supported</div>
-                </div>
-                <svg className="w-5 h-5 text-gray-400 group-hover:text-orange-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-
-              {/* All Payment Options */}
-              <button
-                onClick={() => openRazorpay()}
-                className="w-full p-5 bg-gradient-to-r from-orange-500 to-orange-600 rounded-xl hover:from-orange-600 hover:to-orange-700 transition-all flex items-center justify-center gap-3 text-white shadow-lg"
-              >
-                <span className="font-semibold text-lg">All Payment Options</span>
-                <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </button>
-            </div>
-
-            {/* Footer */}
-            <div className="px-6 pb-6">
-              <div className="flex items-center justify-center gap-2 text-gray-500 text-sm">
-                <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                </svg>
-                <span>Secured by Razorpay</span>
-              </div>
             </div>
           </div>
         </div>
