@@ -4486,6 +4486,40 @@
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
   margin-top: 40px;
+  align-items: end;
+}
+
+.wl-pricing-grid > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.wl-plan-banner-slot {
+  
+  max-width: 100%;
+  height: auto;
+  border-radius: 50px 50px 0 0;
+  overflow: hidden;
+  margin-bottom: -4px;
+}
+
+.wl-plan-banner-slot:empty {
+  display: none;
+}
+
+.wl-plan-banner-slot > * {
+  width: 100%;
+  max-height: 150px;
+  object-fit: contain;
+border-radius: 50px 50px 0 0;
+}
+
+.wl-plan-banner-slot img {
+border-radius: 50px 50px 0 0;
+  max-height: 150px;
+  object-fit: contain;
+  display: block;
 }
 
 .wl-pricing-card {
