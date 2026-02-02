@@ -13,6 +13,7 @@ const folderMap: Record<string, string> = {
   transformations: IMAGEKIT_FOLDERS.TRANSFORMATIONS,
   blogs: IMAGEKIT_FOLDERS.BLOGS,
   admin: IMAGEKIT_FOLDERS.ADMIN,
+  'plan-banners': IMAGEKIT_FOLDERS.PLAN_BANNERS,
 };
 
 // POST - Upload image

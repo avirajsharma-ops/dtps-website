@@ -10,6 +10,7 @@ import TransformationGallery from '@/components/TransformationGallery';
 import DynamicPlansDisplay from '@/components/DynamicPlansDisplay';
 import DynamicHeroBanner from '@/components/DynamicHeroBanner';
 import DynamicPopup from '@/components/DynamicPopup';
+import PlanBannerDisplay from '@/components/PlanBannerDisplay';
 import { getPricingByCategory } from '@/lib/api';
 import DynamicPageHero from '@/components/DynamicPageHero';
 import { getOptimizedUrl } from '@/lib/imagekit';
@@ -453,9 +454,14 @@ export default function WeightLossPage() {
           <p className="wl-section-desc wl-center">
             Join our Plan today and embark on a journey to better health with our weight loss plan!
           </p>
+          
           <div className="wl-pricing-grid">
             {pricingPlans.map((plan: any, index: number) => (
-              <div key={index} className="wl-pricing-card">
+              <div key={index}>
+                {/* Plan-specific Banner - shows above each plan */}
+                {plan.planId && <PlanBannerDisplay planId={plan.planId} />}
+                
+                <div className="wl-pricing-card">
                 <div className="wl-pricing-header">
                   <span className="wl-pricing-label">{plan.label}</span>
                   <span className={`wl-pricing-badge wl-badge-${plan.badgeColor}`}>{plan.badge}</span>
@@ -499,6 +505,7 @@ export default function WeightLossPage() {
                   BUY NOW
                 </Button>
               </div>
+                </div>
             ))}
           </div>
         </div>
