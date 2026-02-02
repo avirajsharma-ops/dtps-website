@@ -4,7 +4,7 @@ import { useState, useRef } from 'react';
 import { FaUpload, FaSpinner, FaTrash, FaImage } from 'react-icons/fa';
 
 interface ImageUploadProps {
-  folder: 'testimonials' | 'recognition' | 'pricing' | 'success-stories' | 'transformations' | 'blogs' | 'admin';
+  folder: 'testimonials' | 'recognition' | 'pricing' | 'success-stories' | 'transformations' | 'blogs' | 'admin' | 'plan-banners';
   value?: string;
   onChange: (url: string, fileId?: string) => void;
   onDelete?: () => void;

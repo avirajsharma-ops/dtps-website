@@ -132,11 +132,11 @@ export default function TransformationGallery({
         >
           {transformations.map((transformation) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
-              <div className="rounded-2xl overflow-hidden shadow-[0_8px_24px_rgba(0,0,0,0.12)] bg-white relative">
+              <div className="rounded-2xl overflow-hidden   relative">
             
 
                 {/* Single Image Display */}
-                <div className="relative overflow-hidden h-[350px] md:h-[420px] w-full bg-gray-100">
+                <div className="relative overflow-hidden h-[350px] md:h-[420px] w-full rounded-2xl">
                   <img
                     src={transformation.afterImage || '/img/placeholder.jpg'}
                     alt={`${transformation.clientName} Result`}
@@ -144,20 +144,7 @@ export default function TransformationGallery({
                   />
                 </div>
 
-                {/* Info Footer */}
-                {/* <div className="bg-[#16a085] p-4 md:p-5 flex justify-between items-center">
-                  <div>
-                    <h3 className="m-0 mb-1 text-lg md:text-xl font-bold text-white font-[Epilogue,sans-serif]">
-                      {transformation.clientName}
-                    </h3>
-                    <p className="m-0 text-sm md:text-base font-medium text-white font-[Epilogue,sans-serif]">
-                      Lost {transformation.weightLost} weight
-                    </p>
-                  </div>
-                  <div className="bg-[#ff850b] text-white py-1.5 md:py-2 px-3 md:px-4 rounded-[20px] text-xs md:text-sm font-semibold whitespace-nowrap font-[Epilogue,sans-serif]">
-                    In {transformation.daysToAchieve}
-                  </div>
-                </div> */}
+           
               </div>
             </SwiperSlide>
           ))}

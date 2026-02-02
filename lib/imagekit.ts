@@ -25,6 +25,7 @@ export const IMAGEKIT_FOLDERS = {
   TRANSFORMATIONS: '/DTPS-Ecommerce/transformations',
   BLOGS: '/DTPS-Ecommerce/blogs',
   ADMIN: '/DTPS-Ecommerce/admin',
+  PLAN_BANNERS: '/DTPS-Ecommerce/dynamic/plan-banners',
 } as const;
 
 export type ImageKitFolderType = keyof typeof IMAGEKIT_FOLDERS;

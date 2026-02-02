@@ -134,15 +134,13 @@ export default function TransformationShowcase({
 
           .transformation-showcase-card {
             background: #4e0101;
-            border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.15);
             transition: transform 0.3s ease;
             height: 100%;
           }
 
           .transformation-showcase-card:hover {
-            transform: translateY(-5px);
+            transform: none;
           }
 
           .transformation-showcase-images {
@@ -329,21 +327,6 @@ export default function TransformationShowcase({
                           No Image
                         </div>
                       )}
-                    </div>
-                  </div>
-
-                  {/* Content */}
-                  <div className="transformation-showcase-content">
-                    <h3 className="transformation-showcase-name">
-                      {transformation.clientName}
-                    </h3>
-                    <div className="transformation-showcase-info">
-                      <span className="transformation-showcase-weight">
-                        Lost {transformation.weightLost} weight
-                      </span>
-                      <span className="transformation-showcase-badge">
-                        In {transformation.daysToAchieve}
-                      </span>
                     </div>
                   </div>
                 </div>
