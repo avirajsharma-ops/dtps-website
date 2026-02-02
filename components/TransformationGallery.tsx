@@ -144,8 +144,8 @@ export default function TransformationGallery({
                   />
                 </div>
 
-                {/* Info Footer */}
-                {/* <div className="bg-[#16a085] p-4 md:p-5 flex justify-between items-center">
+                {/* Info Footer
+                <div className="bg-[#16a085] p-4 md:p-5 flex justify-between items-center">
                   <div>
                     <h3 className="m-0 mb-1 text-lg md:text-xl font-bold text-white font-[Epilogue,sans-serif]">
                       {transformation.clientName}

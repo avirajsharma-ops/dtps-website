@@ -332,20 +332,7 @@ export default function TransformationShowcase({
                     </div>
                   </div>
 
-                  {/* Content */}
-                  <div className="transformation-showcase-content">
-                    <h3 className="transformation-showcase-name">
-                      {transformation.clientName}
-                    </h3>
-                    <div className="transformation-showcase-info">
-                      <span className="transformation-showcase-weight">
-                        Lost {transformation.weightLost} weight
-                      </span>
-                      <span className="transformation-showcase-badge">
-                        In {transformation.daysToAchieve}
-                      </span>
-                    </div>
-                  </div>
+
                 </div>
               </SwiperSlide>
             ))}
