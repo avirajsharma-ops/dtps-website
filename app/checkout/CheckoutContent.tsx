@@ -128,6 +128,9 @@ export default function CheckoutContent() {
       const data = await response.json();
 
       if (data.success) {
+        // Get phone number from webhook/API response (not from form)
+        const phoneFromAPI = data.order.customerPhone;
+        
         // Open Razorpay directly with user details
         const options = {
           key: data.razorpayKey,
@@ -173,12 +176,12 @@ export default function CheckoutContent() {
           prefill: {
             name: `${formData.firstName} ${formData.lastName}`,
             email: formData.email,
-            contact: formData.phone,
+            contact: phoneFromAPI, // Using phone from API webhook
           },
           notes: {
             customer_name: `${formData.firstName} ${formData.lastName}`,
             customer_email: formData.email,
-            customer_phone: formData.phone,
+            customer_phone: phoneFromAPI, // Using phone from API webhook
             customer_city: formData.city,
           },
           theme: {
