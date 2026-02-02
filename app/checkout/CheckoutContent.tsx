@@ -168,6 +168,7 @@ export default function CheckoutContent() {
               setOrderStatus('failed');
               setLoading(false);
             }
+            
           },
           prefill: {
             name: `${formData.firstName} ${formData.lastName}`,
