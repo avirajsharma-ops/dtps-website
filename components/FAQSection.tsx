@@ -25,7 +25,7 @@ export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number>(1);
 
   return (
-    <section className="bg-[#f5f7fa] py-12 md:py-20 px-4 md:px-8">
+    <section className="bg-[#f5f7fa] py-12 md:py-20 px-4 md:px-8 rounded-[20px] md:rounded-[30px]">
       <div className="max-w-[1200px] mx-auto flex gap-8 md:gap-12 flex-wrap items-start">
         {/* Left - Images */}
         <div className="flex-1 w-full md:min-w-[300px] relative h-[400px] md:h-[550px] hidden md:block">

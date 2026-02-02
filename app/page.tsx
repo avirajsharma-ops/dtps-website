@@ -5,6 +5,8 @@ import AboutUsSection from '@/components/AboutUsSection';
 import ServicesSection from '@/components/ServicesSection';
 import WhatWeDoSection from '@/components/WhatWeDoSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
+import OurExpertiseSection from '@/components/OurExpertiseSection';
+import ExpertGuidanceSection from '@/components/ExpertGuidanceSection';
 import FAQSection from '@/components/FAQSection';
 import Image from 'next/image';
 import { getOptimizedUrl } from '@/lib/imagekit';
@@ -73,12 +75,23 @@ export default function HomePage() {
     fetchTestimonials();
   }, []);
   return (
-    <>
+    <div className="bg-white">
       <Hero />
-      <AboutUsSection />
-      <ServicesSection />
-      <WhatWeDoSection />
-      <WhyChooseUsSection />
+      <div className="section-wrapper">
+        <AboutUsSection />
+      </div>
+      <div className="section-wrapper">
+        <ServicesSection />
+      </div>
+      <div className="section-wrapper">
+        <WhatWeDoSection />
+      </div>
+      <div className="section-wrapper">
+        <WhyChooseUsSection />
+      </div>
+      <div className="section-wrapper">
+        <OurExpertiseSection />
+      </div>
       {/* About Section */}
       {/* ...existing code... */}
       {/* Services Section */}
@@ -88,146 +101,13 @@ export default function HomePage() {
       {/* Why Choose Us Section */}
       {/* ...existing code... */}
       {/* Expert Guidance Section */}
-      <section className="bg-white py-16 px-4 md:px-8">
-        <div className="max-w-[1200px] mx-auto">
-          {/* Section Header */}
-          <div className="text-center mb-12">
-            <div className="flex items-center justify-center gap-2 mb-2">
-              <span className="text-[#ff9100] text-xl">✦</span>
-              <span className="text-teal-600 font-semibold text-base">Expert Guidance</span>
-            </div>
-            <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight">
-              You are under Expert&apos;s Guidance
-            </h2>
-            <p className="text-gray-600 text-lg mt-2">
-              Meet our award Winning Dietitian
-            </p>
-          </div>
-          
-          {/* Expert Content */}
-          <div className="flex items-center justify-center gap-8 flex-wrap">
-            {/* Center - Image with decoration */}
-            <div className="relative">
-              <Image
-                src="/img/Group-319-2-1.webp"
-                alt="Dietitian Poonam Sagar"
-                width={320}
-                height={400}
-                className="rounded-[20px] object-cover"
-              />
-              {/* Decorative circles */}
-              <div className="absolute -top-[15px] -right-[15px] w-[60px] h-[60px] border-2 border-dashed border-teal-600 rounded-full animate-spin-slow" />
-              <div className="absolute -bottom-2.5 -left-2.5 w-10 h-10 bg-[#ff9100] rounded-full opacity-80" />
-            </div>
-            
-            {/* Right - Description Card */}
-            <div className="max-w-[400px] bg-[#0b4c4c] rounded-[20px] p-8 text-white relative">
-              <div className="absolute -top-5 left-5 bg-[#ff9100] text-white font-bold rounded-lg py-2 px-4 text-sm">
-                25+ Years Experience
-              </div>
-              <h3 className="font-bold text-2xl mb-2 mt-4">
-                Dt. Poonam Sagar
-              </h3>
-              <p className="text-sm opacity-90 mb-4">
-                Award Winning Dietitian
-              </p>
-              <p className="text-[0.95rem] leading-relaxed opacity-95">
-                Dt. Poonam Sagar has 25+ years dietary and clinical expertise. That&apos;s why we are trusted by 15,000+ clients for their health and nutrition goals. Her approach is rooted in evidence-based nutrition, personalized care, and a passion for helping people achieve lasting results.
-              </p>
-              {/* Stats */}
-              <div className="flex gap-6 mt-6">
-                <div>
-                  <div className="text-3xl font-bold text-[#ff9100]">15K+</div>
-                  <div className="text-xs opacity-80">Happy Clients</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-[#ff9100]">25+</div>
-                  <div className="text-xs opacity-80">Years Experience</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Our Video Section */}
-      <section 
-        className="bg-cover bg-center py-20 px-4 md:px-8 relative min-h-[600px] bg-[url('/img/what-we-do-image-1.jpg')]"
-      >
-        {/* Dark overlay */}
-        <div className="absolute inset-0 bg-gradient-to-br from-[rgba(11,76,76,0.9)] to-[rgba(0,0,0,0.7)]" />
-        
-        <div className="max-w-[1200px] mx-auto relative z-10">
-          <div className="flex items-center justify-between flex-wrap gap-12">
-            {/* Left content */}
-            <div className="max-w-[500px] text-white">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-[#ff9100] text-xl">✦</span>
-                <span className="text-[#ff9100] font-semibold text-base">Our Video</span>
-              </div>
-              <h2 className="text-5xl font-bold leading-tight mb-6">
-                Lives through wellness<br />video stories
-              </h2>
-              <p className="text-lg leading-relaxed mb-8 opacity-90">
-                Explore inspiring stories of transformation and growth through our wellness videos, showcasing real journeys toward healthier, happier lives.
-              </p>
-              <button className="bg-[#ff9100] text-white font-semibold text-base border-none rounded-full py-4 px-10 cursor-pointer transition-all duration-300 shadow-[0_4px_15px_rgba(255,145,0,0.4)] hover:shadow-[0_6px_20px_rgba(255,145,0,0.5)]">
-                Explore More
-              </button>
-            </div>
-            
-            {/* Right - Play button with rotating text */}
-            <div className="relative w-[200px] h-[200px]">
-              {/* Center play button */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-[#ff9100] rounded-full flex items-center justify-center cursor-pointer shadow-[0_4px_30px_rgba(255,145,0,0.5)] z-[2]">
-                <div className="w-0 h-0 border-l-[22px] border-l-white border-t-[14px] border-t-transparent border-b-[14px] border-b-transparent ml-1.5" />
-              </div>
-              
-              {/* Rotating circular text */}
-              <svg className="absolute top-0 left-0 w-[200px] h-[200px] animate-spin-slow" style={{ animationDuration: '15s' }} viewBox="0 0 200 200">
-                <defs>
-                  <path id="circlePath" d="M 100, 100 m -75, 0 a 75,75 0 1,1 150,0 a 75,75 0 1,1 -150,0" />
-                </defs>
-                <text fill="#fff" fontSize="12" fontWeight="500" letterSpacing="3">
-                  <textPath href="#circlePath">
-                    • WATCH VIDEO • TRANSFORMATION • SUCCESS STORIES • WELLNESS JOURNEY 
-                  </textPath>
-                </text>
-              </svg>
-              
-              {/* Dashed circle border */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[170px] h-[170px] border-2 border-dashed border-white/30 rounded-full" />
-            </div>
-          </div>
-          
-          {/* Stats Bar */}
-          <div className="mt-16 flex justify-between flex-wrap gap-8 p-8 bg-white/10 rounded-[20px] backdrop-blur-[10px]">
-            <div className="text-center text-white flex-1 min-w-[150px]">
-              <div className="text-5xl font-bold">25<span className="text-[#ff9100]">+</span></div>
-              <div className="text-[0.95rem] opacity-90">Year of experience</div>
-            </div>
-            <div className="text-center text-white flex-1 min-w-[150px]">
-              <div className="text-5xl font-bold">260<span className="text-[#ff9100]">+</span></div>
-              <div className="text-[0.95rem] opacity-90">Hours of coaching</div>
-            </div>
-            <div className="text-center text-white flex-1 min-w-[150px]">
-              <div className="text-5xl font-bold">550<span className="text-[#ff9100]">+</span></div>
-              <div className="text-[0.95rem] opacity-90">Complete courses</div>
-            </div>
-            <div className="text-center text-white flex-1 min-w-[150px]">
-              <div className="text-5xl font-bold">20K<span className="text-[#ff9100]">+</span></div>
-              <div className="text-[0.95rem] opacity-90">Happy customer</div>
-            </div>
-            <div className="text-center text-white flex-1 min-w-[150px]">
-              <div className="text-5xl font-bold">359<span className="text-[#ff9100]">+</span></div>
-              <div className="text-[0.95rem] opacity-90">Awards win</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="section-wrapper">
+        <ExpertGuidanceSection />
+      </div>
 
       {/* Our Programs Section */}
-      <section className="bg-white py-20 px-4 md:px-8">
+      <div className="section-wrapper">
+      <section className="bg-white py-20 px-4 md:px-8 rounded-[30px]">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
             <div>
@@ -288,9 +168,11 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* How It Work Section */}
-      <section className="bg-[#0b4c4c] py-20 px-4 md:px-8 rounded-t-[20px] md:rounded-t-[40px]">
+      <div className="section-wrapper">
+      <section className="bg-[#0b4c4c] pt-16 md:pt-20 pb-40 md:pb-52 px-4 md:px-8 rounded-[30px]">
         <div className="max-w-[1200px] mx-auto">
           <div className="flex justify-between items-start flex-wrap gap-8 mb-12">
             <div>
@@ -298,26 +180,28 @@ export default function HomePage() {
                 <span className="text-[#ff9100] text-xl">✦</span>
                 <span className="text-[#ff9100] font-semibold text-base">How It Work</span>
               </div>
-              <h2 className="text-[2.5rem] font-bold text-white leading-tight">
+              <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-white leading-tight">
                 Step-by-step guide to<br />better health
               </h2>
             </div>
-            <p className="max-w-[500px] text-white opacity-90 text-base leading-relaxed">
+            <p className="max-w-[500px] text-white opacity-90 text-sm md:text-base leading-relaxed">
               Achieving your health goals has never been easier. Our step-by-step approach provides personalized guidance, actionable strategies, and ongoing support.
             </p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {/* Step 1 */}
+            {/* Step 1 - Custom Coaching Plan */}
             <div className="text-center">
               <div className="relative inline-block mb-4 md:mb-6">
                 <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
-                    <circle cx="12" cy="5" r="3" />
-                    <line x1="12" y1="8" x2="12" y2="14" />
-                    <line x1="12" y1="14" x2="6" y2="20" />
-                    <line x1="12" y1="14" x2="18" y2="20" />
-                    <circle cx="6" cy="20" r="2" />
-                    <circle cx="18" cy="20" r="2" />
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
+                    <circle cx="9" cy="7" r="3" />
+                    <path d="M9 10v4" />
+                    <path d="M9 14l-3 6" />
+                    <path d="M9 14l3 6" />
+                    <circle cx="17" cy="7" r="3" />
+                    <path d="M17 10v4" />
+                    <path d="M17 14l-3 6" />
+                    <path d="M17 14l3 6" />
                   </svg>
                 </div>
                 <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">1</div>
@@ -325,16 +209,18 @@ export default function HomePage() {
               <h3 className="text-white font-bold text-sm md:text-lg mb-2">Custom Coaching Plan</h3>
               <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
-            {/* Step 2 */}
+            {/* Step 2 - Ongoing Support */}
             <div className="text-center">
               <div className="relative inline-block mb-4 md:mb-6">
                 <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
-                    <circle cx="12" cy="8" r="4" />
-                    <circle cx="6" cy="16" r="3" />
-                    <circle cx="18" cy="16" r="3" />
-                    <line x1="9" y1="11" x2="7" y2="13" />
-                    <line x1="15" y1="11" x2="17" y2="13" />
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
+                    <circle cx="9" cy="7" r="3" />
+                    <path d="M9 10v4" />
+                    <path d="M6 20l3-6 3 6" />
+                    <circle cx="17" cy="7" r="3" />
+                    <path d="M17 10v4" />
+                    <path d="M14 20l3-6 3 6" />
+                    <path d="M9 7h8" strokeDasharray="2 2" />
                   </svg>
                 </div>
                 <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">2</div>
@@ -342,11 +228,11 @@ export default function HomePage() {
               <h3 className="text-white font-bold text-sm md:text-lg mb-2">Ongoing Support</h3>
               <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
-            {/* Step 3 */}
+            {/* Step 3 - Practical Tools */}
             <div className="text-center">
               <div className="relative inline-block mb-4 md:mb-6">
                 <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
                     <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
                   </svg>
                 </div>
@@ -355,17 +241,19 @@ export default function HomePage() {
               <h3 className="text-white font-bold text-sm md:text-lg mb-2">Practical Tools</h3>
               <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
             </div>
-            {/* Step 4 */}
+            {/* Step 4 - Flexible Engagement */}
             <div className="text-center">
               <div className="relative inline-block mb-4 md:mb-6">
                 <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="1.5" className="md:w-8 md:h-8">
-                    <circle cx="12" cy="6" r="2" />
-                    <circle cx="6" cy="12" r="2" />
-                    <circle cx="18" cy="12" r="2" />
-                    <circle cx="12" cy="18" r="2" />
-                    <line x1="12" y1="8" x2="12" y2="16" />
-                    <line x1="8" y1="12" x2="16" y2="12" />
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
+                    <circle cx="7" cy="7" r="2" />
+                    <circle cx="17" cy="7" r="2" />
+                    <circle cx="7" cy="17" r="2" />
+                    <circle cx="17" cy="17" r="2" />
+                    <path d="M9 7h6" />
+                    <path d="M9 17h6" />
+                    <path d="M7 9v6" />
+                    <path d="M17 9v6" />
                   </svg>
                 </div>
                 <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">4</div>
@@ -376,20 +264,22 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>
 
-      {/* Appointment Section */}
-      <section className="bg-[#0b4c4c] px-4 md:px-8 pb-20 pt-0">
-        <div className="max-w-[1100px] mx-auto bg-white rounded-[20px] md:rounded-[30px] p-6 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
-          <div className="flex gap-12 flex-wrap items-start">
-            <div className="flex-1 min-w-[300px]">
+      {/* Appointment Section - Overlapping */}
+      <div className="section-wrapper">
+      <section className="bg-white px-4 md:px-8 -mt-28 md:-mt-36 relative z-10 rounded-[30px]">
+        <div className="max-w-[1100px] mx-auto bg-white rounded-[20px] md:rounded-[30px] p-5 md:p-12 shadow-[0_10px_40px_rgba(0,0,0,0.1)]">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+            <div className="w-full lg:flex-1">
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-[#ff9100] text-xl">✦</span>
                 <span className="text-teal-600 font-semibold text-base">Appointment</span>
               </div>
-              <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight mb-4">
+              <h2 className="text-[1.75rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4">
                 Make appointment
               </h2>
-              <p className="text-gray-600 text-base leading-relaxed mb-8">
+              <p className="text-gray-600 text-sm md:text-base leading-relaxed mb-6 md:mb-8">
                 Easy scheduling for a personalized health coaching session. Take the first step towards better health today!
               </p>
               <Image 
@@ -397,35 +287,35 @@ export default function HomePage() {
                 alt="Healthy food" 
                 width={400} 
                 height={300}
-                className="rounded-2xl object-cover w-full max-w-[400px]"
+                className="rounded-2xl object-cover w-full max-w-[400px] hidden md:block"
               />
             </div>
-            <div className="flex-1 min-w-[300px]">
+            <div className="w-full lg:flex-1">
               <form className="flex flex-col gap-4">
-                <div className="flex gap-4 flex-wrap">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <input 
                     type="text" 
                     placeholder="First Name" 
-                    className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
+                    className="w-full p-3 md:p-4 border border-gray-300 rounded-lg text-sm md:text-base outline-none focus:border-teal-500"
                   />
                   <input 
                     type="text" 
                     placeholder="Last Name" 
-                    className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
+                    className="w-full p-3 md:p-4 border border-gray-300 rounded-lg text-sm md:text-base outline-none focus:border-teal-500"
                   />
                 </div>
                 <input 
                   type="email" 
                   placeholder="Email Address" 
-                  className="p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
+                  className="w-full p-3 md:p-4 border border-gray-300 rounded-lg text-sm md:text-base outline-none focus:border-teal-500"
                 />
                 <input 
                   type="tel" 
                   placeholder="Phone Number" 
-                  className="p-4 border border-gray-300 rounded-lg text-base outline-none focus:border-teal-500"
+                  className="w-full p-3 md:p-4 border border-gray-300 rounded-lg text-sm md:text-base outline-none focus:border-teal-500"
                 />
-                <div className="flex gap-4 flex-wrap">
-                  <select className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none bg-white text-gray-600 focus:border-teal-500">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <select className="w-full p-3 md:p-4 border border-gray-300 rounded-lg text-sm md:text-base outline-none bg-white text-gray-600 focus:border-teal-500">
                     <option>Service</option>
                     <option>Weight Management</option>
                     <option>PCOD/PCOS</option>
@@ -435,12 +325,12 @@ export default function HomePage() {
                   <input 
                     type="date" 
                     placeholder="dd-mm-yyyy"
-                    className="flex-1 min-w-[140px] p-4 border border-gray-300 rounded-lg text-base outline-none text-gray-600 focus:border-teal-500"
+                    className="w-full p-3 md:p-4 border border-gray-300 rounded-lg text-sm md:text-base outline-none text-gray-600 focus:border-teal-500"
                   />
                 </div>
                 <button 
                   type="submit"
-                  className="bg-[#ff9100] text-white font-semibold text-base border-none rounded-full py-4 px-8 cursor-pointer mt-2 hover:shadow-lg transition-all duration-300"
+                  className="w-full sm:w-auto bg-[#ff9100] text-white font-semibold text-sm md:text-base border-none rounded-full py-3 md:py-4 px-8 cursor-pointer mt-2 hover:shadow-lg transition-all duration-300"
                 >
                   Book An Appointment
                 </button>
@@ -449,12 +339,16 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* FAQ Section */}
-      <FAQSection />
+      <div className="section-wrapper">
+        <FAQSection />
+      </div>
 
       {/* Testimonials Section */}
-      <section className="bg-white py-20 px-4 md:px-8">
+      <div className="section-wrapper">
+      <section className="bg-white py-20 px-4 md:px-8 rounded-[30px]">
         <div className="max-w-[1200px] mx-auto">
           {/* Section Header */}
           <div className="text-center mb-12">
@@ -533,7 +427,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-    </>
+      </div>
+    </div>
   );
 }
 // Removed local fallback implementations of useState/useEffect — using React's useState and useEffect imported above.

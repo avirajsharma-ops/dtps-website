@@ -33,6 +33,31 @@
   --radius-xl: 24px;
   --radius-full: 50px;
   --transition: all 0.3s ease;
+  --section-padding-x: 50px;
+  --section-padding-x-mobile: 12px;
+}
+
+/* ===== Section Wrapper - Consistent padding for all homepage sections ===== */
+.section-wrapper {
+  background: #fff;
+  padding: 0 var(--section-padding-x);
+}
+
+.section-wrapper > section,
+.section-wrapper > div {
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .section-wrapper {
+    padding: 0 var(--section-padding-x-mobile);
+  }
+  
+  .section-wrapper > section,
+  .section-wrapper > div {
+    border-radius: 20px;
+  }
 }
 
 @layer base {

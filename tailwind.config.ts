@@ -72,8 +72,8 @@ const config: Config = {
   		},
   		keyframes: {
   			float: {
-  				'0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-  				'50%': { transform: 'translateY(-20px) rotate(5deg)' }
+  				'0%, 100%': { transform: 'translateY(0)' },
+  				'50%': { transform: 'translateY(-10px)' }
   			},
   			rotate: {
   				from: { transform: 'rotate(0deg)' },
@@ -82,12 +82,17 @@ const config: Config = {
   			spin: {
   				from: { transform: 'rotate(0deg)' },
   				to: { transform: 'rotate(360deg)' }
+  			},
+  			ticker: {
+  				'0%': { transform: 'translateX(0)' },
+  				'100%': { transform: 'translateX(-50%)' }
   			}
   		},
   		animation: {
-  			float: 'float 8s ease-in-out infinite',
+  			float: 'float 3s ease-in-out infinite',
   			rotate: 'rotate 20s linear infinite',
-  			'spin-slow': 'spin 15s linear infinite'
+  			'spin-slow': 'spin 15s linear infinite',
+  			ticker: 'ticker 20s linear infinite'
   		}
   	}
   },
