@@ -4482,6 +4482,7 @@
   background: var(--gray-50);
 }
 
+
 .wl-pricing-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -4489,6 +4490,7 @@
   margin-top: 40px;
   align-items: end;
 }
+
 
 .wl-pricing-grid > div {
   display: flex;
