@@ -172,7 +172,7 @@ export default function CheckoutContent() {
           prefill: {
             name: `${formData.firstName} ${formData.lastName}`,
             email: formData.email,
-            contact: `+91${formData.phone}`,
+            contact: formData.phone,
           },
           notes: {
             customer_name: `${formData.firstName} ${formData.lastName}`,
@@ -182,6 +182,10 @@ export default function CheckoutContent() {
           },
           theme: {
             color: '#ff850b',
+          },
+          readonly: {
+            contact: true,
+            email: true,
           },
           modal: {
             ondismiss: function () {
