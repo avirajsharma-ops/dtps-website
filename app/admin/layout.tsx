@@ -19,6 +19,7 @@ import {
   Sun,
   ShoppingCart,
   CreditCard,
+  ImageIcon,
 } from 'lucide-react';
 import {
   DropdownMenu,
@@ -36,6 +37,7 @@ const sidebarItems = [
   { name: 'Orders', href: '/admin/orders', icon: ShoppingCart },
   { name: 'Payments', href: '/admin/payments', icon: CreditCard },
   { name: 'Pricing Plans', href: '/admin/pricing', icon: DollarSign },
+  { name: 'Plan Banners', href: '/admin/plan-banners', icon: ImageIcon },
   { name: 'Transformations', href: '/admin/transformations', icon: Images },
   { name: 'Blog Posts', href: '/admin/blogs', icon: Newspaper },
   { name: 'Settings', href: '/admin/settings', icon: Settings },
