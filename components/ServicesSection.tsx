@@ -27,27 +27,41 @@ export default function ServicesSection() {
 
   const services = [
     {
-      title: 'Weight Loss & Wellness',
+      title: 'Personalized Solutions for Every Health Goal',
       description:
-        'Shed pounds sustainably with metabolism-boosting nutrition plans that celebrate whole foods and home-cooked meals. No crash diets, just smart choices.',
+        'At DTPS, we first understand how you eat, how your day looks, and what health issues you\'re dealing with. Then we plan food using regular ghar ka khana in a way that can actually be followed.',
       icon: (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
           <path d="M6 12H26M6 16H26M10 20H22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" />
         </svg>
       ),
       featured: true,
+      link: '/plans/therapeutic',
+    },
+    {
+      title: 'Weight Loss & Wellness',
+      description:
+        'Weight loss needs proper portions, sensible timing and food you already eat at home. When that is fixed, weight starts moving without any dramatic changes in your lifestyle.',
+      icon: (
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <circle cx="16" cy="10" r="4" stroke="currentColor" strokeWidth="2" />
+          <circle cx="10" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
+          <circle cx="22" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
+          <circle cx="16" cy="16" r="2" stroke="currentColor" strokeWidth="2" />
+        </svg>
+      ),
+      featured: false,
       link: '/weight-loss',
     },
     {
-      title: 'PCOD Management',
+      title: 'PCOD & PCOS Nutrition',
       description:
-        'Specialized nutrition protocols designed specifically for hormonal balance, energy management, and symptom relief. Manage your condition, not let it manage you.',
+        'With PCOD, the problem isn\'t food quantity. It\'s irregular meals, sugar spikes, and confused eating patterns. We correct that slowly so the body starts responding instead of resisting.',
       icon: (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="10" cy="10" r="4" stroke="currentColor" strokeWidth="2" />
-          <circle cx="22" cy="10" r="4" stroke="currentColor" strokeWidth="2" />
-          <circle cx="10" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
-          <circle cx="22" cy="22" r="4" stroke="currentColor" strokeWidth="2" />
+          <circle cx="16" cy="16" r="8" stroke="currentColor" strokeWidth="2" />
+          <path d="M16 8V16L20 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="16" cy="16" r="2" fill="currentColor" />
         </svg>
       ),
       featured: false,
@@ -56,29 +70,11 @@ export default function ServicesSection() {
     {
       title: 'Therapeutic Nutrition',
       description:
-        'Custom plans for thyroid health, diabetes management, cardiac wellness, and more. Nutrition-based disease management with proven results.',
+        'When you have thyroid, diabetes, or cholesterol, food can\'t be random. We plan meals that support your treatment and daily energy, not just weight loss.',
       icon: (
         <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <circle cx="16" cy="16" r="10" stroke="currentColor" strokeWidth="2" />
-          <circle cx="16" cy="16" r="5" stroke="currentColor" strokeWidth="2" />
-          <line x1="16" y1="6" x2="16" y2="2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <line x1="16" y1="30" x2="16" y2="26" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <line x1="6" y1="16" x2="2" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <line x1="30" y1="16" x2="26" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      ),
-      featured: false,
-      link: '/plans/therapeutic',
-    },
-    {
-      title: "Women's Health",
-      description:
-        'Dedicated nutrition support for pregnancy, lactation, postpartum recovery, and menopause. Every phase of life deserves expert nutritional guidance.',
-      icon: (
-        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
-          <rect x="8" y="8" width="16" height="16" rx="2" stroke="currentColor" strokeWidth="2" />
-          <path d="M12 14H20M12 18H16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-          <path d="M20 12V8M12 12V8" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <rect x="8" y="4" width="16" height="24" rx="3" stroke="currentColor" strokeWidth="2" />
+          <path d="M16 10V18M12 14H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
         </svg>
       ),
       featured: false,
@@ -96,7 +92,7 @@ export default function ServicesSection() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Header Card */}
           <div
-            className={`bg-gray-100 p-6 flex flex-col justify-center transition-all duration-[600ms] ease-out ${
+            className={`p-6 flex flex-col justify-center transition-all duration-[600ms] ease-out ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
             }`}
           >
@@ -106,15 +102,12 @@ export default function ServicesSection() {
                 Services
               </span>
             </div>
-            <h2 className="text-[2.2rem] font-bold text-gray-900 leading-tight mb-4">
-              Personalized
-              <br />
-              Solutions for Every
-              <br />
-              Health Goal
+            <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-4">
+              What We<br />Help With
             </h2>
             <p className="text-[0.95rem] text-gray-500 leading-relaxed mb-6">
-              We offer personalized health coaching services support your wellness journey and empower you to life.
+              Most people don&apos;t fail at dieting.<br />
+              They just get plans that don&apos;t match their daily life.
             </p>
             <Link href="/plans/therapeutic">
               <button
@@ -125,12 +118,12 @@ export default function ServicesSection() {
             </Link>
           </div>
 
-          {/* Weight Loss Card - Featured Orange */}
+          {/* Personalized Solutions Card - Featured Orange */}
           <div
             onMouseEnter={() => setHoveredCard(0)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`bg-gradient-to-br from-[#f5a623] to-[#f57c00] rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
-              isVisible 
+              isVisible
                 ? (hoveredCard === 0 ? '-translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.4)]' : 'translate-y-0')
                 : 'translate-y-[30px] opacity-0'
             }`}
@@ -141,34 +134,25 @@ export default function ServicesSection() {
             <h3 className="text-[1.35rem] font-bold text-white mb-4">
               {services[0].title}
             </h3>
-            <p className="text-sm text-white/90 leading-relaxed mb-6 flex-1">
+            <p className="text-sm text-white/90 leading-relaxed flex-1">
               {services[0].description}
             </p>
-            <Link
-              href={services[0].link}
-              className="flex items-center gap-2 text-white text-[0.95rem] font-semibold no-underline"
-            >
-              Read More
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
           </div>
 
-          {/* PCOD Management Card */}
+          {/* Weight Loss Card */}
           <div
             onMouseEnter={() => setHoveredCard(1)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
-              hoveredCard === 1 
-                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]' 
+              hoveredCard === 1
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
                 : 'bg-white'
             } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
               className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-[400ms] ${
-                hoveredCard === 1 
-                  ? 'bg-white/20 text-white border-0' 
+                hoveredCard === 1
+                  ? 'bg-white/20 text-white border-0'
                   : 'bg-white border-2 border-teal-600 text-teal-600'
               }`}
             >
@@ -182,40 +166,29 @@ export default function ServicesSection() {
               {services[1].title}
             </h3>
             <p
-              className={`text-sm leading-relaxed mb-6 flex-1 transition-all duration-[400ms] ${
+              className={`text-sm leading-relaxed flex-1 transition-all duration-[400ms] ${
                 hoveredCard === 1 ? 'text-white/90' : 'text-gray-500'
               }`}
             >
               {services[1].description}
             </p>
-            <Link
-              href={services[1].link}
-              className={`flex items-center gap-2 text-[0.95rem] font-semibold no-underline transition-all duration-[400ms] ${
-                hoveredCard === 1 ? 'text-white' : 'text-teal-600'
-              }`}
-            >
-              Read More
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
           </div>
 
-          {/* Therapeutic Nutrition Card */}
+          {/* PCOD Card */}
           <div
             onMouseEnter={() => setHoveredCard(2)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
-              hoveredCard === 2 
-                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]' 
+              hoveredCard === 2
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
                 : 'bg-white'
             } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
               className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-[400ms] ${
-                hoveredCard === 2 
-                  ? 'bg-white/20 text-white' 
-                  : 'bg-teal-50 text-teal-600'
+                hoveredCard === 2
+                  ? 'bg-white/20 text-white'
+                  : 'bg-white border-2 border-teal-600 text-teal-600'
               }`}
             >
               {services[2].icon}
@@ -228,40 +201,29 @@ export default function ServicesSection() {
               {services[2].title}
             </h3>
             <p
-              className={`text-sm leading-relaxed mb-6 flex-1 transition-all duration-[400ms] ${
+              className={`text-sm leading-relaxed flex-1 transition-all duration-[400ms] ${
                 hoveredCard === 2 ? 'text-white/90' : 'text-gray-500'
               }`}
             >
               {services[2].description}
             </p>
-            <Link
-              href={services[2].link}
-              className={`flex items-center gap-2 text-[0.95rem] font-semibold no-underline transition-all duration-[400ms] ${
-                hoveredCard === 2 ? 'text-white' : 'text-teal-600'
-              }`}
-            >
-              Read More
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
           </div>
 
-          {/* Women's Health Card */}
+          {/* Therapeutic Nutrition Card */}
           <div
             onMouseEnter={() => setHoveredCard(3)}
             onMouseLeave={() => setHoveredCard(null)}
             className={`rounded-[20px] p-8 flex flex-col cursor-pointer transition-all duration-[400ms] ease-out ${
-              hoveredCard === 3 
-                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]' 
+              hoveredCard === 3
+                ? 'bg-gradient-to-br from-[#f5a623] to-[#f57c00] -translate-y-2.5 shadow-[0_20px_40px_rgba(245,124,0,0.3)]'
                 : 'bg-white'
             } ${isVisible ? '' : 'translate-y-[30px] opacity-0'}`}
           >
             <div
               className={`w-14 h-14 rounded-xl flex items-center justify-center mb-6 transition-all duration-[400ms] ${
-                hoveredCard === 3 
-                  ? 'bg-white/20 text-white' 
-                  : 'bg-teal-50 text-teal-600'
+                hoveredCard === 3
+                  ? 'bg-white/20 text-white'
+                  : 'bg-white border-2 border-teal-600 text-teal-600'
               }`}
             >
               {services[3].icon}
@@ -274,26 +236,15 @@ export default function ServicesSection() {
               {services[3].title}
             </h3>
             <p
-              className={`text-sm leading-relaxed mb-6 flex-1 transition-all duration-[400ms] ${
+              className={`text-sm leading-relaxed flex-1 transition-all duration-[400ms] ${
                 hoveredCard === 3 ? 'text-white/90' : 'text-gray-500'
               }`}
             >
               {services[3].description}
             </p>
-            <Link
-              href={services[3].link}
-              className={`flex items-center gap-2 text-[0.95rem] font-semibold no-underline transition-all duration-[400ms] ${
-                hoveredCard === 3 ? 'text-white' : 'text-teal-600'
-              }`}
-            >
-              Read More
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8H13M13 8L9 4M13 8L9 12" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </Link>
           </div>
 
-          {/* Contact CTA Card */}
+          {/* CTA Card - "What happens after I start?" */}
           <div
             className={`rounded-[20px] overflow-hidden relative min-h-[280px] transition-all duration-[600ms] ease-out delay-500 ${
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-[30px] opacity-0'
@@ -301,42 +252,30 @@ export default function ServicesSection() {
           >
             <Image
               src="/img/what-we-do-image-1.jpg"
-              alt="Contact Us"
+              alt="What happens after I start"
               fill
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-br from-[rgba(13,64,67,0.85)] to-[rgba(13,64,67,0.75)] flex flex-col justify-center p-8">
-              <p className="text-sm text-white/80 mb-2">
-                Have You any question
-              </p>
-              <h3 className="text-[1.6rem] font-bold text-white leading-tight mb-6">
-                Don&apos;t waste your
-                <br />
-                time call us!
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 flex flex-col justify-end p-8">
+              <p className="text-sm text-white/80 mb-1">If you&apos;re thinking,</p>
+              <h3 className="text-[1.8rem] font-bold text-white leading-tight mb-4">
+                What happens<br />after I start?
               </h3>
-              <div className="flex items-center gap-3">
-                <div className="w-11 h-11 bg-white/15 rounded-[10px] flex items-center justify-center">
-                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
-                    <path
-                      d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
-                      stroke="#fff"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <p className="text-xs text-white/70 mb-0.5">
-                    Call Us 24/7
-                  </p>
-                  <p className="text-xl font-bold text-white">
-                    98930 27688
-                  </p>
-                </div>
-              </div>
+              <p className="text-sm text-white/90 leading-relaxed">
+                You&apos;re guided, tracked, and supported<br />until results show.<br />
+                Click Here to know the full process!
+              </p>
             </div>
           </div>
+        </div>
+
+        {/* Bottom CTA Bar */}
+        <div className="mt-8 flex items-center justify-center gap-3 py-4">
+          <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">Free</span>
+          <span className="text-gray-600 text-sm">Let&apos;s make something great work together.</span>
+          <Link href="/contact" className="text-gray-900 font-semibold text-sm underline underline-offset-2">
+            Get Free Quote
+          </Link>
         </div>
       </div>
     </section>

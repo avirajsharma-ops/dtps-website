@@ -40,7 +40,15 @@
 /* ===== Section Wrapper - Consistent padding for all homepage sections ===== */
 .section-wrapper {
   background: #fff;
-  padding: 0 var(--section-padding-x);
+  padding: 4px var(--section-padding-x);
+}
+
+.section-wrapper:first-child {
+  padding-top: 0;
+}
+
+.section-wrapper:last-child {
+  padding-bottom: 0;
 }
 
 .section-wrapper > section,
@@ -49,14 +57,31 @@
   overflow: hidden;
 }
 
+@media (max-width: 1024px) {
+  .section-wrapper {
+    padding: 4px 30px;
+  }
+}
+
 @media (max-width: 768px) {
   .section-wrapper {
-    padding: 0 var(--section-padding-x-mobile);
+    padding: 3px var(--section-padding-x-mobile);
   }
   
   .section-wrapper > section,
   .section-wrapper > div {
     border-radius: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-wrapper {
+    padding: 3px 8px;
+  }
+  
+  .section-wrapper > section,
+  .section-wrapper > div {
+    border-radius: 16px;
   }
 }
 
@@ -5138,7 +5163,7 @@
 
 /* PCOD Hero Wrapper - Main Container */
 .pcod-hero-wrapper {
-  background: #fff;
+  background: #fff; 
   padding: 12px 50px 0 50px;
 }
 

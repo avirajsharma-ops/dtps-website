@@ -5,8 +5,9 @@ import AboutUsSection from '@/components/AboutUsSection';
 import ServicesSection from '@/components/ServicesSection';
 import WhatWeDoSection from '@/components/WhatWeDoSection';
 import WhyChooseUsSection from '@/components/WhyChooseUsSection';
-import OurExpertiseSection from '@/components/OurExpertiseSection';
 import ExpertGuidanceSection from '@/components/ExpertGuidanceSection';
+import OurTeamSection from '@/components/OurTeamSection';
+import YouTubeShortsSlider from '@/components/YouTubeShortsSlider';
 import FAQSection from '@/components/FAQSection';
 import Image from 'next/image';
 import { getOptimizedUrl } from '@/lib/imagekit';
@@ -89,33 +90,26 @@ export default function HomePage() {
       <div className="section-wrapper">
         <WhyChooseUsSection />
       </div>
-      <div className="section-wrapper">
-        <OurExpertiseSection />
-      </div>
-      {/* About Section */}
-      {/* ...existing code... */}
-      {/* Services Section */}
-      {/* ...existing code... */}
-      {/* What We Do Section */}
-      {/* ...existing code... */}
-      {/* Why Choose Us Section */}
-      {/* ...existing code... */}
       {/* Expert Guidance Section */}
       <div className="section-wrapper">
         <ExpertGuidanceSection />
       </div>
+      {/* Our Team Section */}
+      <div className="section-wrapper">
+        <OurTeamSection />
+      </div>
 
       {/* Our Programs Section */}
       <div className="section-wrapper">
-      <section className="bg-white py-20 px-4 md:px-8 rounded-[30px]">
+      <section className="bg-white py-16 md:py-20 px-4 md:px-8 rounded-[30px] overflow-hidden">
         <div className="max-w-[1200px] mx-auto">
-          <div className="flex items-center justify-between mb-12 flex-wrap gap-4">
+          <div className="flex items-start justify-between mb-10 md:mb-14 flex-wrap gap-4">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-[#ff9100] text-xl">✦</span>
                 <span className="text-teal-600 font-semibold text-base">Our Programs</span>
               </div>
-              <h2 className="text-[2.5rem] font-bold text-gray-900 leading-tight">
+              <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-gray-900 leading-tight">
                 Tailored programs for<br />your wellness
               </h2>
             </div>
@@ -123,49 +117,7 @@ export default function HomePage() {
               All Programs
             </button>
           </div>
-          <div className="flex gap-6 flex-wrap justify-center">
-            {/* Program Card 1 - Using Garima-Mam.jpeg */}
-            <div 
-              className="bg-gray-900 rounded-[20px] overflow-hidden w-full sm:w-[360px] h-[400px] sm:h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
-            >
-              <img src="/img/Garima-Mam.jpeg" alt="Weight Management Program" className="w-full h-full object-cover" />
-              <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
-                <div className="inline-block bg-[#ff9100] py-1 px-3 rounded-full text-xs font-semibold mb-2">
-                  WEIGHT LOSS
-                </div>
-                <h3 className="text-xl font-bold mb-2">Weight Management<br />Program</h3>
-                <p className="text-sm opacity-90">Customized diet plans for effective and sustainable weight loss results.</p>
-              </div>
-            </div>
-            
-            {/* Program Card 2 - Using Shivani.jpeg */}
-            <div 
-              className="bg-gray-900 rounded-[20px] overflow-hidden w-full sm:w-[360px] h-[400px] sm:h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
-            >
-              <img src="/img/Shivani.jpeg" alt="PCOD/PCOS Program" className="w-full h-full object-cover" />
-              <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
-                <div className="inline-block bg-teal-600 py-1 px-3 rounded-full text-xs font-semibold mb-2">
-                  PCOD/PCOS
-                </div>
-                <h3 className="text-xl font-bold mb-2">PCOD/PCOS<br />Management</h3>
-                <p className="text-sm opacity-90">Specialized nutrition programs for hormonal balance and PCOD management.</p>
-              </div>
-            </div>
-            
-            {/* Program Card 3 - Using Anshu-Jain.jpeg */}
-            <div 
-              className="bg-gray-900 rounded-[20px] overflow-hidden w-full sm:w-[360px] h-[400px] sm:h-[450px] relative cursor-pointer transition-all duration-300 hover:-translate-y-2.5 hover:shadow-[0_20px_40px_rgba(0,0,0,0.2)]"
-            >
-              <img src="/img/Anshu-Jain.jpeg" alt="Therapeutic Diet Program" className="w-full h-full object-cover" />
-              <div className="absolute left-0 bottom-0 w-full p-6 bg-gradient-to-t from-black/90 via-black/60 to-transparent text-white">
-                <div className="inline-block bg-[#0b4c4c] py-1 px-3 rounded-full text-xs font-semibold mb-2">
-                  THERAPEUTIC
-                </div>
-                <h3 className="text-xl font-bold mb-2">Therapeutic Diet<br />Program</h3>
-                <p className="text-sm opacity-90">Medical nutrition therapy for diabetes, thyroid, and other health conditions.</p>
-              </div>
-            </div>
-          </div>
+          <YouTubeShortsSlider />
         </div>
       </section>
       </div>
