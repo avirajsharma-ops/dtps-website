@@ -4,121 +4,188 @@ import Image from 'next/image';
 
 const faqData = [
   {
-    question: "What does Dt Poonam Sagar specialize in?",
-    answer: "Dt Poonam Sagar specializes in weight management, PCOD/PCOS management, therapeutic diets for diabetes, thyroid, and other health conditions, as well as nutrition counseling for overall wellness and lifestyle improvement."
+    question: "What is health coaching?",
+    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
   },
   {
-    question: "How are the diet plans designed?",
-    answer: "Every plan starts with a detailed assessment of your health goals, medical condition (if any), and dietary habits. Based on this, a tailored nutrition plan is created that fits your routine and helps you achieve sustainable results."
+    question: "How does health coaching work?",
+    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
   },
   {
-    question: "Is the nutrition plan difficult to follow?",
-    answer: "Not at all! Our diet plans are designed with simple, home-cooked meals that are easy to prepare and follow. We focus on practical solutions that fit your lifestyle rather than restrictive diets."
+    question: "Who can benefit from health coaching?",
+    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
   },
   {
-    question: "What results can I expect?",
-    answer: "Results vary depending on individual goals and commitment. Most clients see visible changes within the first month, with sustainable weight loss of 3-5 kg per month on average. Beyond weight, clients report improved energy levels, better sleep, and enhanced overall wellbeing."
+    question: "Can I do health coaching online?",
+    answer: "Health coaching is a personalized and structured service designed to guide you toward achieving your health and wellness goals. Through tailored strategies, ongoing support, and motivation."
   }
 ];
+
+/* 3×3 teal cross grid decorative element */
+function CrossGrid() {
+  return (
+    <div className="grid grid-cols-3 gap-[7px]">
+      {[...Array(9)].map((_, i) => (
+        <svg key={i} width="10" height="10" viewBox="0 0 10 10">
+          <line x1="2" y1="2" x2="8" y2="8" stroke="#014E4E" strokeWidth="2" />
+          <line x1="8" y1="2" x2="2" y2="8" stroke="#014E4E" strokeWidth="2" />
+        </svg>
+      ))}
+    </div>
+  );
+}
+
+/* Radial sparkle / dots decoration */
+function SparkleDecor() {
+  return (
+    <svg width="36" height="36" viewBox="0 0 36 36" style={{ transform: 'rotate(-56deg)' }}>
+      {/* Outer ring dots */}
+      {[...Array(12)].map((_, i) => {
+        const angle = (i * 30 * Math.PI) / 180;
+        const cx = 18 + 14 * Math.cos(angle);
+        const cy = 18 + 14 * Math.sin(angle);
+        return <circle key={`o${i}`} cx={cx} cy={cy} r="1.4" fill="#014E4E" />;
+      })}
+      {/* Middle ring dots */}
+      {[...Array(8)].map((_, i) => {
+        const angle = ((i * 45 + 22.5) * Math.PI) / 180;
+        const cx = 18 + 9 * Math.cos(angle);
+        const cy = 18 + 9 * Math.sin(angle);
+        return <circle key={`m${i}`} cx={cx} cy={cy} r="1.1" fill="#014E4E" />;
+      })}
+      {/* Inner ring dots */}
+      {[...Array(4)].map((_, i) => {
+        const angle = ((i * 90 + 45) * Math.PI) / 180;
+        const cx = 18 + 5 * Math.cos(angle);
+        const cy = 18 + 5 * Math.sin(angle);
+        return <circle key={`in${i}`} cx={cx} cy={cy} r="0.9" fill="#014E4E" />;
+      })}
+    </svg>
+  );
+}
 
 export default function FAQSection() {
   const [openIndex, setOpenIndex] = useState<number>(1);
 
   return (
-    <section className="bg-[#f5f7fa] py-12 md:py-20 px-4 md:px-8 rounded-[20px] md:rounded-[30px]">
-      <div className="max-w-[1200px] mx-auto flex gap-8 md:gap-12 flex-wrap items-start">
-        {/* Left - Images */}
-        <div className="flex-1 w-full md:min-w-[300px] relative h-[400px] md:h-[550px] hidden md:block">
-          <div className="relative">
-            <Image 
-              src="/img/faq-image-1.jpg" 
-              alt="Healthy lifestyle" 
-              width={350} 
-              height={400}
-              className="rounded-[20px] object-cover"
+    <section className="section-wrapper pt-16 md:pt-24 pb-12 md:pb-20">
+      <div className="max-w-[1200px] mx-auto flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+
+        {/* ── Left: Images ── */}
+        <div className="relative w-full lg:w-[480px] min-h-[360px] md:min-h-[440px] flex-shrink-0">
+          {/* Image 1 – top-left woman */}
+          <div className="relative w-[200px] h-[260px] md:w-[250px] md:h-[320px] rounded-[20px] overflow-hidden z-[1]">
+            <Image
+              src="/img/9141869b7970fcca95d022e21e1d786db4838ace.png"
+              alt="Health coaching"
+              fill
+              className="object-cover"
             />
-            {/* Rotating dashed circle */}
-            <div className="absolute top-1/2 -right-[30px] w-20 h-20 animate-spin-slow">
-              <svg width="80" height="80" viewBox="0 0 80 80">
-                <circle 
-                  cx="40" 
-                  cy="40" 
-                  r="35" 
-                  fill="none" 
-                  stroke="#009688" 
-                  strokeWidth="2" 
-                  strokeDasharray="8 4"
-                />
-              </svg>
-            </div>
           </div>
-          <Image 
-            src="/img/faq-image-2.jpg" 
-            alt="Diet consultation" 
-            width={280} 
-            height={220}
-            className="rounded-[20px] object-cover absolute bottom-0 right-5 shadow-[0_10px_40px_rgba(0,0,0,0.15)] border-4 border-white"
-          />
-          {/* Decorative dots */}
-          <div className="absolute bottom-20 left-0 grid grid-cols-4 gap-2">
-            {[...Array(16)].map((_, i) => (
-              <span 
-                key={i} 
-                className={`w-2 h-2 rounded-full opacity-60 ${
-                  i % 3 === 0 ? 'bg-[#ff9100]' : 'bg-teal-600'
-                }`}
-              />
-            ))}
+
+          {/* Sparkle decoration – between images */}
+          <div className="absolute top-[100px] left-[210px] md:top-[120px] md:left-[270px] z-[3]">
+            <SparkleDecor />
+          </div>
+
+          {/* Dashed circle decoration */}
+          <div className="absolute top-[85px] left-[195px] md:top-[100px] md:left-[250px] z-[2]">
+            <svg width="60" height="60" viewBox="0 0 60 60">
+              <circle cx="30" cy="30" r="25" fill="none" stroke="#014E4E" strokeWidth="1" strokeDasharray="4 3" opacity="0.4" />
+            </svg>
+          </div>
+
+          {/* Image 2 – bottom-right food plate */}
+          <div className="absolute left-[100px] top-[160px] md:left-[140px] md:top-[190px] w-[220px] h-[200px] md:w-[280px] md:h-[250px] rounded-[20px] overflow-hidden border-[4px] border-white z-[4] shadow-[0_8px_30px_rgba(0,0,0,0.12)]">
+            <Image
+              src="/img/1ab426ea9c4c4725ca785448c846667e69b74af4.jpg"
+              alt="Healthy food"
+              fill
+              className="object-cover"
+            />
+          </div>
+
+          {/* Cross grid decoration – bottom-left */}
+          <div className="absolute bottom-[30px] left-[50px] md:bottom-[10px] md:left-[60px] z-[5]">
+            <CrossGrid />
           </div>
         </div>
-        
-        {/* Right - FAQ Accordion */}
-        <div className="flex-1 w-full md:min-w-[400px]">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[#ff9100] text-xl">✦</span>
-            <span className="text-teal-600 font-semibold text-base">Frequently Asked Questions</span>
+
+        {/* ── Right: FAQ Accordion ── */}
+        <div className="flex-1 w-full">
+          {/* Label */}
+          <div className="flex items-center gap-2 mb-1">
+            <span className="w-[14px] h-[14px] rounded-[2px] bg-[#FF850B] inline-block" />
+            <span className="text-[#014E4E] font-semibold text-sm italic" style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}>
+              Frequently Asked Questions
+            </span>
           </div>
-          <h2 className="text-2xl md:text-[2.5rem] font-bold text-gray-900 leading-tight mb-6 md:mb-8">
-            Common Questions About<br />Our Diet Plans
+
+          {/* Title */}
+          <h2
+            className="text-[28px] md:text-[38px] lg:text-[46px] font-extrabold text-[#1E1E1E] leading-[1.1] mb-6 md:mb-8 tracking-[-0.01em]"
+            style={{ fontFamily: 'var(--font-epilogue), Epilogue, sans-serif' }}
+          >
+            Common questions<br />about<span className="inline" style={{ letterSpacing: '-0.04em' }}>&thinsp;</span>health coaching
           </h2>
-          
-          {/* FAQ Items */}
-          <div className="flex flex-col gap-4">
-            {faqData.map((faq, index) => (
-              <div 
-                key={index}
-                onClick={() => setOpenIndex(openIndex === index ? -1 : index)}
-                className={`rounded-2xl py-5 px-6 cursor-pointer transition-all duration-300 overflow-hidden ${
-                  openIndex === index 
-                    ? 'bg-[#ff9100] shadow-[0_8px_25px_rgba(255,145,0,0.3)]' 
-                    : 'bg-white shadow-[0_2px_10px_rgba(0,0,0,0.05)]'
-                }`}
-              >
-                <div className="flex justify-between items-center">
-                  <span className={`font-semibold text-base ${
-                    openIndex === index ? 'text-white' : 'text-gray-900'
-                  }`}>
-                    {faq.question}
-                  </span>
-                  <span className={`text-2xl font-light transition-transform duration-300 flex items-center justify-center w-[30px] h-[30px] rounded-full ${
-                    openIndex === index 
-                      ? 'text-white bg-white/20 rotate-45' 
-                      : 'text-[#ff9100] bg-[rgba(255,145,0,0.1)] rotate-0'
-                  }`}>
-                    +
-                  </span>
+
+          {/* Accordion */}
+          <div className="flex flex-col gap-4 md:gap-5">
+            {faqData.map((faq, index) => {
+              const isOpen = openIndex === index;
+              return (
+                <div key={index} className="flex flex-col gap-2.5">
+                  {/* Question bar */}
+                  <button
+                    onClick={() => setOpenIndex(isOpen ? -1 : index)}
+                    className={`w-full flex items-center justify-between px-4 md:px-5 py-3 md:py-[14px] rounded-[10px] transition-colors duration-200 cursor-pointer ${
+                      isOpen
+                        ? 'bg-[#FF850B]'
+                        : 'bg-transparent outline outline-1 outline-[#F1F1F1]'
+                    }`}
+                  >
+                    <span
+                      className={`text-[13px] md:text-[15px] font-semibold text-left ${
+                        isOpen ? 'text-white' : 'text-[#1E1E1E]'
+                      }`}
+                    >
+                      {faq.question}
+                    </span>
+
+                    {/* +/- icon */}
+                    <span
+                      className={`flex-shrink-0 w-[26px] h-[26px] md:w-[30px] md:h-[30px] rounded-[5px] flex items-center justify-center ${
+                        isOpen ? 'bg-white' : 'bg-[#FF850B]'
+                      }`}
+                    >
+                      {isOpen ? (
+                        /* minus */
+                        <span className="w-[11px] h-[2px] bg-[#FF850B] rounded-full" />
+                      ) : (
+                        /* plus */
+                        <svg width="12" height="12" viewBox="0 0 12 12">
+                          <line x1="6" y1="1" x2="6" y2="11" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                          <line x1="1" y1="6" x2="11" y2="6" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                        </svg>
+                      )}
+                    </span>
+                  </button>
+
+                  {/* Answer panel */}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      isOpen ? 'max-h-[300px] opacity-100' : 'max-h-0 opacity-0'
+                    }`}
+                  >
+                    <div className="bg-[#EAEEF1] rounded-[10px] px-4 md:px-5 py-3 md:py-4">
+                      <p className="text-[#828283] text-[12px] md:text-[14px] leading-[1.65] font-normal font-[Inter] m-0">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
                 </div>
-                <div className={`overflow-hidden transition-all duration-300 ${
-                  openIndex === index 
-                    ? 'max-h-[200px] mt-4 opacity-100' 
-                    : 'max-h-0 mt-0 opacity-0'
-                }`}>
-                  <p className="text-white text-[0.95rem] leading-relaxed m-0">
-                    {faq.answer}
-                  </p>
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </div>

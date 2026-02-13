@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Poppins } from 'next/font/google';
+import { Poppins, Epilogue } from 'next/font/google';
 import './globals.css';
 import { AuthProvider } from './providers';
 import { ThemeProvider } from './providers/ThemeProvider';
@@ -9,6 +9,12 @@ const poppins = Poppins({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700', '800'],
   variable: '--font-poppins',
+});
+
+const epilogue = Epilogue({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-epilogue',
 });
 
 export const metadata: Metadata = {
@@ -40,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={poppins.variable}>
+    <html lang="en" className={`${poppins.variable} ${epilogue.variable}`}>
       <body>
         <AuthProvider>
           <ThemeProvider>

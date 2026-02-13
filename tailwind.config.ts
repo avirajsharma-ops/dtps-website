@@ -61,6 +61,11 @@ const config: Config = {
   			poppins: [
   				'Poppins',
   				'sans-serif'
+  			],
+  			epilogue: [
+  				'var(--font-epilogue)',
+  				'Epilogue',
+  				'sans-serif'
   			]
   		},
   		borderRadius: {

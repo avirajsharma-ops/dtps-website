@@ -90,7 +90,7 @@ export default function TransformationGallery({
   }, [page, maxItems]);
 
   return (
-    <section className="py-10 md:py-[60px] px-4 md:px-5 max-w-[1200px] mx-auto">
+    <section className="px-0 max-w-full mx-auto">
       {title && (
         <div className="text-center mb-8 md:mb-[50px]">
           <h2 className="text-2xl md:text-5xl font-bold text-black mb-2.5 font-[Epilogue,sans-serif] leading-tight">
@@ -107,7 +107,7 @@ export default function TransformationGallery({
       <div className="max-w-full mx-auto relative">
         <Swiper
           modules={[Pagination, Autoplay]}
-          spaceBetween={30}
+          spaceBetween={20}
           slidesPerView={1}
           pagination={{
             clickable: true,
@@ -122,29 +122,22 @@ export default function TransformationGallery({
           breakpoints={{
             640: {
               slidesPerView: 2,
-              spaceBetween: 20,
+              spaceBetween: 16,
             },
             1024: {
               slidesPerView: 3,
-              spaceBetween: 30,
+              spaceBetween: 20,
             },
           }}
         >
           {transformations.map((transformation) => (
             <SwiperSlide key={transformation._id || transformation.clientName}>
-              <div className="rounded-2xl overflow-hidden   relative">
-            
-
-                {/* Single Image Display */}
-                <div className="relative overflow-hidden h-[350px] md:h-[420px] w-full rounded-2xl">
-                  <img
-                    src={transformation.afterImage || '/img/placeholder.jpg'}
-                    alt={`${transformation.clientName} Result`}
-                    className="w-full h-full object-cover object-top"
-                  />
-                </div>
-
-           
+              <div className="rounded-[16px] overflow-hidden shadow-[0_2px_16px_rgba(0,0,0,0.08)]">
+                <img
+                  src={transformation.afterImage || transformation.beforeImage || '/img/placeholder.jpg'}
+                  alt={`${transformation.clientName} Transformation`}
+                  className="w-full h-auto object-contain rounded-[16px]"
+                />
               </div>
             </SwiperSlide>
           ))}
