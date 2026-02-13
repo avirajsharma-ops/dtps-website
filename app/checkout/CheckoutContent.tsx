@@ -128,7 +128,10 @@ export default function CheckoutContent() {
       const data = await response.json();
 
       if (data.success) {
-        // Open Razorpay payment gateway
+        // Get phone number from webhook/API response (not from form)
+        const phoneFromAPI = data.order.customerPhone;
+        
+        // Open Razorpay directly with user details
         const options = {
           key: data.razorpayKey,
           amount: Math.round(total * 100),
@@ -136,7 +139,7 @@ export default function CheckoutContent() {
           name: 'Dietitian Poonam Sagar',
           description: 'Subscription Plan Purchase',
           order_id: data.razorpayOrderId,
-          handler: async function (response: any) {
+          handler: async function (razorpayResponse: any) {
             try {
               // Verify payment
               const verifyResponse = await fetch('/api/orders', {
@@ -146,8 +149,8 @@ export default function CheckoutContent() {
                 },
                 body: JSON.stringify({
                   action: 'verify',
-                  razorpayPaymentId: response.razorpay_payment_id,
-                  razorpayOrderId: response.razorpay_order_id,
+                  razorpayPaymentId: razorpayResponse.razorpay_payment_id,
+                  razorpayOrderId: razorpayResponse.razorpay_order_id,
                   orderId: data.order.orderId,
                 }),
               });
@@ -158,22 +161,35 @@ export default function CheckoutContent() {
                 // Redirect to success page
                 setTimeout(() => {
                   window.location.href = `/checkout/success?orderId=${data.order.orderId}`;
-                }, 2000);
+                }, 1500);
               } else {
                 setOrderStatus('failed');
+                setLoading(false);
               }
             } catch (error) {
               console.error('Payment verification error:', error);
               setOrderStatus('failed');
+              setLoading(false);
             }
+            
           },
           prefill: {
             name: `${formData.firstName} ${formData.lastName}`,
             email: formData.email,
-            contact: formData.phone,
+            contact: phoneFromAPI, // Using phone from API webhook
+          },
+          notes: {
+            customer_name: `${formData.firstName} ${formData.lastName}`,
+            customer_email: formData.email,
+            customer_phone: phoneFromAPI, // Using phone from API webhook
+            customer_city: formData.city,
           },
           theme: {
             color: '#ff850b',
+          },
+          readonly: {
+            contact: true,
+            email: true,
           },
           modal: {
             ondismiss: function () {
@@ -188,12 +204,12 @@ export default function CheckoutContent() {
       } else {
         setOrderStatus('failed');
         alert('Failed to create order');
+        setLoading(false);
       }
     } catch (error) {
       console.error('Error placing order:', error);
       setOrderStatus('failed');
       alert('Error placing order');
-    } finally {
       setLoading(false);
     }
   };

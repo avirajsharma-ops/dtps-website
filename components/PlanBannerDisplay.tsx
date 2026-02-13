@@ -78,7 +78,7 @@ export default function PlanBannerDisplay({ planId }: PlanBannerDisplayProps) {
 
   if (banner.link) {
     return (
-      <div className="w-full mb-4 cursor-pointer">
+      <div className="w-full cursor-pointer">
         <Link href={banner.link}>
           {BannerContent}
         </Link>
@@ -87,7 +87,7 @@ export default function PlanBannerDisplay({ planId }: PlanBannerDisplayProps) {
   }
 
   return (
-    <div className="w-full mb-4 cursor-pointer">
+    <div className="w-full cursor-pointer">
       {BannerContent}
     </div>
   );

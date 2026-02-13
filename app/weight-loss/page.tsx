@@ -459,7 +459,9 @@ export default function WeightLossPage() {
             {pricingPlans.map((plan: any, index: number) => (
               <div key={index}>
                 {/* Plan-specific Banner - shows above each plan */}
-                {plan.planId && <PlanBannerDisplay planId={plan.planId} />}
+                <div className="wl-plan-banner-slot">
+                  {plan.planId && <PlanBannerDisplay planId={plan.planId} />}
+                </div>
                 
                 <div className="wl-pricing-card">
                 <div className="wl-pricing-header">
