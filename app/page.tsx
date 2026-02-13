@@ -124,94 +124,151 @@ export default function HomePage() {
 
       {/* How It Work Section */}
       <div className="section-wrapper">
-      <section className="bg-[#0b4c4c] pt-16 md:pt-20 pb-40 md:pb-52 px-4 md:px-8 rounded-[30px]">
+      <section className="bg-gradient-to-b from-[#0b4c4c] to-[#073535] pt-14 md:pt-20 pb-44 md:pb-56 px-4 md:px-8 rounded-[30px]">
         <div className="max-w-[1200px] mx-auto">
-          <div className="flex justify-between items-start flex-wrap gap-8 mb-12">
+          {/* Header row */}
+          <div className="flex flex-col md:flex-row justify-between items-start gap-6 md:gap-8 mb-14 md:mb-16">
             <div>
               <div className="flex items-center gap-2 mb-2">
                 <span className="text-[#ff9100] text-xl">✦</span>
-                <span className="text-[#ff9100] font-semibold text-base">How It Work</span>
+                <span className="text-[#ff9100] font-semibold text-base italic">How It Work</span>
               </div>
-              <h2 className="text-[2rem] md:text-[2.5rem] font-bold text-white leading-tight">
-                Step-by-step guide to<br />better health
+              <h2 className="text-[1.8rem] md:text-[2.5rem] font-bold text-white leading-tight italic">
+                Step-by-step guide to<br />your healthy journey
               </h2>
             </div>
-            <p className="max-w-[500px] text-white opacity-90 text-sm md:text-base leading-relaxed">
+            <p className="max-w-[420px] text-white/80 text-sm md:text-[15px] leading-relaxed md:pt-8">
               Achieving your health goals has never been easier. Our step-by-step approach provides personalized guidance, actionable strategies, and ongoing support.
             </p>
           </div>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {/* Step 1 - Custom Coaching Plan */}
-            <div className="text-center">
-              <div className="relative inline-block mb-4 md:mb-6">
-                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
-                    <circle cx="9" cy="7" r="3" />
-                    <path d="M9 10v4" />
-                    <path d="M9 14l-3 6" />
-                    <path d="M9 14l3 6" />
-                    <circle cx="17" cy="7" r="3" />
-                    <path d="M17 10v4" />
-                    <path d="M17 14l-3 6" />
-                    <path d="M17 14l3 6" />
-                  </svg>
+
+          {/* 5 Steps with connectors */}
+          <div className="relative">
+            {/* Desktop: horizontal row with connectors */}
+            <div className="hidden md:grid grid-cols-5 gap-0 relative">
+              {/* Dotted connector line across all icons */}
+              <div className="absolute top-[40px] left-[10%] right-[10%] h-0 border-t-2 border-dashed border-white/30 z-0" />
+
+              {/* Step 1 */}
+              <div className="text-center relative z-10 px-2">
+                <div className="inline-block mb-6 relative">
+                  <div className="w-[80px] h-[80px] border-2 border-white/30 rounded-full flex items-center justify-center bg-[#0b4c4c] relative z-10">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <circle cx="9" cy="7" r="3" />
+                      <path d="M9 13a5 5 0 0 0-5 5h10a5 5 0 0 0-5-5z" />
+                      <path d="M17 11l2 2 4-4" stroke="#ff9100" />
+                    </svg>
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-7 h-7 bg-[#ff9100] rounded-full flex items-center justify-center text-white text-xs font-bold z-20">1</div>
                 </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">1</div>
+                <h3 className="text-white font-bold text-[15px] mb-2 leading-snug">Choose Your Plan</h3>
+                <p className="text-white/70 text-[12.5px] leading-relaxed">Select a diet plan based on your goal, health condition, and duration.</p>
               </div>
-              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Custom Coaching Plan</h3>
-              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
+
+              {/* Step 2 */}
+              <div className="text-center relative z-10 px-2">
+                <div className="inline-block mb-6 relative">
+                  <div className="w-[80px] h-[80px] border-2 border-white/30 rounded-full flex items-center justify-center bg-[#0b4c4c] relative z-10">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <circle cx="8" cy="7" r="3" />
+                      <path d="M8 13a5 5 0 0 0-4 4h8" />
+                      <circle cx="17" cy="7" r="3" />
+                      <path d="M17 13a5 5 0 0 1 4 4h-8" />
+                      <path d="M12 17v3" stroke="#ff9100" />
+                    </svg>
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-7 h-7 bg-[#ff9100] rounded-full flex items-center justify-center text-white text-xs font-bold z-20">2</div>
+                </div>
+                <h3 className="text-white font-bold text-[15px] mb-2 leading-snug">Health Counsellor Connect</h3>
+                <p className="text-white/70 text-[12.5px] leading-relaxed">Our health counsellor connects with you to understand your lifestyle and concerns.</p>
+              </div>
+
+              {/* Step 3 */}
+              <div className="text-center relative z-10 px-2">
+                <div className="inline-block mb-6 relative">
+                  <div className="w-[80px] h-[80px] border-2 border-white/30 rounded-full flex items-center justify-center bg-[#0b4c4c] relative z-10">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <path d="M3 5h18v14H3z" rx="2" />
+                      <circle cx="9" cy="12" r="2" />
+                      <circle cx="15" cy="12" r="2" />
+                      <path d="M9 12h6" strokeDasharray="2 2" stroke="#ff9100" />
+                    </svg>
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-7 h-7 bg-[#ff9100] rounded-full flex items-center justify-center text-white text-xs font-bold z-20">3</div>
+                </div>
+                <h3 className="text-white font-bold text-[15px] mb-2 leading-snug">Dietitian Assessment Call</h3>
+                <p className="text-white/70 text-[12.5px] leading-relaxed">Your assigned dietitian speaks with you to understand your lifestyle, food choices and health goals before planning your diet.</p>
+              </div>
+
+              {/* Step 4 */}
+              <div className="text-center relative z-10 px-2">
+                <div className="inline-block mb-6 relative">
+                  <div className="w-[80px] h-[80px] border-2 border-white/30 rounded-full flex items-center justify-center bg-[#0b4c4c] relative z-10">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <rect x="4" y="3" width="16" height="18" rx="2" />
+                      <path d="M8 7h8" />
+                      <path d="M8 11h8" />
+                      <path d="M8 15h5" />
+                      <path d="M15 15l2 2 4-4" stroke="#ff9100" />
+                    </svg>
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-7 h-7 bg-[#ff9100] rounded-full flex items-center justify-center text-white text-xs font-bold z-20">4</div>
+                </div>
+                <h3 className="text-white font-bold text-[15px] mb-2 leading-snug">Personalised Plan Delivery</h3>
+                <p className="text-white/70 text-[12.5px] leading-relaxed">Your customised diet plan is shared on OUR APP within 24 hours of the assessment.</p>
+              </div>
+
+              {/* Step 5 */}
+              <div className="text-center relative z-10 px-2">
+                <div className="inline-block mb-6 relative">
+                  <div className="w-[80px] h-[80px] border-2 border-white/30 rounded-full flex items-center justify-center bg-[#0b4c4c] relative z-10">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5">
+                      <path d="M12 20V10" />
+                      <path d="M6 20v-6" />
+                      <path d="M18 20v-4" />
+                      <circle cx="12" cy="7" r="2" stroke="#ff9100" />
+                      <path d="M9 4l3 3 3-3" stroke="#ff9100" />
+                    </svg>
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-7 h-7 bg-[#ff9100] rounded-full flex items-center justify-center text-white text-xs font-bold z-20">5</div>
+                </div>
+                <h3 className="text-white font-bold text-[15px] mb-2 leading-snug">Follow-Ups &amp; Tracking</h3>
+                <p className="text-white/70 text-[12.5px] leading-relaxed">Weekly or requirement-based follow-ups to track progress and make timely adjustments.</p>
+              </div>
             </div>
-            {/* Step 2 - Ongoing Support */}
-            <div className="text-center">
-              <div className="relative inline-block mb-4 md:mb-6">
-                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
-                    <circle cx="9" cy="7" r="3" />
-                    <path d="M9 10v4" />
-                    <path d="M6 20l3-6 3 6" />
-                    <circle cx="17" cy="7" r="3" />
-                    <path d="M17 10v4" />
-                    <path d="M14 20l3-6 3 6" />
-                    <path d="M9 7h8" strokeDasharray="2 2" />
-                  </svg>
+
+            {/* Mobile: stacked layout */}
+            <div className="md:hidden space-y-8">
+              {[
+                { num: 1, title: 'Choose Your Plan', desc: 'Select a diet plan based on your goal, health condition, and duration.', icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5"><circle cx="9" cy="7" r="3" /><path d="M9 13a5 5 0 0 0-5 5h10a5 5 0 0 0-5-5z" /><path d="M17 11l2 2 4-4" stroke="#ff9100" /></svg>
+                )},
+                { num: 2, title: 'Health Counsellor Connect', desc: 'Our health counsellor connects with you to understand your lifestyle and concerns.', icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5"><circle cx="8" cy="7" r="3" /><path d="M8 13a5 5 0 0 0-4 4h8" /><circle cx="17" cy="7" r="3" /><path d="M17 13a5 5 0 0 1 4 4h-8" /></svg>
+                )},
+                { num: 3, title: 'Dietitian Assessment Call', desc: 'Your assigned dietitian speaks with you to understand your lifestyle, food choices and health goals before planning your diet.', icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5"><path d="M3 5h18v14H3z" /><circle cx="9" cy="12" r="2" /><circle cx="15" cy="12" r="2" /></svg>
+                )},
+                { num: 4, title: 'Personalised Plan Delivery', desc: 'Your customised diet plan is shared on OUR APP within 24 hours of the assessment.', icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5"><rect x="4" y="3" width="16" height="18" rx="2" /><path d="M8 7h8" /><path d="M8 11h8" /><path d="M8 15h5" /></svg>
+                )},
+                { num: 5, title: 'Follow-Ups & Tracking', desc: 'Weekly or requirement-based follow-ups to track progress and make timely adjustments.', icon: (
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5"><path d="M12 20V10" /><path d="M6 20v-6" /><path d="M18 20v-4" /></svg>
+                )},
+              ].map((step) => (
+                <div key={step.num} className="flex items-start gap-4">
+                  <div className="relative flex-shrink-0">
+                    <div className="w-16 h-16 border-2 border-white/30 rounded-full flex items-center justify-center bg-[#0b4c4c]">
+                      {step.icon}
+                    </div>
+                    <div className="absolute -top-1 -right-1 w-6 h-6 bg-[#ff9100] rounded-full flex items-center justify-center text-white text-[10px] font-bold">{step.num}</div>
+                  </div>
+                  <div>
+                    <h3 className="text-white font-bold text-sm mb-1">{step.title}</h3>
+                    <p className="text-white/70 text-xs leading-relaxed">{step.desc}</p>
+                  </div>
                 </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">2</div>
-              </div>
-              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Ongoing Support</h3>
-              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
-            </div>
-            {/* Step 3 - Practical Tools */}
-            <div className="text-center">
-              <div className="relative inline-block mb-4 md:mb-6">
-                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
-                    <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
-                  </svg>
-                </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">3</div>
-              </div>
-              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Practical Tools</h3>
-              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
-            </div>
-            {/* Step 4 - Flexible Engagement */}
-            <div className="text-center">
-              <div className="relative inline-block mb-4 md:mb-6">
-                <div className="w-16 h-16 md:w-20 md:h-20 border-2 border-white/30 rounded-full flex items-center justify-center">
-                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ff9100" strokeWidth="1.5" className="md:w-8 md:h-8">
-                    <circle cx="7" cy="7" r="2" />
-                    <circle cx="17" cy="7" r="2" />
-                    <circle cx="7" cy="17" r="2" />
-                    <circle cx="17" cy="17" r="2" />
-                    <path d="M9 7h6" />
-                    <path d="M9 17h6" />
-                    <path d="M7 9v6" />
-                    <path d="M17 9v6" />
-                  </svg>
-                </div>
-                <div className="absolute -top-1 -right-1 bg-[#ff9100] text-white w-5 h-5 md:w-6 md:h-6 rounded-full text-[10px] md:text-xs font-bold flex items-center justify-center">4</div>
-              </div>
-              <h3 className="text-white font-bold text-sm md:text-lg mb-2">Flexible Engagement</h3>
-              <p className="text-white opacity-80 text-xs md:text-sm leading-relaxed">Begin with a comprehensive health assessment to understand.</p>
+              ))}
             </div>
           </div>
         </div>
@@ -235,11 +292,11 @@ export default function HomePage() {
                 Easy scheduling for a personalized health coaching session. Take the first step towards better health today!
               </p>
               <Image 
-                src="/assets/img/appointment-img.jpg" 
-                alt="Healthy food" 
-                width={400} 
+                src="/img/b29c961c86fe88546c6e3c94c7c1fdaee4e4c518.png"
+                alt="Dietitian consultation"
+                width={450}
                 height={300}
-                className="rounded-2xl object-cover w-full max-w-[400px] hidden md:block"
+                className="rounded-2xl object-cover w-full max-w-[450px] hidden md:block"
               />
             </div>
             <div className="w-full lg:flex-1">
